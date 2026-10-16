@@ -28,4 +28,3 @@ if (typeof window !== 'undefined') {
   }, { capture: true });
 }
 
-export { SoundManager };
