@@ -1,10 +1,10 @@
 {
   "$schema": "https://unpkg.com/knip@5/schema.json",
   "project": [
-    "app/**/*.{js,jsx,ts,tsx}",
-    "components/**/*.{js,jsx,ts,tsx}",
-    "features/**/*.{js,jsx,ts,tsx}",
-    "lib/**/*.{js,jsx,ts,tsx}",
+    "app/**/*.{js,jsx,ts,tsx,css}",
+    "components/**/*.{js,jsx,ts,tsx,css}",
+    "features/**/*.{js,jsx,ts,tsx,css}",
+    "lib/**/*.{js,jsx,ts,tsx,css}",
     "*.{js,cjs,mjs,jsx,ts,cts,mts,tsx}"
   ]
 }
