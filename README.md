@@ -21,7 +21,7 @@ Device availability depends on the ESP32 firmware, network connectivity, broker/
 - Motion and dnd-kit for interaction/drag-and-drop
 - Biome for linting and formatting
 
-See [ARCHITECTURE.md](ARCHITECTURE.md) for the source layout, module responsibilities, communication constraints, and contributor guidance. Protocol and configuration references live in [docs/](docs/).
+See [ARCHITECTURE.md](ARCHITECTURE.md) for the current source layout, module responsibilities, communication constraints, and contributor guidance. See [DESIGN.md](DESIGN.md) for verified UI conventions. Protocol and configuration references live in [docs/](docs/).
 
 ## Requirements
 
