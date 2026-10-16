@@ -1,5 +1,7 @@
 # IoT Platform Backend Architecture
 
+> **Document status:** This is a conceptual/planning description, not a guarantee that the described backend exists in this repository. The current frontend is configured for static export and browser-side device communication. Use [`../ARCHITECTURE.md`](../ARCHITECTURE.md) and the source code as the authority for implemented behavior; treat Cloudflare Worker/Durable Objects flows below as planned unless verified in the relevant external repository.
+
 ## Project Overview
 
 This project is an IoT platform built around ESP32 devices and a highly dynamic dashboard.
