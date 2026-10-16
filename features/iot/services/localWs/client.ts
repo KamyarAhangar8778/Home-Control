@@ -8,7 +8,7 @@ export const setLocalWs = (ws: WebSocket | null) => {
   localWs = ws;
 };
 
-export const onLocalStateUpdate = (cb: StateCallback) => {
+const onLocalStateUpdate = (cb: StateCallback) => {
   stateCallbacks.add(cb);
   return () => {
     stateCallbacks.delete(cb);
