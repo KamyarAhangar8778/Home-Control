@@ -1,65 +1,75 @@
-# 🏛️ Achaemenid IoT Dashboard
+# Home Control Dashboard
 
-A minimalist, modular, and high-performance IoT dashboard integrated with ESP32 control systems, featuring traditional Persian symbolic aesthetics, Cuneiform details, and modern Cloudflare/MQTT connectivity.
+A browser-based dashboard for monitoring and controlling ESP32-based home-automation devices. The project focuses on a modular React UI, device communication over MQTT/WebSocket transports, and configurable dashboard/settings experiences.
 
----
+## Features and project areas
 
-## 🎨 Aesthetics & Philosophy
-This dashboard blends historical Persian legacy with modern technology:
-- **Achaemenid & Traditional Motifs**: Features custom theme variables based on traditional colors (e.g., imperial purple, Pasargadae gold, stone grey) and dynamic Cuneiform backgrounds.
-- **Micro-Animations**: Uses fluid motion interactions representing historical talismans and symbolic transitions.
-- **Layout Adaptability**: Supports dynamic header positions (vertical sidebar / horizontal navbar) and responsive column layouts (1 to 3 columns grid system).
+- Dashboard and workspace UI for home-automation controls.
+- IoT feature modules for device-facing interactions and communication.
+- Settings UI and shared presets.
+- Shared header, query provider, and audio integration.
+- Static-site deployment configuration for GitHub Pages.
 
----
+Device availability depends on the ESP32 firmware, network connectivity, broker/socket configuration, and browser security policies. A successful UI command publish does not by itself guarantee that a physical device changed state.
 
-## ⚡ Tech Stack & Tools
+## Technology
 
-- **Core**: Next.js 15 (App Router), React 19, TypeScript
-- **Styling**: Tailwind CSS v4 (using `@theme` variables for dynamic styling)
-- **Linter & Formatter**: Biome (for ultra-fast verification and code formatting)
-- **State Management**: Zustand
-- **Real-time Communication**: MQTT (via broker connectivity to ESP32 microcontrollers)
-- **Data Querying**: TanStack React Query v5
+- Next.js 15 App Router, React 19, TypeScript
+- Tailwind CSS v4
+- Zustand and TanStack React Query
+- MQTT client and WebSocket-based device communication
+- Motion and dnd-kit for interaction/drag-and-drop
+- Biome for linting and formatting
 
----
+See [ARCHITECTURE.md](ARCHITECTURE.md) for the source layout, module responsibilities, communication constraints, and contributor guidance. Protocol and configuration references live in [docs/](docs/).
 
-## 🚀 Getting Started
+## Requirements
 
-### Prerequisites
-- Node.js (v18.x or higher)
-- npm or another package manager
+- Node.js compatible with the installed Next.js 15 release
+- npm
 
-### Installation
-1. Clone the repository and navigate to the project directory:
-   ```bash
-   git clone https://github.com/KamyarAhangar8778/Real-CloudFlare-IoT-Dash.git
-   cd Real-CloudFlare-IoT-Dash
-   ```
+## Local development
 
-2. Install the optimized dependencies:
-   ```bash
-   npm install
-   ```
+```bash
+git clone https://github.com/KamyarAhangar8778/Home-Control-Dashboard.git
+cd Home-Control-Dashboard
+npm install
+npm run dev
+```
 
-3. Set up your environment variables:
-   Copy the example file and fill in your keys:
-   ```bash
-   cp .env.example .env.local
-   ```
+Open [http://localhost:3000](http://localhost:3000).
 
-4. Run the development server:
-   ```bash
-   npm run dev
-   ```
-   Open [http://localhost:3000](http://localhost:3000) with your browser to see the dashboard.
+If a feature requires environment values, copy the example file and fill in only the values you need:
 
----
+```bash
+cp .env.example .env.local
+```
 
-## 🛠️ Development & Script Guidelines
+Do not commit `.env.local`, real credentials, private broker details, or API keys. Values embedded in a static client-side application are visible to users; do not put secrets in client-side configuration.
 
-This project uses **Biome** instead of ESLint/Prettier for style enforcement. Please refer to [CLAUDE.md](CLAUDE.md) for full commands:
-- **Lint**: `npm run lint`
-- **Format**: `npm run format`
-- **Clean Cache**: `npm run clean`
+## Available commands
 
-For structural details, check [ARCHITECTURE.md](ARCHITECTURE.md).
+| Command | Purpose |
+| --- | --- |
+| `npm run dev` | Start the development server |
+| `npm run build` | Run the production build/static export |
+| `npm run lint` | Run Biome lint checks |
+| `npm run format` | Format source directories in place |
+| `npm run clean` | Remove local build/cache outputs |
+| `npm run start` | Run the Next.js server; not intended to preview the static `out/` export |
+
+Run `npm run lint` and `npm run build` before submitting changes when possible.
+
+## GitHub Pages
+
+The Next.js configuration applies the `/Home-Control-Dashboard` base path and asset prefix when `GITHUB_PAGES=true`. The deployment workflow is located at [`.github/workflows/deploy-pages.yml`](.github/workflows/deploy-pages.yml).
+
+The repository must have GitHub Pages configured to deploy using **GitHub Actions**. A workflow file alone does not enable Pages in repository settings. Check the Actions run and Pages settings if deployment fails.
+
+## Repository hygiene
+
+Keep source, documentation, lockfiles, and required static assets under version control. Do not commit local environment files, dependencies, build output, console logs, credentials, or temporary migration artifacts. The `.gitignore` file defines the primary exclusions.
+
+## License
+
+No license is declared in this repository yet. Do not assume the code is available for unrestricted reuse until a license is added.
