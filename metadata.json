@@ -1,6 +1,6 @@
 {
-  "name": "Achaemenid IoT Dashboard",
-  "description": "A minimalist and modular IoT dashboard integrated with ESP32 control systems featuring Achaemenid and traditional Persian symbolic aesthetics.",
+  "name": "Home Control Dashboard",
+  "description": "A browser-based dashboard for controlling ESP32 home-automation devices, with Persian-inspired visual styling.",
   "requestFramePermissions": ["microphone"],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "majorCapabilities": []
 }
