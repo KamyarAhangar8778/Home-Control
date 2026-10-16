@@ -1,0 +1,6 @@
+{
+  "name": "Achaemenid IoT Dashboard",
+  "description": "A minimalist and modular IoT dashboard integrated with ESP32 control systems featuring Achaemenid and traditional Persian symbolic aesthetics.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
