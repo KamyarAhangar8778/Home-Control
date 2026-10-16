@@ -37,6 +37,13 @@ const nextConfig: NextConfig = {
     ],
   },
   output: process.env.DISABLE_HMR === "true" ? undefined : "export",
+  ...(process.env.GITHUB_PAGES === "true"
+    ? {
+        basePath: "/Home-Control-Dashboard",
+        assetPrefix: "/Home-Control-Dashboard/",
+        trailingSlash: true,
+      }
+    : {}),
   transpilePackages: ["motion"],
   webpack: (config, { dev, isServer }) => {
     // HMR is disabled in AI Studio via DISABLE_HMR env var.
