@@ -13,7 +13,7 @@ const ZOROASTRIAN_MONTHS = [
   "اسفند",
 ];
 
-export const toPersianDigits = (num: number | string) => {
+const toPersianDigits = (num: number | string) => {
   const id = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
   return num.toString().replace(/[0-9]/g, (w) => id[+w]);
 };
