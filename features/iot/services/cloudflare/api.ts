@@ -135,39 +135,3 @@ export async function updateBatchPinsOnCloudflare(
     return { success: false, message: `تغییرات گروهی بنا به دلایل فنی ذخیره نشد.` };
   }
 }
-
-/**
- * Fetch states for all configured pins from Durable Objects.
- */
-export async function fetchPinsFromCloudflare(
-  segments: any[],
-): Promise<Record<string, boolean> | null> {
-  if (!isCloudflareEnabled()) return null;
-  const baseUrl = getCloudflareWorkerUrl().replace(/\/$/, "");
-
-  try {
-    const pinsToFetch = Array.from(new Set(segments.map((s) => s.pin).filter(Boolean))) as string[];
-    const result: Record<string, boolean> = {};
-
-    await Promise.all(
-      pinsToFetch.map(async (pin) => {
-        try {
-          const pinRes = await fetch(`${baseUrl}/pins/${pin}`);
-          if (pinRes.ok) {
-            const data = await pinRes.json();
-            if (data && typeof data.value === "boolean") {
-              result[pin] = data.value;
-            }
-          }
-        } catch (e) {
-          console.warn(`Could not fetch state for pin ${pin}:`, e);
-        }
-      }),
-    );
-
-    return result;
-  } catch (error) {
-    console.error("Could not complete fetchPinsFromCloudflare:", error);
-    return null;
-  }
-}
