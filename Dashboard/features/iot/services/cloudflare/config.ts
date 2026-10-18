@@ -1,14 +1,25 @@
-const DEFAULT_WORKER_URL = "https://api.agkalaa.ir";
+const DEFAULT_WORKER_URL = "https://apii.agkalaa.ir";
+const LEGACY_WORKER_URL = "https://api.agkalaa.ir";
 
 let inMemoryWorkerUrl = DEFAULT_WORKER_URL;
+
+function normalizeWorkerUrl(url: string): string {
+  const normalized = url.trim().replace(/\/$/, "");
+  return normalized === LEGACY_WORKER_URL ? DEFAULT_WORKER_URL : normalized;
+}
 
 if (typeof window !== "undefined") {
   const saved = localStorage.getItem("cloudflare_worker_url");
   if (saved) {
-    inMemoryWorkerUrl = saved;
+    inMemoryWorkerUrl = normalizeWorkerUrl(saved);
+    if (inMemoryWorkerUrl !== saved) {
+      localStorage.setItem("cloudflare_worker_url", inMemoryWorkerUrl);
+    }
   }
 } else if (typeof process !== "undefined" && process.env) {
-  inMemoryWorkerUrl = process.env.NEXT_PUBLIC_CLOUDFLARE_WORKER_URL || DEFAULT_WORKER_URL;
+  inMemoryWorkerUrl = normalizeWorkerUrl(
+    process.env.NEXT_PUBLIC_CLOUDFLARE_WORKER_URL || DEFAULT_WORKER_URL,
+  );
 }
 
 export function getCloudflareWorkerUrl(): string {
@@ -16,9 +27,9 @@ export function getCloudflareWorkerUrl(): string {
 }
 
 export function setCloudflareWorkerUrl(url: string) {
-  inMemoryWorkerUrl = url;
+  inMemoryWorkerUrl = normalizeWorkerUrl(url);
   if (typeof window !== "undefined") {
-    localStorage.setItem("cloudflare_worker_url", url);
+    localStorage.setItem("cloudflare_worker_url", inMemoryWorkerUrl);
   }
 }
 
