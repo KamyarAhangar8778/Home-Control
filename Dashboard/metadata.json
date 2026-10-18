@@ -1,0 +1,6 @@
+{
+  "name": "Home Control Dashboard",
+  "description": "A browser-based dashboard for controlling ESP32 home-automation devices, with Persian-inspired visual styling.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": []
+}

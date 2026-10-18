@@ -1,0 +1,36 @@
+@import url("https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Cairo:wght@200..1000&family=Changa:wght@200..800&family=Lalezar&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Reem+Kufi:wght@400..700&family=Space+Grotesk:wght@300..700&family=Tajawal:wght@200;300;400;500;700;800;900&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-vazirmatn), system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-jetbrains), monospace;
+}
+
+@keyframes svg-border-spin {
+  from { stroke-dashoffset: 100; }
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes text-gradient-pan {
+  0% {
+    background-position: 200% center;
+  }
+  100% {
+    background-position: -200% center;
+  }
+}
+
+.title-animated {
+  background: linear-gradient(to right, var(--text-primary) 20%, var(--accent3) 50%, var(--text-primary) 80%);
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: text-gradient-pan 8s linear infinite;
+}
+
+.title-animated:hover {
+  animation-duration: 3s;
+  background: linear-gradient(to right, var(--text-primary) 20%, var(--accent4) 50%, var(--text-primary) 80%);
+  background-size: 200% auto;
+}

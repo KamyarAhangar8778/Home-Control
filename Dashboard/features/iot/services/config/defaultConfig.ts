@@ -1,0 +1,53 @@
+import { EspConfig } from "./types";
+
+export const DEFAULT_ESP_CONFIG: EspConfig = {
+  version: "1.2.0-Achaemenid",
+  device: {
+    name: "سامانه مرزی پاسارگاد",
+    chip: "ESP32-S3-WROOM-1",
+    firmware: "v3.4.1-Achaemenid-OS",
+    reboot_count: 14,
+    last_boot: "2026-05-26T20:55:00Z",
+  },
+  preferences: {
+    theme_mode: "dark",
+    accent_color_3: "#D4AF37",
+    accent_color_4: "#10B981",
+    font_family: "vazir",
+    animations_enabled: true,
+    animations_fps: 60,
+    header_animation: "fade",
+    header_title: "سامانه هوشمند پادشاهی هخامنش",
+    matrix_density: 40,
+    matrix_size: 4,
+    matrix_hover_size: 3,
+    matrix_color: "#D4AF37",
+    matrix_moving: true,
+    matrix_mouse_effect: true,
+    matrix_twinkle_effect: false,
+    matrix_twinkle_speed: 50,
+    header_position: "top",
+    manual_save_mode: false,
+    groups_compact_layout: false,
+    segments_compact_layout: false,
+  },
+  layout: {
+    groups_order: [],
+    groups_cols: 1,
+    group_configs: {},
+  },
+  segments: [],
+  automations: [],
+  macros: [],
+  voiceCommands: [],
+  mqtt: {
+    broker_ws_url: "wss://broker.emqx.io:8084/mqtt",
+    broker_host: "broker.emqx.io",
+    broker_port: 1883,
+    base_topic: "KamyarIoT/Achaemenid",
+    qos: 1,
+  },
+  wifi: {
+    networks: [],
+  },
+};
