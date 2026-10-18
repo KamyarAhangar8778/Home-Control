@@ -1,0 +1,100 @@
+name: Sync Home-Control modules
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "Hardware/**"
+      - "Database/**"
+      - "Dashboard/**"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: home-control-module-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Check out full repository history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Import missing module folders and preserve child history
+        env:
+          CHILD_REPOS_TOKEN: ${{ secrets.CHILD_REPOS_TOKEN }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if [[ -z "${CHILD_REPOS_TOKEN:-}" ]]; then
+            echo "::error::Create the repository secret CHILD_REPOS_TOKEN before running this workflow. It must have Contents read/write access to all three child repositories."
+            exit 1
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          imported=false
+
+          import_subtree() {
+            local prefix="$1"
+            local repository="$2"
+
+            if ! git cat-file -e "HEAD:${prefix}" 2>/dev/null; then
+              echo "Importing ${repository} into ${prefix}/ while preserving its history"
+              git subtree add --prefix="${prefix}" "https://github.com/${repository}.git" main
+              imported=true
+            else
+              echo "${prefix}/ already exists; leaving its current contents and history intact"
+            fi
+          }
+
+          import_subtree "Hardware" "KamyarAhangar8778/Home-Control-Hardwar-Codes"
+          import_subtree "Database" "KamyarAhangar8778/Home-Control-DB"
+          import_subtree "Dashboard" "KamyarAhangar8778/Home-Control-Dashboard"
+
+          if [[ "${imported}" == "true" ]]; then
+            git push origin HEAD:main
+          fi
+
+      - name: Push Hardware subtree to its repository
+        env:
+          CHILD_REPOS_TOKEN: ${{ secrets.CHILD_REPOS_TOKEN }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          auth_header="$(printf 'x-access-token:%s' "$CHILD_REPOS_TOKEN" | base64 | tr -d '\n')"
+          git subtree split --prefix=Hardware -b sync-hardware
+          git -c "http.extraheader=AUTHORIZATION: basic ${auth_header}" push \
+            "https://github.com/KamyarAhangar8778/Home-Control-Hardwar-Codes.git" sync-hardware:main
+
+      - name: Push Database subtree to its repository
+        env:
+          CHILD_REPOS_TOKEN: ${{ secrets.CHILD_REPOS_TOKEN }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          auth_header="$(printf 'x-access-token:%s' "$CHILD_REPOS_TOKEN" | base64 | tr -d '\n')"
+          git subtree split --prefix=Database -b sync-database
+          git -c "http.extraheader=AUTHORIZATION: basic ${auth_header}" push \
+            "https://github.com/KamyarAhangar8778/Home-Control-DB.git" sync-database:main
+
+      - name: Push Dashboard subtree to its repository
+        env:
+          CHILD_REPOS_TOKEN: ${{ secrets.CHILD_REPOS_TOKEN }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          auth_header="$(printf 'x-access-token:%s' "$CHILD_REPOS_TOKEN" | base64 | tr -d '\n')"
+          git subtree split --prefix=Dashboard -b sync-dashboard
+          git -c "http.extraheader=AUTHORIZATION: basic ${auth_header}" push \
+            "https://github.com/KamyarAhangar8778/Home-Control-Dashboard.git" sync-dashboard:main
