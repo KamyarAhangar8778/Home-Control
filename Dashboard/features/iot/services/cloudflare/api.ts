@@ -8,28 +8,27 @@ import { serializeToCloudflare, deserializeFromCloudflare } from "./mappers";
 export async function fetchConfigFromCloudflare(): Promise<EspConfig | null> {
   if (!isCloudflareEnabled()) return null;
   
-  const urls = [
-    "https://api.agkalaa.ir/config",
-    "https://durable-object-worker.kamyarahangar157.workers.dev/config"
-  ];
+  const baseUrl = getCloudflareWorkerUrl().replace(/\/$/, "");
+  const url = `${baseUrl}/config`;
 
   try {
-    const fetchPromises = urls.map(url => 
-      fetch(url, {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-        },
-      }).then(async res => {
-        if (!res.ok) {
-          throw new Error(`Failed to fetch Cloudflare config from ${url}: ${res.statusText}`);
-        }
-        return await res.json();
-      })
-    );
+    const res = await fetch(url, {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+      },
+    });
 
-    const data = await Promise.any(fetchPromises);
-    return deserializeFromCloudflare(data);
+    if (!res.ok) {
+      throw new Error(`Failed to fetch Cloudflare config from ${url}: ${res.status} ${res.statusText}`);
+    }
+
+    const data = await res.json();
+    const config = deserializeFromCloudflare(data);
+
+    // Keep the active endpoint authoritative; older saved configs may still contain the legacy URL.
+    config.worker_url = getCloudflareWorkerUrl();
+    return config;
   } catch (error) {
     console.error("Cloudflare fetchConfig error:", error);
     throw error;
