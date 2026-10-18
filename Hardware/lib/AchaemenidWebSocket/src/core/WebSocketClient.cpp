@@ -104,7 +104,7 @@ void AchaemenidWebSocketClient::doConnect() {
         this->onEventsCallback(ev, data);
     });
 
-    const bool connected = client_->connect("home-control-db.kamyarahangar157.workers.dev", 443, "/ws");
+    const bool connected = client_->connect("apii.agkalaa.ir", 443, "/ws");
 
     if (LIKELY(connected)) {
         Serial.println("[WebSocket] [Task] Connected successfully!");
