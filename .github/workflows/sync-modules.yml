@@ -5,6 +5,7 @@ on:
     branches:
       - main
     paths:
+      - ".github/workflows/sync-modules.yml"
       - "Hardware/**"
       - "Database/**"
       - "Dashboard/**"
@@ -72,7 +73,10 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          auth_header="$(printf 'x-access-token:%s' "$CHILD_REPOS_TOKEN" | base64 | tr -d '\n')"
+          # actions/checkout persists the parent repo's GITHUB_TOKEN as a URL-scoped
+          # extraheader. Remove it so the child PAT below is the credential Git sends.
+          git config --local --unset-all http.https://github.com/.extraheader || true
+          auth_header="$(printf '%s:%s' "$GITHUB_ACTOR" "$CHILD_REPOS_TOKEN" | base64 -w 0)"
           git subtree split --prefix=Hardware -b sync-hardware
           git -c "http.extraheader=AUTHORIZATION: basic ${auth_header}" push \
             "https://github.com/KamyarAhangar8778/Home-Control-Hardwar-Codes.git" sync-hardware:main
@@ -83,7 +87,8 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          auth_header="$(printf 'x-access-token:%s' "$CHILD_REPOS_TOKEN" | base64 | tr -d '\n')"
+          git config --local --unset-all http.https://github.com/.extraheader || true
+          auth_header="$(printf '%s:%s' "$GITHUB_ACTOR" "$CHILD_REPOS_TOKEN" | base64 -w 0)"
           git subtree split --prefix=Database -b sync-database
           git -c "http.extraheader=AUTHORIZATION: basic ${auth_header}" push \
             "https://github.com/KamyarAhangar8778/Home-Control-DB.git" sync-database:main
@@ -94,7 +99,8 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          auth_header="$(printf 'x-access-token:%s' "$CHILD_REPOS_TOKEN" | base64 | tr -d '\n')"
+          git config --local --unset-all http.https://github.com/.extraheader || true
+          auth_header="$(printf '%s:%s' "$GITHUB_ACTOR" "$CHILD_REPOS_TOKEN" | base64 -w 0)"
           git subtree split --prefix=Dashboard -b sync-dashboard
           git -c "http.extraheader=AUTHORIZATION: basic ${auth_header}" push \
             "https://github.com/KamyarAhangar8778/Home-Control-Dashboard.git" sync-dashboard:main
