@@ -1,0 +1,11 @@
+std::array
+std::shared-ptr
+std::make-shared
+std::unique_ptr
+std::vector
+std::bind
+std::placeholders
+std::move
+std::size_t
+std::memcpy
+std::list
