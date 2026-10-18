@@ -29,7 +29,14 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Import missing module folders and preserve child history
+      - name: Start from the latest parent main
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin main
+          git checkout -B main origin/main
+
+      - name: Reconcile child histories into their parent folders
         env:
           CHILD_REPOS_TOKEN: ${{ secrets.CHILD_REPOS_TOKEN }}
         shell: bash
@@ -37,25 +44,52 @@ jobs:
           set -euo pipefail
 
           if [[ -z "${CHILD_REPOS_TOKEN:-}" ]]; then
-            echo "::error::Create the repository secret CHILD_REPOS_TOKEN before running this workflow. It must have Contents read/write access to all three child repositories."
+            echo "::error::Create the repository secret CHILD_REPOS_TOKEN with Contents read/write access to all three child repositories."
             exit 1
           fi
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
+          # Keep the parent repository credential for the eventual push to origin.
+          parent_auth_header="$(git config --local --get http.https://github.com/.extraheader || true)"
+
+          # Remove the parent-only credential while reading child repositories, so
+          # the child PAT is the credential Git sends to the child repositories.
+          git config --local --unset-all http.https://github.com/.extraheader || true
+          child_auth_header="$(printf '%s:%s' "$GITHUB_ACTOR" "$CHILD_REPOS_TOKEN" | base64 -w 0)"
+
           imported=false
+          reconciled=false
 
           import_subtree() {
             local prefix="$1"
             local repository="$2"
 
             if ! git cat-file -e "HEAD:${prefix}" 2>/dev/null; then
-              echo "Importing ${repository} into ${prefix}/ while preserving its history"
-              git subtree add --prefix="${prefix}" "https://github.com/${repository}.git" main
+              echo "Importing ${repository} into ${prefix}/ with its history"
+              git -c "http.extraheader=AUTHORIZATION: basic ${child_auth_header}" \
+                subtree add --prefix="${prefix}" "https://github.com/${repository}.git" main
               imported=true
-            else
-              echo "${prefix}/ already exists; leaving its current contents and history intact"
+            fi
+          }
+
+          reconcile_subtree() {
+            local prefix="$1"
+            local repository="$2"
+            local before
+            local after
+
+            before="$(git rev-parse HEAD)"
+            echo "Reconciling commits from ${repository}:main into ${prefix}/"
+
+            git -c "http.extraheader=AUTHORIZATION: basic ${child_auth_header}" \
+              subtree pull --prefix="${prefix}" "https://github.com/${repository}.git" main \
+              -m "chore: reconcile ${prefix} with ${repository}"
+
+            after="$(git rev-parse HEAD)"
+            if [[ "$after" != "$before" ]]; then
+              reconciled=true
             fi
           }
 
@@ -63,8 +97,22 @@ jobs:
           import_subtree "Database" "KamyarAhangar8778/Home-Control-DB"
           import_subtree "Dashboard" "KamyarAhangar8778/Home-Control-Dashboard"
 
-          if [[ "${imported}" == "true" ]]; then
+          # Merge any commits made directly in child repositories into the matching
+          # parent folder before splitting/pushing. No force push is used. If Git
+          # detects conflicting edits to the same file, this step stops safely.
+          reconcile_subtree "Hardware" "KamyarAhangar8778/Home-Control-Hardwar-Codes"
+          reconcile_subtree "Database" "KamyarAhangar8778/Home-Control-DB"
+          reconcile_subtree "Dashboard" "KamyarAhangar8778/Home-Control-Dashboard"
+
+          # Restore the checkout credential so pushes back to the parent work.
+          if [[ -n "$parent_auth_header" ]]; then
+            git config --local http.https://github.com/.extraheader "$parent_auth_header"
+          fi
+
+          if [[ "$imported" == "true" || "$reconciled" == "true" ]]; then
             git push origin HEAD:main
+          else
+            echo "Child histories already match the parent subtrees; no parent merge commit needed."
           fi
 
       - name: Push Hardware subtree to its repository
@@ -73,8 +121,6 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          # actions/checkout persists the parent repo's GITHUB_TOKEN as a URL-scoped
-          # extraheader. Remove it so the child PAT below is the credential Git sends.
           git config --local --unset-all http.https://github.com/.extraheader || true
           auth_header="$(printf '%s:%s' "$GITHUB_ACTOR" "$CHILD_REPOS_TOKEN" | base64 -w 0)"
           git subtree split --prefix=Hardware -b sync-hardware
