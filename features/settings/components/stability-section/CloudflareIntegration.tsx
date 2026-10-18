@@ -125,7 +125,7 @@ export default function CloudflareIntegration({
             dir="ltr"
             value={cfUrl}
             onChange={handleCfUrlChange}
-            placeholder="https://api.agkalaa.ir"
+            placeholder="https://apii.agkalaa.ir"
             className="block w-full py-2.5 pr-10 pl-3 border border-accent3-medium/30 rounded-xl bg-black/40 text-[11px] text-white placeholder-gray-600 focus:outline-none focus:border-accent3 font-mono transition-all"
           />
         </div>
