@@ -23,8 +23,6 @@ export function SettingsTabContent({
   setAnimationsEnabled,
   animationsFps,
   setAnimationsFps,
-  headerAnimationType,
-  setHeaderAnimationType,
   headerTitle,
   setHeaderTitle,
   matrixDensity,
