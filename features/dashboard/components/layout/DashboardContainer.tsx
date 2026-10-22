@@ -27,9 +27,9 @@ export default function DashboardContainer() {
   const matrixOpacity = useIoTStore(s => s.matrixOpacity);
   const matrixColor = useIoTStore(s => s.matrixColor);
   const matrixMoving = useIoTStore(s => s.matrixMoving);
+  const matrixMouseEffect = useIoTStore(s => s.matrixMouseEffect);
   const matrixTwinkleEffect = useIoTStore(s => s.matrixTwinkleEffect);
   const matrixTwinkleSpeed = useIoTStore(s => s.matrixTwinkleSpeed);
-  const matrixMouseEffect = useIoTStore(s => s.matrixMouseEffect);
   const dashboardWidth = useIoTStore(s => s.dashboardWidth);
 
   const { leftHeaderContentWidth } = useDashboardLayout(dashboardWidth);
