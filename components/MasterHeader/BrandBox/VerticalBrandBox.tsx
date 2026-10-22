@@ -1,16 +1,10 @@
 import React from "react";
 import { HousePlug } from "lucide-react";
-import GroupFilterSelector from "../GroupFilterSelector";
-import { useIoTStore } from '@/features/iot/hooks/useIoTStore';
 import { useDashboard } from "@/features/dashboard/context/DashboardContext";
 import { BrandBoxProps } from "./types";
 
 export default function VerticalBrandBox({
   headerTitle,
-  animationsEnabled,
-  groupsOrder,
-  selectedGroupFilter,
-  setSelectedGroupFilter,
 }: Omit<BrandBoxProps, "variant">) {
   const { isFullyReady } = useDashboard();
 
@@ -25,17 +19,7 @@ export default function VerticalBrandBox({
             <h1 className="font-sans font-semibold text-[13.5px] tracking-tight leading-tight select-none text-[var(--text-primary)]">
               {isFullyReady ? headerTitle : <div className="w-32 h-4 bg-[var(--text-muted)] opacity-20 rounded animate-pulse" />}
             </h1>
-            {groupsOrder && setSelectedGroupFilter ? (
-              <div className="mt-1 block md:hidden">
-                <GroupFilterSelector
-                  groupsOrder={groupsOrder}
-                  selectedGroupFilter={selectedGroupFilter || null}
-                  setSelectedGroupFilter={setSelectedGroupFilter}
-                  animationsEnabled={animationsEnabled}
-                  isCompact={true}
-                />
-              </div>
-            ) : null}
+
           </div>
         </div>
       </div>
