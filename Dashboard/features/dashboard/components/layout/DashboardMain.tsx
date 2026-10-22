@@ -12,7 +12,6 @@ import MobileVoiceCommandButton from "../widgets/MobileVoiceCommandButton";
 export default function DashboardMain() {
   const { refetchIot, triggerCloudflarePush } = useDashboard();
   const animationsEnabled = useIoTStore(s => s.animationsEnabled);
-  const headerPosition = useIoTStore(s => s.headerPosition);
   const dashboardWidth = useIoTStore(s => s.dashboardWidth);
   const activeGroupId = useIoTStore(s => s.activeGroupId);
   const activeSegmentId = useIoTStore(s => s.activeSegmentId);
@@ -32,7 +31,6 @@ export default function DashboardMain() {
           lowDataMode={lowDataMode}
           animationsEnabled={animationsEnabled}
           refetchIot={refetchIot}
-          headerPosition={headerPosition}
           manualSaveMode={manualSaveMode}
           unsavedChangesCount={unsavedChangesCount}
           triggerCloudflarePush={triggerCloudflarePush}
