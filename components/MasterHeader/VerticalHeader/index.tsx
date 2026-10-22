@@ -10,7 +10,7 @@ export default function VerticalHeader(props: MasterHeaderProps) {
   return (
     <div
       id="vertical-master-header"
-      className="w-full h-full flex flex-col justify-stretch gap-4 text-right font-sans"
+      className="w-full h-full flex flex-col justify-stretch gap-4 text-right font-sans [&_span]:hidden md:[&_span]:inline [&_h1]:hidden md:[&_h1]:block [&_p]:hidden md:[&_p]:block"
       dir="rtl"
     >
       {setIsSidebarCollapsed && (
