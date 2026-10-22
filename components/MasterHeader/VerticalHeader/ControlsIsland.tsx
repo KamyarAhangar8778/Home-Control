@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import { Settings2, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
-import LayoutPositionSwitcher from "../LayoutPositionSwitcher";
 import LayoutColumnsSwitcher from "../LayoutColumnsSwitcher";
 import QuickAccessControls from "../QuickAccessControls";
-import ThemeToggle from "../ThemeToggle";
 import ClockWidget from "../ClockWidget";
 
 export default function ControlsIsland({ props }: { props: any }) {
@@ -12,7 +10,7 @@ export default function ControlsIsland({ props }: { props: any }) {
   const { isSidebarCollapsed } = props;
 
   return (
-    <div className={`flex-1 bg-[var(--card-bg-solid)] border border-[var(--border-color)] ${isSidebarCollapsed ? "px-2" : "px-5"} py-5 rounded-2xl shadow-sm flex flex-col justify-between gap-4 transition-all duration-350 md:hover:-translate-y-1.5 md:hover:shadow-xl md:hover:border-[var(--accent3)] overflow-hidden`}>
+    <div className={`flex-1 bg-[var(--card-bg-solid)] border border-[var(--border-color)] ${isSidebarCollapsed ? "px-2" : "px-2 md:px-5"} py-3 md:py-5 rounded-2xl shadow-sm flex flex-col justify-between gap-4 transition-all duration-350 md:hover:-translate-y-1.5 md:hover:shadow-xl md:hover:border-[var(--accent3)] overflow-hidden`}>
       <div className="flex flex-col gap-4 overflow-y-auto custom-scrollbar pr-1 -mr-1">
         <div className="space-y-4">
           <QuickAccessControls
@@ -48,12 +46,7 @@ export default function ControlsIsland({ props }: { props: any }) {
                 className="overflow-hidden"
               >
                 <div className="space-y-3 pt-2 pb-2">
-                  <LayoutPositionSwitcher
-                    headerPosition={props.headerPosition}
-                    setHeaderPosition={props.setHeaderPosition}
-                    variant="vertical"
-                    isSidebarCollapsed={isSidebarCollapsed}
-                  />
+
                   <LayoutColumnsSwitcher
                     groupsCols={props.groupsCols}
                     setGroupsCols={props.setGroupsCols}
@@ -68,15 +61,9 @@ export default function ControlsIsland({ props }: { props: any }) {
       </div>
 
       <div className="space-y-4 pt-4 border-t border-[var(--border-color)] shrink-0">
-        <ClockWidget variant="vertical" isSidebarCollapsed={isSidebarCollapsed} />
+        <div className="hidden md:block"><ClockWidget variant="vertical" isSidebarCollapsed={isSidebarCollapsed} /></div>
 
-        <ThemeToggle
-          isDark={props.isDark}
-          setIsDark={props.setIsDark}
-          animationsEnabled={props.animationsEnabled}
-          variant="vertical"
-          isSidebarCollapsed={isSidebarCollapsed}
-        />
+
       </div>
     </div>
   );
