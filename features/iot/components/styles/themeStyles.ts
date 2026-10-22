@@ -2,16 +2,12 @@ interface ThemeStylesParams {
   accent3: string;
   accent4: string;
   isDark: boolean;
-  dashboardBgColor?: string;
-  dashboardBgOpacity?: number;
 }
 
 export function getThemeStyles({
   accent3,
   accent4,
   isDark,
-  dashboardBgColor = "default",
-  dashboardBgOpacity = 10,
 }: ThemeStylesParams): string {
   const selectedFontFamily = "var(--font-vazirmatn)";
 
@@ -20,21 +16,10 @@ export function getThemeStyles({
   const defaultBgGradVia = isDark ? "#050608" : "#f3f4f6";
   const defaultBgGradTo = isDark ? "#010203" : "#fcfdfe";
 
-  let finalBgMain = defaultBg;
-  let finalBgGradFrom = defaultBgGradFrom;
-  let finalBgGradVia = defaultBgGradVia;
-  let finalBgGradTo = defaultBgGradTo;
-
-  if (dashboardBgColor !== "default") {
-    let customColor = dashboardBgColor;
-    if (dashboardBgColor === "accent3") customColor = accent3;
-    if (dashboardBgColor === "accent4") customColor = accent4;
-    
-    finalBgMain = `color-mix(in srgb, ${customColor} ${dashboardBgOpacity}%, ${defaultBg})`;
-    finalBgGradFrom = `color-mix(in srgb, ${customColor} ${dashboardBgOpacity}%, ${defaultBgGradFrom})`;
-    finalBgGradVia = `color-mix(in srgb, ${customColor} ${dashboardBgOpacity}%, ${defaultBgGradVia})`;
-    finalBgGradTo = `color-mix(in srgb, ${customColor} ${dashboardBgOpacity}%, ${defaultBgGradTo})`;
-  }
+  const finalBgMain = defaultBg;
+  const finalBgGradFrom = defaultBgGradFrom;
+  const finalBgGradVia = defaultBgGradVia;
+  const finalBgGradTo = defaultBgGradTo;
 
   return `
     :root {
