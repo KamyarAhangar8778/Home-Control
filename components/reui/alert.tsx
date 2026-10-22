@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 type AlertVariant = "default" | "destructive" | "info" | "success" | "warning" | "invert";
 
 const variants: Record<AlertVariant, string> = {
-  default: "bg-card text-card-foreground",
+  default: "cn-alert-variant-default bg-card text-card-foreground",
   destructive: "border-destructive/30 bg-destructive/4 [&>svg]:text-destructive",
   info: "border-info/30 bg-info/4 [&>svg]:text-info",
   success: "border-success/30 bg-success/4 [&>svg]:text-success",
