@@ -71,9 +71,9 @@ function ActiveCard({
       className="relative h-full"
     >
       <Card
-        className={\`group relative flex h-full flex-col justify-between border border-[var(--border-color)] border-r-2 transition-[border-color,box-shadow] duration-200 hover:shadow-lg \${
-          isPinOn ? "border-r-[var(--success)] shadow-[0_0_0_1px_var(--success)]" : "border-r-transparent"
-        } \${isUltraCompact ? "min-h-[90px]" : "min-h-[140px]"}\`}
+        className={`group relative flex h-full flex-col justify-between border border-[var(--border)] shadow-sm ${
+          isUltraCompact ? "min-h-[90px]" : "min-h-[140px]"
+        }`}
         style={{ "--card-spacing": "0px" } as React.CSSProperties}
       >
         <CardHeader
