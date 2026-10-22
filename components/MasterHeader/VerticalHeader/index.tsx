@@ -1,5 +1,5 @@
 import React from "react";
-import { PanelRightClose, PanelLeftClose } from "lucide-react";
+import { HousePlug, PanelRightClose, PanelLeftClose } from "lucide-react";
 import { MasterHeaderProps } from "../types";
 import BrandBox from "../BrandBox";
 import ControlsIsland from "./ControlsIsland";
@@ -13,8 +13,16 @@ export default function VerticalHeader(props: MasterHeaderProps) {
       className="flex h-full w-full flex-col gap-4 text-right font-sans [&_span]:hidden md:[&_span]:inline [&_h1]:hidden md:[&_h1]:block [&_p]:hidden md:[&_p]:block"
       dir="rtl"
     >
-      <div className="flex min-h-10 items-center justify-between gap-2 border-b border-[var(--border-color)] pb-4">
-        {!isSidebarCollapsed && <BrandBox headerTitle={props.headerTitle} />}
+      <div className={`flex min-h-10 gap-2 border-b border-[var(--border-color)] pb-4 ${isSidebarCollapsed ? "flex-col items-center" : "items-center justify-between"}`}>
+        {isSidebarCollapsed ? (
+          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md text-[var(--text-primary)]" aria-label="Home Control">
+            <HousePlug className="h-5 w-5" strokeWidth={1.8} />
+          </div>
+        ) : (
+          <div className="hidden min-w-0 flex-1 md:block">
+            <BrandBox headerTitle={props.headerTitle} />
+          </div>
+        )}
         {setIsSidebarCollapsed && (
           <button
             onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
