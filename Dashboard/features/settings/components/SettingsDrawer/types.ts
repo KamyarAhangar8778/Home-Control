@@ -1,4 +1,3 @@
-import React from "react";
 import { Activity, LayoutGrid, Sparkles, Music, Radio, Command, Mic, Wifi, Settings2 } from "lucide-react";
 
 export interface SettingsDrawerProps {
