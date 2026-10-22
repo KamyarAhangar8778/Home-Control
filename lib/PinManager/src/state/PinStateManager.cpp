@@ -33,6 +33,16 @@ bool PinStateManager::setStateById(const char* id, bool state) {
         return false;
     }
     entry->gpio.setState(state);
+
+    Preferences pinPrefs;
+    if (pinPrefs.begin("AchaemenidPins", false)) {
+        String key = "p" + String(entry->pinNumber);
+        pinPrefs.putBool(key.c_str(), state);
+        pinPrefs.end();
+    } else {
+        WARNINGF("[PinManager] Could not persist state for pin %d", entry->pinNumber);
+    }
+
     INFOF("[PinManager] '%s' (pin %d) -> %s", id, entry->pinNumber, state ? "ON" : "OFF");
     return true;
 }
