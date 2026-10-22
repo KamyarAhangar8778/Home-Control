@@ -18,9 +18,7 @@ interface SettingsTabContentProps extends SettingsDrawerProps {
 export function SettingsTabContent({
   activeTab,
   accent3,
-  setAccent3,
   accent4,
-  setAccent4,
   animationsEnabled,
   setAnimationsEnabled,
   animationsFps,
