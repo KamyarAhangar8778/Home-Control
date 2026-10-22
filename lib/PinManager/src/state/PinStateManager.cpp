@@ -1,5 +1,6 @@
 #include "PinStateManager.h"
 #include <Utilities/logging.h>
+#include <Preferences.h>
 #if defined(ESP32)
 #include <soc/gpio_struct.h>
 #endif
@@ -10,6 +11,17 @@ bool PinStateManager::setPinState(int pin, bool state) {
         return false;
     }
     entry->gpio.setState(state);
+
+    // Persist output state so it survives power loss and ESP32 reboot.
+    Preferences pinPrefs;
+    if (pinPrefs.begin("AchaemenidPins", false)) {
+        String key = "p" + String(pin);
+        pinPrefs.putBool(key.c_str(), state);
+        pinPrefs.end();
+    } else {
+        WARNINGF("[PinManager] Could not persist state for pin %d", pin);
+    }
+
     INFOF("[PinManager] Pin %d -> %s", pin, state ? "ON" : "OFF");
     return true;
 }
