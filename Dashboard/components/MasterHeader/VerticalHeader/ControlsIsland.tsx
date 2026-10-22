@@ -10,31 +10,28 @@ export default function ControlsIsland({ props }: { props: any }) {
   const { isSidebarCollapsed } = props;
 
   return (
-    <div className={`flex-1 bg-transparent md:bg-[var(--card-bg-solid)] border-0 md:border md:border-[var(--border-color)] ${isSidebarCollapsed ? "px-1 md:px-2" : "px-1 md:px-5"} py-2 md:py-5 rounded-none md:rounded-xl shadow-none flex flex-col justify-between gap-4 overflow-hidden`}>
-      <div className="flex flex-col gap-4 overflow-y-auto custom-scrollbar pr-1 -mr-1">
-        <div className="space-y-4">
-          <QuickAccessControls
-            setIsModulesMenuOpen={props.setIsModulesMenuOpen}
-            setIsMenuOpen={props.setIsMenuOpen}
-            animationsEnabled={props.animationsEnabled}
-            variant="vertical"
-            isSidebarCollapsed={isSidebarCollapsed}
-          />
-        </div>
+    <div className="flex min-h-0 flex-1 flex-col justify-between gap-5 overflow-hidden py-1">
+      <div className="custom-scrollbar flex flex-col gap-5 overflow-y-auto">
+        <QuickAccessControls
+          setIsModulesMenuOpen={props.setIsModulesMenuOpen}
+          setIsMenuOpen={props.setIsMenuOpen}
+          animationsEnabled={props.animationsEnabled}
+          variant="vertical"
+          isSidebarCollapsed={isSidebarCollapsed}
+        />
 
-        <div className="hidden md:block space-y-3 pt-4 border-t border-[var(--border-color)]">
+        <div className="hidden space-y-3 border-t border-[var(--border-color)] pt-4 md:block">
           <button
             onClick={() => setShowAdvanced(!showAdvanced)}
-            className="w-full flex items-center justify-between text-[var(--text-secondary)] md:hover:text-[var(--text-primary)] transition-colors"
+            className={`flex w-full items-center justify-between rounded-lg px-2 py-2 text-[var(--text-secondary)] transition-colors hover:bg-[var(--card-hover-bg)] hover:text-[var(--text-primary)] ${isSidebarCollapsed ? "justify-center" : ""}`}
             title="قابلیت‌های بیشتر"
+            aria-expanded={showAdvanced}
           >
-            <div className="flex items-center gap-2">
-              <Settings2 className="w-4 h-4" />
-              {!isSidebarCollapsed && <span className="text-xs font-bold">قابلیت‌های بیشتر</span>}
-            </div>
-            {!isSidebarCollapsed && (
-              <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${showAdvanced ? "rotate-180" : ""}`} />
-            )}
+            <span className="flex items-center gap-2">
+              <Settings2 className="h-4 w-4 shrink-0" />
+              {!isSidebarCollapsed && <span className="text-xs font-semibold">قابلیت‌های بیشتر</span>}
+            </span>
+            {!isSidebarCollapsed && <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${showAdvanced ? "rotate-180" : ""}`} />}
           </button>
 
           <AnimatePresence>
@@ -45,8 +42,7 @@ export default function ControlsIsland({ props }: { props: any }) {
                 exit={{ height: 0, opacity: 0 }}
                 className="overflow-hidden"
               >
-                <div className="space-y-3 pt-2 pb-2">
-
+                <div className="space-y-3 py-2">
                   <LayoutColumnsSwitcher
                     groupsCols={props.groupsCols}
                     setGroupsCols={props.setGroupsCols}
@@ -60,10 +56,8 @@ export default function ControlsIsland({ props }: { props: any }) {
         </div>
       </div>
 
-      <div className="hidden md:block space-y-4 pt-4 border-t border-[var(--border-color)] shrink-0">
-        <div className="hidden md:block"><ClockWidget variant="vertical" isSidebarCollapsed={isSidebarCollapsed} /></div>
-
-
+      <div className="hidden shrink-0 border-t border-[var(--border-color)] pt-4 md:block">
+        <ClockWidget variant="vertical" isSidebarCollapsed={isSidebarCollapsed} />
       </div>
     </div>
   );

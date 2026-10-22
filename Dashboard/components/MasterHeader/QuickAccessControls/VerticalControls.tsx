@@ -1,7 +1,6 @@
 import React from "react";
-import { Settings as SettingsIcon, Layers } from "lucide-react";
-import { useIoTStore } from '@/features/iot/hooks/useIoTStore';
-import { useDashboard } from "@/features/dashboard/context/DashboardContext";
+import { Settings as SettingsIcon, Layers, Clock3 } from "lucide-react";
+import { useIoTStore } from "@/features/iot/hooks/useIoTStore";
 import VoiceCommandButton from "../VoiceCommandButton";
 import { QuickAccessControlsProps } from "./types";
 
@@ -14,70 +13,51 @@ export default function VerticalControls({
 }: QuickAccessControlsProps) {
   const setIsAutomationsMenuOpen = useIoTStore(s => s.setIsAutomationsMenuOpen);
 
+  const itemClass = "flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-right text-sm font-medium text-[var(--text-secondary)] transition-colors hover:bg-[var(--card-hover-bg)] hover:text-[var(--text-primary)] active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent4)]";
+
   return (
-    <div className="space-y-2 mt-4">
-      <span className="text-[10px] text-[var(--text-muted)] font-black block text-right uppercase tracking-wider">
-        بخش‌های کاربری
-      </span>
+    <nav className="space-y-1" aria-label="بخش‌های کاربری">
+      {!isSidebarCollapsed && (
+        <span className="mb-2 block px-3 text-[11px] font-semibold text-[var(--text-muted)]">
+          بخش‌ها
+        </span>
+      )}
 
       <button
         onClick={() => setIsModulesMenuOpen(true)}
-        className="w-full flex items-center justify-between p-3 rounded-xl border border-[var(--border-color)] bg-[var(--card-bg-solid)] md:hover:bg-[var(--card-hover-bg)] md:hover:border-[var(--accent4-medium)] text-[var(--text-secondary)] md:hover:text-[var(--text-primary)] transition-all duration-300 transform active:scale-[0.98]"
+        className={itemClass}
+        title="پالایه و ماژول‌ها"
+        aria-label="پالایه و ماژول‌ها"
       >
-        <div className="flex items-center gap-2.5">
-          <div className="p-1.5 rounded-lg bg-[var(--accent4-transparent)] text-[var(--accent4)]">
-            <Layers
-              className={`w-4 h-4 ${animationsEnabled ? "animate-[pulse_3s_ease-in-out_infinite]" : ""}`}
-            />
-          </div>
-          <span className="text-xs font-semibold">پالایه و ماژول‌ها</span>
-        </div>
-        <span className="text-[9px] px-1.5 py-0.5 rounded bg-[var(--border-color)] text-[var(--text-muted)] font-mono">
-          Modules
-        </span>
+        <Layers className={`h-5 w-5 shrink-0 ${animationsEnabled ? "animate-[pulse_3s_ease-in-out_infinite]" : ""}`} />
+        {!isSidebarCollapsed && <span className="text-sm">پالایه و ماژول‌ها</span>}
       </button>
 
       <button
         onClick={() => setIsAutomationsMenuOpen(true)}
-        className="w-full flex items-center justify-between p-3 rounded-xl border border-[var(--border-color)] bg-[var(--card-bg-solid)] md:hover:bg-[var(--card-hover-bg)] md:hover:border-[var(--accent3-medium)] text-[var(--text-secondary)] md:hover:text-[var(--text-primary)] transition-all duration-300 transform active:scale-[0.98] group"
+        className={itemClass}
+        title="اتوماسیون‌ها"
+        aria-label="اتوماسیون‌ها"
       >
-        <div className="flex items-center gap-2.5">
-          <div className="p-1.5 rounded-lg bg-[var(--accent3-transparent)] text-[var(--accent3)]">
-            <svg xmlns="http://www.w3.org/00/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
-              <circle cx="12" cy="12" r="10"/>
-              <line x1="12" y1="12" x2="12" y2="6" className={animationsEnabled ? "animate-[spin_1s_linear_infinite]" : ""} style={{ transformOrigin: "12px 12px" }} />
-              <line x1="12" y1="12" x2="16" y2="12" className={animationsEnabled ? "animate-[spin_12s_linear_infinite]" : ""} style={{ transformOrigin: "12px 12px" }} />
-            </svg>
-          </div>
-          <span className="text-xs font-semibold">اتوماسیون‌ها</span>
-        </div>
-        <span className="text-[9px] px-1.5 py-0.5 rounded bg-[var(--border-color)] text-[var(--text-muted)] font-mono">
-          Time
-        </span>
+        <Clock3 className="h-5 w-5 shrink-0" />
+        {!isSidebarCollapsed && <span className="text-sm">اتوماسیون‌ها</span>}
       </button>
 
-      <VoiceCommandButton 
-        animationsEnabled={animationsEnabled} 
-        variant={variant} 
-        isSidebarCollapsed={isSidebarCollapsed} 
+      <VoiceCommandButton
+        animationsEnabled={animationsEnabled}
+        variant={variant}
+        isSidebarCollapsed={isSidebarCollapsed}
       />
 
       <button
         onClick={() => setIsMenuOpen(true)}
-        className="w-full flex items-center justify-between p-3 rounded-xl border border-[var(--border-color)] bg-[var(--card-bg-solid)] md:hover:bg-[var(--card-hover-bg)] md:hover:border-[var(--accent3-medium)] text-[var(--text-secondary)] md:hover:text-[var(--text-primary)] transition-all duration-300 transform active:scale-[0.98]"
+        className={itemClass}
+        title="تنظیمات اصلی"
+        aria-label="تنظیمات اصلی"
       >
-        <div className="flex items-center gap-2.5">
-          <div className="p-1.5 rounded-lg bg-gray-500/10 text-[var(--text-tertiary)] transition-all">
-            <SettingsIcon
-              className={`w-4 h-4 ${animationsEnabled ? "animate-[spin_10s_linear_infinite]" : ""}`}
-            />
-          </div>
-          <span className="text-xs font-semibold">تنظیمات اصلی</span>
-        </div>
-        <span className="text-[9px] px-1.5 py-0.5 rounded bg-[var(--border-color)] text-[var(--text-muted)] font-mono">
-          Setup
-        </span>
+        <SettingsIcon className="h-5 w-5 shrink-0" />
+        {!isSidebarCollapsed && <span className="text-sm">تنظیمات اصلی</span>}
       </button>
-    </div>
+    </nav>
   );
 }
