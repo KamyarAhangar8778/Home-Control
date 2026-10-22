@@ -85,7 +85,7 @@ export default function DashboardWorkspace() {
           <div className="w-full flex flex-col gap-4">
             <div className="-mt-6 sm:-mt-10 mb-2 w-full flex justify-center">
               <div className="block md:hidden w-full">
-                <React.Suspense fallback={<div className="h-16 w-full" />}><MacroSidebar forceHorizontal={true} /></React.Suspense>
+                <React.Suspense fallback={<div className="h-16 w-full" />}><MacroSidebar /></React.Suspense>
               </div>
               <div className="hidden md:flex w-full justify-center">
                 <GroupFilterSelector

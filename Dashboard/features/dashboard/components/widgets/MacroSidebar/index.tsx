@@ -8,14 +8,12 @@ import { ChevronUp, ChevronDown, ChevronLeft, ChevronRight } from "lucide-react"
 import MacroSidebarButton from "./MacroSidebarButton";
 
 interface MacroSidebarProps {
-  forceHorizontal?: boolean;
   className?: string;
 }
 
-export default function MacroSidebar({ forceHorizontal = false, className = "" }: MacroSidebarProps) {
+export default function MacroSidebar({ className = "" }: MacroSidebarProps) {
   const { handleBatchPinState } = useDashboard();
   const animationsEnabled = useIoTStore(s => s.animationsEnabled);
-  const headerPosition = useIoTStore(s => s.headerPosition);
   const macros = useIoTStore(s => s.macros);
   const selectedGroupFilter = useIoTStore(s => s.selectedGroupFilter);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -39,7 +37,7 @@ export default function MacroSidebar({ forceHorizontal = false, className = "" }
     handleBatchPinState(macro.actions);
   };
 
-  const isHorizontal = forceHorizontal || headerPosition === "left";
+  const isHorizontal = true;
 
   const goNext = () => {
     setDirection(-1);
