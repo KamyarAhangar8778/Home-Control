@@ -3,8 +3,8 @@
 // =============================================
 // Configuration
 // =============================================
-const char* WIFI_SSID     = "DLink.";
-const char* WIFI_PASSWORD = "@65654545";
+const char* WIFI_SSID     = "-";
+const char* WIFI_PASSWORD = "85208520";
 
 // =============================================
 // Global Objects
