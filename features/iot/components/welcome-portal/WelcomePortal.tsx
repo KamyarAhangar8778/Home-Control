@@ -113,32 +113,32 @@ export default function WelcomePortal({
 
       <Card className="w-full max-w-3xl border-[var(--border-color)] bg-[var(--card-bg-solid)]/90 shadow-[0_24px_80px_-36px_var(--accent3)] backdrop-blur-md">
         <CardContent className="flex flex-col items-center gap-6 p-6 md:p-8">
-        <div className="space-y-4 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[10px] md:text-xs text-[var(--accent3)] border border-[var(--accent3-medium)] bg-[var(--accent3-transparent)] font-sans font-bold shadow-sm">
-            <Compass className="w-3.5 h-3.5 text-[var(--accent3)]" />
-            <span>پلتفرم لبه و مانیتورینگ اینترنت اشیاء | Edge IoT Platform</span>
+          <div className="space-y-4 text-center">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[10px] md:text-xs text-[var(--accent3)] border border-[var(--accent3-medium)] bg-[var(--accent3-transparent)] font-sans font-bold shadow-sm">
+              <Compass className="w-3.5 h-3.5 text-[var(--accent3)]" />
+              <span>پلتفرم لبه و مانیتورینگ اینترنت اشیاء | Edge IoT Platform</span>
+            </div>
+
+            <h3 className="text-xl md:text-3xl font-sans font-extrabold theme-text-primary tracking-tight leading-normal max-w-2xl mx-auto">
+              درود بر شما، <br />
+              به{" "}
+              <span style={welcomeTextGradientStyle} className="font-extrabold font-sans">
+                سامانه یکپارچه مانیتورینگ اینترنت اشیا
+              </span>{" "}
+              خوش آمدید
+            </h3>
+
+            <p className="text-xs md:text-sm theme-text-tertiary max-w-xl mx-auto leading-relaxed font-sans">
+              این سامانه ابزار کاملی بری مدیریت، تست و پیکربندی دستگاه‌ها و ماژول‌های متصل ارائه می‌دهد. با
+              بهره‌گیری از معماری پایا و رابط کاربری بهینه‌سازی‌شده، مانیتورینگ بلادرنگ وضعیت پایه‌ها
+              هم‌اکنون با سرعت بیش از پیش در تمامی دستگاه‌ها در دسترس است.
+            </p>
           </div>
 
-          <h3 className="text-xl md:text-3xl font-sans font-extrabold theme-text-primary tracking-tight leading-normal max-w-2xl mx-auto">
-            درود بر شما، <br />
-            به{" "}
-            <span style={welcomeTextGradientStyle} className="font-extrabold font-sans">
-              سامانه یکپارچه مانیتورینگ اینترنت اشیا
-            </span>{" "}
-            خوش آمدید
-          </h3>
-
-          <p className="text-xs md:text-sm theme-text-tertiary max-w-xl mx-auto leading-relaxed font-sans">
-            این سامانه ابزار کاملی بری مدیریت، تست و پیکربندی دستگاه‌ها و ماژول‌های متصل ارائه می‌دهد. با
-            بهره‌گیری از معماری پایا و رابط کاربری بهینه‌سازی‌شده، مانیتورینگ بلادرنگ وضعیت پایه‌ها
-            هم‌اکنون با سرعت بیش از پیش در تمامی دستگاه‌ها در دسترس است.
-          </p>
-        </div>
-
-        <div className="w-full max-w-xl grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <SettingsPortalButton onClick={() => setIsMenuOpen(true)} />
-          <ModulesPortalButton onClick={() => setIsModulesMenuOpen(true)} />
-        </div>
+          <div className="w-full max-w-xl grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <SettingsPortalButton onClick={() => setIsMenuOpen(true)} />
+            <ModulesPortalButton onClick={() => setIsModulesMenuOpen(true)} />
+          </div>
         </CardContent>
       </Card>
     </motion.div>
