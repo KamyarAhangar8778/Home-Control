@@ -61,6 +61,13 @@ export function getThemeStyles({
       --sidebar-hover: ${isDark ? "#27272a" : "#f4f4f5"};
       --sidebar-active: ${isDark ? "#3f3f46" : "#e4e4e7"};
       --sidebar-control-bg: ${isDark ? "#18181b" : "#fafafa"};
+      --sidebar: ${isDark ? "#09090b" : "#ffffff"};
+      --sidebar-foreground: ${isDark ? "#fafafa" : "#18181b"};
+      --sidebar-primary: ${isDark ? "#fafafa" : "#18181b"};
+      --sidebar-primary-foreground: ${isDark ? "#18181b" : "#fafafa"};
+      --sidebar-accent: ${isDark ? "#27272a" : "#f4f4f5"};
+      --sidebar-accent-foreground: ${isDark ? "#fafafa" : "#18181b"};
+      --sidebar-ring: ${isDark ? "#a1a1aa" : "#71717a"};
 
       /* ReUI / shadcn semantic tokens for components installed from the registry. */
       --background: ${isDark ? "#09090b" : "#ffffff"};
