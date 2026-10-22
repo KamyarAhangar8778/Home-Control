@@ -6,7 +6,7 @@ export const createMenuSlice: StateCreator<IoTStoreState, [], [], MenuSlice> = (
   isModulesMenuOpen: false,
   isEspDrawerOpen: false,
   isAutomationsMenuOpen: false,
-  activeSettingsTab: "colors",
+  activeSettingsTab: "layout",
 
   setIsMenuOpen: (o) => set({ isMenuOpen: o }),
   setIsModulesMenuOpen: (o) => set({ isModulesMenuOpen: o }),
