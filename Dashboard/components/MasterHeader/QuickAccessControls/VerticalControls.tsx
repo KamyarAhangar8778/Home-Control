@@ -13,12 +13,12 @@ export default function VerticalControls({
 }: QuickAccessControlsProps) {
   const setIsAutomationsMenuOpen = useIoTStore(s => s.setIsAutomationsMenuOpen);
 
-  const itemClass = "flex w-full items-center gap-3 rounded-md px-3 py-2.5 text-right text-sm font-medium text-[var(--text-secondary)] transition-colors hover:bg-[var(--card-hover-bg)] hover:text-[var(--text-primary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent4)]";
+  const itemClass = "flex w-full items-center gap-3 rounded-md px-3 py-2.5 text-right text-sm font-medium text-[var(--sidebar-muted)] transition-colors hover:bg-[var(--sidebar-hover)] hover:text-[var(--sidebar-text)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent4)]";
 
   return (
     <nav className="space-y-1" aria-label="بخش‌های کاربری">
       {!isSidebarCollapsed && (
-        <span className="mb-2 block px-3 text-xs font-medium text-[var(--text-muted)]">
+        <span className="mb-2 block px-3 text-xs font-medium text-[var(--sidebar-muted)]">
           فضای خانه
         </span>
       )}
@@ -49,7 +49,7 @@ export default function VerticalControls({
         isSidebarCollapsed={isSidebarCollapsed}
       />
 
-      <div className="my-3 border-t border-[var(--border-color)]" />
+      <div className="my-3 border-t border-[var(--sidebar-border)]" />
 
       <button
         onClick={() => setIsMenuOpen(true)}

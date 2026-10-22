@@ -20,15 +20,15 @@ export default function ControlsIsland({ props }: { props: any }) {
           isSidebarCollapsed={isSidebarCollapsed}
         />
 
-        <div className="hidden space-y-2 border-t border-[var(--border-color)] pt-3 md:block">
+        <div className="hidden space-y-2 border-t border-[var(--sidebar-border)] pt-3 md:block">
           {!isSidebarCollapsed && (
-            <span className="block px-3 text-xs font-medium text-[var(--text-muted)]">
+            <span className="block px-3 text-xs font-medium text-[var(--sidebar-muted)]">
               نمایش
             </span>
           )}
           <button
             onClick={() => setShowAdvanced(!showAdvanced)}
-            className={`flex w-full items-center justify-between rounded-md px-3 py-2.5 text-sm font-medium text-[var(--text-secondary)] transition-colors hover:bg-[var(--card-hover-bg)] hover:text-[var(--text-primary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent4)] ${isSidebarCollapsed ? "justify-center" : ""}`}
+            className={`flex w-full items-center justify-between rounded-md px-3 py-2.5 text-sm font-medium text-[var(--sidebar-muted)] transition-colors hover:bg-[var(--sidebar-hover)] hover:text-[var(--sidebar-text)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent4)] ${isSidebarCollapsed ? "justify-center" : ""}`}
             title="قابلیت‌های بیشتر"
             aria-expanded={showAdvanced}
           >
@@ -61,7 +61,7 @@ export default function ControlsIsland({ props }: { props: any }) {
         </div>
       </div>
 
-      <div className="hidden shrink-0 border-t border-[var(--border-color)] pt-3 md:block">
+      <div className="hidden shrink-0 border-t border-[var(--sidebar-border)] pt-3 md:block">
         <ClockWidget variant="vertical" isSidebarCollapsed={isSidebarCollapsed} />
       </div>
     </div>

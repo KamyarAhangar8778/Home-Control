@@ -23,19 +23,19 @@ export default function VerticalVoiceButton({
       onPointerCancel={handlePointerCancel}
       onContextMenu={(e) => e.preventDefault()}
       style={{ touchAction: 'none' }}
-      className={`w-full flex items-center justify-between p-3 rounded-xl border transition-all duration-300 transform active:scale-[0.98] group select-none ${
+      className={`w-full flex items-center justify-between p-3 rounded-md border transition-colors duration-200 group select-none ${
         isListening 
           ? "bg-[var(--accent4-transparent)] border-[var(--accent4)] text-[var(--accent4)]" 
-          : "border-[var(--border-color)] bg-[var(--card-bg-solid)] md:hover:bg-[var(--card-hover-bg)] md:hover:border-blue-500/50 text-[var(--text-secondary)] md:hover:text-blue-400"
+          : "border-[var(--sidebar-border)] bg-[var(--sidebar-control-bg)] md:hover:bg-[var(--sidebar-hover)] md:hover:border-[var(--sidebar-border)] text-[var(--sidebar-muted)] md:hover:text-[var(--sidebar-text)]"
       }`}
     >
       <div className="flex items-center gap-2.5">
-        <div className={`p-1.5 rounded-lg transition-all ${isListening ? "bg-[var(--accent4)] text-white" : "bg-blue-500/10 text-blue-500"}`}>
+        <div className={`p-1.5 rounded-md transition-colors ${isListening ? "bg-[var(--accent4)] text-white" : "bg-[var(--sidebar-hover)] text-[var(--sidebar-text)]"}`}>
           <Mic className={`w-4 h-4 ${isListening && animationsEnabled ? "animate-pulse" : ""}`} />
         </div>
         <span className="text-xs font-semibold">{isListening ? "در حال شنیدن..." : "فرمان صوتی (نگه دارید)"}</span>
       </div>
-      <span className="text-[9px] px-1.5 py-0.5 rounded bg-[var(--border-color)] text-[var(--text-muted)] font-mono">
+      <span className="text-[9px] px-1.5 py-0.5 rounded bg-[var(--sidebar-hover)] text-[var(--sidebar-muted)] font-mono">
         Voice
       </span>
     </button>

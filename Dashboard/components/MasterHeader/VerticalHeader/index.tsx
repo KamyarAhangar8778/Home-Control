@@ -13,9 +13,9 @@ export default function VerticalHeader(props: MasterHeaderProps) {
       className="flex h-full w-full flex-col gap-4 text-right font-sans [&_span]:hidden md:[&_span]:inline [&_h1]:hidden md:[&_h1]:block [&_p]:hidden md:[&_p]:block"
       dir="rtl"
     >
-      <div className={`flex min-h-10 gap-2 border-b border-[var(--border-color)] pb-4 ${isSidebarCollapsed ? "flex-col items-center" : "items-center justify-between"}`}>
+      <div className={`flex min-h-10 gap-2 border-b border-[var(--sidebar-border)] pb-4 ${isSidebarCollapsed ? "flex-col items-center" : "items-center justify-between"}`}>
         {isSidebarCollapsed ? (
-          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md text-[var(--text-primary)]" aria-label="Home Control">
+          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md text-[var(--sidebar-text)]" aria-label="Home Control">
             <HousePlug className="h-5 w-5" strokeWidth={1.8} />
           </div>
         ) : (
@@ -26,7 +26,7 @@ export default function VerticalHeader(props: MasterHeaderProps) {
         {setIsSidebarCollapsed && (
           <button
             onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
-            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md text-[var(--text-secondary)] transition-colors hover:bg-[var(--card-hover-bg)] hover:text-[var(--text-primary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent4)]"
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md text-[var(--sidebar-muted)] transition-colors hover:bg-[var(--sidebar-hover)] hover:text-[var(--sidebar-text)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent4)]"
             title={isSidebarCollapsed ? "باز کردن منوی کناری" : "بستن منوی کناری"}
             aria-label={isSidebarCollapsed ? "باز کردن منوی کناری" : "بستن منوی کناری"}
           >
