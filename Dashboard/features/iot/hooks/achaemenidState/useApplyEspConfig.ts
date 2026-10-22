@@ -9,14 +9,9 @@ export function useApplyEspConfig() {
     // Read the store imperatively so this callback stays stable across state updates.
     const store = useIoTStore.getState();
 
-    store.setIsDark(config.preferences.theme_mode === "dark");
-    store.setAccent3(config.preferences.accent_color_3);
-    store.setAccent4(config.preferences.accent_color_4);
-    store.setSelectedFont(config.preferences.font_family);
     store.setAnimationsEnabled(config.preferences.animations_enabled);
 
     if (config.preferences.animations_fps !== undefined) store.setAnimationsFps(config.preferences.animations_fps);
-    store.setHeaderAnimationType(config.preferences.header_animation);
     store.setHeaderTitle(config.preferences.header_title);
 
     if (config.preferences.matrix_density !== undefined) store.setMatrixDensity(config.preferences.matrix_density);
@@ -28,15 +23,6 @@ export function useApplyEspConfig() {
     if (config.preferences.matrix_twinkle_effect !== undefined) store.setMatrixTwinkleEffect(config.preferences.matrix_twinkle_effect);
     if (config.preferences.matrix_twinkle_speed !== undefined) store.setMatrixTwinkleSpeed(config.preferences.matrix_twinkle_speed);
 
-    if (config.preferences.header_position) {
-      store.setHeaderPosition(config.preferences.header_position);
-    }
-    if (config.preferences.dashboard_bg_color) {
-      store.setDashboardBgColor(config.preferences.dashboard_bg_color);
-    }
-    if (config.preferences.dashboard_bg_opacity !== undefined) {
-      store.setDashboardBgOpacity(config.preferences.dashboard_bg_opacity);
-    }
     if (config.preferences.dashboard_width) {
       store.setDashboardWidth(config.preferences.dashboard_width);
     }
