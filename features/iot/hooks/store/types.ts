@@ -165,8 +165,6 @@ export interface AestheticSlice {
   setAnimationsEnabled: (e: boolean) => void;
   animationsFps: number;
   setAnimationsFps: (f: number) => void;
-  headerAnimationType: "fade" | "chase";
-  setHeaderAnimationType: (t: "fade" | "chase") => void;
   headerTitle: string;
   setHeaderTitle: (t: string) => void;
   matrixDensity: number;
