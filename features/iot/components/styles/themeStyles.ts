@@ -15,28 +15,7 @@ export function getThemeStyles({
   dashboardBgColor = "default",
   dashboardBgOpacity = 10,
 }: ThemeStylesParams): string {
-  const selectedFontFamily =
-    selectedFont === "vazir"
-      ? "var(--font-vazir)"
-      : selectedFont === "lalezar"
-        ? "var(--font-lalezar)"
-        : selectedFont === "mono"
-          ? "var(--font-mono)"
-          : selectedFont === "playfair"
-            ? "var(--font-playfair)"
-            : selectedFont === "space"
-              ? "var(--font-space)"
-              : selectedFont === "cairo"
-                ? "var(--font-cairo)"
-                : selectedFont === "amiri"
-                  ? "var(--font-amiri)"
-                  : selectedFont === "changa"
-                    ? "var(--font-changa)"
-                    : selectedFont === "reem"
-                      ? "var(--font-reem)"
-                      : selectedFont === "tajawal"
-                        ? "var(--font-tajawal)"
-                        : "var(--font-vazir)";
+  const selectedFontFamily = "var(--font-vazirmatn)";
 
   const defaultBg = isDark ? "#050609" : "#f4f5f7";
   const defaultBgGradFrom = isDark ? "#0d0f19" : "#ebedf0";
@@ -63,15 +42,6 @@ export function getThemeStyles({
     :root {
       /* Selected Font Custom Configuration */
       --font-vazir: 'Vazirmatn', sans-serif;
-      --font-lalezar: 'Lalezar', cursive;
-      --font-mono: 'JetBrains Mono', monospace;
-      --font-playfair: 'Playfair Display', serif;
-      --font-space: 'Space Grotesk', sans-serif;
-      --font-cairo: 'Cairo', sans-serif;
-      --font-amiri: 'Amiri', serif;
-      --font-changa: 'Changa', sans-serif;
-      --font-reem: 'Reem Kufi', sans-serif;
-      --font-tajawal: 'Tajawal', sans-serif;
       
       --selected-font: ${selectedFontFamily};
       
@@ -105,16 +75,5 @@ export function getThemeStyles({
       font-family: var(--selected-font) !important;
     }
     
-    /* Override classes for the FontGrid preview */
-    .font-preview-vazir { font-family: var(--font-vazir) !important; }
-    .font-preview-lalezar { font-family: var(--font-lalezar) !important; }
-    .font-preview-mono { font-family: var(--font-mono) !important; }
-    .font-preview-playfair { font-family: var(--font-playfair) !important; }
-    .font-preview-space { font-family: var(--font-space) !important; }
-    .font-preview-cairo { font-family: var(--font-cairo) !important; }
-    .font-preview-amiri { font-family: var(--font-amiri) !important; }
-    .font-preview-changa { font-family: var(--font-changa) !important; }
-    .font-preview-reem { font-family: var(--font-reem) !important; }
-    .font-preview-tajawal { font-family: var(--font-tajawal) !important; }
   `;
 }
