@@ -54,37 +54,37 @@ export default function SettingsDrawer(props: SettingsDrawerProps) {
           initial={{ x: "100%" }}
           animate={{ x: 0 }}
           exit={{ x: "100%" }}
-          transition={{ type: "spring", damping: 24, stiffness: 200 }}
-          className="fixed top-0 right-0 h-full w-full max-w-sm bg-gradient-to-b from-[var(--drawer-gradient-from)] to-[var(--drawer-gradient-to)] border-l border-accent3-medium rounded-l-[2.5rem] shadow-2xl z-50 overflow-y-auto [&::-webkit-scrollbar]:hidden [scrollbar-width:none] px-6 py-8 text-right flex flex-col justify-between transition-colors duration-500"
-        >
-          <div className="space-y-6">
-            <SettingsHeader onClose={onClose} animationsEnabled={animationsEnabled} />
+            transition={{ type: "spring", damping: 24, stiffness: 200 }}
+            className="fixed top-0 right-0 h-full w-full max-w-sm bg-gradient-to-b from-[var(--drawer-gradient-from)] to-[var(--drawer-gradient-to)] border-l border-accent3-medium rounded-l-[2.5rem] shadow-2xl z-50 overflow-y-auto [&::-webkit-scrollbar]:hidden [scrollbar-width:none] px-6 py-8 text-right flex flex-col justify-between transition-colors duration-500"
+          >
+            <div className="space-y-6">
+              <SettingsHeader onClose={onClose} animationsEnabled={animationsEnabled} />
 
-            <SettingsTabsSlider
-              activeTab={activeTab}
-              setActiveTab={setActiveTab}
-              animationsEnabled={animationsEnabled}
-              isDark={isDark}
-              accent3={accent3}
-            />
+              <SettingsTabsSlider
+                activeTab={activeTab}
+                setActiveTab={setActiveTab}
+                animationsEnabled={animationsEnabled}
+                isDark={isDark}
+                accent3={accent3}
+              />
 
-            <div className="space-y-4 pt-1">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeTab}
-                  initial={{ opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -12 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <SettingsTabContent {...props} activeTab={activeTab} />
-                </motion.div>
-              </AnimatePresence>
+              <div className="space-y-4 pt-1">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={activeTab}
+                    initial={{ opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -12 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <SettingsTabContent {...props} activeTab={activeTab} />
+                  </motion.div>
+                </AnimatePresence>
+              </div>
             </div>
-          </div>
 
-          <SettingsFooter />
-        </motion.div>
+            <SettingsFooter />
+          </motion.div>
       )}
     </AnimatePresence>
   );
