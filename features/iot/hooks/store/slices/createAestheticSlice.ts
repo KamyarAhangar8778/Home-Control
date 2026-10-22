@@ -7,7 +7,6 @@ export const createAestheticSlice: StateCreator<IoTStoreState, [], [], Aesthetic
   accent4: "#3B82F6",
   animationsEnabled: true,
   animationsFps: 60,
-  headerAnimationType: "fade",
   headerTitle: "سامانه هوشمند پادشاهی هخامنش",
   matrixDensity: 40,
   matrixSize: 4,
@@ -25,7 +24,6 @@ export const createAestheticSlice: StateCreator<IoTStoreState, [], [], Aesthetic
 
   setAnimationsEnabled: (e) => set({ animationsEnabled: e }),
   setAnimationsFps: (f) => set({ animationsFps: f }),
-  setHeaderAnimationType: (t) => set({ headerAnimationType: t }),
   setHeaderTitle: (t) => set({ headerTitle: t }),
   setMatrixDensity: (d) => set({ matrixDensity: d }),
   setMatrixSize: (s) => set({ matrixSize: s }),
