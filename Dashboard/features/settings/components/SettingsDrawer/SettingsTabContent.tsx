@@ -45,7 +45,6 @@ export function SettingsTabContent({
   setMatrixTwinkleEffect,
   matrixTwinkleSpeed,
   setMatrixTwinkleSpeed,
-  isDark,
   dashboardWidth,
   setDashboardWidth,
   isGroupsCompactLayout,
