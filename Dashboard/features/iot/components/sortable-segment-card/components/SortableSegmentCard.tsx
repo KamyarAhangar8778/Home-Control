@@ -61,6 +61,7 @@ function SortableSegmentCard(props: SortableSegmentCardProps) {
       <div className="relative h-full">
         <ActiveCard
           {...props}
+          isPinOn={isPinOn}
           isCompact={isCompact}
           isUltraCompact={isUltraCompact}
           isMobileTwoCol={isMobileTwoCol}
@@ -117,6 +118,7 @@ function SortableSegmentCard(props: SortableSegmentCardProps) {
     >
       <ActiveCard
         {...props}
+        isPinOn={isPinOn}
         isCompact={isCompact}
         isUltraCompact={isUltraCompact}
         isMobileTwoCol={isMobileTwoCol}
