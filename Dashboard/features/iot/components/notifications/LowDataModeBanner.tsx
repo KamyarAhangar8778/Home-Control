@@ -54,7 +54,7 @@ export default function LowDataModeBanner({
         <motion.div
           initial={animationsEnabled ? { opacity: 0, y: -10 } : {}}
           animate={animationsEnabled ? { opacity: 1, y: 0 } : {}}
-          className={`flex flex-col sm:flex-row-reverse items-center justify-between px-6 py-4 bg-emerald-950/20 border border-emerald-500/40 text-right gap-4 w-full transition-all duration-300 shadow-md md:hover:border-emerald-500 md:hover:shadow-[0_0_15px_rgba(16,185,129,0.3)] ${headerPosition === "left" ? "rounded-b-2xl md:rounded-tl-md md:rounded-tr-md max-md:rounded-2xl" : "rounded-2xl"}`}
+          className={`flex flex-col sm:flex-row-reverse items-center justify-between px-6 py-4 bg-emerald-950/20 border border-emerald-500/40 text-right gap-4 w-full transition-all duration-300 shadow-md md:hover:border-emerald-500 md:hover:shadow-[0_0_15px_rgba(16,185,129,0.3)] rounded-2xl`}
         >
           <div className="flex items-center gap-3">
             <div className="flex items-center justify-center w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold shrink-0">
