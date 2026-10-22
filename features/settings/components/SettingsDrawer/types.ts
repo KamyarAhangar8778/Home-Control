@@ -1,5 +1,5 @@
 import React from "react";
-import { Palette, Type, Activity, LayoutGrid, Sparkles, Music, Radio, Command, Mic, Wifi, Settings2 } from "lucide-react";
+import { Activity, LayoutGrid, Sparkles, Music, Radio, Command, Mic, Wifi, Settings2 } from "lucide-react";
 
 export interface SettingsDrawerProps {
   isOpen: boolean;
@@ -71,18 +71,6 @@ export const SETTINGS_TABS = [
     title: "مدیریت شرط‌ها و قوانین (Rules)",
     compactTitle: "قوانین و شرط‌ها",
     Icon: Settings2,
-  },
-  {
-    id: "colors",
-    title: "تنظیم تنوع رنگ و تضاد",
-    compactTitle: "رنگ ۳ و رنگ ۴ بورد",
-    Icon: Palette,
-  },
-  {
-    id: "fonts",
-    title: "مدیریت قلم و تایپوگرافی",
-    compactTitle: "قلم و فونت‌های سلطنتی",
-    Icon: Type,
   },
   {
     id: "animations",
