@@ -10,6 +10,9 @@ on:
       - "Database/**"
       - "Dashboard/**"
   workflow_dispatch:
+  schedule:
+    # Backup: reconcile child-only commits even if a child PAT secret is not configured.
+    - cron: "*/10 * * * *"
 
 permissions:
   contents: write
