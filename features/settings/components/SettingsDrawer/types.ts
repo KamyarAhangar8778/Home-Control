@@ -11,8 +11,6 @@ export interface SettingsDrawerProps {
   setAnimationsEnabled: (val: boolean) => void;
   animationsFps: number;
   setAnimationsFps: (val: number) => void;
-  headerAnimationType: "fade" | "chase";
-  setHeaderAnimationType: (val: "fade" | "chase") => void;
   headerTitle: string;
   setHeaderTitle: (val: string) => void;
   matrixDensity: number;
