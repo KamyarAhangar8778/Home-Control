@@ -5,7 +5,6 @@ export const createAestheticSlice: StateCreator<IoTStoreState, [], [], Aesthetic
   isDark: true,
   accent3: "#D4AF37",
   accent4: "#10B981",
-  selectedFont: "vazir",
   animationsEnabled: true,
   animationsFps: 60,
   headerAnimationType: "fade",
@@ -26,9 +25,6 @@ export const createAestheticSlice: StateCreator<IoTStoreState, [], [], Aesthetic
   isSegmentsCompactLayout: false,
 
   setIsDark: (d) => set({ isDark: d }),
-  setAccent3: (a) => set({ accent3: a }),
-  setAccent4: (a) => set({ accent4: a }),
-  setSelectedFont: (f) => set({ selectedFont: f }),
   setAnimationsEnabled: (e) => set({ animationsEnabled: e }),
   setAnimationsFps: (f) => set({ animationsFps: f }),
   setHeaderAnimationType: (t) => set({ headerAnimationType: t }),
