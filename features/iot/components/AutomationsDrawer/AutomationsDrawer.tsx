@@ -17,9 +17,7 @@ interface AutomationsDrawerProps {
 export default function AutomationsDrawer({ isOpen, onClose, isDark, animationsEnabled }: AutomationsDrawerProps) {
   const formHook = useAutomationForm();
 
-  const backdropBackground = isDark
-    ? `radial-gradient(circle at center, rgba(16,185,129,0.15) 0%, rgba(5,6,9,0.8) 100%)`
-    : `radial-gradient(circle at center, rgba(16,185,129,0.05) 0%, rgba(244,245,247,0.7) 100%)`;
+  const backdropBackground = isDark ? "rgba(9, 9, 11, 0.68)" : "rgba(24, 24, 27, 0.18)";
 
   return (
     <AnimatePresence>
@@ -41,18 +39,18 @@ export default function AutomationsDrawer({ isOpen, onClose, isDark, animationsE
           animate={{ x: 0 }}
           exit={{ x: "100%" }}
           transition={{ type: "spring", damping: 24, stiffness: 200 }}
-          className="fixed top-0 right-0 h-full w-full max-w-md bg-gradient-to-b from-[var(--drawer-gradient-from)] to-[var(--drawer-gradient-to)] border-l border-[var(--accent3-medium)] rounded-l-[2.5rem] shadow-2xl z-50 flex flex-col transition-colors duration-500 overflow-hidden"
+          className="fixed top-0 right-0 h-full w-full max-w-md bg-[var(--background)] border-l border-[var(--border)] rounded-l-xl shadow-2xl z-50 flex flex-col transition-colors duration-500 overflow-hidden"
           dir="rtl"
         >
           {/* Header */}
-          <div className="p-6 pb-4 border-b border-[var(--border-color)] flex justify-between items-center bg-[var(--card-bg-solid)] shrink-0">
+          <div className="p-6 pb-4 border-b border-[var(--border)] flex justify-between items-center bg-[var(--card)] shrink-0">
             <div className="flex items-center gap-3">
-              <div className="p-2 rounded-xl bg-[var(--accent3-transparent)] text-[var(--accent3)]">
+              <div className="p-2 rounded-md bg-[var(--muted)] text-[var(--muted-foreground)]">
                 <Clock className={`w-5 h-5 ${animationsEnabled ? "animate-[pulse_3s_ease-in-out_infinite]" : ""}`} />
               </div>
-              <h2 className="font-bold text-lg text-[var(--text-primary)]">مدیریت اتوماسیون‌ها</h2>
+              <h2 className="font-bold text-lg text-[var(--foreground)]">مدیریت اتوماسیون‌ها</h2>
             </div>
-            <button onClick={onClose} className="p-2 text-[var(--text-muted)] md:hover:text-red-500 bg-[var(--card-hover-bg)] rounded-xl transition-all md:hover:rotate-90">
+            <button onClick={onClose} className="p-2 text-[var(--muted-foreground)] hover:text-[var(--destructive)] hover:bg-[var(--accent)] rounded-md transition-colors">
               <X className="w-5 h-5" />
             </button>
           </div>
@@ -61,7 +59,7 @@ export default function AutomationsDrawer({ isOpen, onClose, isDark, animationsE
           <div className="flex-1 overflow-y-auto [&::-webkit-scrollbar]:hidden [scrollbar-width:none] p-6 space-y-8">
             
             {/* Info Box */}
-            <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800 text-blue-600 dark:text-blue-400 p-4 rounded-2xl text-xs flex gap-3 items-start leading-relaxed shadow-sm">
+            <div className="bg-[var(--muted)] border border-[var(--border)] text-[var(--muted-foreground)] p-4 rounded-lg text-xs flex gap-3 items-start leading-relaxed shadow-sm">
               <Info className="w-5 h-5 shrink-0 mt-0.5" />
               <p>
                 در این بخش می‌توانید عملیات‌های زمانی تعریف کنید. سرور ابری پادشاهی در زمان مشخص شده، چندین دستور را همزمان به دستگاه ارسال خواهد کرد.
