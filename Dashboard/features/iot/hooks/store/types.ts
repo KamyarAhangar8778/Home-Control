@@ -161,11 +161,7 @@ export interface AestheticSlice {
   isDark: boolean;
   setIsDark: (d: boolean) => void;
   accent3: string;
-  setAccent3: (a: string) => void;
   accent4: string;
-  setAccent4: (a: string) => void;
-  selectedFont: string;
-  setSelectedFont: (f: string) => void;
   animationsEnabled: boolean;
   setAnimationsEnabled: (e: boolean) => void;
   animationsFps: number;
