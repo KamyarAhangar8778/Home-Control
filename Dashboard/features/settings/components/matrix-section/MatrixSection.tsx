@@ -4,7 +4,6 @@ import React from "react";
 import { Sparkles } from "lucide-react";
 import { MatrixSliders } from "./MatrixSliders";
 import { MatrixColorPicker } from "./MatrixColorPicker";
-import { MatrixBgColorPicker } from "./MatrixBgColorPicker";
 import { MatrixToggles } from "./MatrixToggles";
 
 interface MatrixSectionProps {
@@ -30,10 +29,6 @@ interface MatrixSectionProps {
   accent3?: string;
   accent4?: string;
   isDark?: boolean;
-  dashboardBgColor?: string;
-  setDashboardBgColor?: (val: string) => void;
-  dashboardBgOpacity?: number;
-  setDashboardBgOpacity?: (val: number) => void;
 }
 
 export default function MatrixSection({
@@ -50,10 +45,6 @@ export default function MatrixSection({
   accent3 = "#10b981",
   accent4 = "#3b82f6",
   isDark = true,
-  dashboardBgColor = "default",
-  setDashboardBgColor,
-  dashboardBgOpacity = 10,
-  setDashboardBgOpacity,
 }: MatrixSectionProps) {
   return (
     <div className="space-y-8 animate-fade-in pb-8">
@@ -77,13 +68,6 @@ export default function MatrixSection({
           accent3={accent3} accent4={accent4}
         />
 
-        {setDashboardBgColor && setDashboardBgOpacity && (
-          <MatrixBgColorPicker 
-            dashboardBgColor={dashboardBgColor} setDashboardBgColor={setDashboardBgColor}
-            dashboardBgOpacity={dashboardBgOpacity} setDashboardBgOpacity={setDashboardBgOpacity}
-            accent3={accent3} accent4={accent4} isDark={isDark}
-          />
-        )}
 
         <MatrixToggles 
           matrixMoving={matrixMoving} setMatrixMoving={setMatrixMoving}
