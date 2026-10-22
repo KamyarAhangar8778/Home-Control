@@ -102,7 +102,6 @@ export function SettingsTabContent({
           hideHeader={true}
           accent3={accent3}
           accent4={accent4}
-          isDark={isDark}
         />
       );
     case "audio":
