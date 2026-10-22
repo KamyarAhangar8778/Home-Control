@@ -15,7 +15,7 @@ export default function RealTimeClock({ time, className }: { time: Date | null; 
 
   return (
     <svg
-      xmlns="http://www.w3.org/00/svg"
+      xmlns="http://www.w3.org/2000/svg"
       width="24"
       height="24"
       viewBox="0 0 24 24"
@@ -25,6 +25,7 @@ export default function RealTimeClock({ time, className }: { time: Date | null; 
       strokeLinecap="round"
       strokeLinejoin="round"
       className={className}
+      aria-hidden="true"
     >
       <circle cx="12" cy="12" r="10" />
       <line
