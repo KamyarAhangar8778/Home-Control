@@ -3,7 +3,6 @@ import { soundManager } from "@/lib/audio";
 import { reconnectMqtt, getMqttSettings } from "@/features/iot/services/mqttService";
 import { Radio, RefreshCw, Save } from "lucide-react";
 import { fetchConfigFromCloudflare, saveConfigToCloudflare } from "@/features/iot/services/cloudflare/api";
-import { DEFAULT_ESP_CONFIG } from "@/features/iot/services/esp32Config";
 import { useIoTStore } from "@/features/iot/hooks/useIoTStore";
 import { MqttFormFields } from "./MqttFormFields";
 import { MqttQosSelector } from "./MqttQosSelector";
@@ -58,7 +57,11 @@ export default function MqttSection() {
     
     // Save to Cloudflare for Worker & ESP32
     try {
-      const config = await fetchConfigFromCloudflare() || DEFAULT_ESP_CONFIG;
+      const config = await fetchConfigFromCloudflare();
+      if (!config) {
+        showToast("تنظیمات سرور دریافت نشد؛ اتصال کلودفلر را بررسی کنید.", "error");
+        return;
+      }
       config.mqtt = newMqttConfig;
       const res = await saveConfigToCloudflare(config);
       if (res.success) {
