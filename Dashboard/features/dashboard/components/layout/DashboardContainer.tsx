@@ -31,12 +31,11 @@ export default function DashboardContainer() {
   const matrixMouseEffect = useIoTStore(s => s.matrixMouseEffect);
   const matrixTwinkleEffect = useIoTStore(s => s.matrixTwinkleEffect);
   const matrixTwinkleSpeed = useIoTStore(s => s.matrixTwinkleSpeed);
-  const headerPosition = useIoTStore(s => s.headerPosition);
   const dashboardWidth = useIoTStore(s => s.dashboardWidth);
   const dashboardBgColor = useIoTStore(s => s.dashboardBgColor);
   const dashboardBgOpacity = useIoTStore(s => s.dashboardBgOpacity);
 
-  const { topHeaderContainerWidth, leftHeaderContentWidth } = useDashboardLayout(dashboardWidth);
+  const { leftHeaderContentWidth } = useDashboardLayout(dashboardWidth);
 
   return (
     <MotionConfig reducedMotion={animationsEnabled ? "user" : "always"}>
@@ -68,23 +67,9 @@ export default function DashboardContainer() {
             animationsFps={animationsFps}
           />
 
-          <div
-            className={`relative z-10 w-full min-h-screen transition-all duration-500 ${
-              headerPosition === "left"
-                ? "flex flex-col md:flex-row-reverse items-stretch"
-                : `flex flex-col ${topHeaderContainerWidth} mx-auto px-6 py-6 md:py-8 justify-between gap-12`
-            }`}
-          >
-            {headerPosition === "left" && <DashboardHeader position="left" />}
-
-            <div
-              className={`flex-1 flex flex-col justify-between gap-12 ${
-                headerPosition === "left"
-                  ? `p-6 md:pt-1 md:pb-8 md:px-8 ${leftHeaderContentWidth} w-full mx-auto`
-                  : "w-full"
-              }`}
-            >
-              <DashboardHeader position="topOrMobile" />
+          <div className="relative z-10 flex flex-row-reverse items-stretch w-full min-h-screen transition-all duration-500">
+            <DashboardHeader position="left" />
+            <div className={`flex-1 min-w-0 flex flex-col justify-between gap-8 p-3 md:p-6 md:pt-1 md:pb-8 md:px-8 ${leftHeaderContentWidth} w-full mx-auto`}>
               <DashboardMain />
             </div>
           </div>
