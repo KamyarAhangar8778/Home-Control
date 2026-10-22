@@ -26,7 +26,6 @@ export default function VerticalHeader(props: MasterHeaderProps) {
       {!isSidebarCollapsed && (
         <BrandBox 
           headerTitle={props.headerTitle} 
-          variant="vertical" 
           animationsEnabled={props.animationsEnabled}
           groupsOrder={props.groupsOrder}
           selectedGroupFilter={props.selectedGroupFilter}
