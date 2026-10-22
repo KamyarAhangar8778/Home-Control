@@ -8,8 +8,6 @@ interface DashboardStylesProps {
   accent4: string;
   isDark: boolean;
   animationsEnabled: boolean;
-  dashboardBgColor?: string;
-  dashboardBgOpacity?: number;
 }
 
 export default function DashboardStyles({
@@ -17,11 +15,9 @@ export default function DashboardStyles({
   accent4,
   isDark,
   animationsEnabled,
-  dashboardBgColor = "default",
-  dashboardBgOpacity = 10,
 }: DashboardStylesProps) {
   const baseCss = getBaseStyles(isDark);
-  const themeCss = getThemeStyles({ accent3, accent4, isDark, dashboardBgColor, dashboardBgOpacity });
+  const themeCss = getThemeStyles({ accent3, accent4, isDark });
   const utilityCss = getUtilityStyles({ isDark, animationsEnabled });
   const animationCss = getAnimationStyles({ isDark });
 
