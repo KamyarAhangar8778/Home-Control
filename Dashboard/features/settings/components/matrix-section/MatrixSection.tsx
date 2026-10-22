@@ -28,7 +28,6 @@ interface MatrixSectionProps {
   hideHeader?: boolean;
   accent3?: string;
   accent4?: string;
-  isDark?: boolean;
 }
 
 export default function MatrixSection({
@@ -44,7 +43,6 @@ export default function MatrixSection({
   hideHeader = false,
   accent3 = "#10b981",
   accent4 = "#3b82f6",
-  isDark = true,
 }: MatrixSectionProps) {
   return (
     <div className="space-y-8 animate-fade-in pb-8">
