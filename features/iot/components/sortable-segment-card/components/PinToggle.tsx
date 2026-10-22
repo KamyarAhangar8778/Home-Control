@@ -31,7 +31,7 @@ export default function PinToggle({
       <span
         className={`pointer-events-none inline-block h-5 w-5 rounded-full bg-[var(--text-primary)] shadow-md transform ${
           animationsEnabled ? "transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]" : ""
-        } ${isVertical ? (isPinOn ? "translate-y-0" : "translate-y-5") : (isPinOn ? "-translate-x-5" : "translate-x-0")}`}
+        } ${isVertical ? (isPinOn ? "translate-y-0" : "translate-y-5") : (isPinOn ? "translate-x-0" : "-translate-x-5")}`}
       />
     </button>
   );
