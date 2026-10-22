@@ -1,6 +1,4 @@
 import React from "react";
-import ColorsSection from "../ColorsSection";
-import TypographySection from "../TypographySection";
 import StabilitySection from "../StabilitySection";
 import MatrixSection from "../matrix-section/MatrixSection";
 import HeaderSettingsSection from "../HeaderSettingsSection";
@@ -67,25 +65,6 @@ export function SettingsTabContent({
   setIsSegmentsCompactLayout,
 }: SettingsTabContentProps) {
   switch (activeTab) {
-    case "colors":
-      return (
-        <ColorsSection
-          accent3={accent3}
-          setAccent3={setAccent3}
-          accent4={accent4}
-          setAccent4={setAccent4}
-          isDark={isDark}
-          hideHeader={true}
-        />
-      );
-    case "fonts":
-      return (
-        <TypographySection
-          selectedFont={selectedFont}
-          setSelectedFont={setSelectedFont}
-          hideHeader={true}
-        />
-      );
     case "animations":
       return (
         <StabilitySection
