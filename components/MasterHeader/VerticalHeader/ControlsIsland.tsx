@@ -10,7 +10,7 @@ export default function ControlsIsland({ props }: { props: any }) {
   const { isSidebarCollapsed } = props;
 
   return (
-    <div className={`flex-1 bg-[var(--card-bg-solid)] border border-[var(--border-color)] ${isSidebarCollapsed ? "px-2" : "px-2 md:px-5"} py-3 md:py-5 rounded-2xl shadow-sm flex flex-col justify-between gap-4 transition-all duration-350 md:hover:-translate-y-1.5 md:hover:shadow-xl md:hover:border-[var(--accent3)] overflow-hidden`}>
+    <div className={`flex-1 bg-transparent md:bg-[var(--card-bg-solid)] border-0 md:border md:border-[var(--border-color)] ${isSidebarCollapsed ? "px-1 md:px-2" : "px-1 md:px-5"} py-2 md:py-5 rounded-none md:rounded-xl shadow-none flex flex-col justify-between gap-4 overflow-hidden`}>
       <div className="flex flex-col gap-4 overflow-y-auto custom-scrollbar pr-1 -mr-1">
         <div className="space-y-4">
           <QuickAccessControls
@@ -22,7 +22,7 @@ export default function ControlsIsland({ props }: { props: any }) {
           />
         </div>
 
-        <div className="space-y-3 pt-4 border-t border-[var(--border-color)]">
+        <div className="hidden md:block space-y-3 pt-4 border-t border-[var(--border-color)]">
           <button
             onClick={() => setShowAdvanced(!showAdvanced)}
             className="w-full flex items-center justify-between text-[var(--text-secondary)] md:hover:text-[var(--text-primary)] transition-colors"
@@ -60,7 +60,7 @@ export default function ControlsIsland({ props }: { props: any }) {
         </div>
       </div>
 
-      <div className="space-y-4 pt-4 border-t border-[var(--border-color)] shrink-0">
+      <div className="hidden md:block space-y-4 pt-4 border-t border-[var(--border-color)] shrink-0">
         <div className="hidden md:block"><ClockWidget variant="vertical" isSidebarCollapsed={isSidebarCollapsed} /></div>
 
 
