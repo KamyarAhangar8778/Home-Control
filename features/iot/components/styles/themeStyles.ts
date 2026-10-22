@@ -2,7 +2,6 @@ interface ThemeStylesParams {
   accent3: string;
   accent4: string;
   isDark: boolean;
-  selectedFont: string;
   dashboardBgColor?: string;
   dashboardBgOpacity?: number;
 }
@@ -11,7 +10,6 @@ export function getThemeStyles({
   accent3,
   accent4,
   isDark,
-  selectedFont,
   dashboardBgColor = "default",
   dashboardBgOpacity = 10,
 }: ThemeStylesParams): string {
