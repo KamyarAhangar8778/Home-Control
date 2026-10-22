@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Clock } from "lucide-react";
 import { useIoTStore } from "@/features/iot/hooks/useIoTStore";
 import { getPersianDateString, getTimeString } from "./persianDateUtils";
-import { ClockWidgetProps } from "./types";
+import type { ClockWidgetProps } from "./types";
 import VerticalClock from "./VerticalClock";
 import HorizontalClock from "./HorizontalClock";
 
