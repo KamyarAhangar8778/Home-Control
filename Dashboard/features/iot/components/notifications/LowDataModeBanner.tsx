@@ -3,7 +3,7 @@
 import React from "react";
 import { motion } from "motion/react";
 import { WifiOff } from "lucide-react";
-import { Alert, AlertDescription, AlertTitle } from "@/components/reui/alert";
+import { Alert, AlertAction, AlertDescription, AlertTitle } from "@/components/reui/alert";
 
 interface LowDataModeBannerProps {
   lowDataMode: boolean;
@@ -49,14 +49,17 @@ export default function LowDataModeBanner({
               </AlertDescription>
             </div>
           </div>
-          <motion.button
-            onClick={refetchIot}
-            whileHover={animationsEnabled ? { scale: 1.05 } : undefined}
-            whileTap={animationsEnabled ? { scale: 0.95 } : undefined}
-            className="px-5 py-2.5 bg-[var(--accent3)] text-black md:hover:bg-[var(--accent3)]/90 font-sans font-extrabold transition-all text-xs cursor-pointer select-none rounded-xl shadow-md"
-          >
-            به‌روزرسانی کنونی
-          </motion.button>
+          <AlertAction className="max-sm:w-full">
+            <motion.button
+              type="button"
+              onClick={refetchIot}
+              whileHover={animationsEnabled ? { scale: 1.05 } : undefined}
+              whileTap={animationsEnabled ? { scale: 0.95 } : undefined}
+              className="px-5 py-2.5 bg-[var(--accent3)] text-black md:hover:bg-[var(--accent3)]/90 font-sans font-extrabold transition-all text-xs cursor-pointer select-none rounded-xl shadow-md max-sm:w-full"
+            >
+              به‌روزرسانی کنونی
+            </motion.button>
+          </AlertAction>
           </Alert>
         </motion.div>
       )}
@@ -84,14 +87,18 @@ export default function LowDataModeBanner({
               </AlertDescription>
             </div>
           </div>
-          <motion.button
-            onClick={triggerCloudflarePush}
-            whileHover={animationsEnabled ? { scale: 1.05 } : undefined}
-            whileTap={animationsEnabled ? { scale: 0.95 } : undefined}
-            className="px-5 py-2.5 bg-emerald-500 text-black md:hover:bg-emerald-400 font-sans font-extrabold transition-all text-xs cursor-pointer select-none rounded-xl shadow-md"
-          >
-            ذخیره‌سازی تغییرات
-          </motion.button>
+          <AlertAction className="max-sm:w-full">
+            <motion.button
+              type="button"
+              onClick={triggerCloudflarePush}
+              disabled={!triggerCloudflarePush}
+              whileHover={animationsEnabled ? { scale: 1.05 } : undefined}
+              whileTap={animationsEnabled ? { scale: 0.95 } : undefined}
+              className="px-5 py-2.5 bg-emerald-500 text-black md:hover:bg-emerald-400 font-sans font-extrabold transition-all text-xs cursor-pointer select-none rounded-xl shadow-md max-sm:w-full disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              ذخیره‌سازی تغییرات
+            </motion.button>
+          </AlertAction>
           </Alert>
         </motion.div>
       )}
