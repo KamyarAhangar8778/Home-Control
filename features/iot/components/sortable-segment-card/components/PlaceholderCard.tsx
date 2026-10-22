@@ -49,7 +49,7 @@ export default function PlaceholderCard({
         <div
           {...attributes}
           {...listeners}
-          className="p-1.5 bg-slate-200/90 dark:bg-slate-950 border border-slate-300 dark:border-slate-800 md:hover:bg-[var(--accent)] text-slate-700 dark:text-gray-300 md:hover:text-[var(--accent3)] cursor-grab active:cursor-grabbing transition-colors rounded-lg shadow-sm"
+          className="p-1.5 bg-[var(--secondary)] border border-[var(--border)] md:hover:bg-[var(--accent)] text-[var(--secondary-foreground)] cursor-grab active:cursor-grabbing transition-colors rounded-md shadow-sm"
           title="کشیدن جایگاه"
         >
           <GripVertical className="w-3.5 h-3.5" />

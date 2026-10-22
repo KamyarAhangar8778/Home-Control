@@ -43,8 +43,8 @@ export default function CardBody({
                 Digital Input Status
               </span>
             </div>
-            <div className={`w-10 h-10 rounded-full flex items-center justify-center shadow-inner ${isPinOn ? "bg-[var(--accent4-transparent)]" : "bg-[var(--muted)]"}`} style={{ boxShadow: isPinOn ? 'inset 0 0 10px var(--accent4-transparent)' : '' }}>
-              <div className={`w-4 h-4 rounded-full ${isPinOn ? "bg-[var(--success)]" : "bg-[var(--muted-foreground)]"}`} style={{ boxShadow: isPinOn ? '0 0 15px var(--accent4)' : '' }} />
+            <div className={`w-10 h-10 rounded-full flex items-center justify-center shadow-inner ${isPinOn ? "bg-[var(--success)]/10" : "bg-[var(--muted)]"}`} style={{ boxShadow: isPinOn ? 'inset 0 0 10px color-mix(in srgb, var(--success) 12%, transparent)' : '' }}>
+              <div className={`w-4 h-4 rounded-full ${isPinOn ? "bg-[var(--success)]" : "bg-[var(--muted-foreground)]"}`} style={{ boxShadow: isPinOn ? '0 0 10px color-mix(in srgb, var(--success) 25%, transparent)' : '' }} />
             </div>
           </div>
         </div>
