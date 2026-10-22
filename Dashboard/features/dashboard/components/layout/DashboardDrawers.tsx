@@ -17,11 +17,7 @@ export default function DashboardDrawers() {
   const activeSettingsTab = useIoTStore(s => s.activeSettingsTab);
   const setActiveSettingsTab = useIoTStore(s => s.setActiveSettingsTab);
   const accent3 = useIoTStore(s => s.accent3);
-  const setAccent3 = useIoTStore(s => s.setAccent3);
   const accent4 = useIoTStore(s => s.accent4);
-  const setAccent4 = useIoTStore(s => s.setAccent4);
-  const selectedFont = useIoTStore(s => s.selectedFont);
-  const setSelectedFont = useIoTStore(s => s.setSelectedFont);
   const animationsEnabled = useIoTStore(s => s.animationsEnabled);
   const setAnimationsEnabled = useIoTStore(s => s.setAnimationsEnabled);
   const animationsFps = useIoTStore(s => s.animationsFps);
@@ -49,14 +45,8 @@ export default function DashboardDrawers() {
   const matrixTwinkleSpeed = useIoTStore(s => s.matrixTwinkleSpeed);
   const setMatrixTwinkleSpeed = useIoTStore(s => s.setMatrixTwinkleSpeed);
   const isDark = useIoTStore(s => s.isDark);
-  const headerPosition = useIoTStore(s => s.headerPosition);
-  const setHeaderPosition = useIoTStore(s => s.setHeaderPosition);
   const dashboardWidth = useIoTStore(s => s.dashboardWidth);
   const setDashboardWidth = useIoTStore(s => s.setDashboardWidth);
-  const dashboardBgColor = useIoTStore(s => s.dashboardBgColor);
-  const setDashboardBgColor = useIoTStore(s => s.setDashboardBgColor);
-  const dashboardBgOpacity = useIoTStore(s => s.dashboardBgOpacity);
-  const setDashboardBgOpacity = useIoTStore(s => s.setDashboardBgOpacity);
   const isGroupsCompactLayout = useIoTStore(s => s.isGroupsCompactLayout);
   const setIsGroupsCompactLayout = useIoTStore(s => s.setIsGroupsCompactLayout);
   const isSegmentsCompactLayout = useIoTStore(s => s.isSegmentsCompactLayout);
@@ -74,11 +64,7 @@ export default function DashboardDrawers() {
           activeTab={activeSettingsTab}
           setActiveTab={setActiveSettingsTab}
           accent3={accent3}
-          setAccent3={setAccent3}
           accent4={accent4}
-          setAccent4={setAccent4}
-          selectedFont={selectedFont}
-          setSelectedFont={setSelectedFont}
           animationsEnabled={animationsEnabled}
           setAnimationsEnabled={setAnimationsEnabled}
           animationsFps={animationsFps}
@@ -106,14 +92,8 @@ export default function DashboardDrawers() {
           matrixTwinkleSpeed={matrixTwinkleSpeed}
           setMatrixTwinkleSpeed={setMatrixTwinkleSpeed}
           isDark={isDark}
-          headerPosition={headerPosition}
-          setHeaderPosition={setHeaderPosition}
           dashboardWidth={dashboardWidth}
           setDashboardWidth={setDashboardWidth}
-          dashboardBgColor={dashboardBgColor}
-          setDashboardBgColor={setDashboardBgColor}
-          dashboardBgOpacity={dashboardBgOpacity}
-          setDashboardBgOpacity={setDashboardBgOpacity}
           isGroupsCompactLayout={isGroupsCompactLayout}
           setIsGroupsCompactLayout={setIsGroupsCompactLayout}
           isSegmentsCompactLayout={isSegmentsCompactLayout}

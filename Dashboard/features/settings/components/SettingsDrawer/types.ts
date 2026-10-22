@@ -7,11 +7,7 @@ export interface SettingsDrawerProps {
   activeTab?: string;
   setActiveTab?: (tab: string) => void;
   accent3: string;
-  setAccent3: (val: string) => void;
   accent4: string;
-  setAccent4: (val: string) => void;
-  selectedFont: string;
-  setSelectedFont: (val: string) => void;
   animationsEnabled: boolean;
   setAnimationsEnabled: (val: boolean) => void;
   animationsFps: number;
@@ -38,13 +34,7 @@ export interface SettingsDrawerProps {
   setMatrixTwinkleEffect: (val: boolean) => void;
   matrixTwinkleSpeed: number;
   setMatrixTwinkleSpeed: (val: number) => void;
-  dashboardBgColor: string;
-  setDashboardBgColor: (val: string) => void;
-  dashboardBgOpacity: number;
-  setDashboardBgOpacity: (val: number) => void;
   isDark: boolean;
-  headerPosition: "top" | "left";
-  setHeaderPosition: (val: "top" | "left") => void;
   dashboardWidth: 1 | 2 | 3 | 4 | 5;
   setDashboardWidth: (val: 1 | 2 | 3 | 4 | 5) => void;
   isGroupsCompactLayout: boolean;
