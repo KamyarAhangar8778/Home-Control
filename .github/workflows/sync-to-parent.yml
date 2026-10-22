@@ -1,0 +1,41 @@
+name: Notify Home-Control parent
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: notify-home-control-parent
+  cancel-in-progress: false
+
+jobs:
+  request-parent-sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Dispatch parent synchronization
+        env:
+          PARENT_SYNC_TOKEN: ${{ secrets.PARENT_SYNC_TOKEN }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if [[ -z "${PARENT_SYNC_TOKEN:-}" ]]; then
+            echo "::warning::PARENT_SYNC_TOKEN is not configured. The parent's scheduled reconciliation will pick up this commit; add the secret for immediate synchronization."
+            exit 0
+          fi
+
+          curl --fail-with-body --silent --show-error \
+            --request POST \
+            --url "https://api.github.com/repos/KamyarAhangar8778/Home-Control/actions/workflows/sync-modules.yml/dispatches" \
+            --header "Accept: application/vnd.github+json" \
+            --header "Authorization: Bearer ${PARENT_SYNC_TOKEN}" \
+            --header "X-GitHub-Api-Version: 2022-11-28" \
+            --data '{"ref":"main"}'
+
+          echo "Parent repository synchronization has been requested."
