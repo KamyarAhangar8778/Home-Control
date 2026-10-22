@@ -9,20 +9,13 @@ export default function VerticalBrandBox({
   const { isFullyReady } = useDashboard();
 
   return (
-    <div className="relative">
-      <div className="relative h-full bg-transparent md:bg-[var(--card-bg-solid)] border border-transparent md:border-[var(--border-color)] px-2 md:px-3 py-2 md:py-3 rounded-xl flex items-center justify-center md:justify-start gap-2 md:gap-3">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 bg-[var(--card-hover-bg)] border border-[var(--border-color)] rounded-xl shrink-0 flex items-center justify-center overflow-hidden">
-            <HousePlug aria-label="Home Control" className="w-6 h-6 text-[var(--accent3)]" strokeWidth={1.8} />
-          </div>
-          <div className="text-right flex flex-col items-end gap-1">
-            <h1 className="font-sans font-semibold text-[13.5px] tracking-tight leading-tight select-none text-[var(--text-primary)]">
-              {isFullyReady ? headerTitle : <div className="w-32 h-4 bg-[var(--text-muted)] opacity-20 rounded animate-pulse" />}
-            </h1>
-
-          </div>
-        </div>
+    <div className="flex min-w-0 flex-1 items-center gap-3">
+      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[var(--card-hover-bg)] text-[var(--text-primary)]">
+        <HousePlug aria-label="Home Control" className="h-5 w-5" strokeWidth={1.8} />
       </div>
+      <h1 className="min-w-0 truncate text-right text-sm font-semibold tracking-tight text-[var(--text-primary)]">
+        {isFullyReady ? headerTitle : <div className="h-4 w-28 animate-pulse rounded bg-[var(--text-muted)] opacity-20" />}
+      </h1>
     </div>
   );
 }
