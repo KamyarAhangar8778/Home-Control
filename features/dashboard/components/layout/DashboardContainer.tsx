@@ -31,8 +31,6 @@ export default function DashboardContainer() {
   const matrixTwinkleEffect = useIoTStore(s => s.matrixTwinkleEffect);
   const matrixTwinkleSpeed = useIoTStore(s => s.matrixTwinkleSpeed);
   const dashboardWidth = useIoTStore(s => s.dashboardWidth);
-  const dashboardBgColor = useIoTStore(s => s.dashboardBgColor);
-  const dashboardBgOpacity = useIoTStore(s => s.dashboardBgOpacity);
 
   const { leftHeaderContentWidth } = useDashboardLayout(dashboardWidth);
 
@@ -45,8 +43,6 @@ export default function DashboardContainer() {
             accent4={accent4}
             isDark={isDark}
             animationsEnabled={animationsEnabled}
-            dashboardBgColor={dashboardBgColor}
-            dashboardBgOpacity={dashboardBgOpacity}
           />
 
           <CuneiformBackground
