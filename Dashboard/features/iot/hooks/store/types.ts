@@ -194,10 +194,6 @@ export interface AestheticSlice {
   setMatrixTwinkleSpeed: (s: number) => void;
   headerPosition: "top" | "left";
   setHeaderPosition: (p: "top" | "left") => void;
-  dashboardBgColor: string;
-  setDashboardBgColor: (c: string) => void;
-  dashboardBgOpacity: number;
-  setDashboardBgOpacity: (o: number) => void;
   isSidebarCollapsed: boolean;
   setIsSidebarCollapsed: (c: boolean) => void;
   dashboardWidth: 1 | 2 | 3 | 4 | 5;
