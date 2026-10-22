@@ -7,16 +7,12 @@ import { useIoTStore } from "@/features/iot/hooks/useIoTStore";
 export default function DashboardHeader() {
   const setIsModulesMenuOpen = useIoTStore(s => s.setIsModulesMenuOpen);
   const setIsMenuOpen = useIoTStore(s => s.setIsMenuOpen);
-  const headerAnimationType = useIoTStore(s => s.headerAnimationType);
   const headerTitle = useIoTStore(s => s.headerTitle);
   const animationsEnabled = useIoTStore(s => s.animationsEnabled);
   const isSidebarCollapsed = useIoTStore(s => s.isSidebarCollapsed);
   const setIsSidebarCollapsed = useIoTStore(s => s.setIsSidebarCollapsed);
   const groupsCols = useIoTStore(s => s.groupsCols);
   const setGroupsCols = useIoTStore(s => s.setGroupsCols);
-  const groupsOrder = useIoTStore(s => s.groupsOrder);
-  const selectedGroupFilter = useIoTStore(s => s.selectedGroupFilter);
-  const setSelectedGroupFilter = useIoTStore(s => s.setSelectedGroupFilter);
 
   return (
     <aside
@@ -26,16 +22,12 @@ export default function DashboardHeader() {
       <MasterHeader
         setIsModulesMenuOpen={setIsModulesMenuOpen}
         setIsMenuOpen={setIsMenuOpen}
-        headerAnimationType={headerAnimationType}
         headerTitle={headerTitle}
         groupsCols={groupsCols}
         setGroupsCols={setGroupsCols}
         animationsEnabled={animationsEnabled}
         isSidebarCollapsed={isSidebarCollapsed}
         setIsSidebarCollapsed={setIsSidebarCollapsed}
-        groupsOrder={groupsOrder}
-        selectedGroupFilter={selectedGroupFilter}
-        setSelectedGroupFilter={setSelectedGroupFilter}
       />
     </aside>
   );
