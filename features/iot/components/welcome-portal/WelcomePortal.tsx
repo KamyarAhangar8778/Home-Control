@@ -3,6 +3,7 @@
 import React from "react";
 import { motion } from "motion/react";
 import { Compass } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
 import SettingsPortalButton from "./components/SettingsPortalButton";
 import ModulesPortalButton from "./components/ModulesPortalButton";
 
@@ -53,6 +54,8 @@ export default function WelcomePortal({
         }}
       />
 
+      <Card className="w-full max-w-3xl border-[var(--border-color)] bg-[var(--card-bg-solid)]/90 shadow-[0_24px_80px_-36px_var(--accent3)] backdrop-blur-md">
+        <CardContent className="flex flex-col items-center gap-6 p-6 md:p-8">
       <div className="space-y-4 text-center">
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[10px] md:text-xs text-[var(--accent3)] border border-[var(--accent3-medium)] bg-[var(--accent3-transparent)] font-sans font-bold shadow-sm">
           <Compass className="w-3.5 h-3.5 text-[var(--accent3)]" />
@@ -75,10 +78,12 @@ export default function WelcomePortal({
         </p>
       </div>
 
-      <div className="pt-4 w-full max-w-xl px-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div className="w-full max-w-xl grid grid-cols-1 sm:grid-cols-2 gap-4">
         <SettingsPortalButton onClick={() => setIsMenuOpen(true)} />
         <ModulesPortalButton onClick={() => setIsModulesMenuOpen(true)} />
       </div>
+        </CardContent>
+      </Card>
     </motion.div>
   );
 }
