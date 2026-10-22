@@ -17,7 +17,7 @@ interface UseCloudflareInitProps {
   handleApplyEspConfig: (config: EspConfig) => void;
 }
 
-export function useCloudflareInit({ mounted: _mounted, handleApplyEspConfig }: UseCloudflareInitProps) {
+export function useCloudflareInit({ handleApplyEspConfig }: UseCloudflareInitProps) {
   const setSegments = useIoTStore((state) => state.setSegments);
   const setGroupsOrder = useIoTStore((state) => state.setGroupsOrder);
   const setGroupConfigs = useIoTStore((state) => state.setGroupConfigs);
@@ -60,14 +60,18 @@ export function useCloudflareInit({ mounted: _mounted, handleApplyEspConfig }: U
     setSyncStatus(false, 0, "تنظیمات از سرور دریافت نشد؛ داشبورد با گروه‌ها و سگمنت‌های خالی آماده است.");
     setIsFullyReady(true);
     debugLog.warn("ConfigSync", "Cloud configuration unavailable; initialized empty groups and segments.");
-  }, [setGroupConfigs, setGroupsOrder, setSegments, setSyncStatus]);
+  }, [handleApplyEspConfig, setGroupConfigs, setGroupsOrder, setSegments, setSyncStatus]);
 
   const initCloudflareSync = useCallback(async () => {
     let attemptCount = 0;
     const maxAttempts = 5;
 
     if (typeof window !== "undefined" && !FEATURE_FLAGS.configLocalCache) {
-      localStorage.removeItem("cached_esp_config");
+      try {
+        localStorage.removeItem("cached_esp_config");
+      } catch (error) {
+        debugLog.warn("ConfigSync", "Could not clear the legacy configuration cache.", error);
+      }
     }
 
     if (!isCloudflareEnabled()) {
