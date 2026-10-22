@@ -28,9 +28,9 @@ export default function CardBody({
   return (
     <div className={`${isUltraCompact ? "p-2 flex-grow flex items-center justify-center" : isCompact ? "p-3 flex-1 flex items-center" : "p-4 flex-1"}`}>
       {segment.type === "input" ? (
-        <div className="flex items-center justify-between bg-[var(--card-bg-solid)] p-4 border border-[var(--border-color)] rounded-xl w-full">
+        <div className="flex items-center justify-between bg-[var(--background)] p-4 border border-[var(--border)] rounded-lg w-full">
           <span className={`text-[10px] font-sans font-bold px-2.5 py-0.5 border rounded-lg ${
-            isPinOn ? "border-[var(--accent4)] text-[var(--accent4)] bg-[var(--accent4-transparent)]" : "border-gray-500 text-gray-400"
+            isPinOn ? "border-[var(--success)] text-[var(--success)] bg-[var(--success)]/10" : "border-[var(--border)] text-[var(--muted-foreground)]"
           }`}>
             {isPinOn ? "ورودی HIGH (1)" : "ورودی LOW (0)"}
           </span>
@@ -43,8 +43,8 @@ export default function CardBody({
                 Digital Input Status
               </span>
             </div>
-            <div className={`w-10 h-10 rounded-full flex items-center justify-center shadow-inner ${isPinOn ? "bg-[var(--accent4-transparent)]" : "bg-gray-800"}`} style={{ boxShadow: isPinOn ? 'inset 0 0 10px var(--accent4-transparent)' : '' }}>
-              <div className={`w-4 h-4 rounded-full ${isPinOn ? "bg-[var(--accent4)] animate-pulse" : "bg-gray-600"}`} style={{ boxShadow: isPinOn ? '0 0 15px var(--accent4)' : '' }} />
+            <div className={`w-10 h-10 rounded-full flex items-center justify-center shadow-inner ${isPinOn ? "bg-[var(--success)]/10" : "bg-[var(--muted)]"}`} style={{ boxShadow: isPinOn ? 'inset 0 0 10px color-mix(in srgb, var(--success) 12%, transparent)' : '' }}>
+              <div className={`w-4 h-4 rounded-full ${isPinOn ? "bg-[var(--success)]" : "bg-[var(--muted-foreground)]"}`} style={{ boxShadow: isPinOn ? '0 0 10px color-mix(in srgb, var(--success) 25%, transparent)' : '' }} />
             </div>
           </div>
         </div>

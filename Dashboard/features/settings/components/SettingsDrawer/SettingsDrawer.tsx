@@ -23,10 +23,10 @@ export default function SettingsDrawer(props: SettingsDrawerProps) {
   const { isAdjusting } = useSettingsAdjuster(isOpen, settingsSignature);
 
   const backdropBackground = isAdjusting
-    ? "rgba(5, 6, 9, 0.08)"
+    ? "rgba(9, 9, 11, 0.08)"
     : isDark
-      ? `radial-gradient(circle at center, ${accent3}15 0%, ${accent4}08 50%, rgba(5,6,9,0.65) 100%)`
-      : `radial-gradient(circle at center, ${accent3}0a 0%, ${accent4}05 50%, rgba(244,245,247,0.7) 100%)`;
+      ? "rgba(9, 9, 11, 0.68)"
+      : "rgba(24, 24, 27, 0.18)";
 
   const backdropStyle: React.CSSProperties = {
     backdropFilter: isAdjusting ? "blur(1px)" : "blur(16px)",
@@ -55,7 +55,7 @@ export default function SettingsDrawer(props: SettingsDrawerProps) {
           animate={{ x: 0 }}
           exit={{ x: "100%" }}
             transition={{ type: "spring", damping: 24, stiffness: 200 }}
-            className="fixed top-0 right-0 h-full w-full max-w-sm bg-gradient-to-b from-[var(--drawer-gradient-from)] to-[var(--drawer-gradient-to)] border-l border-accent3-medium rounded-l-[2.5rem] shadow-2xl z-50 overflow-y-auto [&::-webkit-scrollbar]:hidden [scrollbar-width:none] px-6 py-8 text-right flex flex-col justify-between transition-colors duration-500"
+            className="fixed top-0 right-0 h-full w-full max-w-sm bg-[var(--background)] border-l border-[var(--border)] rounded-l-xl shadow-2xl z-50 overflow-y-auto [&::-webkit-scrollbar]:hidden [scrollbar-width:none] px-6 py-8 text-right flex flex-col justify-between transition-colors duration-500"
           >
             <div className="space-y-6">
               <SettingsHeader onClose={onClose} animationsEnabled={animationsEnabled} />

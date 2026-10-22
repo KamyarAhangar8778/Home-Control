@@ -41,7 +41,7 @@ export default function PlaceholderCard({
         <button
           onClick={() => onRemove(segment.id)}
           onPointerDown={(e) => e.stopPropagation()}
-          className="p-1.5 bg-slate-200/90 dark:bg-slate-950 border border-slate-300 dark:border-slate-800 md:hover:bg-[var(--accent3-transparent)] dark:md:hover:bg-[var(--accent3-transparent)] text-slate-700 dark:text-gray-300 md:hover:text-[var(--accent3)] transition-colors cursor-pointer rounded-lg shadow-sm"
+          className="p-1.5 bg-[var(--secondary)] border border-[var(--border)] md:hover:bg-[var(--accent)] text-[var(--secondary-foreground)] transition-colors cursor-pointer rounded-md shadow-sm"
           title="حذف جایگاه خالی"
         >
           <X className="w-3.5 h-3.5" />
@@ -49,17 +49,17 @@ export default function PlaceholderCard({
         <div
           {...attributes}
           {...listeners}
-          className="p-1.5 bg-slate-200/90 dark:bg-slate-950 border border-slate-300 dark:border-slate-800 md:hover:bg-[var(--accent3-transparent)] dark:md:hover:bg-[var(--accent3-transparent)] text-slate-700 dark:text-gray-300 md:hover:text-[var(--accent3)] cursor-grab active:cursor-grabbing transition-colors rounded-lg shadow-sm"
+          className="p-1.5 bg-[var(--secondary)] border border-[var(--border)] md:hover:bg-[var(--accent)] text-[var(--secondary-foreground)] cursor-grab active:cursor-grabbing transition-colors rounded-md shadow-sm"
           title="کشیدن جایگاه"
         >
           <GripVertical className="w-3.5 h-3.5" />
         </div>
       </div>
       {/* Translate lives here — GPU composited, never causes paint */}
-      <div className="w-full h-full md:hover:-translate-y-1.5 transition-transform duration-350 rounded-2xl group/ph-card">
+      <div className="w-full h-full md:hover:-translate-y-1.5 transition-transform duration-350 rounded-xl group/ph-card">
         <button
           onClick={() => onSetupPlaceholder && onSetupPlaceholder(segment.id)}
-          className={`relative w-full h-full border-2 border-dashed border-[var(--accent3-medium)]/30 bg-[var(--card-bg)] flex flex-col items-center justify-center gap-2 cursor-pointer text-center rounded-2xl overflow-hidden ${
+          className={`relative w-full h-full border border-dashed border-[var(--border)] bg-[var(--card)] flex flex-col items-center justify-center gap-2 cursor-pointer text-center rounded-xl overflow-hidden ${
             isUltraCompact
               ? "p-3 min-h-[90px]"
               : isCompact
@@ -67,11 +67,8 @@ export default function PlaceholderCard({
                 : "p-6 min-h-[178px]"
           }`}
         >
-          {/* Hover glow overlay — opacity-only, GPU composited */}
-          <div className="absolute inset-0 rounded-2xl border border-[var(--accent3)] shadow-xl opacity-0 transition-opacity duration-350 md:group-hover/ph-card:opacity-100 pointer-events-none" />
-
           <div
-            className="relative z-10 p-2 bg-[var(--accent3-transparent)] text-[var(--accent3)]"
+            className="relative z-10 p-2 rounded-md bg-[var(--muted)] text-[var(--muted-foreground)]"
             style={{ clipPath: "polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)" }}
           >
             <Plus className="w-4 h-4" />

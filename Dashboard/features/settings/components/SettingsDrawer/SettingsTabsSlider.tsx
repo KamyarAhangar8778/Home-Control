@@ -40,21 +40,13 @@ export function SettingsTabsSlider({
   return (
     <div className="space-y-3">
       <div
-        className={`border rounded-2xl p-2.5 flex items-center justify-between gap-1 shadow-inner relative overflow-hidden transition-colors duration-300 ${
-          isDark ? "bg-slate-950/40 border-accent3-medium/50" : "bg-white/60 border-slate-200/90"
-        }`}
+        className="border border-[var(--border)] rounded-lg p-2 flex items-center justify-between gap-1 bg-[var(--card)] relative overflow-hidden transition-colors duration-200"
       >
-        <div className="absolute top-0 inset-x-0 h-[1.5px] bg-gradient-to-r from-transparent via-accent3 to-transparent opacity-80" />
-
         <motion.button
           onClick={handlePrev}
           whileHover={animationsEnabled ? { scale: 1.12, rotate: 3 } : undefined}
           whileTap={animationsEnabled ? { scale: 0.9 } : undefined}
-          className={`p-1.5 rounded-xl border transition-all duration-300 cursor-pointer shrink-0 ${
-            isDark
-              ? "border-accent3-medium/30 bg-black/50 text-accent3 hover:text-accent4 hover:border-accent4"
-              : "border-slate-200 bg-slate-50 text-slate-700 hover:text-accent3 hover:border-accent3 shadow-[0_1px_2px_rgba(0,0,0,0.05)]"
-          }`}
+          className="p-1.5 rounded-md border border-[var(--border)] bg-[var(--secondary)] text-[var(--muted-foreground)] hover:bg-[var(--accent)] hover:text-[var(--foreground)] transition-colors cursor-pointer shrink-0"
           title="بخش قبلی"
         >
           <ChevronRight className="w-4 h-4" />
@@ -86,11 +78,7 @@ export function SettingsTabsSlider({
           onClick={handleNext}
           whileHover={animationsEnabled ? { scale: 1.12, rotate: -3 } : undefined}
           whileTap={animationsEnabled ? { scale: 0.9 } : undefined}
-          className={`p-1.5 rounded-xl border transition-all duration-300 cursor-pointer shrink-0 ${
-            isDark
-              ? "border-accent3-medium/30 bg-black/50 text-accent3 hover:text-accent4 hover:border-accent4"
-              : "border-slate-200 bg-slate-50 text-slate-700 hover:text-accent3 hover:border-accent3 shadow-[0_1px_2px_rgba(0,0,0,0.05)]"
-          }`}
+          className="p-1.5 rounded-md border border-[var(--border)] bg-[var(--secondary)] text-[var(--muted-foreground)] hover:bg-[var(--accent)] hover:text-[var(--foreground)] transition-colors cursor-pointer shrink-0"
           title="بخش بعدی"
         >
           <ChevronLeft className="w-4 h-4" />
