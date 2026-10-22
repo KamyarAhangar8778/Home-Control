@@ -1,28 +1,51 @@
+import { debugLog } from "@/lib/debug";
+
 export async function fetchArchivePlaylist() {
   try {
-    const res = await fetch('https://archive.org/advancedsearch.php?q=subject:(traditional+OR+historical)+AND+subject:(instrumental)+AND+mediatype:(audio)&fl[]=identifier,title,creator&sort[]=downloads+desc&rows=30&output=json');
-    if (res.ok) {
-      const data = await res.json();
-      if (data.response?.docs?.length > 0) {
-        return data.response.docs;
-      }
+    const response = await fetch(
+      "https://archive.org/advancedsearch.php?q=subject:(traditional+OR+historical)+AND+subject:(instrumental)+AND+mediatype:(audio)&fl[]=identifier,title,creator&sort[]=downloads+desc&rows=30&output=json",
+    );
+    if (!response.ok) {
+      throw new Error(`Archive playlist request failed: ${response.status} ${response.statusText}`);
     }
-  } catch(err) {
-    console.error("Audio API error:", err);
+
+    const data = await response.json();
+    const docs = data.response?.docs;
+    if (Array.isArray(docs) && docs.length > 0) return docs;
+
+    debugLog.warn("AudioPlaylist", "Archive API returned an empty playlist.");
+  } catch (error) {
+    debugLog.error("AudioPlaylist", "Could not fetch Archive playlist.", error);
   }
   return [];
 }
 
 export async function fetchTrackUrl(identifier: string): Promise<string | null> {
   try {
-    const metaRes = await fetch(`https://archive.org/metadata/${identifier}`);
-    const metaData = await metaRes.json();
-    const mp3File = metaData.files?.find((f: any) => f.format === "128Kbps MP3" || f.format === "VBR MP3" || f.name.endsWith(".mp3"));
-    if (mp3File) {
-      return `https://archive.org/download/${identifier}/${mp3File.name}`;
+    const response = await fetch(`https://archive.org/metadata/${encodeURIComponent(identifier)}`);
+    if (!response.ok) {
+      throw new Error(`Track metadata request failed: ${response.status} ${response.statusText}`);
     }
-  } catch(err) {
-    // ignore
+
+    const metadata = await response.json();
+    const files = Array.isArray(metadata.files) ? metadata.files : [];
+    const mp3File = files.find(
+      (file: { format?: string; name?: string }) =>
+        file.name &&
+        (file.format === "128Kbps MP3" || file.format === "VBR MP3" || file.name.toLowerCase().endsWith(".mp3")),
+    );
+
+    if (!mp3File?.name) {
+      debugLog.warn("AudioPlaylist", "No MP3 file found for online track.", { identifier });
+      return null;
+    }
+
+    return `https://archive.org/download/${encodeURIComponent(identifier)}/${mp3File.name
+      .split("/")
+      .map(encodeURIComponent)
+      .join("/")}`;
+  } catch (error) {
+    debugLog.error("AudioPlaylist", "Could not resolve online track URL.", { identifier, error });
+    return null;
   }
-  return null;
 }
