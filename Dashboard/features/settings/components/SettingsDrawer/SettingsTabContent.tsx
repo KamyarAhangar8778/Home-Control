@@ -1,7 +1,6 @@
 import React from "react";
 import StabilitySection from "../StabilitySection";
 import MatrixSection from "../matrix-section/MatrixSection";
-import HeaderSettingsSection from "../HeaderSettingsSection";
 import AudioSection from "../audio-section/AudioSection";
 import MqttSection from "../mqtt-section/MqttSection";
 import MacrosSection from "../macros-section/MacrosSection";
@@ -51,14 +50,8 @@ export function SettingsTabContent({
   matrixTwinkleSpeed,
   setMatrixTwinkleSpeed,
   isDark,
-  headerPosition,
-  setHeaderPosition,
   dashboardWidth,
   setDashboardWidth,
-  dashboardBgColor,
-  setDashboardBgColor,
-  dashboardBgOpacity,
-  setDashboardBgOpacity,
   isGroupsCompactLayout,
   setIsGroupsCompactLayout,
   isSegmentsCompactLayout,
@@ -83,8 +76,6 @@ export function SettingsTabContent({
     case "layout":
       return (
         <LayoutSection
-          headerPosition={headerPosition}
-          setHeaderPosition={setHeaderPosition}
           headerTitle={headerTitle}
           setHeaderTitle={setHeaderTitle}
           dashboardWidth={dashboardWidth}
@@ -120,10 +111,6 @@ export function SettingsTabContent({
           accent3={accent3}
           accent4={accent4}
           isDark={isDark}
-          dashboardBgColor={dashboardBgColor}
-          setDashboardBgColor={setDashboardBgColor}
-          dashboardBgOpacity={dashboardBgOpacity}
-          setDashboardBgOpacity={setDashboardBgOpacity}
         />
       );
     case "audio":
