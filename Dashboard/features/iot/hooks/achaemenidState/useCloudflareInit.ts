@@ -34,6 +34,25 @@ export function useCloudflareInit({ mounted: _mounted, handleApplyEspConfig }: U
   const handleBypassSync = useCallback(() => {
     bypassedRef.current = true;
 
+    // Optional offline recovery is explicitly disabled during development.
+    if (FEATURE_FLAGS.configLocalCache && typeof window !== "undefined") {
+      try {
+        const cached = localStorage.getItem("cached_esp_config");
+        if (cached) {
+          const cachedConfig = JSON.parse(cached) as EspConfig;
+          if (cachedConfig && Array.isArray(cachedConfig.segments) && cachedConfig.layout) {
+            handleApplyEspConfig(cachedConfig);
+            setSyncStatus(false, 100, "اتصال به سرور برقرار نیست؛ تنظیمات کش‌شده بارگذاری شد.");
+            setIsFullyReady(true);
+            debugLog.warn("ConfigSync", "Recovered configuration from optional local cache.");
+            return;
+          }
+        }
+      } catch (error) {
+        debugLog.error("ConfigSync", "Could not read optional configuration cache.", error);
+      }
+    }
+
     // Never resurrect stale configuration or seed demo/default segments when cloud sync fails.
     setSegments([]);
     setGroupsOrder([]);
@@ -46,6 +65,10 @@ export function useCloudflareInit({ mounted: _mounted, handleApplyEspConfig }: U
   const initCloudflareSync = useCallback(async () => {
     let attemptCount = 0;
     const maxAttempts = 5;
+
+    if (typeof window !== "undefined" && !FEATURE_FLAGS.configLocalCache) {
+      localStorage.removeItem("cached_esp_config");
+    }
 
     if (!isCloudflareEnabled()) {
       debugLog.warn("ConfigSync", "Cloudflare is disabled; no default configuration will be applied.");
