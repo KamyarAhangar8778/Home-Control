@@ -187,7 +187,7 @@ export interface AestheticSlice {
   setMatrixTwinkleEffect: (t: boolean) => void;
   matrixTwinkleSpeed: number;
   setMatrixTwinkleSpeed: (s: number) => void;
-  headerPosition: "top" | "left";
+  headerPosition: "right";
   isSidebarCollapsed: boolean;
   setIsSidebarCollapsed: (c: boolean) => void;
   dashboardWidth: 1 | 2 | 3 | 4 | 5;
