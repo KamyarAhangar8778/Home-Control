@@ -24,7 +24,6 @@ export const createAestheticSlice: StateCreator<IoTStoreState, [], [], Aesthetic
   isGroupsCompactLayout: false,
   isSegmentsCompactLayout: false,
 
-  setIsDark: (d) => set({ isDark: d }),
   setAnimationsEnabled: (e) => set({ animationsEnabled: e }),
   setAnimationsFps: (f) => set({ animationsFps: f }),
   setHeaderAnimationType: (t) => set({ headerAnimationType: t }),
@@ -38,7 +37,6 @@ export const createAestheticSlice: StateCreator<IoTStoreState, [], [], Aesthetic
   setMatrixMouseEffect: (m) => set({ matrixMouseEffect: m }),
   setMatrixTwinkleEffect: (t) => set({ matrixTwinkleEffect: t }),
   setMatrixTwinkleSpeed: (s) => set({ matrixTwinkleSpeed: s }),
-  setHeaderPosition: (p) => set({ headerPosition: p }),
   setIsSidebarCollapsed: (c) => set({ isSidebarCollapsed: c }),
   setDashboardWidth: (w) => set({ dashboardWidth: w }),
   setIsGroupsCompactLayout: (c) => set({ isGroupsCompactLayout: c }),
