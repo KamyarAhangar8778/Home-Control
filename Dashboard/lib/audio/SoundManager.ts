@@ -1,17 +1,16 @@
-import { AmbientManager } from './AmbientManager';
-import { 
-  playClickSynth, 
-  playToggleOnSynth, 
-  playToggleOffSynth, 
-  playSuccessSynth, 
-  playErrorSynth 
-} from './effects';
+import { AmbientManager } from "./AmbientManager";
+import {
+  playClickSynth,
+  playToggleOnSynth,
+  playToggleOffSynth,
+  playSuccessSynth,
+  playErrorSynth,
+} from "./effects";
 
 export class SoundManager {
-  private enabled: boolean = true;
+  private enabled = true;
   private ambientManager = new AmbientManager();
 
-  // Expose AmbientManager properties for backward compatibility
   get isAmbientPlaying() { return this.ambientManager.isAmbientPlaying; }
   get currentTrack() { return this.ambientManager.currentTrack; }
   get playlist() { return this.ambientManager.playlist; }
@@ -26,27 +25,23 @@ export class SoundManager {
   }
 
   public async nextTrack() {
-    await this.ambientManager.loadAmbientTrack('next');
+    await this.ambientManager.loadAmbientTrack("next");
   }
 
   public async prevTrack() {
-    await this.ambientManager.loadAmbientTrack('prev');
+    await this.ambientManager.loadAmbientTrack("prev");
   }
 
   public setEnabled(val: boolean) {
     this.enabled = val;
-    if (!val && this.isAmbientPlaying) {
-      this.ambientManager.stop();
-    }
+    if (!val && this.isAmbientPlaying) this.ambientManager.stop();
   }
 
   public async toggleAmbient() {
     if (this.isAmbientPlaying) {
       this.stopAmbient();
-      if (typeof window !== 'undefined') localStorage.setItem('music_disabled', 'true');
     } else {
       await this.startAmbient();
-      if (typeof window !== 'undefined') localStorage.setItem('music_disabled', 'false');
     }
     return this.isAmbientPlaying;
   }
