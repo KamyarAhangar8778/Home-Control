@@ -91,12 +91,6 @@ export const SETTINGS_TABS = [
     Icon: Mic,
   },
   {
-    id: "header-settings",
-    title: "موقعیت و تنظیمات هدر",
-    compactTitle: "طرح قرارگیری هدر بورد",
-    Icon: LayoutGrid,
-  },
-  {
     id: "matrix",
     title: "تنظیمات انیمیشن پس‌زمینه ماتریکس",
     compactTitle: "انیمیشن پس‌زمینه",
