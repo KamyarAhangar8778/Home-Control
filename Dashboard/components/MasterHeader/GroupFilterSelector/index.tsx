@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { AnimatePresence } from "motion/react";
-import { useIoTStore } from '@/features/iot/hooks/useIoTStore';
 import { useDashboard } from "@/features/dashboard/context/DashboardContext";
-import { GroupFilterSelectorProps } from "./types";
+import type { GroupFilterSelectorProps } from "./types";
 import SkeletonLoader from "./SkeletonLoader";
 import FilterButton from "./FilterButton";
 
@@ -26,7 +25,7 @@ export default function GroupFilterSelector({
 
   const allGroups = [null, ...groupsOrder];
   
-  const currIndex = allGroups.findIndex((g) => g === selectedGroupFilter);
+  const currIndex = allGroups.indexOf(selectedGroupFilter);
   const safeCurrIndex = currIndex === -1 ? 0 : currIndex;
   
   const goNext = () => {
@@ -47,7 +46,7 @@ export default function GroupFilterSelector({
     <div className={`flex items-center justify-center pointer-events-auto max-w-full overflow-hidden ${!isCompact ? 'mb-2' : ''}`} dir="rtl">
       <div className={`flex flex-row items-center justify-center ${isCompact ? 'gap-1' : 'gap-2'} max-w-full`}>
         
-        <button onClick={goPrev} className={`hidden md:block rounded-full text-[var(--text-secondary)] md:hover:bg-[var(--accent3)] md:hover:text-white transition-colors shrink-0 ${isCompact ? 'p-0.5' : 'p-1'}`} title="قبلی">
+        <button type="button" onClick={goPrev} className={`hidden md:block rounded-full text-[var(--text-secondary)] md:hover:bg-[var(--accent3)] md:hover:text-white transition-colors shrink-0 ${isCompact ? 'p-0.5' : 'p-1'}`} title="قبلی">
           <ChevronRight className={isCompact ? "w-3.5 h-3.5" : "w-5 h-5"} />
         </button>
         
@@ -76,7 +75,7 @@ export default function GroupFilterSelector({
           </AnimatePresence>
         </div>
 
-        <button onClick={goNext} className={`hidden md:block rounded-full text-[var(--text-secondary)] md:hover:bg-[var(--accent3)] md:hover:text-white transition-colors shrink-0 ${isCompact ? 'p-0.5' : 'p-1'}`} title="بعدی">
+        <button type="button" onClick={goNext} className={`hidden md:block rounded-full text-[var(--text-secondary)] md:hover:bg-[var(--accent3)] md:hover:text-white transition-colors shrink-0 ${isCompact ? 'p-0.5' : 'p-1'}`} title="بعدی">
           <ChevronLeft className={isCompact ? "w-3.5 h-3.5" : "w-5 h-5"} />
         </button>
       </div>

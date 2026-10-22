@@ -1,6 +1,5 @@
-import React from "react";
 import VerticalBrandBox from "./VerticalBrandBox";
-import { BrandBoxProps } from "./types";
+import type { BrandBoxProps } from "./types";
 
 export default function BrandBox(props: Omit<BrandBoxProps, "variant">) {
   return <VerticalBrandBox {...props} />;
