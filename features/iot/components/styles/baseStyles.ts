@@ -1,6 +1,5 @@
 export function getBaseStyles(isDark: boolean): string {
   return `
-    @import url('https://fonts.googleapis.com/css2?family=Lalezar&family=Vazirmatn:wght@100..900&family=JetBrains+Mono:wght@100..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Space+Grotesk:wght@300..700&family=Cairo:wght@200..1000&family=Amiri:ital,wght@0,400..700;1,400..700&family=Changa:wght@200..800&family=Reem+Kufi:wght@400..700&family=Tajawal:wght@200..900&display=swap');
 
     /* Custom cursor personalizations */
     html, body {
