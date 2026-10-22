@@ -3,6 +3,7 @@
 import React from "react";
 import { motion } from "motion/react";
 import { WifiOff } from "lucide-react";
+import { Alert } from "@/components/reui/alert";
 
 interface LowDataModeBannerProps {
   lowDataMode: boolean;
@@ -31,8 +32,12 @@ export default function LowDataModeBanner({
         <motion.div
           initial={animationsEnabled ? { opacity: 0, y: -10 } : {}}
           animate={animationsEnabled ? { opacity: 1, y: 0 } : {}}
-          className={`flex flex-col sm:flex-row-reverse items-center justify-between px-6 py-4 bg-[var(--card-bg-solid)] border border-[var(--accent3-medium)]/85 text-right gap-4 w-full transition-all duration-300 shadow-md md:hover:border-[var(--accent3)] md:hover:shadow-[0_0_15px_var(--accent3-transparent)] rounded-2xl`}
+          className="w-full"
         >
+          <Alert
+            variant="warning"
+            className="!flex flex-col sm:flex-row-reverse items-center justify-between gap-4 !border-[var(--accent3-medium)]/85 !bg-[var(--card-bg-solid)] px-6 py-4 text-right shadow-md transition-all duration-300 md:hover:border-[var(--accent3)] md:hover:shadow-[0_0_15px_var(--accent3-transparent)]"
+          >
           <div className="flex items-center gap-3">
             <WifiOff className="w-5 h-5 text-[var(--accent3)] animate-pulse shrink-0" />
             <span className="text-[12.5px] font-sans font-extrabold text-[var(--text-primary)] drop-shadow-sm">
@@ -47,6 +52,7 @@ export default function LowDataModeBanner({
           >
             به‌روزرسانی کنونی
           </motion.button>
+          </Alert>
         </motion.div>
       )}
 
@@ -54,8 +60,12 @@ export default function LowDataModeBanner({
         <motion.div
           initial={animationsEnabled ? { opacity: 0, y: -10 } : {}}
           animate={animationsEnabled ? { opacity: 1, y: 0 } : {}}
-          className={`flex flex-col sm:flex-row-reverse items-center justify-between px-6 py-4 bg-emerald-950/20 border border-emerald-500/40 text-right gap-4 w-full transition-all duration-300 shadow-md md:hover:border-emerald-500 md:hover:shadow-[0_0_15px_rgba(16,185,129,0.3)] rounded-2xl`}
+          className="w-full"
         >
+          <Alert
+            variant="success"
+            className="!flex flex-col sm:flex-row-reverse items-center justify-between gap-4 !border-emerald-500/40 !bg-emerald-950/20 px-6 py-4 text-right shadow-md transition-all duration-300 md:hover:border-emerald-500 md:hover:shadow-[0_0_15px_rgba(16,185,129,0.3)]"
+          >
           <div className="flex items-center gap-3">
             <div className="flex items-center justify-center w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold shrink-0">
               {unsavedChangesCount}
@@ -72,6 +82,7 @@ export default function LowDataModeBanner({
           >
             ذخیره‌سازی تغییرات
           </motion.button>
+          </Alert>
         </motion.div>
       )}
     </div>
