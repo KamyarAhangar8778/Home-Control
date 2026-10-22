@@ -10,12 +10,6 @@ const vazirmatn = Vazirmatn({
   display: "swap",
 });
 
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-jetbrains",
-  display: "swap",
-});
-
 export const metadata: Metadata = {
   title: "سامانه اینترنت اشیاء هخامنشی | Achaemenid IoT Dashboard",
   description:
