@@ -16,7 +16,7 @@ export default function SettingsDrawer(props: SettingsDrawerProps) {
   const activeTab = propActiveTab !== undefined ? propActiveTab : localActiveTab;
   const setActiveTab = propSetActiveTab !== undefined ? propSetActiveTab : setLocalActiveTab;
 
-  const settingsSignature = `${accent3}-${accent4}-${animationsEnabled}-${props.animationsFps}-${props.headerAnimationType}-${props.headerTitle}-${props.matrixDensity}-${props.matrixSize}-${props.matrixHoverSize}-${props.matrixOpacity}-${props.matrixColor}-${props.matrixMoving}-${props.matrixMouseEffect}-${props.matrixTwinkleEffect}-${props.matrixTwinkleSpeed}-${isDark}`;
+  const settingsSignature = `${accent3}-${accent4}-${animationsEnabled}-${props.animationsFps}-${props.headerTitle}-${props.matrixDensity}-${props.matrixSize}-${props.matrixHoverSize}-${props.matrixOpacity}-${props.matrixColor}-${props.matrixMoving}-${props.matrixMouseEffect}-${props.matrixTwinkleEffect}-${props.matrixTwinkleSpeed}-${isDark}`;
   const { isAdjusting } = useSettingsAdjuster(isOpen, settingsSignature);
 
   const backdropBackground = isAdjusting
