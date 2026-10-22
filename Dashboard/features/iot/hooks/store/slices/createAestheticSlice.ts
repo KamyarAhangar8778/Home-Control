@@ -18,7 +18,7 @@ export const createAestheticSlice: StateCreator<IoTStoreState, [], [], Aesthetic
   matrixMouseEffect: true,
   matrixTwinkleEffect: false,
   matrixTwinkleSpeed: 50,
-  headerPosition: "left",
+  headerPosition: "right",
   isSidebarCollapsed: false,
   dashboardWidth: 1,
   isGroupsCompactLayout: false,

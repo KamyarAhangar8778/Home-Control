@@ -37,7 +37,6 @@ export default function DashboardWorkspace() {
   const setIsMenuOpen = useIoTStore(s => s.setIsMenuOpen);
   const setIsModulesMenuOpen = useIoTStore(s => s.setIsModulesMenuOpen);
   const animationsEnabled = useIoTStore(s => s.animationsEnabled);
-  const headerPosition = useIoTStore(s => s.headerPosition);
   const dashboardWidth = useIoTStore(s => s.dashboardWidth);
   const isGroupsCompactLayout = useIoTStore(s => s.isGroupsCompactLayout);
   const isSegmentsCompactLayout = useIoTStore(s => s.isSegmentsCompactLayout);
@@ -54,11 +53,10 @@ export default function DashboardWorkspace() {
   const { onTouchStart, onTouchMove, onTouchEnd } = useWorkspaceSwipe(selectedGroupFilter, setSelectedGroupFilter, groupsOrder);
   const { innerWidthClass, outerWidthClass } = useDashboardLayout(dashboardWidth);
 
-  const isLeftHeader = headerPosition === "left";
 
   return (
     <div 
-      className={`w-full flex ${isLeftHeader ? "flex-col items-center" : "flex-row-reverse items-start justify-center gap-6"} ${outerWidthClass} mx-auto transition-all duration-500`}
+      className={`w-full flex flex-col items-center ${outerWidthClass} mx-auto transition-all duration-500`}
       onTouchStart={onTouchStart}
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}
