@@ -67,14 +67,10 @@ function ActiveCard({
           ? { opacity: 0, scale: 0.85, y: -10, transition: { duration: 0.2, ease: "easeIn" } }
           : undefined
       }
-      className={`flex flex-col bg-[var(--card-bg)] backdrop-blur-md border border-[var(--border-color)] relative group h-full shadow-sm rounded-2xl ${
+      className={`flex flex-col bg-[var(--card)] text-[var(--card-foreground)] border border-[var(--border)] relative group h-full shadow-sm rounded-xl ${
         isUltraCompact ? "min-h-[90px]" : "min-h-[140px]"
       }`}
     >
-      <div className="absolute inset-0 rounded-2xl border border-[var(--accent3)] shadow-xl opacity-0 transition-opacity duration-350 md:group-hover:opacity-100 pointer-events-none" />
-      <div className="absolute top-0 right-0 w-3 h-3 md:group-hover:border-accent3/40 pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-3 h-3 md:group-hover:border-accent3/40 pointer-events-none" />
-
       <div className="flex flex-col h-full justify-between relative z-10">
         <CardHeader
           segment={segment}

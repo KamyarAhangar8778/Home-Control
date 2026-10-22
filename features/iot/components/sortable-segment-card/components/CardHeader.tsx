@@ -73,7 +73,7 @@ export default function CardHeader({
     <div
       {...(isSmall ? attributes : {})}
       {...(isSmall ? listeners : {})}
-      className={`flex items-center border-b border-[var(--border-color)] bg-slate-500/[0.05] dark:bg-black/25 ${
+      className={`flex items-center border-b border-[var(--border)] bg-[var(--muted)]/40 ${
         !showIconInHeader
           ? "justify-center p-2 cursor-grab active:cursor-grabbing"
           : isSmall
@@ -101,10 +101,10 @@ export default function CardHeader({
             <button
               ref={buttonRef}
               onClick={() => currentSetIsSettingsOpen(!currentIsSettingsOpen)}
-              className={`py-1 bg-slate-200/90 dark:bg-slate-950 border border-slate-300/85 dark:border-slate-800 transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] cursor-pointer rounded-full shadow-sm flex items-center justify-center ${
+              className={`py-1 bg-[var(--secondary)] border border-[var(--border)] transition-colors cursor-pointer rounded-md flex items-center justify-center ${
                 currentIsSettingsOpen
-                  ? "border-[var(--accent3)] text-[var(--accent3)] shadow-[0_0_8px_rgba(255,165,0,0.3)] w-[22px]"
-                  : "w-[54px] md:group-hover/btn:w-[22px] text-slate-700 dark:text-gray-300 md:group-hover/btn:border-[var(--accent3)] md:group-hover/btn:text-[var(--accent3)] md:group-hover/btn:bg-slate-300/50 dark:md:group-hover/btn:bg-slate-800/50"
+                  ? "border-[var(--ring)] text-[var(--foreground)] bg-[var(--accent)] w-[22px]"
+                  : "w-[54px] md:group-hover/btn:w-[22px] text-[var(--muted-foreground)] md:group-hover/btn:bg-[var(--accent)] md:group-hover/btn:text-[var(--accent-foreground)]"
               }`}
               title="تنظیمات سگمنت"
               onPointerDown={(e) => e.stopPropagation()}
@@ -135,7 +135,7 @@ export default function CardHeader({
       {showIconInHeader && (
         <div className="flex items-center gap-2">
           <div
-            className={`p-2 transition-colors ${isPinOn ? "bg-[var(--accent4-transparent)] text-[var(--accent4)]" : "bg-gray-800/20 text-gray-500"}`}
+            className={`p-2 rounded-md transition-colors ${isPinOn ? "bg-[var(--accent)] text-[var(--accent-foreground)]" : "bg-[var(--muted)] text-[var(--muted-foreground)]"}`}
             style={{ clipPath: BUTTON_CLIP }}
           >
             {segment.icon ? (
