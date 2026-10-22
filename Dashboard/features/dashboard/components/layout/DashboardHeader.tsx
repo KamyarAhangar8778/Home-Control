@@ -5,14 +5,10 @@ import MasterHeader from "@/components/MasterHeader";
 import { useIoTStore } from "@/features/iot/hooks/useIoTStore";
 
 export default function DashboardHeader() {
-  const isDark = useIoTStore(s => s.isDark);
-  const setIsDark = useIoTStore(s => s.setIsDark);
   const setIsModulesMenuOpen = useIoTStore(s => s.setIsModulesMenuOpen);
   const setIsMenuOpen = useIoTStore(s => s.setIsMenuOpen);
   const headerAnimationType = useIoTStore(s => s.headerAnimationType);
   const headerTitle = useIoTStore(s => s.headerTitle);
-  const headerPosition = useIoTStore(s => s.headerPosition);
-  const setHeaderPosition = useIoTStore(s => s.setHeaderPosition);
   const animationsEnabled = useIoTStore(s => s.animationsEnabled);
   const isSidebarCollapsed = useIoTStore(s => s.isSidebarCollapsed);
   const setIsSidebarCollapsed = useIoTStore(s => s.setIsSidebarCollapsed);
@@ -28,16 +24,12 @@ export default function DashboardHeader() {
       aria-label="ناوبری اصلی"
     >
       <MasterHeader
-        isDark={isDark}
-        setIsDark={setIsDark}
         setIsModulesMenuOpen={setIsModulesMenuOpen}
         setIsMenuOpen={setIsMenuOpen}
         headerAnimationType={headerAnimationType}
         headerTitle={headerTitle}
         groupsCols={groupsCols}
         setGroupsCols={setGroupsCols}
-        headerPosition={headerPosition}
-        setHeaderPosition={setHeaderPosition}
         animationsEnabled={animationsEnabled}
         isSidebarCollapsed={isSidebarCollapsed}
         setIsSidebarCollapsed={setIsSidebarCollapsed}

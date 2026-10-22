@@ -159,7 +159,6 @@ export interface MenuSlice {
 
 export interface AestheticSlice {
   isDark: boolean;
-  setIsDark: (d: boolean) => void;
   accent3: string;
   accent4: string;
   animationsEnabled: boolean;
@@ -189,7 +188,6 @@ export interface AestheticSlice {
   matrixTwinkleSpeed: number;
   setMatrixTwinkleSpeed: (s: number) => void;
   headerPosition: "top" | "left";
-  setHeaderPosition: (p: "top" | "left") => void;
   isSidebarCollapsed: boolean;
   setIsSidebarCollapsed: (c: boolean) => void;
   dashboardWidth: 1 | 2 | 3 | 4 | 5;
