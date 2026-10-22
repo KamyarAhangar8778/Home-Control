@@ -11,7 +11,7 @@ import { SettingsTabContent } from "./SettingsTabContent";
 
 export default function SettingsDrawer(props: SettingsDrawerProps) {
   const { isOpen, onClose, accent3, accent4, isDark, animationsEnabled, activeTab: propActiveTab, setActiveTab: propSetActiveTab } = props;
-  const [localActiveTab, setLocalActiveTab] = useState<string>("layout";
+  const [localActiveTab, setLocalActiveTab] = useState<string>("layout");
 
   const activeTab = propActiveTab !== undefined ? propActiveTab : localActiveTab;
   const setActiveTab = propSetActiveTab !== undefined ? propSetActiveTab : setLocalActiveTab;
