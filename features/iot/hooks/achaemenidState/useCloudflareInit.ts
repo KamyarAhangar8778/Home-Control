@@ -66,7 +66,7 @@ export function useCloudflareInit({ mounted, handleApplyEspConfig }: UseCloudfla
       try {
 
         const cfConfig = await fetchConfigFromCloudflare();
-        if (cfConfig && cfConfig.segments && cfConfig.segments.length > 0) {
+        if (cfConfig && Array.isArray(cfConfig.segments)) {
           if (bypassedRef.current) return;
           if (cfConfig.worker_url) {
             handleWorkerUrlChange(cfConfig.worker_url);
