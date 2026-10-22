@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "motion/react";
+import { Card } from "@/components/ui/card";
 import { SortableSegmentCardProps } from "../core/types";
 import CardHeader from "./CardHeader";
 import CardBody from "./CardBody";
@@ -67,11 +68,14 @@ function ActiveCard({
           ? { opacity: 0, scale: 0.85, y: -10, transition: { duration: 0.2, ease: "easeIn" } }
           : undefined
       }
-      className={`flex flex-col bg-[var(--card)] text-[var(--card-foreground)] border border-[var(--border)] relative group h-full shadow-sm rounded-xl ${
-        isUltraCompact ? "min-h-[90px]" : "min-h-[140px]"
-      }`}
+      className="relative h-full"
     >
-      <div className="flex flex-col h-full justify-between relative z-10">
+      <Card
+        className={`group relative flex h-full flex-col justify-between border border-[var(--border)] shadow-sm ${
+          isUltraCompact ? "min-h-[90px]" : "min-h-[140px]"
+        }`}
+        style={{ "--card-spacing": "0px" } as React.CSSProperties}
+      >
         <CardHeader
           segment={segment}
           isPinOn={isPinOn}
@@ -102,7 +106,7 @@ function ActiveCard({
         />
 
         {!isUltraCompact && !isCompact && <CardFooter segment={segment} isPinOn={isPinOn} />}
-      </div>
+      </Card>
     </motion.div>
   );
 }
