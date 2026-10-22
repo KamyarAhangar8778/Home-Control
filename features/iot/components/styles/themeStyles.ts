@@ -52,6 +52,15 @@ export function getThemeStyles({
       --border-color: ${isDark ? "rgba(255, 255, 255, 0.06)" : "rgba(9, 10, 16, 0.1)"};
       --drawer-gradient-from: ${isDark ? "#090a10" : "#fcfdfe"};
       --drawer-gradient-to: ${isDark ? "#020304" : "#ecf0f5"};
+
+      /* ReUI-inspired sidebar surfaces: neutral zinc scale, restrained borders. */
+      --sidebar-bg: ${isDark ? "#09090b" : "#ffffff"};
+      --sidebar-border: ${isDark ? "#27272a" : "#e4e4e7"};
+      --sidebar-text: ${isDark ? "#fafafa" : "#18181b"};
+      --sidebar-muted: ${isDark ? "#a1a1aa" : "#52525b"};
+      --sidebar-hover: ${isDark ? "#27272a" : "#f4f4f5"};
+      --sidebar-active: ${isDark ? "#3f3f46" : "#e4e4e7"};
+      --sidebar-control-bg: ${isDark ? "#18181b" : "#fafafa"};
     }
     
     html, body, button, h1, h2, h3, h4, h5, h6, select, span, input, textarea, .font-sans {
