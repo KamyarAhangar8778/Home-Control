@@ -1,7 +1,6 @@
-import React from "react";
 import { HousePlug } from "lucide-react";
 import { useDashboard } from "@/features/dashboard/context/DashboardContext";
-import { BrandBoxProps } from "./types";
+import type { BrandBoxProps } from "./types";
 
 export default function VerticalBrandBox({
   headerTitle,
