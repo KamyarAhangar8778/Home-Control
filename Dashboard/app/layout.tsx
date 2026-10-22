@@ -27,7 +27,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="fa" dir="rtl" className={vazirmatn.variable}>
       <body
         suppressHydrationWarning
-        className="bg-[#0b0c10] text-[#c5a880] min-h-screen selection:bg-amber-500/20 selection:text-amber-300 font-sans"
+        className="bg-[#0b0c10] text-[#e5e7eb] min-h-screen selection:bg-amber-500/20 selection:text-amber-300 font-sans"
       >
         <QueryProvider>
           <AudioInitializer />

@@ -4,11 +4,7 @@ import React from "react";
 import MasterHeader from "@/components/MasterHeader";
 import { useIoTStore } from "@/features/iot/hooks/useIoTStore";
 
-interface DashboardHeaderProps {
-  position: "left" | "topOrMobile";
-}
-
-export default function DashboardHeader({ position }: DashboardHeaderProps) {
+export default function DashboardHeader() {
   const isDark = useIoTStore(s => s.isDark);
   const setIsDark = useIoTStore(s => s.setIsDark);
   const setIsModulesMenuOpen = useIoTStore(s => s.setIsModulesMenuOpen);
@@ -25,8 +21,6 @@ export default function DashboardHeader({ position }: DashboardHeaderProps) {
   const groupsOrder = useIoTStore(s => s.groupsOrder);
   const selectedGroupFilter = useIoTStore(s => s.selectedGroupFilter);
   const setSelectedGroupFilter = useIoTStore(s => s.setSelectedGroupFilter);
-
-  if (position === "topOrMobile") return null;
 
   return (
     <aside

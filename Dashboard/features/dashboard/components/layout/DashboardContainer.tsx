@@ -62,7 +62,7 @@ export default function DashboardContainer() {
           />
 
           <div className="relative z-10 flex flex-row-reverse items-stretch w-full min-h-screen transition-all duration-500">
-            <DashboardHeader position="left" />
+            <DashboardHeader />
             <div className={`flex-1 min-w-0 flex flex-col justify-between gap-8 p-3 md:p-6 md:pt-1 md:pb-8 md:px-8 ${leftHeaderContentWidth} w-full mx-auto`}>
               <DashboardMain />
             </div>
