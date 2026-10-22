@@ -1,5 +1,6 @@
 #include "../PinManager.h"
 #include <Utilities/logging.h>
+#include <Preferences.h>
 
 bool PinManager::addSegment(const char* id, SegmentType type, int pin, int autoOffDelay, RuleConfig rule) {
     if (_registry.findById(id) >= 0) {
@@ -40,6 +41,17 @@ bool PinManager::addSegment(const char* id, SegmentType type, int pin, int autoO
     } else {
         entry->gpio.setPin(pin);
         entry->gpio.begin();
+
+        // Restore the last output state from NVS after initializing the GPIO.
+        Preferences pinPrefs;
+        if (pinPrefs.begin("AchaemenidPins", true)) {
+            String key = "p" + String(pin);
+            bool savedState = pinPrefs.getBool(key.c_str(), false);
+            pinPrefs.end();
+            entry->gpio.setState(savedState);
+            INFOF("[PinManager] Restored pin %d -> %s", pin, savedState ? "ON" : "OFF");
+        }
+
         entry->hasGpio = true;
     }
     
