@@ -3,8 +3,8 @@ import { IoTStoreState, AestheticSlice } from "../types";
 
 export const createAestheticSlice: StateCreator<IoTStoreState, [], [], AestheticSlice> = (set) => ({
   isDark: true,
-  accent3: "#D4AF37",
-  accent4: "#10B981",
+  accent3: "#E5E7EB",
+  accent4: "#3B82F6",
   animationsEnabled: true,
   animationsFps: 60,
   headerAnimationType: "fade",
