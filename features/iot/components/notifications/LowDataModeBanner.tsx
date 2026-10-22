@@ -36,7 +36,7 @@ export default function LowDataModeBanner({
         >
           <Alert
             variant="warning"
-            className="!flex flex-col sm:flex-row-reverse items-center justify-between gap-4 border-[var(--accent3-medium)]/85 bg-[var(--card-bg-solid)] px-6 py-4 text-right shadow-md transition-all duration-300 md:hover:border-[var(--accent3)] md:hover:shadow-[0_0_15px_var(--accent3-transparent)]"
+            className="!flex flex-col sm:flex-row-reverse items-center justify-between gap-4 !border-[var(--accent3-medium)]/85 !bg-[var(--card-bg-solid)] px-6 py-4 text-right shadow-md transition-all duration-300 md:hover:border-[var(--accent3)] md:hover:shadow-[0_0_15px_var(--accent3-transparent)]"
           >
           <div className="flex items-center gap-3">
             <WifiOff className="w-5 h-5 text-[var(--accent3)] animate-pulse shrink-0" />
@@ -64,7 +64,7 @@ export default function LowDataModeBanner({
         >
           <Alert
             variant="success"
-            className="!flex flex-col sm:flex-row-reverse items-center justify-between gap-4 border-emerald-500/40 bg-emerald-950/20 px-6 py-4 text-right shadow-md transition-all duration-300 md:hover:border-emerald-500 md:hover:shadow-[0_0_15px_rgba(16,185,129,0.3)]"
+            className="!flex flex-col sm:flex-row-reverse items-center justify-between gap-4 !border-emerald-500/40 !bg-emerald-950/20 px-6 py-4 text-right shadow-md transition-all duration-300 md:hover:border-emerald-500 md:hover:shadow-[0_0_15px_rgba(16,185,129,0.3)]"
           >
           <div className="flex items-center gap-3">
             <div className="flex items-center justify-center w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold shrink-0">
