@@ -13,13 +13,13 @@ export default function VerticalControls({
 }: QuickAccessControlsProps) {
   const setIsAutomationsMenuOpen = useIoTStore(s => s.setIsAutomationsMenuOpen);
 
-  const itemClass = "flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-right text-sm font-medium text-[var(--text-secondary)] transition-colors hover:bg-[var(--card-hover-bg)] hover:text-[var(--text-primary)] active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent4)]";
+  const itemClass = "flex w-full items-center gap-3 rounded-md px-3 py-2.5 text-right text-sm font-medium text-[var(--text-secondary)] transition-colors hover:bg-[var(--card-hover-bg)] hover:text-[var(--text-primary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent4)]";
 
   return (
     <nav className="space-y-1" aria-label="بخش‌های کاربری">
       {!isSidebarCollapsed && (
-        <span className="mb-2 block px-3 text-[11px] font-semibold text-[var(--text-muted)]">
-          بخش‌ها
+        <span className="mb-2 block px-3 text-xs font-medium text-[var(--text-muted)]">
+          فضای خانه
         </span>
       )}
 
@@ -29,7 +29,7 @@ export default function VerticalControls({
         title="پالایه و ماژول‌ها"
         aria-label="پالایه و ماژول‌ها"
       >
-        <Layers className={`h-5 w-5 shrink-0 ${animationsEnabled ? "animate-[pulse_3s_ease-in-out_infinite]" : ""}`} />
+        <Layers className="h-4 w-4 shrink-0" />
         {!isSidebarCollapsed && <span className="text-sm">پالایه و ماژول‌ها</span>}
       </button>
 
@@ -39,7 +39,7 @@ export default function VerticalControls({
         title="اتوماسیون‌ها"
         aria-label="اتوماسیون‌ها"
       >
-        <Clock3 className="h-5 w-5 shrink-0" />
+        <Clock3 className="h-4 w-4 shrink-0" />
         {!isSidebarCollapsed && <span className="text-sm">اتوماسیون‌ها</span>}
       </button>
 
@@ -49,13 +49,15 @@ export default function VerticalControls({
         isSidebarCollapsed={isSidebarCollapsed}
       />
 
+      <div className="my-3 border-t border-[var(--border-color)]" />
+
       <button
         onClick={() => setIsMenuOpen(true)}
         className={itemClass}
         title="تنظیمات اصلی"
         aria-label="تنظیمات اصلی"
       >
-        <SettingsIcon className="h-5 w-5 shrink-0" />
+        <SettingsIcon className="h-4 w-4 shrink-0" />
         {!isSidebarCollapsed && <span className="text-sm">تنظیمات اصلی</span>}
       </button>
     </nav>
