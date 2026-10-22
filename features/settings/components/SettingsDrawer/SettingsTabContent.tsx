@@ -21,8 +21,6 @@ export function SettingsTabContent({
   setAccent3,
   accent4,
   setAccent4,
-  selectedFont,
-  setSelectedFont,
   animationsEnabled,
   setAnimationsEnabled,
   animationsFps,
