@@ -16,7 +16,7 @@ export default function DashboardHeader() {
 
   return (
     <aside
-      className={`sticky top-0 z-20 flex h-screen shrink-0 flex-col overflow-y-auto border-l border-[var(--border-color)] bg-[var(--card-bg-solid)] px-2 py-3 transition-[width] duration-200 [&::-webkit-scrollbar]:hidden [scrollbar-width:none] ${isSidebarCollapsed ? "w-16 md:w-[4.5rem]" : "w-16 md:w-64"}`}
+      className={`sticky top-0 z-20 flex h-screen shrink-0 flex-col overflow-y-auto border-l border-[var(--border-color)] bg-[var(--card-bg-solid)] px-2 py-4 transition-[width] duration-200 md:px-3 [&::-webkit-scrollbar]:hidden [scrollbar-width:none] ${isSidebarCollapsed ? "w-16 md:w-16" : "w-16 md:w-64"}`}
       aria-label="ناوبری اصلی"
     >
       <MasterHeader

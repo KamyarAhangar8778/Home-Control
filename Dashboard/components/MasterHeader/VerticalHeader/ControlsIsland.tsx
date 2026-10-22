@@ -10,8 +10,8 @@ export default function ControlsIsland({ props }: { props: any }) {
   const { isSidebarCollapsed } = props;
 
   return (
-    <div className="flex min-h-0 flex-1 flex-col justify-between gap-5 overflow-hidden py-1">
-      <div className="custom-scrollbar flex flex-col gap-5 overflow-y-auto">
+    <div className="flex min-h-0 flex-1 flex-col justify-between gap-4 overflow-hidden py-1">
+      <div className="custom-scrollbar flex flex-col gap-4 overflow-y-auto">
         <QuickAccessControls
           setIsModulesMenuOpen={props.setIsModulesMenuOpen}
           setIsMenuOpen={props.setIsMenuOpen}
@@ -20,16 +20,21 @@ export default function ControlsIsland({ props }: { props: any }) {
           isSidebarCollapsed={isSidebarCollapsed}
         />
 
-        <div className="hidden space-y-3 border-t border-[var(--border-color)] pt-4 md:block">
+        <div className="hidden space-y-2 border-t border-[var(--border-color)] pt-3 md:block">
+          {!isSidebarCollapsed && (
+            <span className="block px-3 text-xs font-medium text-[var(--text-muted)]">
+              نمایش
+            </span>
+          )}
           <button
             onClick={() => setShowAdvanced(!showAdvanced)}
-            className={`flex w-full items-center justify-between rounded-lg px-2 py-2 text-[var(--text-secondary)] transition-colors hover:bg-[var(--card-hover-bg)] hover:text-[var(--text-primary)] ${isSidebarCollapsed ? "justify-center" : ""}`}
+            className={`flex w-full items-center justify-between rounded-md px-3 py-2.5 text-sm font-medium text-[var(--text-secondary)] transition-colors hover:bg-[var(--card-hover-bg)] hover:text-[var(--text-primary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent4)] ${isSidebarCollapsed ? "justify-center" : ""}`}
             title="قابلیت‌های بیشتر"
             aria-expanded={showAdvanced}
           >
-            <span className="flex items-center gap-2">
+            <span className="flex items-center gap-3">
               <Settings2 className="h-4 w-4 shrink-0" />
-              {!isSidebarCollapsed && <span className="text-xs font-semibold">قابلیت‌های بیشتر</span>}
+              {!isSidebarCollapsed && <span className="text-sm">قابلیت‌های بیشتر</span>}
             </span>
             {!isSidebarCollapsed && <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${showAdvanced ? "rotate-180" : ""}`} />}
           </button>
@@ -56,7 +61,7 @@ export default function ControlsIsland({ props }: { props: any }) {
         </div>
       </div>
 
-      <div className="hidden shrink-0 border-t border-[var(--border-color)] pt-4 md:block">
+      <div className="hidden shrink-0 border-t border-[var(--border-color)] pt-3 md:block">
         <ClockWidget variant="vertical" isSidebarCollapsed={isSidebarCollapsed} />
       </div>
     </div>
