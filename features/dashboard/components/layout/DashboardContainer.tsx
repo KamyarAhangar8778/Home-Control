@@ -15,7 +15,7 @@ import { usePageVisibility } from "@/features/iot/hooks/usePageVisibility";
 
 export default function DashboardContainer() {
   usePageVisibility();
-  
+
   const accent3 = useIoTStore(s => s.accent3);
   const accent4 = useIoTStore(s => s.accent4);
   const isDark = useIoTStore(s => s.isDark);
@@ -27,9 +27,9 @@ export default function DashboardContainer() {
   const matrixOpacity = useIoTStore(s => s.matrixOpacity);
   const matrixColor = useIoTStore(s => s.matrixColor);
   const matrixMoving = useIoTStore(s => s.matrixMoving);
-  const matrixMouseEffect = useIoTStore(s => s.matrixMouseEffect);
   const matrixTwinkleEffect = useIoTStore(s => s.matrixTwinkleEffect);
   const matrixTwinkleSpeed = useIoTStore(s => s.matrixTwinkleSpeed);
+  const matrixMouseEffect = useIoTStore(s => s.matrixMouseEffect);
   const dashboardWidth = useIoTStore(s => s.dashboardWidth);
 
   const { leftHeaderContentWidth } = useDashboardLayout(dashboardWidth);
@@ -61,7 +61,7 @@ export default function DashboardContainer() {
             animationsFps={animationsFps}
           />
 
-          <div className="relative z-10 flex flex-row-reverse items-stretch w-full min-h-screen transition-all duration-500">
+          <div className="relative z-10 flex flex-row items-stretch w-full min-h-screen transition-all duration-500">
             <DashboardHeader />
             <div className={`flex-1 min-w-0 flex flex-col justify-between gap-8 p-3 md:p-6 md:pt-1 md:pb-8 md:px-8 ${leftHeaderContentWidth} w-full mx-auto`}>
               <DashboardMain />
