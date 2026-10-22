@@ -3,7 +3,7 @@
 import React from "react";
 import { motion } from "motion/react";
 import { WifiOff } from "lucide-react";
-import { Alert } from "@/components/reui/alert";
+import { Alert, AlertDescription, AlertTitle } from "@/components/reui/alert";
 
 interface LowDataModeBannerProps {
   lowDataMode: boolean;
@@ -40,9 +40,14 @@ export default function LowDataModeBanner({
           >
           <div className="flex items-center gap-3">
             <WifiOff className="w-5 h-5 text-[var(--accent3)] animate-pulse shrink-0" />
-            <span className="text-[12.5px] font-sans font-extrabold text-[var(--text-primary)] drop-shadow-sm">
-              حالت صرفه‌جویی در مصرف اینترنت فعال است. دریافت خودکار داده‌ها متوقف شده است.
-            </span>
+            <div className="min-w-0">
+              <AlertTitle className="!col-start-auto !min-h-0 !line-clamp-none text-[12.5px] font-sans font-extrabold text-[var(--text-primary)] drop-shadow-sm">
+                حالت صرفه‌جویی در مصرف اینترنت فعال است
+              </AlertTitle>
+              <AlertDescription className="!col-start-auto text-[12px] text-[var(--text-secondary)]">
+                دریافت خودکار داده‌ها متوقف شده است.
+              </AlertDescription>
+            </div>
           </div>
           <motion.button
             onClick={refetchIot}
@@ -70,9 +75,14 @@ export default function LowDataModeBanner({
             <div className="flex items-center justify-center w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold shrink-0">
               {unsavedChangesCount}
             </div>
-            <span className="text-[12.5px] font-sans font-extrabold text-emerald-400 drop-shadow-sm">
-              تغییرات شما در داشبورد ثبت شده اما هنوز در حافظه ابری کلودفلر ذخیره نشده است.
-            </span>
+            <div className="min-w-0">
+              <AlertTitle className="!col-start-auto !min-h-0 !line-clamp-none text-[12.5px] font-sans font-extrabold text-emerald-400 drop-shadow-sm">
+                تغییرات ذخیره‌نشده
+              </AlertTitle>
+              <AlertDescription className="!col-start-auto text-[12px] text-emerald-300/90">
+                تغییرات داشبورد هنوز در حافظه ابری کلودفلر ذخیره نشده است.
+              </AlertDescription>
+            </div>
           </div>
           <motion.button
             onClick={triggerCloudflarePush}
