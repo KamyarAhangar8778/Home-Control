@@ -2,7 +2,9 @@
 
 import { useState, useEffect, useCallback, useRef } from "react";
 import { useIoTStore } from "@/features/iot/hooks/useIoTStore";
-import { EspConfig, DEFAULT_ESP_CONFIG } from "@/features/iot/services/esp32Config";
+import { EspConfig } from "@/features/iot/services/esp32Config";
+import { FEATURE_FLAGS } from "@/lib/featureFlags";
+import { debugLog } from "@/lib/debug";
 import {
   isCloudflareEnabled,
   fetchConfigFromCloudflare,
@@ -15,46 +17,43 @@ interface UseCloudflareInitProps {
   handleApplyEspConfig: (config: EspConfig) => void;
 }
 
-export function useCloudflareInit({ mounted, handleApplyEspConfig }: UseCloudflareInitProps) {
-  const { isInitialSyncLoading, setSyncStatus } = useIoTStore();
+export function useCloudflareInit({ mounted: _mounted, handleApplyEspConfig }: UseCloudflareInitProps) {
+  const setSegments = useIoTStore((state) => state.setSegments);
+  const setGroupsOrder = useIoTStore((state) => state.setGroupsOrder);
+  const setGroupConfigs = useIoTStore((state) => state.setGroupConfigs);
+  const setSyncStatus = useIoTStore((state) => state.setSyncStatus);
   const [isFullyReady, setIsFullyReady] = useState(false);
   const [workerUrl, setWorkerUrlState] = useState(() => getCloudflareWorkerUrl());
   const bypassedRef = useRef(false);
 
-  const handleWorkerUrlChange = (url: string) => {
+  const handleWorkerUrlChange = useCallback((url: string) => {
     setWorkerUrlState(url);
     setCloudflareWorkerUrl(url);
-  };
+  }, []);
 
   const handleBypassSync = useCallback(() => {
     bypassedRef.current = true;
-    
-    // 1. Try loading from cache first
-    try {
-      const cachedConfigStr = localStorage.getItem("cached_esp_config");
-      if (cachedConfigStr) {
-        const cachedConfig = JSON.parse(cachedConfigStr) as EspConfig;
-        if (cachedConfig && cachedConfig.segments) {
-          handleApplyEspConfig(cachedConfig);
-          setSyncStatus(false, 100, "اتصال به اینترنت برقرار نیست. تنظیمات از حافظه محلی بارگذاری شد.");
-          setIsFullyReady(true);
-          return;
-        }
-      }
-    } catch (e) {
-      console.warn("Failed to load cached config, falling back to default.", e);
-    }
 
-    // 2. Fallback to default if no cache
-    handleApplyEspConfig(DEFAULT_ESP_CONFIG);
-    setSyncStatus(false, 100, "تایید هویت مستقل. تنظیمات پیش‌فرض بارگذاری شد.");
+    // Never resurrect stale configuration or seed demo/default segments when cloud sync fails.
+    setSegments([]);
+    setGroupsOrder([]);
+    setGroupConfigs({});
+    setSyncStatus(false, 0, "تنظیمات از سرور دریافت نشد؛ داشبورد با گروه‌ها و سگمنت‌های خالی آماده است.");
     setIsFullyReady(true);
-  }, [handleApplyEspConfig, setSyncStatus]);
+    debugLog.warn("ConfigSync", "Cloud configuration unavailable; initialized empty groups and segments.");
+  }, [setGroupConfigs, setGroupsOrder, setSegments, setSyncStatus]);
 
   const initCloudflareSync = useCallback(async () => {
     let attemptCount = 0;
     const maxAttempts = 5;
-    
+
+    if (!isCloudflareEnabled()) {
+      debugLog.warn("ConfigSync", "Cloudflare is disabled; no default configuration will be applied.");
+      handleBypassSync();
+      return;
+    }
+
+    bypassedRef.current = false;
     while (!bypassedRef.current && attemptCount < maxAttempts) {
       attemptCount++;
       setSyncStatus(
@@ -64,54 +63,52 @@ export function useCloudflareInit({ mounted, handleApplyEspConfig }: UseCloudfla
       );
 
       try {
-
         const cfConfig = await fetchConfigFromCloudflare();
         if (cfConfig && Array.isArray(cfConfig.segments)) {
           if (bypassedRef.current) return;
-          if (cfConfig.worker_url) {
-            handleWorkerUrlChange(cfConfig.worker_url);
-          }
-          
-          // Save valid config to local cache for offline use
-          try {
-            localStorage.setItem("cached_esp_config", JSON.stringify(cfConfig));
-          } catch (e) {
-            console.error("Failed to cache config", e);
+          if (cfConfig.worker_url) handleWorkerUrlChange(cfConfig.worker_url);
+
+          if (FEATURE_FLAGS.configLocalCache && typeof window !== "undefined") {
+            try {
+              localStorage.setItem("cached_esp_config", JSON.stringify(cfConfig));
+            } catch (error) {
+              debugLog.error("ConfigSync", "Could not write optional configuration cache.", error);
+            }
           }
 
           handleApplyEspConfig(cfConfig);
           setSyncStatus(false, 100, "همگام‌سازی تنظیمات انجام شد.");
           setIsFullyReady(true);
+          debugLog.info("ConfigSync", "Cloud configuration applied.", {
+            segments: cfConfig.segments.length,
+            groups: cfConfig.layout?.groups_order?.length ?? 0,
+          });
           return;
         }
-      } catch (e) {
-        console.error(`Attempt ${attemptCount} failed to sync from Cloudflare:`, e);
+
+        debugLog.warn("ConfigSync", "Cloudflare returned an invalid configuration payload.", {
+          attempt: attemptCount,
+        });
+      } catch (error) {
+        debugLog.error("ConfigSync", "Cloud configuration request failed.", {
+          attempt: attemptCount,
+          error,
+        });
       }
 
       if (bypassedRef.current) return;
-
       if (attemptCount < maxAttempts) {
-        setSyncStatus(
-          true,
-          Math.min(10 + attemptCount * 15, 95),
-          `دریافت تنظیمات ناموفق بود. در حال تلاش مجدد...`,
-        );
+        setSyncStatus(true, Math.min(10 + attemptCount * 15, 95), "دریافت تنظیمات ناموفق بود؛ تلاش مجدد...");
         await new Promise((resolve) => setTimeout(resolve, 2000));
       }
-
     }
 
-    if (!bypassedRef.current) {
-      console.warn("Failed to fetch Cloudflare config, falling back to cache/default.");
-      handleBypassSync();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [handleApplyEspConfig, setSyncStatus, handleBypassSync]);
+    if (!bypassedRef.current) handleBypassSync();
+  }, [handleApplyEspConfig, handleBypassSync, handleWorkerUrlChange, setSyncStatus]);
 
   useEffect(() => {
-    initCloudflareSync();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    void initCloudflareSync();
+  }, [initCloudflareSync]);
 
   return {
     isFullyReady,
