@@ -1,43 +1,56 @@
-# Design System
+# Design System — Home Control Dashboard
 
-This document records the UI conventions verified in the current implementation. Treat the components and CSS as the source of truth when this guide and implementation differ.
+## Product and UX direction
 
-## Product identity
+Home Control Dashboard is a Persian-first control surface for ESP32 home automation. The interface should feel like a focused product workspace: calm, operational, and predictable under frequent use.
+Use ChatGPT and Cloudflare Dashboard as interaction references, not as assets or exact copies. Prefer clear hierarchy, restrained chrome, subtle separators, consistent spacing, and controls whose state is immediately understandable.
 
-- Product: Home Control Dashboard, an ESP32 home-automation control interface.
-- Language and direction: Persian-first; the root document uses `lang="fa"` and `dir="rtl"`.
-- Visual direction: dark interface with Persian-inspired gold/amber accents. Prioritize clarity and operational status over decoration.
+## Navigation and header
+
+- There is exactly one application header: a vertical navigation rail on the right side of the viewport, consistent with the application's RTL direction.
+- The right rail is the only header/navigation layout on desktop and mobile. Do not add a top header or a left-side navigation variant.
+- Do not expose header-position switchers, header-layout presets, or controls that can move navigation to another edge.
+- Keep the rail compact on narrow screens: prioritize icon-based actions, accessible names, and no horizontal workspace overflow.
+- Preserve existing application actions and behavior when adjusting the rail. Presentation changes must not alter MQTT topics, ESP32 payloads, Cloudflare synchronization, or automation logic.
+- The product title may remain editable, but it must not control header placement.
+
+## Color and appearance
+
+- Default appearance is dark mode only.
+- Use a neutral near-black canvas, slightly differentiated surface layers, restrained borders, and high-contrast text. Avoid ornamental gradients, glowing borders, and animation where they compete with device status or controls.
+- The default palette is fixed by the product; users do not choose theme/accent colors from settings.
+- Do not add a light/dark toggle or custom theme-color settings.
+- Feature-specific colors that belong to a visualization, such as the matrix background effect, are not global theme controls and should remain scoped to that feature.
+- Use color as a supporting signal, never the only indication of device state. Maintain readable contrast for active, pending, disabled, and error states.
 
 ## Typography
 
-- Primary font: Vazirmatn, configured through `--font-vazirmatn`.
-- Monospace font: JetBrains Mono, configured through `--font-jetbrains`.
-- Keep numeric, pin, protocol, and code-like values legible; use the existing monospace token where appropriate.
-- The stylesheet currently imports additional Google Fonts. Do not assume those fonts are actively used without checking the relevant component.
+- Vazirmatn is the sole UI font, loaded through next/font.
+- Do not load alternative UI font families or offer font selection, typography management, or font preview settings.
+- Use a consistent type scale and weight hierarchy. Persian labels should be concise and align naturally in RTL layouts.
+- Technical values may use semantic code styling when needed, but must not introduce another selectable application-wide font.
 
-## Color and styling
+## Layout and responsive behavior
 
-- Global page background: `#0b0c10`.
-- Default foreground/accent: `#c5a880`.
-- Selection styling uses a translucent amber background.
-- Tailwind CSS v4 is configured through `@import "tailwindcss"` and `@theme` in `app/globals.css`.
-- Prefer existing semantic classes and CSS custom properties such as `theme-text-tertiary`, `text-accent3`, and the established theme variables over introducing duplicate hard-coded values.
-- Keep global tokens and global animations in `app/globals.css`; keep feature-specific styling near the owning component.
+- The root document uses Persian language and RTL direction.
+- Keep the right rail distinct from the workspace with spacing and a subtle border/surface difference rather than heavy shadows.
+- The workspace must remain usable at desktop, tablet, and mobile widths. On narrow screens, keep navigation reachable and compact; do not fall back to a top header.
+- Prefer consistent spacing and a small set of corner radii. Use cards only when grouping content improves scanning or task completion.
 
-## Layout and interaction
+## Interaction and accessibility
 
-- Preserve RTL layout and test both narrow and wide viewports.
-- Use semantic controls, associated labels, visible keyboard focus, and accessible status text. Do not communicate device state through color alone.
-- Distinguish a requested action from confirmed device state when MQTT, WebSocket, or Cloudflare communication can fail.
-- Respect reduced-motion preferences for nonessential animation where practical. Audio must not be necessary to complete an action.
-- Reuse the existing `lucide-react` and `motion` dependencies rather than adding overlapping icon or animation libraries.
+- Use semantic buttons, accessible names for icon-only controls, visible keyboard focus, and appropriate disabled/pending states.
+- Distinguish a requested command from confirmed device state when MQTT, WebSocket, or Cloudflare communication may fail.
+- Use short, purposeful transitions for state changes and navigation. Respect reduced-motion preferences.
+- Sound must never be required to understand or complete an action.
 
-## Source of truth
+## Implementation boundaries
 
-- Root document and metadata: `app/layout.tsx`
-- Global typography, theme setup, and animations: `app/globals.css`
-- Shared UI: `components/`
-- Feature-specific UI: `features/<feature>/components/`
-- Architecture and transport constraints: `ARCHITECTURE.md`
-
-This guide intentionally documents only conventions verified in the repository. Extend it when a design token or component pattern becomes established in implementation.
+- Root layout and global font loading: app/layout.tsx and app/globals.css.
+- Header/navigation: components/MasterHeader.tsx and components/MasterHeader/.
+- Dashboard composition: features/dashboard/components/layout/.
+- Shared dynamic CSS: features/iot/components/DashboardStyles.tsx and features/iot/components/styles/.
+- Settings UI: features/settings/components/SettingsDrawer/.
+- Keep styling local to the owning component unless it is a genuine shared token.
+- Make surgical changes: redesign the header and appearance controls without refactoring unrelated dashboard, device, or automation features.
+- Treat the implementation as the source of truth if this guide and the UI diverge; update this guide when the established design rules change.
