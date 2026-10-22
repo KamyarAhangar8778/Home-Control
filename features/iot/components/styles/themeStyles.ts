@@ -61,6 +61,33 @@ export function getThemeStyles({
       --sidebar-hover: ${isDark ? "#27272a" : "#f4f4f5"};
       --sidebar-active: ${isDark ? "#3f3f46" : "#e4e4e7"};
       --sidebar-control-bg: ${isDark ? "#18181b" : "#fafafa"};
+
+      /* ReUI / shadcn semantic tokens for components installed from the registry. */
+      --background: ${isDark ? "#09090b" : "#ffffff"};
+      --foreground: ${isDark ? "#fafafa" : "#18181b"};
+      --card: ${isDark ? "#09090b" : "#ffffff"};
+      --card-foreground: ${isDark ? "#fafafa" : "#18181b"};
+      --popover: ${isDark ? "#09090b" : "#ffffff"};
+      --popover-foreground: ${isDark ? "#fafafa" : "#18181b"};
+      --primary: ${isDark ? "#fafafa" : "#18181b"};
+      --primary-foreground: ${isDark ? "#18181b" : "#fafafa"};
+      --secondary: ${isDark ? "#27272a" : "#f4f4f5"};
+      --secondary-foreground: ${isDark ? "#fafafa" : "#27272a"};
+      --muted: ${isDark ? "#27272a" : "#f4f4f5"};
+      --muted-foreground: ${isDark ? "#a1a1aa" : "#71717a"};
+      --accent: ${isDark ? "#27272a" : "#f4f4f5"};
+      --accent-foreground: ${isDark ? "#fafafa" : "#18181b"};
+      --destructive: ${isDark ? "#7f1d1d" : "#dc2626"};
+      --border: ${isDark ? "#27272a" : "#e4e4e7"};
+      --input: ${isDark ? "#27272a" : "#e4e4e7"};
+      --ring: ${isDark ? "#a1a1aa" : "#71717a"};
+      --radius: 0.5rem;
+      --success: ${isDark ? "#4ade80" : "#15803d"};
+      --success-foreground: ${isDark ? "#052e16" : "#f0fdf4"};
+      --warning: ${isDark ? "#facc15" : "#a16207"};
+      --warning-foreground: ${isDark ? "#422006" : "#fefce8"};
+      --info: ${isDark ? "#7dd3fc" : "#0369a1"};
+      --info-foreground: ${isDark ? "#082f49" : "#f0f9ff"};
     }
     
     html, body, button, h1, h2, h3, h4, h5, h6, select, span, input, textarea, .font-sans {
