@@ -62,7 +62,6 @@ export function SettingsTabContent({
           animationsFps={animationsFps}
           setAnimationsFps={setAnimationsFps}
           hideHeader={true}
-          isDark={isDark}
         />
       );
     case "macros":
