@@ -22,8 +22,6 @@ export default function DashboardDrawers() {
   const setAnimationsEnabled = useIoTStore(s => s.setAnimationsEnabled);
   const animationsFps = useIoTStore(s => s.animationsFps);
   const setAnimationsFps = useIoTStore(s => s.setAnimationsFps);
-  const headerAnimationType = useIoTStore(s => s.headerAnimationType);
-  const setHeaderAnimationType = useIoTStore(s => s.setHeaderAnimationType);
   const headerTitle = useIoTStore(s => s.headerTitle);
   const setHeaderTitle = useIoTStore(s => s.setHeaderTitle);
   const matrixDensity = useIoTStore(s => s.matrixDensity);
@@ -69,8 +67,6 @@ export default function DashboardDrawers() {
           setAnimationsEnabled={setAnimationsEnabled}
           animationsFps={animationsFps}
           setAnimationsFps={setAnimationsFps}
-          headerAnimationType={headerAnimationType}
-          setHeaderAnimationType={setHeaderAnimationType}
           headerTitle={headerTitle}
           setHeaderTitle={setHeaderTitle}
           matrixDensity={matrixDensity}
