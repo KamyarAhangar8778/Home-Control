@@ -1,5 +1,5 @@
 import React from "react";
-import Image from "next/image";
+import { HousePlug } from "lucide-react";
 import GroupFilterSelector from "../GroupFilterSelector";
 import { useIoTStore } from '@/features/iot/hooks/useIoTStore';
 import { useDashboard } from "@/features/dashboard/context/DashboardContext";
@@ -29,14 +29,7 @@ export default function HorizontalBrandBox(props: Omit<BrandBoxProps, "variant">
       <div className={`relative z-10 h-full bg-[var(--card-bg-solid)] border border-[var(--border-color)] px-5 py-3.5 rounded-2xl flex items-center justify-between md:justify-start gap-4 transition-colors duration-300`}>
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 bg-[var(--card-bg-solid)] border border-[var(--border-color)] rounded-xl shrink-0 flex items-center justify-center overflow-hidden shadow-sm md:hover:border-[var(--accent4)] transition-all">
-            <Image
-              src="/logo.png"
-              alt="Logo"
-              width={26}
-              height={26}
-              className="object-contain"
-              referrerPolicy="no-referrer"
-            />
+            <HousePlug aria-label="Home Control" className="w-6 h-6 text-[var(--accent3)]" strokeWidth={1.8} />
           </div>
           <div className="text-right flex flex-col items-end gap-1">
             <h1 className="font-sans font-extrabold text-[13.5px] md:text-sm tracking-tight leading-tight select-none transition-all duration-300 md:hover:scale-[1.02] title-animated">
