@@ -8,6 +8,7 @@ import {
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { AnimatePresence } from "motion/react";
+import { Card, CardContent } from "@/components/ui/card";
 import { SortableGroupProps } from "../core/types";
 import GroupHeader from "./GroupHeader";
 import { useMasonryGrid } from "../hooks/useMasonryGrid";
@@ -121,27 +122,31 @@ export default function SortableGroup({
       />
 
       {/* Body Island */}
-      <div className="w-full relative group/body flex-grow bg-[var(--card-bg)] backdrop-blur-md border border-[var(--border-color)] shadow-sm rounded-2xl">
+      <Card className="w-full relative group/body flex-grow !gap-0 !overflow-visible !rounded-2xl !border !border-[var(--border-color)] !bg-[var(--card-bg)] !py-0 !shadow-sm !ring-0 backdrop-blur-md">
         <div className="absolute inset-0 rounded-2xl border border-[var(--accent3)] shadow-xl opacity-0 transition-opacity duration-350 md:group-hover/group-card:opacity-100 pointer-events-none" />
-        {isOverlayItem ? (
-          renderContent()
-        ) : (
-          <SortableContext id={id} items={items} strategy={rectSortingStrategy}>
-            {renderContent()}
-          </SortableContext>
-        )}
-      </div>
+        <CardContent className="!px-0 !py-0">
+          {isOverlayItem ? (
+            renderContent()
+          ) : (
+            <SortableContext id={id} items={items} strategy={rectSortingStrategy}>
+              {renderContent()}
+            </SortableContext>
+          )}
+        </CardContent>
+      </Card>
 
       {/* Footer Island */}
       <div className="flex justify-center mt-2 w-full">
-        <div className="p-2 px-4 bg-[var(--card-bg)] backdrop-blur-md border border-[var(--border-color)] shadow-sm flex justify-center items-center relative z-10 rounded-2xl w-fit">
+        <Card className="relative z-10 w-fit !gap-0 !overflow-visible !rounded-2xl !border !border-[var(--border-color)] !bg-[var(--card-bg)] !p-2 !shadow-sm !ring-0 backdrop-blur-md">
           <div className="absolute inset-0 rounded-2xl border border-[var(--accent3)] shadow-xl opacity-0 transition-opacity duration-350 md:group-hover/group-card:opacity-100 pointer-events-none" />
-          <div className="flex gap-1.5 opacity-50 px-2 transition-opacity md:group-hover/group-card:opacity-100 relative z-10">
-            {Array.from({ length: maxCols }, (_, index) => index + 1).map((column) => (
-              <div key={`column-${column}`} className="w-2.5 h-1.5 bg-[var(--accent3)] rounded-full" />
-            ))}
-          </div>
-        </div>
+          <CardContent className="!px-2 !py-0">
+            <div className="flex gap-1.5 opacity-50 transition-opacity md:group-hover/group-card:opacity-100 relative z-10">
+              {Array.from({ length: maxCols }, (_, index) => index + 1).map((column) => (
+                <div key={`column-${column}`} className="w-2.5 h-1.5 bg-[var(--accent3)] rounded-full" />
+              ))}
+            </div>
+          </CardContent>
+        </Card>
       </div>
     </div>
   );
