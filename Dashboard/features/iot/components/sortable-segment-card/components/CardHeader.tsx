@@ -98,7 +98,7 @@ export default function CardHeader({
 
         {isSmall && (
           <div className="relative flex justify-center group/btn h-6 items-center">
-            <button
+            <button type="button"
               ref={buttonRef}
               onClick={() => currentSetIsSettingsOpen(!currentIsSettingsOpen)}
               className={`py-1 bg-[var(--secondary)] border border-[var(--border)] transition-colors cursor-pointer rounded-md flex items-center justify-center ${

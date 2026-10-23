@@ -42,8 +42,9 @@ export default function AddSegmentForm({
           <span className="text-sm font-bold font-sans">افزودن سگمنت جدید</span>
         </div>
         <div className="space-y-1.5">
-          <label className="text-[10px] theme-text-tertiary font-bold block">نوع سگمنت مانیتورینگ:</label>
+          <div className="text-[10px] theme-text-tertiary font-bold block">نوع سگمنت مانیتورینگ:</div>
           <select
+            aria-label="نوع سگمنت مانیتورینگ"
             value={selectedType}
             onChange={(e) => setSelectedType(e.target.value)}
             className="w-full h-10 px-3 text-xs bg-[var(--bg-main)] text-[var(--text-primary)] border border-[var(--border-color)] rounded-xl focus:border-[var(--accent3)] outline-none transition-all cursor-pointer font-sans shadow-sm"

@@ -54,7 +54,7 @@ export default function MacroSidebar({ className = "" }: MacroSidebarProps) {
     <div className={`${className} w-full max-w-full ${isHorizontal ? "flex flex-row justify-center items-center gap-2 pt-4 pb-2" : "hidden lg:flex flex-col gap-3 shrink-0 pt-4 sticky top-6 z-10 w-[72px] items-center"}`} dir={isHorizontal ? "rtl" : undefined}>
       {macros.length >= 3 ? (
         <>
-          <button onClick={goPrev} className="p-1 rounded-full text-[var(--text-secondary)] md:hover:bg-[var(--accent3)] md:hover:text-white transition-colors shrink-0" title="قبلی">
+          <button type="button" onClick={goPrev} className="p-1 rounded-full text-[var(--text-secondary)] md:hover:bg-[var(--accent3)] md:hover:text-white transition-colors shrink-0" title="قبلی">
             {isHorizontal ? <ChevronRight className="w-5 h-5" /> : <ChevronUp className="w-5 h-5" />}
           </button>
           
@@ -85,7 +85,7 @@ export default function MacroSidebar({ className = "" }: MacroSidebarProps) {
             </AnimatePresence>
           </div>
 
-          <button onClick={goNext} className="p-1 rounded-full text-[var(--text-secondary)] md:hover:bg-[var(--accent3)] md:hover:text-white transition-colors shrink-0" title="بعدی">
+          <button type="button" onClick={goNext} className="p-1 rounded-full text-[var(--text-secondary)] md:hover:bg-[var(--accent3)] md:hover:text-white transition-colors shrink-0" title="بعدی">
             {isHorizontal ? <ChevronLeft className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
           </button>
         </>

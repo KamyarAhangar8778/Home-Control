@@ -54,16 +54,20 @@ export function VoiceCommandCard({
           </div>
           <div className="flex items-center gap-1.5 shrink-0">
             <button
+              type="button"
               onClick={onEditStart}
               className="p-2 bg-[var(--card-bg-solid)] border border-[var(--border-color)] text-[var(--text-secondary)] hover:text-[var(--accent3)] hover:border-[var(--accent3)] rounded-xl transition-colors"
               title="ویرایش"
+              aria-label={`ویرایش دستور ${cmd.phrase}`}
             >
               <Edit2 className="w-4 h-4" />
             </button>
             <button
+              type="button"
               onClick={onDelete}
               className="p-2 bg-[var(--card-bg-solid)] border border-[var(--border-color)] text-[var(--text-secondary)] hover:text-[var(--accent4)] hover:border-[var(--accent4)] rounded-xl transition-colors"
               title="حذف"
+              aria-label={`حذف دستور ${cmd.phrase}`}
             >
               <Trash2 className="w-4 h-4" />
             </button>

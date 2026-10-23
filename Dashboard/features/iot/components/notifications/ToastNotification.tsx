@@ -53,7 +53,7 @@ export default function ToastNotification() {
               <XCircle className="w-5 h-5 text-[var(--destructive)] shrink-0" />
             )}
             <span className="text-xs font-bold leading-relaxed">{toast.message}</span>
-            <button
+            <button type="button"
               onClick={clearToast}
               className="mr-auto text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors text-[10px] font-bold cursor-pointer shrink-0"
             >

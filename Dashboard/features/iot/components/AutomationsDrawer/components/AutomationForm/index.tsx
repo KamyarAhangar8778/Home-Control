@@ -35,7 +35,7 @@ export default function AutomationForm({ formHook }: AutomationFormProps) {
 
       <div className="grid grid-cols-2 gap-4">
         <div className="col-span-2">
-          <label className="block text-xs font-medium text-[var(--text-secondary)] mb-1">عنوان (دلخواه):</label>
+          <div className="block text-xs font-medium text-[var(--text-secondary)] mb-1">عنوان (دلخواه):</div>
           <input 
             type="text" 
             value={title}
@@ -46,19 +46,19 @@ export default function AutomationForm({ formHook }: AutomationFormProps) {
         </div>
 
         <div className="col-span-2 flex bg-[var(--card-bg)] p-1 rounded-xl border border-[var(--border-color)] overflow-hidden">
-          <button
+          <button type="button"
             onClick={() => setAutoType("schedule")}
             className={`flex-1 py-1.5 text-xs font-bold rounded-lg transition-colors ${autoType === "schedule" ? "bg-[var(--accent3)] text-white shadow-sm" : "text-[var(--text-muted)] md:hover:text-[var(--text-primary)]"}`}
           >
             زمان‌بندی دوره‌ای
           </button>
-          <button
+          <button type="button"
             onClick={() => setAutoType("timer")}
             className={`flex-1 py-1.5 text-xs font-bold rounded-lg transition-colors ${autoType === "timer" ? "bg-[var(--accent3)] text-white shadow-sm" : "text-[var(--text-muted)] md:hover:text-[var(--text-primary)]"}`}
           >
             تایمر یک‌بار مصرف
           </button>
-          <button
+          <button type="button"
             onClick={() => setAutoType("weather")}
             className={`flex-1 py-1.5 text-xs font-bold rounded-lg transition-colors ${autoType === "weather" ? "bg-[var(--accent3)] text-white shadow-sm" : "text-[var(--text-muted)] md:hover:text-[var(--text-primary)]"}`}
           >
@@ -69,7 +69,7 @@ export default function AutomationForm({ formHook }: AutomationFormProps) {
         {autoType === "schedule" && (
           <>
             <div className="col-span-2 md:col-span-1">
-              <label className="block text-xs font-medium text-[var(--text-secondary)] mb-1">زمان (ساعت):</label>
+              <div className="block text-xs font-medium text-[var(--text-secondary)] mb-1">زمان (ساعت):</div>
               <input 
                 type="time" 
                 value={time}
@@ -79,7 +79,7 @@ export default function AutomationForm({ formHook }: AutomationFormProps) {
               />
             </div>
             <div className="col-span-2 md:col-span-1">
-              <label className="block text-xs font-medium text-[var(--text-secondary)] mb-1">تعداد تکرار:</label>
+              <div className="block text-xs font-medium text-[var(--text-secondary)] mb-1">تعداد تکرار:</div>
               <input 
                 type="number" 
                 min="0"
@@ -90,10 +90,10 @@ export default function AutomationForm({ formHook }: AutomationFormProps) {
               />
             </div>
             <div className="col-span-2">
-              <label className="block text-xs font-medium text-[var(--text-secondary)] mb-2">روزهای هفته:</label>
+              <div className="block text-xs font-medium text-[var(--text-secondary)] mb-2">روزهای هفته:</div>
               <div className="flex flex-wrap justify-center gap-2">
                 {DAYS_MAP.map((d) => (
-                  <button
+                  <button type="button"
                     key={d.value}
                     onClick={() => {
                       if (days.includes(d.value)) setDays(days.filter((x: number) => x !== d.value));
@@ -112,7 +112,7 @@ export default function AutomationForm({ formHook }: AutomationFormProps) {
         {autoType === "timer" && (
           <>
             <div className="col-span-2 md:col-span-1">
-              <label className="block text-xs font-medium text-[var(--text-secondary)] mb-1">تاخیر (ساعت):</label>
+              <div className="block text-xs font-medium text-[var(--text-secondary)] mb-1">تاخیر (ساعت):</div>
               <input 
                 type="number" 
                 min="0"
@@ -123,7 +123,7 @@ export default function AutomationForm({ formHook }: AutomationFormProps) {
               />
             </div>
             <div className="col-span-2 md:col-span-1">
-              <label className="block text-xs font-medium text-[var(--text-secondary)] mb-1">تاخیر (دقیقه):</label>
+              <div className="block text-xs font-medium text-[var(--text-secondary)] mb-1">تاخیر (دقیقه):</div>
               <input 
                 type="number" 
                 min="0"
@@ -139,7 +139,7 @@ export default function AutomationForm({ formHook }: AutomationFormProps) {
 
         {autoType === "weather" && (
           <div className="col-span-2">
-            <label className="block text-xs font-medium text-[var(--text-secondary)] mb-1">دوره بررسی (ساعت):</label>
+            <div className="block text-xs font-medium text-[var(--text-secondary)] mb-1">دوره بررسی (ساعت):</div>
             <select 
               value={intervalMinutes ? intervalMinutes / 60 : ""}
               onChange={(e) => setIntervalMinutes(e.target.value === "" ? "" : Number(e.target.value) * 60)}
@@ -155,7 +155,7 @@ export default function AutomationForm({ formHook }: AutomationFormProps) {
 
         {(autoType === "timer" || autoType === "schedule") && (
           <div className="col-span-2 pt-2 border-t border-[var(--border-color)] mt-2">
-            <label className="flex items-center gap-2 cursor-pointer">
+            <div className="flex items-center gap-2 cursor-pointer">
               <input 
                 type="checkbox" 
                 checked={hasWeatherCondition}
@@ -163,14 +163,14 @@ export default function AutomationForm({ formHook }: AutomationFormProps) {
                 className="w-4 h-4 text-[var(--accent3)] rounded focus:ring-[var(--accent3)]"
               />
               <span className="text-sm font-medium text-[var(--text-primary)]">اضافه کردن شرط آب‌وهوایی (اختیاری)</span>
-            </label>
+            </div>
           </div>
         )}
 
         {(autoType === "weather" || hasWeatherCondition) && (
           <>
             <div className="col-span-2">
-              <label className="block text-xs font-medium text-[var(--text-secondary)] mb-1">نام شهر یا مختصات (انگلیسی):</label>
+              <div className="block text-xs font-medium text-[var(--text-secondary)] mb-1">نام شهر یا مختصات (انگلیسی):</div>
               <div className="flex gap-2">
                 <input 
                   type="text" 
@@ -197,7 +197,7 @@ export default function AutomationForm({ formHook }: AutomationFormProps) {
             </div>
             <div className="col-span-2 flex gap-3">
               <div className="flex-1">
-                <label className="block text-xs font-medium text-[var(--text-secondary)] mb-1">شرط دما:</label>
+                <div className="block text-xs font-medium text-[var(--text-secondary)] mb-1">شرط دما:</div>
                 <select
                   value={temperatureCondition}
                   onChange={(e) => setTemperatureCondition(e.target.value as "greater" | "less")}
@@ -208,7 +208,7 @@ export default function AutomationForm({ formHook }: AutomationFormProps) {
                 </select>
               </div>
               <div className="flex-1">
-                <label className="block text-xs font-medium text-[var(--text-secondary)] mb-1">دما (°C):</label>
+                <div className="block text-xs font-medium text-[var(--text-secondary)] mb-1">دما (°C):</div>
                 <input 
                   type="number" 
                   value={temperatureThreshold}
@@ -226,11 +226,11 @@ export default function AutomationForm({ formHook }: AutomationFormProps) {
       </div>
 
       <div className="flex gap-2 pt-2">
-        <button onClick={handleSave} className="flex-1 py-2.5 bg-[var(--accent3)] md:hover:bg-[var(--accent2)] text-white font-bold rounded-xl text-sm transition-all shadow-md active:scale-[0.98]">
+        <button type="button" onClick={handleSave} className="flex-1 py-2.5 bg-[var(--accent3)] md:hover:bg-[var(--accent2)] text-white font-bold rounded-xl text-sm transition-all shadow-md active:scale-[0.98]">
           {editingId ? "ذخیره تغییرات" : "افزودن به لیست"}
         </button>
         {editingId && (
-          <button onClick={resetForm} className="px-4 py-2.5 bg-[var(--card-hover-bg)] text-[var(--text-secondary)] border border-[var(--border-color)] md:hover:text-[var(--text-primary)] font-bold rounded-xl text-sm transition-all active:scale-[0.98]">
+          <button type="button" onClick={resetForm} className="px-4 py-2.5 bg-[var(--card-hover-bg)] text-[var(--text-secondary)] border border-[var(--border-color)] md:hover:text-[var(--text-primary)] font-bold rounded-xl text-sm transition-all active:scale-[0.98]">
             انصراف
           </button>
         )}

@@ -50,7 +50,7 @@ export default function AutomationsDrawer({ isOpen, onClose, isDark, animationsE
               </div>
               <h2 className="font-bold text-lg text-[var(--foreground)]">مدیریت اتوماسیون‌ها</h2>
             </div>
-            <button onClick={onClose} className="p-2 text-[var(--muted-foreground)] hover:text-[var(--destructive)] hover:bg-[var(--accent)] rounded-md transition-colors">
+            <button type="button" onClick={onClose} className="p-2 text-[var(--muted-foreground)] hover:text-[var(--destructive)] hover:bg-[var(--accent)] rounded-md transition-colors">
               <X className="w-5 h-5" />
             </button>
           </div>

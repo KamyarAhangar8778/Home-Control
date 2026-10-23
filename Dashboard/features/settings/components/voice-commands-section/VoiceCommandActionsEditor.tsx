@@ -41,6 +41,7 @@ export function VoiceCommandActionsEditor({ tempActions, setTempActions, segment
       <div className="flex items-center justify-between">
         <h4 className="text-sm font-semibold text-[var(--text-secondary)]">عملیات‌ها</h4>
         <button
+          type="button"
           onClick={handleAddAction}
           className="text-[var(--accent3)] text-xs font-bold px-2 py-1 bg-[var(--accent3-transparent)] rounded-lg hover:bg-[var(--accent3)] hover:text-white transition-colors"
         >
@@ -56,8 +57,9 @@ export function VoiceCommandActionsEditor({ tempActions, setTempActions, segment
 
       {tempActions.map((action, index) => {
         const isMacroAction = action.targetMacro !== undefined;
+        const actionKey = action.targetPin ?? action.targetMacro ?? `action-${index}`;
         return (
-          <div key={index} className="flex flex-wrap items-center gap-2 bg-[var(--card-bg-solid)] border border-[var(--border-color)] p-2 rounded-xl">
+          <div key={actionKey} className="flex flex-wrap items-center gap-2 bg-[var(--card-bg-solid)] border border-[var(--border-color)] p-2 rounded-xl">
             <select
               value={isMacroAction ? "macro" : "pin"}
               onChange={(e) => {
@@ -67,7 +69,7 @@ export function VoiceCommandActionsEditor({ tempActions, setTempActions, segment
                   handleUpdateAction(index, { targetPin: segments[0].pin });
                 }
               }}
-              className="bg-[var(--bg-primary)] border border-[var(--border-color)] rounded-lg px-2 py-1.5 text-xs text-[var(--text-primary)] outline-none focus:border-[var(--accent3)] focus:ring-1 focus:ring-[var(--accent3)]"
+              className="bg-[var(--bg-primary)] border border-[var(--border-color)] rounded-lg px-2 py-1.5 text-xs text-[var(--text-primary)] outline-none focus:border-[var(--accent3)] focus:ring-1 focus:ring-[var(--accent3)] transition-all"
             >
               <option value="pin">ماژول/سگمنت</option>
               <option value="macro" disabled={macros.length === 0}>دکمه سفارشی (ماکرو)</option>
@@ -77,7 +79,7 @@ export function VoiceCommandActionsEditor({ tempActions, setTempActions, segment
               <select
                 value={action.targetMacro}
                 onChange={(e) => handleUpdateAction(index, { targetMacro: e.target.value })}
-                className="flex-1 bg-[var(--bg-primary)] border border-[var(--border-color)] rounded-lg px-2 py-1.5 text-xs text-[var(--text-primary)] outline-none focus:border-[var(--accent3)] focus:ring-1 focus:ring-[var(--accent3)]"
+                className="flex-1 bg-[var(--bg-primary)] border border-[var(--border-color)] rounded-lg px-2 py-1.5 text-xs text-[var(--text-primary)] outline-none focus:border-[var(--accent3)] focus:ring-1 focus:ring-[var(--accent3)] transition-all"
               >
                 {macros.map((m) => (
                   <option key={m.id} value={m.id}>
@@ -90,7 +92,7 @@ export function VoiceCommandActionsEditor({ tempActions, setTempActions, segment
                 <select
                   value={action.targetPin}
                   onChange={(e) => handleUpdateAction(index, { targetPin: e.target.value })}
-                  className="flex-1 bg-[var(--bg-primary)] border border-[var(--border-color)] rounded-lg px-2 py-1.5 text-xs text-[var(--text-primary)] outline-none focus:border-[var(--accent3)] focus:ring-1 focus:ring-[var(--accent3)]"
+                  className="flex-1 bg-[var(--bg-primary)] border border-[var(--border-color)] rounded-lg px-2 py-1.5 text-xs text-[var(--text-primary)] outline-none focus:border-[var(--accent3)] focus:ring-1 focus:ring-[var(--accent3)] transition-all"
                 >
                   {segments.map((seg) => (
                     <option key={seg.id} value={seg.pin}>
@@ -101,7 +103,7 @@ export function VoiceCommandActionsEditor({ tempActions, setTempActions, segment
                 <select
                   value={action.actionOn ? "on" : "off"}
                   onChange={(e) => handleUpdateAction(index, { actionOn: e.target.value === "on" })}
-                  className="bg-[var(--bg-primary)] border border-[var(--border-color)] rounded-lg px-2 py-1.5 text-xs text-[var(--text-primary)] outline-none focus:border-[var(--accent3)] focus:ring-1 focus:ring-[var(--accent3)]"
+                  className="bg-[var(--bg-primary)] border border-[var(--border-color)] rounded-lg px-2 py-1.5 text-xs text-[var(--text-primary)] outline-none focus:border-[var(--accent3)] focus:ring-1 focus:ring-[var(--accent3)] transition-all"
                 >
                   <option value="on">روشن شود</option>
                   <option value="off">خاموش شود</option>
@@ -110,8 +112,10 @@ export function VoiceCommandActionsEditor({ tempActions, setTempActions, segment
             )}
 
             <button
+              type="button"
               onClick={() => handleRemoveAction(index)}
               className="p-2 text-[var(--accent4)] hover:bg-[var(--accent4-transparent)] border border-transparent hover:border-[var(--accent4)] rounded-lg transition-colors"
+              aria-label="حذف عملیات"
             >
               <Trash2 className="w-3.5 h-3.5" />
             </button>

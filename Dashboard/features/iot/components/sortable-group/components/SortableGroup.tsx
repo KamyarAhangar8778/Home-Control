@@ -71,9 +71,9 @@ export default function SortableGroup({
         <div className="flex flex-col gap-4 w-full text-right p-4 relative z-10">
           {masonryChildren.length > 0 && (
             <div className="flex gap-4 w-full">
-              {columns.map((colChildren, colIndex) => (
+              {columns.map((colChildren) => (
                 colChildren.length > 0 ? (
-                  <div key={`col-${colIndex}`} className="flex-1 flex flex-col gap-4 min-w-0">
+                  <div key={`col-${colChildren.map((child) => React.isValidElement(child) ? child.key : null).join("-")}`} className="flex-1 flex flex-col gap-4 min-w-0">
                     <AnimatePresence mode="popLayout">{colChildren}</AnimatePresence>
                   </div>
                 ) : null
@@ -137,8 +137,8 @@ export default function SortableGroup({
         <div className="p-2 px-4 bg-[var(--card-bg)] backdrop-blur-md border border-[var(--border-color)] shadow-sm flex justify-center items-center relative z-10 rounded-2xl w-fit">
           <div className="absolute inset-0 rounded-2xl border border-[var(--accent3)] shadow-xl opacity-0 transition-opacity duration-350 md:group-hover/group-card:opacity-100 pointer-events-none" />
           <div className="flex gap-1.5 opacity-50 px-2 transition-opacity md:group-hover/group-card:opacity-100 relative z-10">
-            {Array.from({ length: maxCols }).map((_, idx) => (
-              <div key={idx} className="w-2.5 h-1.5 bg-[var(--accent3)] rounded-full" />
+            {Array.from({ length: maxCols }, (_, index) => index + 1).map((column) => (
+              <div key={`column-${column}`} className="w-2.5 h-1.5 bg-[var(--accent3)] rounded-full" />
             ))}
           </div>
         </div>

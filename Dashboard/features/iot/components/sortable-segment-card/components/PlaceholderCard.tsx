@@ -38,7 +38,7 @@ export default function PlaceholderCard({
       }
     >
       <div className="absolute top-2 left-2 z-20 flex gap-1.5">
-        <button
+        <button type="button"
           onClick={() => onRemove(segment.id)}
           onPointerDown={(e) => e.stopPropagation()}
           className="p-1.5 bg-[var(--secondary)] border border-[var(--border)] md:hover:bg-[var(--accent)] text-[var(--secondary-foreground)] transition-colors cursor-pointer rounded-md shadow-sm"
@@ -57,7 +57,7 @@ export default function PlaceholderCard({
       </div>
       {/* Translate lives here — GPU composited, never causes paint */}
       <div className="w-full h-full md:hover:-translate-y-1.5 transition-transform duration-350 rounded-xl group/ph-card">
-        <button
+        <button type="button"
           onClick={() => onSetupPlaceholder && onSetupPlaceholder(segment.id)}
           className={`relative w-full h-full border border-dashed border-[var(--border)] bg-[var(--card)] flex flex-col items-center justify-center gap-2 cursor-pointer text-center rounded-xl overflow-hidden ${
             isUltraCompact

@@ -1,8 +1,7 @@
-import React from "react";
 import { Settings as SettingsIcon, Layers, Clock3 } from "lucide-react";
 import { useIoTStore } from "@/features/iot/hooks/useIoTStore";
 import VoiceCommandButton from "../VoiceCommandButton";
-import { QuickAccessControlsProps } from "./types";
+import type { QuickAccessControlsProps } from "./types";
 
 export default function VerticalControls({
   setIsModulesMenuOpen,
@@ -24,6 +23,7 @@ export default function VerticalControls({
       )}
 
       <button
+        type="button"
         onClick={() => setIsModulesMenuOpen(true)}
         className={itemClass}
         title="پالایه و ماژول‌ها"
@@ -34,6 +34,7 @@ export default function VerticalControls({
       </button>
 
       <button
+        type="button"
         onClick={() => setIsAutomationsMenuOpen(true)}
         className={itemClass}
         title="اتوماسیون‌ها"
@@ -52,6 +53,7 @@ export default function VerticalControls({
       <div className="my-3 border-t border-[var(--sidebar-border)]" />
 
       <button
+        type="button"
         onClick={() => setIsMenuOpen(true)}
         className={itemClass}
         title="تنظیمات اصلی"

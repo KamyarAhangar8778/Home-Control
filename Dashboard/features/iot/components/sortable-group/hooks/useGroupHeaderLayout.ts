@@ -6,7 +6,7 @@ export function useGroupHeaderLayout() {
 
   const titleContainerRef = useRef<HTMLDivElement>(null);
   const titleTextRef = useRef<HTMLHeadingElement>(null);
-  const buttonRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {

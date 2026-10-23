@@ -33,7 +33,7 @@ export default function SegmentActions({
 }: SegmentActionsProps) {
   return (
     <>
-      <button
+      <button type="button"
         onClick={() => onRemove(segment.id)}
         className="p-1.5 bg-slate-200/90 dark:bg-slate-950 border border-slate-300/85 dark:border-slate-800 text-slate-700 dark:text-gray-300 md:hover:border-[var(--accent3)] md:hover:text-[var(--accent3)] transition-all cursor-pointer rounded-lg shadow-sm"
         title="حذف این سگمنت"
