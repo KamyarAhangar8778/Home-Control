@@ -1,4 +1,5 @@
 import React from "react";
+import { Button } from "@/components/ui/button";
 import { motion } from "motion/react";
 import { X } from "lucide-react";
 import { ICON_MAP } from "@/features/iot/utils/icons";
@@ -38,7 +39,7 @@ export default function SegmentSettingsMenu({ segment, isSettingsOpen, menuRef, 
             {showIconInMenu && <div className={`p-2 transition-colors ${isPinOn ? "bg-[var(--accent4-transparent)] text-[var(--accent4)]" : "bg-gray-800/20 text-gray-500"}`} style={{ clipPath: BUTTON_CLIP }} aria-hidden="true">{segment.icon && !ICON_MAP[segment.icon] ? <span className="text-sm leading-none flex items-center justify-center w-4 h-4">{segment.icon}</span> : <SegmentIcon className="w-4 h-4" />}</div>}
             <div className="flex flex-col gap-1 text-right">{isUltraCompact && <span className="font-sans font-extrabold theme-text-primary text-sm">{segment.title}</span>}</div>
           </div>
-          <button type="button" onClick={() => onRemove(segment.id)} aria-label={`حذف سگمنت ${segment.title}`} className="flex items-center gap-2 p-1.5 px-3 bg-red-500/10 text-red-600 md:hover:bg-red-500 md:hover:text-white transition-colors cursor-pointer rounded-lg shadow-sm" title="حذف سگمنت"><span className="text-[10px] font-bold">برای حذف کردن سگمنت</span><X aria-hidden="true" className="w-4 h-4" /></button>
+          <Button variant="ghost" type="button" onClick={() => onRemove(segment.id)} aria-label={`حذف سگمنت ${segment.title}`} className="flex items-center gap-2 p-1.5 px-3 bg-red-500/10 text-red-600 md:hover:bg-red-500 md:hover:text-white transition-colors cursor-pointer rounded-lg shadow-sm" title="حذف سگمنت"><span className="text-[10px] font-bold">برای حذف کردن سگمنت</span><X aria-hidden="true" className="w-4 h-4" /></Button>
         </div>
         {onUpdateSegmentMode && segment.type !== "input" && <div className="relative z-10 flex items-center justify-between mt-1"><span className="text-xs font-bold text-slate-600 dark:text-slate-400">حالت عملکرد:</span><SegmentControls segment={segment} mode={mode} onUpdateSegmentMode={onUpdateSegmentMode} onUpdateSegmentAutoOff={onUpdateSegmentAutoOff} countdown={countdown} {...autoOffMenuProps} /></div>}
       </div>

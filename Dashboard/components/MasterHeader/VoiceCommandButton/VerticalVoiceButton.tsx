@@ -1,4 +1,5 @@
 import type { PointerEvent } from "react";
+import { Button } from "@/components/ui/button";
 import { Mic } from "lucide-react";
 import type { VoiceCommandButtonProps } from "./types";
 
@@ -17,7 +18,7 @@ export default function VerticalVoiceButton({
   handlePointerCancel,
 }: VerticalVoiceButtonProps) {
   return (
-    <button
+    <Button variant="ghost"
       type="button"
       onPointerDown={handlePointerDown}
       onPointerUp={handlePointerUp}
@@ -40,6 +41,6 @@ export default function VerticalVoiceButton({
       <span className="text-[9px] px-1.5 py-0.5 rounded bg-[var(--sidebar-hover)] text-[var(--sidebar-muted)] font-mono">
         Voice
       </span>
-    </button>
+    </Button>
   );
 }

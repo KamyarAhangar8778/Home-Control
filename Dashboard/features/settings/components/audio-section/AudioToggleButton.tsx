@@ -1,4 +1,5 @@
 import React from "react";
+import { Button } from "@/components/ui/button";
 import { Activity, VolumeX } from "lucide-react";
 
 interface Props {
@@ -14,7 +15,7 @@ export function AudioToggleButton({ isMusicOn, isLoading, onToggle }: Props) {
         پخش پیوسته موزیک پس‌زمینه برای افزایش تمرکز و آرامش حین استفاده از داشبورد هوشمند.
       </p>
 
-      <button
+      <Button variant="ghost"
         onClick={onToggle}
         type="button"
         disabled={isLoading}
@@ -58,7 +59,7 @@ export function AudioToggleButton({ isMusicOn, isLoading, onToggle }: Props) {
         >
           {isMusicOn ? <Activity className="w-5 h-5 animate-pulse" /> : <VolumeX className="w-5 h-5" />}
         </div>
-      </button>
+      </Button>
     </div>
   );
 }

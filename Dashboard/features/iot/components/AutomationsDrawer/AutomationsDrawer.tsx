@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "motion/react";
 import { Clock, X, Info } from "lucide-react";
 import { Alert } from "@/components/reui/alert";
@@ -51,9 +52,9 @@ export default function AutomationsDrawer({ isOpen, onClose, isDark, animationsE
               </div>
               <h2 className="font-bold text-lg text-[var(--foreground)]">مدیریت اتوماسیون‌ها</h2>
             </div>
-            <button type="button" onClick={onClose} aria-label="بستن مدیریت اتوماسیون‌ها" className="p-2 text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-[var(--accent)] rounded-md transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--ring)]">
+            <Button variant="ghost" type="button" onClick={onClose} aria-label="بستن مدیریت اتوماسیون‌ها" className="p-2 text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-[var(--accent)] rounded-md transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--ring)]">
               <X className="w-5 h-5" />
-            </button>
+            </Button>
           </div>
 
           {/* Content Body */}

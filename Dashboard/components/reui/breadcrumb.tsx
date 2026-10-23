@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ChevronLeft, MoreHorizontal } from "lucide-react";
+import { ChevronLeft } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export function Breadcrumb({ ...props }: React.ComponentProps<"nav">) {
@@ -26,6 +26,6 @@ export function BreadcrumbSeparator({ children, className, ...props }: React.Com
   return <li role="presentation" aria-hidden="true" data-slot="breadcrumb-separator" className={cn("[&>svg]:size-3.5", className)} {...props}>{children ?? <ChevronLeft />}</li>;
 }
 
-export function BreadcrumbEllipsis({ className, ...props }: React.ComponentProps<"span">) {
+function BreadcrumbEllipsis({ className, ...props }: React.ComponentProps<"span">) {
   return <span data-slot="breadcrumb-ellipsis" role="presentation" aria-hidden="true" className={cn("flex size-9 items-center justify-center", className)} {...props}><MoreHorizontal className="size-4" /><span className="sr-only">بیشتر</span></span>;
 }
