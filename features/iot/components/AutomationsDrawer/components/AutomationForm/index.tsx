@@ -155,16 +155,16 @@ export default function AutomationForm({ formHook }: AutomationFormProps) {
         )}
 
         {(autoType === "timer" || autoType === "schedule") && (
-          <div className="col-span-2 pt-2 border-t border-[var(--border-color)] mt-2">
-            <div className="flex items-center gap-2 cursor-pointer">
-              <input 
-                type="checkbox" 
+          <div className="col-span-2 mt-2 border-t border-[var(--border-color)] pt-3">
+            <label className="flex min-h-11 cursor-pointer items-center gap-3 rounded-xl border border-[var(--border-color)] bg-[var(--card-bg)] px-3 py-2 transition-colors hover:bg-[var(--card-hover-bg)]">
+              <input
+                type="checkbox"
                 checked={hasWeatherCondition}
                 onChange={(e) => setHasWeatherCondition(e.target.checked)}
                 className="h-4 w-4 shrink-0 accent-[var(--accent3)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent3)]"
               />
               <span className="text-sm font-medium text-[var(--text-primary)]">اضافه کردن شرط آب‌وهوایی (اختیاری)</span>
-            </div>
+            </label>
           </div>
         )}
 
