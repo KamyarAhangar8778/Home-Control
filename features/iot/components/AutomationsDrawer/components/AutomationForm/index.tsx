@@ -1,4 +1,5 @@
 import React from "react";
+import { Button } from "@/components/ui/button";
 import { Edit2, Plus, MapPin } from "lucide-react";
 import ActionBuilder from "./ActionBuilder";
 import { Card } from "@/components/ui/card";
@@ -47,24 +48,24 @@ export default function AutomationForm({ formHook }: AutomationFormProps) {
         </div>
 
         <div className="col-span-2 grid grid-cols-1 sm:grid-cols-3 gap-1 bg-[var(--card-bg)] p-1 rounded-xl border border-[var(--border-color)]">
-          <button type="button"
+          <Button variant="ghost" type="button"
             onClick={() => setAutoType("schedule")}
             className={`w-full min-w-0 px-2 py-2 text-xs font-bold rounded-lg transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent3)] ${autoType === "schedule" ? "bg-[var(--accent3)] text-black shadow-sm" : "bg-transparent text-[var(--text-secondary)] md:hover:bg-[var(--card-hover-bg)] md:hover:text-[var(--text-primary)]"}`}
           >
             زمان‌بندی دوره‌ای
-          </button>
-          <button type="button"
+          </Button>
+          <Button variant="ghost" type="button"
             onClick={() => setAutoType("timer")}
             className={`w-full min-w-0 px-2 py-2 text-xs font-bold rounded-lg transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent3)] ${autoType === "timer" ? "bg-[var(--accent3)] text-black shadow-sm" : "bg-transparent text-[var(--text-secondary)] md:hover:bg-[var(--card-hover-bg)] md:hover:text-[var(--text-primary)]"}`}
           >
             تایمر یک‌بار مصرف
-          </button>
-          <button type="button"
+          </Button>
+          <Button variant="ghost" type="button"
             onClick={() => setAutoType("weather")}
             className={`w-full min-w-0 px-2 py-2 text-xs font-bold rounded-lg transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent3)] ${autoType === "weather" ? "bg-[var(--accent3)] text-black shadow-sm" : "bg-transparent text-[var(--text-secondary)] md:hover:bg-[var(--card-hover-bg)] md:hover:text-[var(--text-primary)]"}`}
           >
             مبتنی بر دما
-          </button>
+          </Button>
         </div>
 
         {autoType === "schedule" && (
@@ -94,7 +95,7 @@ export default function AutomationForm({ formHook }: AutomationFormProps) {
               <div className="block text-xs font-medium text-[var(--text-secondary)] mb-2">روزهای هفته:</div>
               <div className="flex flex-wrap justify-center gap-2">
                 {DAYS_MAP.map((d) => (
-                  <button type="button"
+                  <Button variant="ghost" type="button"
                     key={d.value}
                     onClick={() => {
                       if (days.includes(d.value)) setDays(days.filter((x: number) => x !== d.value));
@@ -103,7 +104,7 @@ export default function AutomationForm({ formHook }: AutomationFormProps) {
                     className={`px-3 py-2 rounded-xl text-xs font-bold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent3)] ${days.includes(d.value) ? "bg-[var(--accent3)] text-black shadow-sm" : "bg-[var(--card-bg)] border border-[var(--border-color)] text-[var(--text-secondary)] md:hover:bg-[var(--card-hover-bg)] md:hover:text-[var(--text-primary)] md:hover:border-[var(--accent3)]"}`}
                   >
                     {d.label}
-                  </button>
+                  </Button>
                 ))}
               </div>
             </div>
@@ -181,7 +182,7 @@ export default function AutomationForm({ formHook }: AutomationFormProps) {
                   className="min-w-0 flex-1 bg-[var(--card-bg)] border border-[var(--border-color)] p-2.5 rounded-xl focus:outline-none focus:border-[var(--accent3)] focus-visible:ring-2 focus-visible:ring-[var(--accent3)]/40 text-sm transition-colors text-[var(--text-primary)]"
                   dir="ltr"
                 />
-                <button
+                <Button variant="ghost"
                   type="button"
                   onClick={handleGetLocation}
                   disabled={isGettingLocation}
@@ -193,7 +194,7 @@ export default function AutomationForm({ formHook }: AutomationFormProps) {
                   ) : (
                     <MapPin className="w-5 h-5" />
                   )}
-                </button>
+                </Button>
               </div>
             </div>
             <div className="col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -227,13 +228,13 @@ export default function AutomationForm({ formHook }: AutomationFormProps) {
       </div>
 
       <div className="flex flex-col-reverse gap-2 border-t border-[var(--border-color)] pt-4 sm:flex-row">
-        <button type="button" onClick={handleSave} className="flex-1 min-h-11 py-2.5 px-4 bg-[var(--accent3)] text-black font-bold rounded-xl text-sm transition-colors shadow-sm hover:brightness-95 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent3)] active:scale-[0.98]">
+        <Button variant="ghost" type="button" onClick={handleSave} className="flex-1 min-h-11 py-2.5 px-4 bg-[var(--accent3)] text-black font-bold rounded-xl text-sm transition-colors shadow-sm hover:brightness-95 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent3)] active:scale-[0.98]">
           {editingId ? "ذخیره تغییرات" : "افزودن به لیست"}
-        </button>
+        </Button>
         {editingId && (
-          <button type="button" onClick={resetForm} className="min-h-11 px-4 py-2.5 bg-[var(--card-hover-bg)] text-[var(--text-primary)] border border-[var(--border-color)] hover:bg-[var(--accent)] hover:text-[var(--accent-foreground)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent3)] font-bold rounded-xl text-sm transition-colors active:scale-[0.98]">
+          <Button variant="ghost" type="button" onClick={resetForm} className="min-h-11 px-4 py-2.5 bg-[var(--card-hover-bg)] text-[var(--text-primary)] border border-[var(--border-color)] hover:bg-[var(--accent)] hover:text-[var(--accent-foreground)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent3)] font-bold rounded-xl text-sm transition-colors active:scale-[0.98]">
             انصراف
-          </button>
+          </Button>
         )}
       </div>
     </Card>
