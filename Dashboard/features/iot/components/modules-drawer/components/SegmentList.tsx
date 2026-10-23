@@ -2,6 +2,9 @@ import React from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Sliders, Trash2 } from "lucide-react";
 import { Segment } from "../core/types";
+import { Card } from "@/components/ui/card";
+
+const MotionCard = motion(Card);
 
 interface SegmentListProps {
   segments: Segment[];
@@ -26,12 +29,12 @@ export default function SegmentList({ segments, onRemoveSegment }: SegmentListPr
         <div className="space-y-2 max-h-[300px] overflow-y-auto pr-1">
           <AnimatePresence>
             {segments.map((seg) => (
-              <motion.div
+              <MotionCard
                 initial={{ opacity: 0, y: 5 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 key={seg.id}
-                className="p-3 bg-[var(--card-bg-solid)] border border-[var(--border-color)] rounded-xl flex items-center justify-between gap-3 text-right group md:hover:border-[var(--accent3-medium)] transition-all shadow-sm"
+                className="!gap-3 !rounded-xl !border-[var(--border-color)] !bg-[var(--card-bg-solid)] !p-3 flex items-center justify-between text-right group md:hover:!border-[var(--accent3-medium)] transition-all shadow-sm"
               >
                 <button type="button"
                   onClick={() => onRemoveSegment(seg.id)}
@@ -49,7 +52,7 @@ export default function SegmentList({ segments, onRemoveSegment }: SegmentListPr
                     GPIO {seg.pin} • {seg.mode === "push" ? "MOMENTARY PUSH" : "ON/OFF SWITCH"}
                   </span>
                 </div>
-              </motion.div>
+              </MotionCard>
             ))}
           </AnimatePresence>
         </div>

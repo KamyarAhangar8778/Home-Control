@@ -8,6 +8,7 @@ import { useMediaQuery } from "../../../hooks/useMediaQuery";
 import { useCardHeaderLayout } from "../hooks/useCardHeaderLayout";
 import SegmentSettingsMenu from "./SegmentSettingsMenu";
 import SegmentActions from "./SegmentActions";
+import { CardHeader as ReUICardHeader } from "@/components/ui/card";
 
 interface CardHeaderProps {
   segment: SegmentData;
@@ -70,10 +71,10 @@ export default function CardHeader({
   };
 
   return (
-    <div
+    <ReUICardHeader
       {...(isSmall ? attributes : {})}
       {...(isSmall ? listeners : {})}
-      className={`flex items-center border-b border-[var(--border)] bg-[var(--muted)]/40 ${
+      className={`!flex !items-center !gap-0 !rounded-none !px-0 !py-0 border-b border-[var(--border)] bg-[var(--muted)]/40 ${
         !showIconInHeader
           ? "justify-center p-2 cursor-grab active:cursor-grabbing"
           : isSmall
@@ -150,6 +151,6 @@ export default function CardHeader({
           </div>
         </div>
       )}
-    </div>
+    </ReUICardHeader>
   );
 }

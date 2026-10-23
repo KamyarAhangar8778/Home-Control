@@ -6,6 +6,7 @@ import { useAddSegmentForm } from "../hooks/useAddSegmentForm";
 import ButtonModeSelector from "./ButtonModeSelector";
 import PinSelector from "./PinSelector";
 import FormDetailsInput from "./FormDetailsInput";
+import { Card } from "@/components/ui/card";
 
 interface AddSegmentFormProps {
   onAddSegment: (type: string, pin: string, title?: string, group?: string, mode?: "switch" | "push", auto_off?: number, icon?: string, groupIcon?: string) => void;
@@ -36,7 +37,7 @@ export default function AddSegmentForm({
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
-      <div className="border border-[var(--border-color)] bg-[var(--card-bg-solid)] p-4 space-y-4 rounded-2xl shadow-sm">
+      <Card className="!gap-4 !rounded-2xl !border-[var(--border-color)] !bg-[var(--card-bg-solid)] !p-4 shadow-sm">
         <div className="flex items-center gap-2 text-[var(--accent3)] border-b border-[var(--border-color)] pb-3">
           <Plus className="w-5 h-5" />
           <span className="text-sm font-bold font-sans">افزودن سگمنت جدید</span>
@@ -111,7 +112,7 @@ export default function AddSegmentForm({
         >
           ایجاد سگمنت
         </motion.button>
-      </div>
+      </Card>
     </form>
   );
 }
