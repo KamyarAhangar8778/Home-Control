@@ -1,8 +1,6 @@
 "use client";
 
 import React from "react";
-import { Columns2, LayoutGrid } from "lucide-react";
-import { useMediaQuery } from "../../../hooks/useMediaQuery";
 
 interface LayoutSelectorProps {
   maxCols: number;
@@ -17,8 +15,6 @@ export default function LayoutSelector({
   parentGroupsCols,
   fullWidth = false,
 }: LayoutSelectorProps) {
-  const isMobile = useMediaQuery("(max-width: 768px)");
-
   return (
     <div className={`flex ${parentGroupsCols === 3 ? "flex-row" : "flex-col sm:flex-row"} ${fullWidth ? "w-full *:flex-1" : ""} items-center bg-[var(--bg-main)] border border-[var(--border-color)] p-0.5 sm:p-1 rounded-xl text-xs gap-0.5 shrink-0 shadow-sm`}>
       <button type="button"
