@@ -9,13 +9,9 @@ export const createAestheticSlice: StateCreator<IoTStoreState, [], [], Aesthetic
   animationsFps: 60,
   headerTitle: "سامانه هوشمند پادشاهی هخامنش",
   isSidebarCollapsed: false,
-  isGroupsCompactLayout: false,
-  isSegmentsCompactLayout: false,
 
   setAnimationsEnabled: (e) => set({ animationsEnabled: e }),
   setAnimationsFps: (f) => set({ animationsFps: f }),
   setHeaderTitle: (t) => set({ headerTitle: t }),
   setIsSidebarCollapsed: (c) => set({ isSidebarCollapsed: c }),
-  setIsGroupsCompactLayout: (c) => set({ isGroupsCompactLayout: c }),
-  setIsSegmentsCompactLayout: (c) => set({ isSegmentsCompactLayout: c }),
 });
