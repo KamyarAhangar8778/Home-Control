@@ -5,14 +5,12 @@ import { Monitor, Smartphone, Tablet } from "lucide-react";
 import LowDataModeBanner from "@/features/iot/components/notifications/LowDataModeBanner";
 import { useDashboard } from "@/features/dashboard/context/DashboardContext";
 import { useIoTStore } from "@/features/iot/hooks/useIoTStore";
-import { useDashboardLayout } from "../../hooks/useDashboardLayout";
 import DashboardWorkspace from "./DashboardWorkspace";
 import MobileVoiceCommandButton from "../widgets/MobileVoiceCommandButton";
 
 export default function DashboardMain() {
   const { refetchIot, triggerCloudflarePush } = useDashboard();
   const animationsEnabled = useIoTStore(s => s.animationsEnabled);
-  const dashboardWidth = useIoTStore(s => s.dashboardWidth);
   const activeGroupId = useIoTStore(s => s.activeGroupId);
   const activeSegmentId = useIoTStore(s => s.activeSegmentId);
 
@@ -22,7 +20,6 @@ export default function DashboardMain() {
   const unsavedChangesCount = useIoTStore(s => s.unsavedChangesCount);
 
   const isDragging = !!activeGroupId || !!activeSegmentId;
-  const { innerWidthClass } = useDashboardLayout(dashboardWidth);
 
   return (
     <>
@@ -40,7 +37,7 @@ export default function DashboardMain() {
       <DashboardWorkspace />
 
       {!isDragging && (
-        <footer className={`flex flex-col items-center gap-3 text-center text-[10px] theme-text-secondary font-sans border border-[var(--border-color)] bg-[var(--card-bg)]/80 backdrop-blur-md py-4 px-6 mt-12 mb-4 mx-auto ${innerWidthClass} w-full shadow-sm md:hover:shadow-lg rounded-xl transition-all duration-300 footer-animated-border`}>
+        <footer className={`flex flex-col items-center gap-3 text-center text-[10px] theme-text-secondary font-sans border border-[var(--border-color)] bg-[var(--card-bg)]/80 backdrop-blur-md py-4 px-6 mt-12 mb-4 mx-auto w-full shadow-sm md:hover:shadow-lg rounded-xl transition-all duration-300 footer-animated-border`}>
           {/* Device Version Indicator */}
           <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--card-hover-bg)] border border-[var(--border-color)] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all duration-500 cursor-default group hover:shadow-[0_0_15px_rgba(16,185,129,0.15)] overflow-hidden relative">
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-emerald-500/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-in-out" />
