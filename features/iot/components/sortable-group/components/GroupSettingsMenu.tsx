@@ -1,4 +1,5 @@
 import React from "react";
+import { Button } from "@/components/ui/button";
 import { motion } from "motion/react";
 import { Plus } from "lucide-react";
 import LayoutSelector from "./LayoutSelector";
@@ -67,7 +68,7 @@ export default function GroupSettingsMenu({
         <div
           className={`relative z-10 flex flex-col gap-2 ${(isCompact || isMobile) ? "pt-2 border-t border-[var(--border-color)]" : ""}`}
         >
-          <button type="button"
+          <Button variant="ghost" type="button"
             onClick={() => {
               onAddPlaceholder(id);
               setIsSettingsOpen(false);
@@ -76,7 +77,7 @@ export default function GroupSettingsMenu({
           >
             <Plus className="w-4 h-4" />
             <span>اضافه کردن سگمنت</span>
-          </button>
+          </Button>
         </div>
       </div>
     </motion.div>
