@@ -52,7 +52,6 @@ function SortableSegmentCard(props: SortableSegmentCardProps) {
     groupItemsCount,
     index,
     parentGroupsCols,
-    dashboardWidth: props.dashboardWidth,
     isMobilePortrait: props.isMobilePortrait || false,
   });
 
