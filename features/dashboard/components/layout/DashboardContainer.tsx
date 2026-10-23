@@ -36,7 +36,7 @@ export default function DashboardContainer() {
 
   return (
     <MotionConfig reducedMotion={animationsEnabled ? "user" : "always"}>
-      <div className="style-nova theme-bg-main theme-text-secondary min-h-screen relative font-sans leading-relaxed selection:bg-[var(--accent3-transparent)] selection:text-[var(--accent3)] transition-colors duration-500 overflow-x-clip">
+      <div className={`style-nova theme-bg-main theme-text-secondary min-h-screen relative font-sans leading-relaxed selection:bg-[var(--accent3-transparent)] selection:text-[var(--accent3)] transition-colors duration-500 overflow-x-clip ${isDark ? "dark" : ""}`}>
         <div className="animate-fade-in">
           <DashboardStyles
             accent3={accent3}
