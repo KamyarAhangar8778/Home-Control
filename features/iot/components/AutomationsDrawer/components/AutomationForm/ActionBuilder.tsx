@@ -20,7 +20,7 @@ export default function ActionBuilder({ actions, setActions }: ActionBuilderProp
           <button type="button" 
             onClick={() => removeAction(index)}
             aria-label={`حذف عملیات ${index + 1}`}
-            className="absolute -top-2 -left-2 p-1.5 bg-rose-500 text-white rounded-full opacity-0 group-hover:opacity-100 focus-visible:opacity-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rose-500 transition-opacity shadow-md"
+            className="absolute -top-2 -left-2 z-10 flex h-7 w-7 items-center justify-center rounded-full bg-rose-600 text-white opacity-100 shadow-md transition-opacity hover:bg-rose-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rose-500 sm:opacity-0 sm:group-hover:opacity-100"
           >
             <X className="w-3 h-3" />
           </button>
@@ -81,13 +81,13 @@ export default function ActionBuilder({ actions, setActions }: ActionBuilderProp
       <div className="grid grid-cols-2 gap-2">
         <button type="button" 
           onClick={() => addAction("pin")}
-          className="flex-1 py-2 border border-dashed border-[var(--border-color)] rounded-xl text-xs text-[var(--text-muted)] md:hover:text-[var(--foreground)] md:hover:bg-[var(--accent)] md:hover:border-[var(--accent3)] transition-colors flex items-center justify-center gap-1"
+          className="flex-1 min-h-11 py-2 border border-dashed border-[var(--border-color)] bg-[var(--card-bg)] rounded-xl text-xs font-semibold text-[var(--text-primary)] hover:text-[var(--accent-foreground)] hover:bg-[var(--accent)] hover:border-[var(--accent3)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent3)] transition-colors flex items-center justify-center gap-1"
         >
           <Plus className="w-3.5 h-3.5" /> پایه
         </button>
         <button type="button" 
           onClick={() => addAction("macro")}
-          className="flex-1 py-2 border border-dashed border-[var(--border-color)] rounded-xl text-xs text-[var(--text-muted)] md:hover:text-[var(--foreground)] md:hover:bg-[var(--accent)] md:hover:border-[var(--accent3)] transition-colors flex items-center justify-center gap-1"
+          className="flex-1 min-h-11 py-2 border border-dashed border-[var(--border-color)] bg-[var(--card-bg)] rounded-xl text-xs font-semibold text-[var(--text-primary)] hover:text-[var(--accent-foreground)] hover:bg-[var(--accent)] hover:border-[var(--accent3)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent3)] transition-colors flex items-center justify-center gap-1"
         >
           <Plus className="w-3.5 h-3.5" /> ماکرو
         </button>
