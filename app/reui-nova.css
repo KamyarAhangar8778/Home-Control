@@ -17,6 +17,10 @@
     @apply text-muted-foreground text-sm;
   }
 
+  .cn-card-action {
+    @apply col-start-2 row-span-2 row-start-1 self-start justify-self-end;
+  }
+
   .cn-card-content {
     @apply px-(--card-spacing);
   }
@@ -38,11 +42,19 @@
     @apply bg-card text-card-foreground;
   }
 
+  .cn-alert-variant-destructive {
+    @apply text-destructive bg-card *:data-[slot=alert-description]:text-destructive/90 *:[svg]:text-current;
+  }
+
   .cn-alert-title {
     @apply font-medium group-has-[>svg]/alert:col-start-2;
   }
 
   .cn-alert-description {
     @apply text-muted-foreground text-sm text-balance md:text-pretty [&_p:not(:last-child)]:mb-4;
+  }
+
+  .cn-alert-action {
+    @apply absolute top-2 right-2;
   }
 }
