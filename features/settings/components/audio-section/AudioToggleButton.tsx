@@ -19,14 +19,14 @@ export function AudioToggleButton({ isMusicOn, isLoading, onToggle }: Props) {
         onClick={onToggle}
         type="button"
         disabled={isLoading}
-        className={`switch-toggle w-full p-4 rounded-2xl border transition-all duration-300 flex items-center justify-between cursor-pointer text-right group ${
+        className={`switch-toggle w-full h-auto min-h-[5.5rem] flex-row-reverse justify-between gap-3 whitespace-normal rounded-2xl border p-4 text-right transition-colors duration-200 hover:bg-[var(--card-hover-bg)] hover:text-[var(--text-primary)] focus-visible:ring-[var(--accent3)] group ${
           isMusicOn
             ? "bg-[var(--accent3-transparent)] border-[var(--accent3)] shadow-[var(--accent3-transparent)]"
             : "bg-[var(--card-bg-solid)] border-[var(--border-color)] hover:border-[var(--text-muted)]"
         } ${isLoading ? "opacity-70 cursor-not-allowed" : ""}`}
       >
         <div
-          className={`w-10 h-6 rounded-full p-1 transition-colors duration-300 flex items-center ${
+          className={`flex h-6 w-10 shrink-0 items-center rounded-full p-1 transition-colors duration-300 ${
             isMusicOn ? "bg-[var(--accent3)]" : "bg-[var(--card-hover-bg)] border border-[var(--border-color)]"
           }`}
         >
@@ -37,7 +37,7 @@ export function AudioToggleButton({ isMusicOn, isLoading, onToggle }: Props) {
           />
         </div>
 
-        <div className="text-right space-y-0.5 max-w-[70%]">
+        <div className="min-w-0 flex-1 space-y-1 text-right">
           <span
             className={`block text-sm font-bold transition-colors ${
               isMusicOn ? "text-[var(--accent3)]" : "text-[var(--text-secondary)]"
@@ -45,13 +45,13 @@ export function AudioToggleButton({ isMusicOn, isLoading, onToggle }: Props) {
           >
             موزیک پس‌زمینه
           </span>
-          <span className="block text-[9px] text-[var(--text-muted)] font-mono uppercase tracking-wider">
+          <span className="block text-[10px] leading-relaxed text-[var(--text-muted)] font-mono uppercase tracking-wider">
             {isLoading ? "Loading..." : isMusicOn ? "Active / Playing" : "Disabled / Paused"}
           </span>
         </div>
 
         <div
-          className={`p-2.5 rounded-xl transition-all duration-300 ${
+          className={`shrink-0 rounded-xl p-2.5 transition-colors duration-200 ${
             isMusicOn
               ? "bg-[var(--accent3-transparent)] text-[var(--accent3)] shadow-[inset_0_0_8px_rgba(99,102,241,0.2)]"
               : "bg-[var(--card-hover-bg)] text-[var(--text-muted)]"
