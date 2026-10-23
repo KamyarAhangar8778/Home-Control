@@ -1,4 +1,4 @@
-import { Settings as SettingsIcon, Layers, Clock3 } from "lucide-react";
+import { Settings as SettingsIcon, Layers, Clock3, House } from "lucide-react";
 import { useIoTStore } from "@/features/iot/hooks/useIoTStore";
 import VoiceCommandButton from "../VoiceCommandButton";
 import type { QuickAccessControlsProps } from "./types";
@@ -10,7 +10,7 @@ export default function VerticalControls({
   variant,
   isSidebarCollapsed,
 }: QuickAccessControlsProps) {
-  const setIsAutomationsMenuOpen = useIoTStore(s => s.setIsAutomationsMenuOpen);
+  const setIsAutomationsMenuOpen = useIoTStore(s => s.setIsAutomationsMenuOpen);\n  const activeWorkspaceView = useIoTStore(s => s.activeWorkspaceView);\n  const setActiveWorkspaceView = useIoTStore(s => s.setActiveWorkspaceView);\n\n  const navigateTo = (view: "home" | "modules" | "automations" | "settings") => {\n    setActiveWorkspaceView(view);\n    setIsModulesMenuOpen(false);\n    setIsAutomationsMenuOpen(false);\n    setIsMenuOpen(false);\n  };\n\n  const navClass = (view: "home" | "modules" | "automations" | "settings") =>\n    `${itemClass} ${activeWorkspaceView === view ? "bg-[var(--sidebar-hover)] text-[var(--sidebar-text)]" : ""}`;
 
   const itemClass = "flex w-full items-center gap-3 rounded-md px-3 py-2.5 text-right text-sm font-medium text-[var(--sidebar-muted)] transition-colors hover:bg-[var(--sidebar-hover)] hover:text-[var(--sidebar-text)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent4)]";
 
