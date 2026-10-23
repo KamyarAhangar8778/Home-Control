@@ -10,7 +10,6 @@ import DashboardMain from "./DashboardMain";
 import DashboardDrawers from "./DashboardDrawers";
 import ToastNotification from "@/features/iot/components/notifications/ToastNotification";
 import ScrollToTopButton from "../widgets/ScrollToTopButton";
-import { useDashboardLayout } from "../../hooks/useDashboardLayout";
 import { usePageVisibility } from "@/features/iot/hooks/usePageVisibility";
 
 export default function DashboardContainer() {
@@ -21,18 +20,6 @@ export default function DashboardContainer() {
   const isDark = useIoTStore(s => s.isDark);
   const animationsEnabled = useIoTStore(s => s.animationsEnabled);
   const animationsFps = useIoTStore(s => s.animationsFps);
-  const matrixDensity = useIoTStore(s => s.matrixDensity);
-  const matrixSize = useIoTStore(s => s.matrixSize);
-  const matrixHoverSize = useIoTStore(s => s.matrixHoverSize);
-  const matrixOpacity = useIoTStore(s => s.matrixOpacity);
-  const matrixColor = useIoTStore(s => s.matrixColor);
-  const matrixMoving = useIoTStore(s => s.matrixMoving);
-  const matrixMouseEffect = useIoTStore(s => s.matrixMouseEffect);
-  const matrixTwinkleEffect = useIoTStore(s => s.matrixTwinkleEffect);
-  const matrixTwinkleSpeed = useIoTStore(s => s.matrixTwinkleSpeed);
-  const dashboardWidth = useIoTStore(s => s.dashboardWidth);
-
-  const { leftHeaderContentWidth } = useDashboardLayout(dashboardWidth);
 
   return (
     <MotionConfig reducedMotion={animationsEnabled ? "user" : "always"}>
@@ -47,15 +34,15 @@ export default function DashboardContainer() {
 
           <CuneiformBackground
             isDark={isDark}
-            matrixDensity={matrixDensity}
-            matrixSize={matrixSize}
-            matrixHoverSize={matrixHoverSize}
-            matrixOpacity={matrixOpacity}
-            matrixColor={matrixColor}
-            matrixMoving={matrixMoving}
-            matrixMouseEffect={matrixMouseEffect}
-            matrixTwinkleEffect={matrixTwinkleEffect}
-            matrixTwinkleSpeed={matrixTwinkleSpeed}
+            matrixDensity={40}
+            matrixSize={4}
+            matrixHoverSize={3}
+            matrixOpacity={15}
+            matrixColor="#D4AF37"
+            matrixMoving={true}
+            matrixMouseEffect={true}
+            matrixTwinkleEffect={false}
+            matrixTwinkleSpeed={50}
             accent3={accent3}
             animationsEnabled={animationsEnabled}
             animationsFps={animationsFps}
@@ -63,7 +50,7 @@ export default function DashboardContainer() {
 
           <div className="relative z-10 flex flex-row items-stretch w-full min-h-screen transition-all duration-500">
             <DashboardHeader />
-            <div className={`flex-1 min-w-0 flex flex-col justify-between gap-8 p-3 md:p-6 md:pt-1 md:pb-8 md:px-8 ${leftHeaderContentWidth} w-full mx-auto`}>
+            <div className={`flex-1 min-w-0 flex flex-col justify-between gap-8 p-3 md:p-6 md:pt-1 md:pb-8 md:px-8 w-full mx-auto`}>
               <DashboardMain />
             </div>
           </div>

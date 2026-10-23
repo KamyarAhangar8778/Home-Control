@@ -22,7 +22,6 @@ type WorkspaceDragOverlayProps = Pick<
   | "handleUpdateSegmentMode"
   | "handleUpdateSegmentAutoOff"
   | "handleUpdateSegmentRule"
-  | "dashboardWidth"
 >;
 
 export default function WorkspaceDragOverlay({
@@ -38,7 +37,6 @@ export default function WorkspaceDragOverlay({
   handleUpdateSegmentMode,
   handleUpdateSegmentAutoOff,
   handleUpdateSegmentRule,
-  dashboardWidth,
 }: WorkspaceDragOverlayProps) {
   const isMobilePortrait = useMediaQuery("(max-width: 767px) and (orientation: portrait)");
   const segments = useIoTStore(s => s.segments);
@@ -79,7 +77,6 @@ export default function WorkspaceDragOverlay({
                 groupItemsCount={groupSegments.length}
                 index={index >= 0 ? index : 0}
                 animationsEnabled={animationsEnabled}
-                dashboardWidth={dashboardWidth}
                 isMobilePortrait={isMobilePortrait}
               />
             </div>
@@ -133,7 +130,6 @@ export default function WorkspaceDragOverlay({
                     index={index}
                     animationsEnabled={animationsEnabled}
                     isOverlayItem={true}
-                    dashboardWidth={dashboardWidth}
                     isMobilePortrait={isMobilePortrait}
                   />
                 ))}

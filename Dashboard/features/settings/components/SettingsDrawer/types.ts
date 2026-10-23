@@ -1,4 +1,4 @@
-import { Activity, LayoutGrid, Sparkles, Music, Radio, Command, Mic, Wifi, Settings2 } from "lucide-react";
+import { Activity, LayoutGrid, Music, Radio, Mic, Wifi, Settings2 } from "lucide-react";
 
 export interface SettingsDrawerProps {
   isOpen: boolean;
@@ -13,27 +13,7 @@ export interface SettingsDrawerProps {
   setAnimationsFps: (val: number) => void;
   headerTitle: string;
   setHeaderTitle: (val: string) => void;
-  matrixDensity: number;
-  setMatrixDensity: (val: number) => void;
-  matrixSize: number;
-  setMatrixSize: (val: number) => void;
-  matrixHoverSize: number;
-  setMatrixHoverSize: (val: number) => void;
-  matrixOpacity: number;
-  setMatrixOpacity: (val: number) => void;
-  matrixColor: string;
-  setMatrixColor: (val: string) => void;
-  matrixMoving: boolean;
-  setMatrixMoving: (val: boolean) => void;
-  matrixMouseEffect: boolean;
-  setMatrixMouseEffect: (val: boolean) => void;
-  matrixTwinkleEffect: boolean;
-  setMatrixTwinkleEffect: (val: boolean) => void;
-  matrixTwinkleSpeed: number;
-  setMatrixTwinkleSpeed: (val: number) => void;
   isDark: boolean;
-  dashboardWidth: 1 | 2 | 3 | 4 | 5;
-  setDashboardWidth: (val: 1 | 2 | 3 | 4 | 5) => void;
   isGroupsCompactLayout: boolean;
   setIsGroupsCompactLayout: (val: boolean) => void;
   isSegmentsCompactLayout: boolean;
@@ -43,8 +23,8 @@ export interface SettingsDrawerProps {
 export const SETTINGS_TABS = [
   {
     id: "layout",
-    title: "تنظیمات عرض و نمای داشبورد",
-    compactTitle: "چیدمان و عرض",
+    title: "تنظیمات نمای داشبورد",
+    compactTitle: "نمای داشبورد",
     Icon: LayoutGrid,
   },
   {
@@ -66,22 +46,10 @@ export const SETTINGS_TABS = [
     Icon: Activity,
   },
   {
-    id: "macros",
-    title: "مدیریت دکمه‌های سفارشی (ماکروها)",
-    compactTitle: "تعریف ماکرو و سناریو",
-    Icon: Command,
-  },
-  {
     id: "voice-commands",
     title: "مدیریت دستیار صوتی هوشمند",
     compactTitle: "دستورات صوتی و ویس",
     Icon: Mic,
-  },
-  {
-    id: "matrix",
-    title: "تنظیمات انیمیشن پس‌زمینه ماتریکس",
-    compactTitle: "انیمیشن پس‌زمینه",
-    Icon: Sparkles,
   },
   {
     id: "audio",
