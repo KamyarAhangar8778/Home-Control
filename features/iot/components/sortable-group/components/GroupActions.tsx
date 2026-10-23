@@ -21,7 +21,7 @@ export default function GroupActions({
       {/* Hover glow overlay — opacity-only transition avoids GPU paint thrashing */}
       <div className="absolute inset-0 rounded-2xl border border-[var(--accent3)] shadow-xl opacity-0 transition-opacity duration-350 md:group-hover/group-card:opacity-100 pointer-events-none" />
       {/* Delete Group Handle */}
-      <button
+      <button type="button"
         onClick={() => onDeleteGroup(id)}
         className={`flex items-center justify-center text-[var(--text-secondary)] md:hover:text-rose-600 dark:md:hover:text-rose-400 md:hover:bg-rose-500/10 transition-all duration-300 cursor-pointer border-l border-[var(--border-color)] group ${parentGroupsCols === 3 ? "w-10" : "w-12 sm:w-14"}`}
         title="حذف کامل این گروه و تمامی سگمنت‌های داخل آن"
