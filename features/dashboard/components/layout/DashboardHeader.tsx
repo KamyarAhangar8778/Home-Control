@@ -11,8 +11,6 @@ export default function DashboardHeader() {
   const animationsEnabled = useIoTStore(s => s.animationsEnabled);
   const isSidebarCollapsed = useIoTStore(s => s.isSidebarCollapsed);
   const setIsSidebarCollapsed = useIoTStore(s => s.setIsSidebarCollapsed);
-  const groupsCols = useIoTStore(s => s.groupsCols);
-  const setGroupsCols = useIoTStore(s => s.setGroupsCols);
 
   return (
     <aside
@@ -23,8 +21,6 @@ export default function DashboardHeader() {
         setIsModulesMenuOpen={setIsModulesMenuOpen}
         setIsMenuOpen={setIsMenuOpen}
         headerTitle={headerTitle}
-        groupsCols={groupsCols}
-        setGroupsCols={setGroupsCols}
         animationsEnabled={animationsEnabled}
         isSidebarCollapsed={isSidebarCollapsed}
         setIsSidebarCollapsed={setIsSidebarCollapsed}
