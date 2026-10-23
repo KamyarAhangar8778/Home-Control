@@ -69,12 +69,12 @@ export default function SortableGroup({
   const renderContent = () => {
     if (isSegmentsCompactLayout) {
       return (
-        <div className="flex flex-col gap-4 w-full text-right p-4 relative z-10">
+        <div className="flex flex-col gap-4 w-full min-w-0 text-right p-3 sm:p-4 relative z-10">
           {masonryChildren.length > 0 && (
-            <div className="flex flex-col sm:flex-row gap-4 w-full">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 w-full min-w-0">
               {columns.map((colChildren) => (
                 colChildren.length > 0 ? (
-                  <div key={`col-${colChildren.map((child) => React.isValidElement(child) ? child.key : null).join("-")}`} className="flex-1 flex flex-col gap-4 min-w-0 w-full sm:w-auto">
+                  <div key={`col-${colChildren.map((child) => React.isValidElement(child) ? child.key : null).join("-")}`} className="min-w-0 w-full flex flex-col gap-3 sm:gap-4">
                     <AnimatePresence mode="popLayout">{colChildren}</AnimatePresence>
                   </div>
                 ) : null
@@ -92,9 +92,9 @@ export default function SortableGroup({
 
     return (
       <div
-        className="flex flex-wrap gap-4 w-full text-right p-4 relative z-10 [&>*]:grow [&>*]:shrink-0 [&>*]:min-w-0 [&>*]:basis-[var(--group-item-basis)]"
+        className="grid w-full min-w-0 grid-cols-1 gap-3 p-3 text-right relative z-10 sm:gap-4 sm:p-4"
         style={{
-          "--group-item-basis": GROUP_ITEM_BASIS_LUT[effectiveCols] || GROUP_ITEM_BASIS_LUT[3]
+          gridTemplateColumns: `repeat(${effectiveCols}, minmax(0, 1fr))`
         } as React.CSSProperties}
       >
         <AnimatePresence mode="popLayout">{children}</AnimatePresence>
