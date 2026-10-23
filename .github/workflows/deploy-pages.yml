@@ -1,6 +1,8 @@
 name: Deploy to GitHub Pages
 
-on: []
+on:
+  push:
+    branches: ["__pages_deployment_paused__"]
 
 permissions:
   contents: read
