@@ -28,7 +28,7 @@ export function MacroEditor({
         {iconMode === "emoji" || !ICON_MAP[newMacroIcon] ? (
           <input aria-label="نماد ماکرو" type="text" value={newMacroIcon} onChange={(e) => setNewMacroIcon(e.target.value)} placeholder="نماد (مثلا 🚀)" maxLength={2} className="w-16 bg-[var(--card-bg-solid)] border border-[var(--border-color)] rounded-xl px-2 py-2 text-sm text-center outline-none focus:border-[var(--accent3)] focus:ring-1 focus:ring-[var(--accent3)] transition-all" />
         ) : (
-          <div className="w-16 h-[38px] flex items-center justify-center bg-[var(--card-bg-solid)] border border-[var(--border-color)] rounded-xl text-sm" aria-label="نماد انتخاب‌شده"><>{React.createElement(ICON_MAP[newMacroIcon], { className: "w-5 h-5" })}</></div>
+          <div className="w-16 h-[38px] flex items-center justify-center bg-[var(--card-bg-solid)] border border-[var(--border-color)] rounded-xl text-sm" aria-label="نماد انتخاب‌شده" role="img"><>{React.createElement(ICON_MAP[newMacroIcon], { className: "w-5 h-5" })}</></div>
         )}
         <input aria-label="نام ماکرو" type="text" value={newMacroTitle} onChange={(e) => setNewMacroTitle(e.target.value)} placeholder="نام ماکرو..." className="flex-1 bg-[var(--card-bg-solid)] border border-[var(--border-color)] rounded-xl px-4 py-2.5 text-sm text-[var(--text-primary)] outline-none focus:border-[var(--accent3)] focus:ring-1 focus:ring-[var(--accent3)] transition-all" />
         <button type="button" onClick={onSave} className="p-2.5 bg-[var(--accent3)] text-white rounded-xl hover:bg-[var(--accent3-dark)] transition-colors shadow-md shadow-[var(--accent3-transparent)]" title="ذخیره" aria-label="ذخیره ماکرو"><Check aria-hidden="true" className="w-4 h-4" /></button>
