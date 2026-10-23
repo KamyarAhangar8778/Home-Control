@@ -31,11 +31,10 @@ export default function FormDetailsInput({
       <div className="space-y-1.5">
         <div className="flex items-center justify-between">
           <span className="text-[9px] theme-text-muted">(اختیاری)</span>
-          <label className="text-[10px] theme-text-tertiary font-bold">
-            عنوان دلخواه برای سگمنت:
-          </label>
+          <span className="text-[10px] theme-text-tertiary font-bold">عنوان دلخواه برای سگمنت:</span>
         </div>
         <input
+          aria-label="عنوان دلخواه برای سگمنت"
           type="text"
           placeholder="مثال: رله پمپ آب حیاط"
           value={customTitle}
@@ -51,7 +50,7 @@ export default function FormDetailsInput({
       />
 
       <div className="space-y-1.5 pt-2 border-t border-[var(--border-color)]">
-        <label className="text-[10px] theme-text-tertiary font-bold block">گروه سگمنت:</label>
+        <div className="text-[10px] theme-text-tertiary font-bold block">گروه سگمنت:</div>
         
         {existingGroups.length > 0 && (
           <div className="flex items-center justify-end gap-3 mb-2 px-1">
@@ -68,6 +67,7 @@ export default function FormDetailsInput({
 
         {!isNewGroup && existingGroups.length > 0 ? (
           <select
+            aria-label="گروه سگمنت"
             value={groupName}
             onChange={(e) => setGroupName(e.target.value)}
             className="w-full h-10 px-3 text-xs bg-[var(--bg-main)] text-[var(--text-primary)] border border-[var(--border-color)] rounded-xl focus:border-[var(--accent3)] outline-none transition-all font-sans shadow-sm"
@@ -80,6 +80,7 @@ export default function FormDetailsInput({
         ) : (
           <div className="space-y-3">
             <input
+              aria-label="نام گروه جدید"
               type="text"
               placeholder="مثال: Test"
               value={groupName}
