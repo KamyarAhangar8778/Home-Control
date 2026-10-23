@@ -67,7 +67,7 @@ export default function GroupSettingsMenu({
         <div
           className={`relative z-10 flex flex-col gap-2 ${(isCompact || isMobile) ? "pt-2 border-t border-[var(--border-color)]" : ""}`}
         >
-          <button
+          <button type="button"
             onClick={() => {
               onAddPlaceholder(id);
               setIsSettingsOpen(false);
