@@ -45,22 +45,22 @@ export default function ToastNotification() {
           <Alert
             dir="rtl"
             variant={toast.type === "success" ? "success" : "destructive"}
-            className="!grid !grid-cols-[minmax(0,1fr)_auto_auto] !items-start !gap-x-3 !gap-y-1 !px-4 !py-3.5 text-right shadow-lg"
+            className="!grid !grid-cols-[auto_minmax(0,1fr)_auto] !items-start !gap-x-3 !gap-y-1 !px-4 !py-3.5 text-right shadow-lg"
           >
-            <div className="col-start-1 row-start-1 min-w-0 text-right">
+            <div className="!col-start-2 !row-start-1 min-w-0 text-right">
               <AlertTitle className="!col-start-1 !row-start-1 !m-0 !min-h-0 !line-clamp-none break-words text-right text-sm font-semibold leading-5">
                 {toast.type === "success" ? "عملیات موفق" : "خطا در انجام عملیات"}
               </AlertTitle>
             </div>
-            <div className="col-start-1 row-start-2 min-w-0 text-right">
+            <div className="!col-start-2 !row-start-2 min-w-0 text-right">
               <AlertDescription className="!col-start-1 !row-start-2 !m-0 min-w-0 break-words whitespace-normal text-right text-xs leading-6">
                 {toast.message}
               </AlertDescription>
             </div>
             {toast.type === "success" ? (
-              <CheckCircle aria-hidden="true" className="!col-start-2 !row-start-1 !mt-0.5 !size-5" />
+              <CheckCircle aria-hidden="true" className="!col-start-1 !row-start-1 !mt-0.5 !size-5" />
             ) : (
-              <XCircle aria-hidden="true" className="!col-start-2 !row-start-1 !mt-0.5 !size-5" />
+              <XCircle aria-hidden="true" className="!col-start-1 !row-start-1 !mt-0.5 !size-5" />
             )}
             <AlertAction className="!col-start-3 !row-start-1 !mt-0 !self-start">
               <button
