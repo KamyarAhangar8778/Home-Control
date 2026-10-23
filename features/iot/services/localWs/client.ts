@@ -3,18 +3,13 @@ type StateCallback = (pin: string, state: boolean) => void;
 const stateCallbacks = new Set<StateCallback>();
 
 export const getLocalWs = () => localWs;
+export const setLocalWs = (ws: WebSocket | null) => { localWs = ws; };
 
-export const setLocalWs = (ws: WebSocket | null) => {
-  localWs = ws;
-};
-
-const onLocalStateUpdate = (cb: StateCallback) => {
-  stateCallbacks.add(cb);
-  return () => {
-    stateCallbacks.delete(cb);
-  };
+export const onLocalStateUpdate = (callback: StateCallback) => {
+  stateCallbacks.add(callback);
+  return () => { stateCallbacks.delete(callback); };
 };
 
 export const dispatchLocalState = (pin: string, state: boolean) => {
-  stateCallbacks.forEach((cb) => cb(pin, state));
+  for (const callback of stateCallbacks) callback(pin, state);
 };
