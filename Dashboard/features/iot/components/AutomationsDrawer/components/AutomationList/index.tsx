@@ -41,13 +41,13 @@ export default function AutomationList({ handleEdit, handleDelete, handleToggle 
           {automations.map((auto) => {
             const hasMacros = auto.actions?.some(a => a.targetMacro);
             return (
-              <Card key={auto.id} className={`!gap-0 !rounded-2xl !border-[var(--border-color)] !p-4 !shadow-sm transition-all ${auto.enabled ? "!bg-[var(--card-bg-solid)]" : "!bg-[var(--card-bg)] opacity-70"}`}>
+              <Card key={auto.id} className={`!gap-0 !rounded-2xl !border-[var(--border-color)] !p-4 !shadow-sm transition-all ${auto.enabled ? "!bg-[var(--card-bg-solid)]" : "!bg-[var(--card-bg)]"}`}>
                 
                 {/* Card Header */}
-                <div className="flex items-center justify-between mb-3">
+                <div className="flex items-center justify-between gap-3 mb-3">
                   <div className="flex items-center gap-2">
                     <div className={`w-2.5 h-2.5 rounded-full shadow-sm ${auto.enabled ? (hasMacros ? "bg-indigo-500 shadow-indigo-500/40" : (auto.actions?.[0]?.actionOn ? "bg-emerald-500 shadow-emerald-500/40" : "bg-rose-500 shadow-rose-500/40")) : "bg-slate-500 shadow-slate-500/40"}`} />
-                    <h4 className="font-bold text-[var(--text-primary)] text-sm">{auto.title}</h4>
+                    <h4 className="min-w-0 break-words font-bold text-[var(--text-primary)] text-sm">{auto.title}</h4>
                   </div>
                   
                   {/* Toggle Switch */}
@@ -64,9 +64,9 @@ export default function AutomationList({ handleEdit, handleDelete, handleToggle 
                 </div>
 
                 {/* Card Body - Time & Details */}
-                <div className="flex items-center justify-between mb-4 bg-[var(--card-hover-bg)] p-3 rounded-xl">
+                <div className="flex flex-wrap items-start justify-between gap-3 mb-4 bg-[var(--card-hover-bg)] p-3 rounded-xl">
                   {auto.intervalMinutes ? (
-                    <div className="flex items-center gap-2">
+                    <div className="flex min-w-0 flex-1 items-center gap-2">
                       <Thermometer className="w-5 h-5 text-[var(--accent3)]" />
                       <span className="text-sm font-bold text-[var(--text-primary)]">
                         {auto.city}: دما {auto.temperatureCondition === "greater" ? "بیشتر از" : "کمتر از"} <span className="font-mono text-lg" dir="ltr">{auto.temperatureThreshold}°C</span>
@@ -74,7 +74,7 @@ export default function AutomationList({ handleEdit, handleDelete, handleToggle 
                       </span>
                     </div>
                   ) : (
-                    <div className="flex items-center gap-2">
+                    <div className="flex min-w-0 flex-1 items-center gap-2">
                       <Clock className="w-5 h-5 text-[var(--accent3)]" />
                       <span className="text-xl font-bold font-mono text-[var(--text-primary)] tracking-wider" dir="ltr">{auto.time}</span>
                       {auto.conditionType === "weather" && auto.city && (
@@ -86,7 +86,7 @@ export default function AutomationList({ handleEdit, handleDelete, handleToggle 
                     </div>
                   )}
                   
-                  <div className="flex flex-col items-end gap-1.5">
+                  <div className="flex max-w-full flex-col items-end gap-1.5">
                     {auto.intervalMinutes ? (
                       <span className="text-[10px] bg-blue-500/15 text-blue-600 dark:text-blue-400 px-2 py-0.5 rounded-md font-bold">
                         دما محور (دوره‌ای)
@@ -122,10 +122,10 @@ export default function AutomationList({ handleEdit, handleDelete, handleToggle 
                   </div>
                   
                   <div className="flex items-center gap-1">
-                    <button type="button" onClick={() => handleEdit(auto)} aria-label={`ویرایش اتوماسیون ${auto.title}`} className="p-2 text-[var(--text-muted)] md:hover:text-blue-500 md:hover:bg-blue-500/10 rounded-lg transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent3)]" title="ویرایش">
+                    <button type="button" onClick={() => handleEdit(auto)} aria-label={`ویرایش اتوماسیون ${auto.title}`} className="p-2 text-[var(--text-secondary)] hover:text-blue-600 hover:bg-blue-500/10 rounded-lg transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent3)]" title="ویرایش">
                       <Edit2 className="w-4 h-4" />
                     </button>
-                    <button type="button" onClick={() => handleDelete(auto.id)} aria-label={`حذف اتوماسیون ${auto.title}`} className="p-2 text-[var(--text-muted)] md:hover:text-rose-500 md:hover:bg-rose-500/10 rounded-lg transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent3)]" title="حذف">
+                    <button type="button" onClick={() => handleDelete(auto.id)} aria-label={`حذف اتوماسیون ${auto.title}`} className="p-2 text-[var(--text-secondary)] hover:text-rose-600 hover:bg-rose-500/10 rounded-lg transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent3)]" title="حذف">
                       <Trash2 className="w-4 h-4" />
                     </button>
                   </div>

@@ -46,22 +46,22 @@ export default function AutomationForm({ formHook }: AutomationFormProps) {
           />
         </div>
 
-        <div className="col-span-2 flex bg-[var(--card-bg)] p-1 rounded-xl border border-[var(--border-color)] overflow-hidden">
+        <div className="col-span-2 grid grid-cols-1 sm:grid-cols-3 gap-1 bg-[var(--card-bg)] p-1 rounded-xl border border-[var(--border-color)]">
           <button type="button"
             onClick={() => setAutoType("schedule")}
-            className={`flex-1 py-1.5 text-xs font-bold rounded-lg transition-colors ${autoType === "schedule" ? "bg-[var(--accent3)] text-white shadow-sm" : "text-[var(--text-muted)] md:hover:text-[var(--text-primary)]"}`}
+            className={`w-full min-w-0 px-2 py-2 text-xs font-bold rounded-lg transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent3)] ${autoType === "schedule" ? "bg-[var(--accent3)] text-white shadow-sm" : "bg-transparent text-[var(--text-secondary)] md:hover:bg-[var(--card-hover-bg)] md:hover:text-[var(--text-primary)]"}`}
           >
             زمان‌بندی دوره‌ای
           </button>
           <button type="button"
             onClick={() => setAutoType("timer")}
-            className={`flex-1 py-1.5 text-xs font-bold rounded-lg transition-colors ${autoType === "timer" ? "bg-[var(--accent3)] text-white shadow-sm" : "text-[var(--text-muted)] md:hover:text-[var(--text-primary)]"}`}
+            className={`w-full min-w-0 px-2 py-2 text-xs font-bold rounded-lg transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent3)] ${autoType === "timer" ? "bg-[var(--accent3)] text-white shadow-sm" : "bg-transparent text-[var(--text-secondary)] md:hover:bg-[var(--card-hover-bg)] md:hover:text-[var(--text-primary)]"}`}
           >
             تایمر یک‌بار مصرف
           </button>
           <button type="button"
             onClick={() => setAutoType("weather")}
-            className={`flex-1 py-1.5 text-xs font-bold rounded-lg transition-colors ${autoType === "weather" ? "bg-[var(--accent3)] text-white shadow-sm" : "text-[var(--text-muted)] md:hover:text-[var(--text-primary)]"}`}
+            className={`w-full min-w-0 px-2 py-2 text-xs font-bold rounded-lg transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent3)] ${autoType === "weather" ? "bg-[var(--accent3)] text-white shadow-sm" : "bg-transparent text-[var(--text-secondary)] md:hover:bg-[var(--card-hover-bg)] md:hover:text-[var(--text-primary)]"}`}
           >
             مبتنی بر دما
           </button>
@@ -100,7 +100,7 @@ export default function AutomationForm({ formHook }: AutomationFormProps) {
                       if (days.includes(d.value)) setDays(days.filter((x: number) => x !== d.value));
                       else setDays([...days, d.value].sort());
                     }}
-                    className={`px-3 py-2 rounded-xl text-xs font-bold transition-all ${days.includes(d.value) ? "bg-[var(--accent3)] text-white shadow-md shadow-[var(--accent3-transparent)]" : "bg-[var(--card-bg)] border border-[var(--border-color)] text-[var(--text-secondary)] md:hover:border-[var(--accent3)]"}`}
+                    className={`px-3 py-2 rounded-xl text-xs font-bold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent3)] ${days.includes(d.value) ? "bg-[var(--accent3)] text-white shadow-sm" : "bg-[var(--card-bg)] border border-[var(--border-color)] text-[var(--text-secondary)] md:hover:bg-[var(--card-hover-bg)] md:hover:text-[var(--text-primary)] md:hover:border-[var(--accent3)]"}`}
                   >
                     {d.label}
                   </button>
@@ -226,12 +226,12 @@ export default function AutomationForm({ formHook }: AutomationFormProps) {
         <ActionBuilder actions={actions} setActions={setActions} />
       </div>
 
-      <div className="flex gap-2 pt-2">
-        <button type="button" onClick={handleSave} className="flex-1 py-2.5 bg-[var(--accent3)] md:hover:bg-[var(--accent2)] text-white font-bold rounded-xl text-sm transition-all shadow-md active:scale-[0.98]">
+      <div className="flex flex-col-reverse sm:flex-row gap-2 pt-2">
+        <button type="button" onClick={handleSave} className="flex-1 min-h-11 py-2.5 bg-[var(--accent3)] text-white font-bold rounded-xl text-sm transition-colors shadow-sm hover:bg-[var(--accent2)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent3)] active:scale-[0.98]">
           {editingId ? "ذخیره تغییرات" : "افزودن به لیست"}
         </button>
         {editingId && (
-          <button type="button" onClick={resetForm} className="px-4 py-2.5 bg-[var(--card-hover-bg)] text-[var(--text-secondary)] border border-[var(--border-color)] md:hover:text-[var(--text-primary)] font-bold rounded-xl text-sm transition-all active:scale-[0.98]">
+          <button type="button" onClick={resetForm} className="min-h-11 px-4 py-2.5 bg-[var(--card-hover-bg)] text-[var(--text-secondary)] border border-[var(--border-color)] hover:bg-[var(--muted)] hover:text-[var(--text-primary)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent3)] font-bold rounded-xl text-sm transition-colors active:scale-[0.98]">
             انصراف
           </button>
         )}

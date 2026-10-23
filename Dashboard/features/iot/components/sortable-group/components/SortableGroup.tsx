@@ -71,10 +71,10 @@ export default function SortableGroup({
       return (
         <div className="flex flex-col gap-4 w-full text-right p-4 relative z-10">
           {masonryChildren.length > 0 && (
-            <div className="flex gap-4 w-full">
+            <div className="flex flex-col sm:flex-row gap-4 w-full">
               {columns.map((colChildren) => (
                 colChildren.length > 0 ? (
-                  <div key={`col-${colChildren.map((child) => React.isValidElement(child) ? child.key : null).join("-")}`} className="flex-1 flex flex-col gap-4 min-w-0">
+                  <div key={`col-${colChildren.map((child) => React.isValidElement(child) ? child.key : null).join("-")}`} className="flex-1 flex flex-col gap-4 min-w-0 w-full sm:w-auto">
                     <AnimatePresence mode="popLayout">{colChildren}</AnimatePresence>
                   </div>
                 ) : null
