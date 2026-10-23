@@ -11,7 +11,6 @@ import { AnimatePresence } from "motion/react";
 import { Card, CardContent } from "@/components/ui/card";
 import { SortableGroupProps } from "../core/types";
 import GroupHeader from "./GroupHeader";
-import { useMasonryGrid } from "../hooks/useMasonryGrid";
 
 export default function SortableGroup({
   id,
@@ -26,7 +25,6 @@ export default function SortableGroup({
   icon,
   children,
   isOverlayItem,
-  isSegmentsCompactLayout,
 }: SortableGroupProps) {
   const {
     attributes,
@@ -53,48 +51,16 @@ export default function SortableGroup({
     opacity: isDragging ? 0.3 : 1,
   };
 
-  const childrenArray = React.Children.toArray(children);
-  const { effectiveCols, masonryChildren, lastRowChild, columns } = useMasonryGrid(
-    childrenArray,
-    maxCols,
-    isSegmentsCompactLayout
+  const effectiveCols = Math.min(Math.max(1, items.length), maxCols);
+
+  const renderContent = () => (
+    <div
+      className="grid w-full min-w-0 grid-cols-1 gap-3 p-3 text-right relative z-10 sm:grid-cols-[repeat(var(--group-cols),minmax(0,1fr))] sm:gap-4 sm:p-4"
+      style={{ "--group-cols": effectiveCols } as React.CSSProperties}
+    >
+      <AnimatePresence mode="popLayout">{children}</AnimatePresence>
+    </div>
   );
-
-  const renderContent = () => {
-    if (isSegmentsCompactLayout) {
-      return (
-        <div className="flex flex-col gap-4 w-full min-w-0 text-right p-3 sm:p-4 relative z-10">
-          {masonryChildren.length > 0 && (
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full min-w-0">
-              {columns.map((colChildren) => (
-                colChildren.length > 0 ? (
-                  <div key={`col-${colChildren.map((child) => React.isValidElement(child) ? child.key : null).join("-")}`} className="min-w-0 w-full flex flex-col gap-3 sm:gap-4">
-                    <AnimatePresence mode="popLayout">{colChildren}</AnimatePresence>
-                  </div>
-                ) : null
-              ))}
-            </div>
-          )}
-          {lastRowChild && (
-            <div className="w-full">
-              <AnimatePresence mode="popLayout">{lastRowChild}</AnimatePresence>
-            </div>
-          )}
-        </div>
-      );
-    }
-
-    return (
-      <div
-        className="grid w-full min-w-0 grid-cols-1 gap-3 p-3 text-right relative z-10 sm:grid-cols-[repeat(var(--group-cols),minmax(0,1fr))] sm:gap-4 sm:p-4"
-        style={{
-          "--group-cols": effectiveCols
-        } as React.CSSProperties}
-      >
-        <AnimatePresence mode="popLayout">{children}</AnimatePresence>
-      </div>
-    );
-  };
 
   return (
     <div
