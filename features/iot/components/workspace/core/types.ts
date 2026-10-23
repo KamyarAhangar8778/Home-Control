@@ -12,7 +12,6 @@ export interface IoTWorkspaceProps {
   selectedGroupFilter?: string | null;
   isGroupsCompactLayout?: boolean;
   isSegmentsCompactLayout?: boolean;
-  dashboardWidth?: number;
 
   handleDragStart: (event: DragStartEvent) => void;
   handleDragOver: (event: DragOverEvent) => void;
