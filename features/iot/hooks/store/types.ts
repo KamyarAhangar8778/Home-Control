@@ -144,7 +144,11 @@ export interface UiSlice {
   setLocalIp: (ip: string | null) => void;
 }
 
+export type WorkspaceView = "home" | "modules" | "automations" | "settings";
+
 export interface MenuSlice {
+  activeWorkspaceView: WorkspaceView;
+  setActiveWorkspaceView: (view: WorkspaceView) => void;
   isMenuOpen: boolean;
   isModulesMenuOpen: boolean;
   isEspDrawerOpen: boolean;
