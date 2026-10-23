@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ChevronLeft, MoreHorizontal } from "lucide-react";
+import { ChevronLeft } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export function Breadcrumb({ ...props }: React.ComponentProps<"nav">) {
