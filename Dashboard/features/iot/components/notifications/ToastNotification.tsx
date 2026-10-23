@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { useEffect } from "react";
 import { useIoTStore } from "@/features/iot/hooks/useIoTStore";
 import { soundManager } from "@/lib/audio";
+import { Card, CardContent } from "@/components/ui/card";
 
 /**
  * کامپوننت نمایش اعلان‌های ACK به صورت toast
@@ -40,26 +41,30 @@ export default function ToastNotification() {
           transition={{ type: "spring", damping: 22, stiffness: 300 }}
           className="fixed bottom-6 left-6 z-[200] max-w-sm pointer-events-auto"
         >
-          <div
-            className={`flex items-center gap-3 px-5 py-3.5 rounded-lg border shadow-lg bg-[var(--card)] text-[var(--card-foreground)] text-right font-sans ${
+          <Card
+            className={`w-full max-w-sm !py-0 border shadow-lg bg-[var(--card)] text-[var(--card-foreground)] text-right font-sans ${
               toast.type === "success"
                 ? "border-[var(--success)]/40"
                 : "border-[var(--destructive)]/40"
             }`}
           >
-            {toast.type === "success" ? (
-              <CheckCircle className="w-5 h-5 text-[var(--success)] shrink-0" />
-            ) : (
-              <XCircle className="w-5 h-5 text-[var(--destructive)] shrink-0" />
-            )}
-            <span className="text-xs font-bold leading-relaxed">{toast.message}</span>
-            <button type="button"
-              onClick={clearToast}
-              className="mr-auto text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors text-[10px] font-bold cursor-pointer shrink-0"
-            >
-              ✕
-            </button>
-          </div>
+            <CardContent className="flex items-center gap-3 !px-5 !py-3.5">
+              {toast.type === "success" ? (
+                <CheckCircle className="w-5 h-5 text-[var(--success)] shrink-0" />
+              ) : (
+                <XCircle className="w-5 h-5 text-[var(--destructive)] shrink-0" />
+              )}
+              <span className="text-xs font-bold leading-relaxed">{toast.message}</span>
+              <button
+                type="button"
+                onClick={clearToast}
+                aria-label="بستن اعلان"
+                className="mr-auto text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors text-[10px] font-bold cursor-pointer shrink-0"
+              >
+                ✕
+              </button>
+            </CardContent>
+          </Card>
         </motion.div>
       )}
     </AnimatePresence>

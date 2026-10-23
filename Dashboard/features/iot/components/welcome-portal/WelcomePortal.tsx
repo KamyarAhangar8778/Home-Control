@@ -3,6 +3,8 @@
 import React from "react";
 import { motion } from "motion/react";
 import { Compass } from "lucide-react";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { IconStack } from "@/components/reui/icon-stack";
 import SettingsPortalButton from "./components/SettingsPortalButton";
 import ModulesPortalButton from "./components/ModulesPortalButton";
 
@@ -26,13 +28,47 @@ export default function WelcomePortal({ setIsMenuOpen, setIsModulesMenuOpen, ani
   };
 
   return (
-    <motion.div key="welcome-prompt" initial={animationsEnabled ? { opacity: 0, scale: 0.98 } : false} animate={{ opacity: 1, scale: 1 }} exit={animationsEnabled ? { opacity: 0, scale: 0.98 } : undefined} transition={{ duration: animationsEnabled ? 0.3 : 0 }} className="space-y-6 w-full flex flex-col items-center py-4">
-      <div className="space-y-4 text-center">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[10px] md:text-xs text-[var(--accent3)] border border-[var(--accent3-medium)] bg-[var(--accent3-transparent)] font-sans font-bold shadow-sm"><Compass aria-hidden="true" className="w-3.5 h-3.5 text-[var(--accent3)]" /><span>پلتفرم لبه و مانیتورینگ اینترنت اشیاء | Edge IoT Platform</span></div>
-        <h3 className="text-xl md:text-3xl font-sans font-extrabold theme-text-primary tracking-tight leading-normal max-w-2xl mx-auto">درود بر شما، <br />به{" "}<span style={welcomeTextGradientStyle} className="font-extrabold font-sans">سامانه یکپارچه مانیتورینگ اینترنت اشیا</span>{" "}خوش آمدید</h3>
-        <p className="text-xs md:text-sm theme-text-tertiary max-w-xl mx-auto leading-relaxed font-sans">این سامانه ابزار کاملی بری مدیریت، تست و پیکربندی دستگاه‌ها و ماژول‌های متصل ارائه می‌دهد. با بهره‌گیری از معماری پایا و رابط کاربری بهینه‌سازی‌شده، مانیتورینگ بلادرنگ وضعیت پایه‌ها هم‌اکنون با سرعت بیش از پیش در تمامی دستگاه‌ها در دسترس است.</p>
-      </div>
-      <div className="pt-4 w-full max-w-xl px-4 grid grid-cols-1 sm:grid-cols-2 gap-4"><SettingsPortalButton onClick={() => setIsMenuOpen(true)} /><ModulesPortalButton onClick={() => setIsModulesMenuOpen(true)} /></div>
+    <motion.div
+      key="welcome-prompt"
+      initial={animationsEnabled ? { opacity: 0, scale: 0.98 } : false}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={animationsEnabled ? { opacity: 0, scale: 0.98 } : undefined}
+      transition={{ duration: animationsEnabled ? 0.3 : 0 }}
+      className="w-full flex flex-col items-center py-4"
+    >
+      <Card className="w-full max-w-4xl text-center">
+        <CardHeader className="items-center text-center px-6 pt-6 md:px-10 md:pt-8">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[10px] md:text-xs text-[var(--accent3)] border border-[var(--accent3-medium)] bg-[var(--accent3-transparent)] font-sans font-bold shadow-sm">
+            <Compass aria-hidden="true" className="w-3.5 h-3.5 text-[var(--accent3)]" />
+            <span>پلتفرم لبه و مانیتورینگ اینترنت اشیاء | Edge IoT Platform</span>
+          </div>
+          <CardTitle className="text-xl md:text-3xl font-sans font-extrabold theme-text-primary tracking-tight leading-normal max-w-2xl mx-auto">
+            <h3>
+              درود بر شما،
+              <br />
+              به{" "}
+              <span style={welcomeTextGradientStyle} className="font-extrabold font-sans">
+                سامانه یکپارچه مانیتورینگ اینترنت اشیا
+              </span>{" "}
+              خوش آمدید
+            </h3>
+          </CardTitle>
+          <CardDescription className="text-xs md:text-sm theme-text-tertiary max-w-xl mx-auto leading-relaxed font-sans">
+            این سامانه ابزار کاملی برای مدیریت، تست و پیکربندی دستگاه‌ها و ماژول‌های متصل ارائه می‌دهد.
+            با بهره‌گیری از معماری پایا و رابط کاربری بهینه‌سازی‌شده، مانیتورینگ بلادرنگ وضعیت پایه‌ها
+            هم‌اکنون در دسترس است.
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="flex flex-col items-center gap-5 px-6 pb-6 md:px-10 md:pb-8">
+          <IconStack className="text-[var(--accent3)]" aria-hidden="true">
+            <Compass className="size-5" />
+          </IconStack>
+          <div className="w-full max-w-xl grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <SettingsPortalButton onClick={() => setIsMenuOpen(true)} />
+            <ModulesPortalButton onClick={() => setIsModulesMenuOpen(true)} />
+          </div>
+        </CardContent>
+      </Card>
     </motion.div>
   );
 }
