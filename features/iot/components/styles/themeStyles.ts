@@ -85,17 +85,17 @@ export function getThemeStyles({
       --accent: ${isDark ? "#27272a" : "#f4f4f5"};
       --accent-foreground: ${isDark ? "#fafafa" : "#18181b"};
       --destructive: #dc2626;
-      --destructive-foreground: ${isDark ? "var(--color-red-600)" : "var(--color-red-800)"};
+      --destructive-foreground: #ffffff;
       --border: ${isDark ? "#27272a" : "#e4e4e7"};
       --input: ${isDark ? "#27272a" : "#e4e4e7"};
       --ring: ${isDark ? "#a1a1aa" : "#71717a"};
       --radius: 0.5rem;
       --success: #10b981;
-      --success-foreground: ${isDark ? "var(--color-emerald-600)" : "var(--color-emerald-900)"};
+      --success-foreground: #ffffff;
       --warning: ${isDark ? "var(--color-yellow-400)" : "var(--color-yellow-500)"};
-      --warning-foreground: ${isDark ? "var(--color-yellow-600)" : "var(--color-yellow-900)"};
+      --warning-foreground: var(--color-zinc-950);
       --info: #8b5cf6;
-      --info-foreground: ${isDark ? "var(--color-violet-600)" : "var(--color-violet-900)"};
+      --info-foreground: #ffffff;
       --invert: ${isDark ? "#f4f4f5" : "#18181b"};
       --invert-foreground: ${isDark ? "#18181b" : "#fafafa"};
     }
