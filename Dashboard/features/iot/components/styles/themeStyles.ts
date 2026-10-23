@@ -11,10 +11,10 @@ export function getThemeStyles({
 }: ThemeStylesParams): string {
   const selectedFontFamily = "var(--font-vazirmatn)";
 
-  const defaultBg = isDark ? "#050609" : "#f4f5f7";
-  const defaultBgGradFrom = isDark ? "#0d0f19" : "#ebedf0";
-  const defaultBgGradVia = isDark ? "#050608" : "#f3f4f6";
-  const defaultBgGradTo = isDark ? "#010203" : "#fcfdfe";
+  const defaultBg = isDark ? "#09090b" : "#ffffff";
+  const defaultBgGradFrom = isDark ? "#09090b" : "#fafafa";
+  const defaultBgGradVia = isDark ? "#09090b" : "#ffffff";
+  const defaultBgGradTo = isDark ? "#09090b" : "#ffffff";
 
   const finalBgMain = defaultBg;
   const finalBgGradFrom = defaultBgGradFrom;
@@ -42,16 +42,16 @@ export function getThemeStyles({
       --bg-gradient-from: ${finalBgGradFrom};
       --bg-gradient-via: ${finalBgGradVia};
       --bg-gradient-to: ${finalBgGradTo};
-      --card-bg: ${isDark ? "rgba(9, 11, 17, 0.55)" : "rgba(252, 253, 254, 0.65)"};
-      --card-bg-solid: ${isDark ? "#0b0c13" : "#fbfcfd"};
-      --card-hover-bg: ${isDark ? "rgba(12, 14, 22, 0.7)" : "rgba(241, 243, 247, 0.8)"};
-      --text-primary: ${isDark ? "#ffffff" : "#090a10"};
-      --text-secondary: ${isDark ? "#e2e8f0" : "#2d3748"};
-      --text-tertiary: ${isDark ? "#94a3b8" : "#4a5568"};
-      --text-muted: ${isDark ? "#64748b" : "#718096"};
-      --border-color: ${isDark ? "rgba(255, 255, 255, 0.06)" : "rgba(9, 10, 16, 0.1)"};
-      --drawer-gradient-from: ${isDark ? "#090a10" : "#fcfdfe"};
-      --drawer-gradient-to: ${isDark ? "#020304" : "#ecf0f5"};
+      --card-bg: ${isDark ? "rgba(9, 9, 11, 0.92)" : "rgba(255, 255, 255, 0.92)"};
+      --card-bg-solid: ${isDark ? "#09090b" : "#ffffff"};
+      --card-hover-bg: ${isDark ? "#18181b" : "#f4f4f5"};
+      --text-primary: ${isDark ? "#fafafa" : "#18181b"};
+      --text-secondary: ${isDark ? "#e4e4e7" : "#27272a"};
+      --text-tertiary: ${isDark ? "#a1a1aa" : "#52525b"};
+      --text-muted: ${isDark ? "#a1a1aa" : "#71717a"};
+      --border-color: ${isDark ? "#27272a" : "#e4e4e7"};
+      --drawer-gradient-from: ${isDark ? "#09090b" : "#ffffff"};
+      --drawer-gradient-to: ${isDark ? "#09090b" : "#fafafa"};
 
       /* ReUI-inspired sidebar surfaces: neutral zinc scale, restrained borders. */
       --sidebar-bg: ${isDark ? "#09090b" : "#ffffff"};
@@ -84,17 +84,20 @@ export function getThemeStyles({
       --muted-foreground: ${isDark ? "#a1a1aa" : "#71717a"};
       --accent: ${isDark ? "#27272a" : "#f4f4f5"};
       --accent-foreground: ${isDark ? "#fafafa" : "#18181b"};
-      --destructive: ${isDark ? "#7f1d1d" : "#dc2626"};
+      --destructive: #dc2626;
+      --destructive-foreground: ${isDark ? "var(--color-red-600)" : "var(--color-red-800)"};
       --border: ${isDark ? "#27272a" : "#e4e4e7"};
       --input: ${isDark ? "#27272a" : "#e4e4e7"};
       --ring: ${isDark ? "#a1a1aa" : "#71717a"};
       --radius: 0.5rem;
-      --success: ${isDark ? "#4ade80" : "#15803d"};
-      --success-foreground: ${isDark ? "#052e16" : "#f0fdf4"};
-      --warning: ${isDark ? "#facc15" : "#a16207"};
-      --warning-foreground: ${isDark ? "#422006" : "#fefce8"};
-      --info: ${isDark ? "#7dd3fc" : "#0369a1"};
-      --info-foreground: ${isDark ? "#082f49" : "#f0f9ff"};
+      --success: #10b981;
+      --success-foreground: ${isDark ? "var(--color-emerald-600)" : "var(--color-emerald-900)"};
+      --warning: ${isDark ? "var(--color-yellow-400)" : "var(--color-yellow-500)"};
+      --warning-foreground: ${isDark ? "var(--color-yellow-600)" : "var(--color-yellow-900)"};
+      --info: #8b5cf6;
+      --info-foreground: ${isDark ? "var(--color-violet-600)" : "var(--color-violet-900)"};
+      --invert: ${isDark ? "#f4f4f5" : "#18181b"};
+      --invert-foreground: ${isDark ? "#18181b" : "#fafafa"};
     }
     
     html, body, button, h1, h2, h3, h4, h5, h6, select, span, input, textarea, .font-sans {
