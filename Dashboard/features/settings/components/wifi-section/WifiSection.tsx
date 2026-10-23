@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Plus, Wifi } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { useIoTStore } from "@/features/iot/hooks/useIoTStore";
 import { AnimatePresence } from "motion/react";
 import { WifiNetworkCard } from "./WifiNetworkCard";
@@ -54,14 +55,17 @@ export default function WifiSection() {
           <Wifi className="w-5 h-5 text-[var(--accent3)]" />
           تنظیمات شبکه‌های وای‌فای
         </h3>
-        <button
+        <Button
           onClick={handleAddNetwork}
-          className="bg-[var(--accent3)] text-white p-2 rounded-xl hover:bg-[var(--accent3-dark)] transition-colors shadow-md"
+          variant="default"
+          size="icon"
+          className="rounded-xl bg-[var(--accent3)] text-white shadow-sm transition-colors hover:bg-[var(--accent3-dark)] hover:text-white focus-visible:ring-[var(--accent3)]"
           title="افزودن شبکه جدید"
+          aria-label="افزودن شبکه جدید"
           type="button"
         >
           <Plus className="w-4 h-4" />
-        </button>
+        </Button>
       </div>
       
       <p className="text-sm text-[var(--text-secondary)] mb-4 leading-relaxed">

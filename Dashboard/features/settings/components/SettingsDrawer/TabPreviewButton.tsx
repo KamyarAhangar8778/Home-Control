@@ -23,9 +23,7 @@ export function TabPreviewButton({
       onClick={onClick}
       whileHover={animationsEnabled ? { scale: 1.06, y: -1 } : undefined}
       whileTap={animationsEnabled ? { scale: 0.95 } : undefined}
-      className={`col-span-3 ${
-        isLeft ? "text-left" : "text-right"
-      } group focus:outline-none cursor-pointer transition-all duration-300 overflow-hidden`}
+      className="col-span-3 group text-right focus:outline-none cursor-pointer transition-all duration-300 overflow-hidden"
       title={title}
     >
       <span

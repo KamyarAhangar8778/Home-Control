@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { soundManager } from "@/lib/audio";
 import { reconnectMqtt, getMqttSettings } from "@/features/iot/services/mqttService";
-import { Radio, RefreshCw, Save } from "lucide-react";
+import { RefreshCw, Save } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { fetchConfigFromCloudflare, saveConfigToCloudflare } from "@/features/iot/services/cloudflare/api";
 import { useIoTStore } from "@/features/iot/hooks/useIoTStore";
 import { MqttFormFields } from "./MqttFormFields";
@@ -93,13 +94,14 @@ export default function MqttSection() {
         <MqttQosSelector qos={qos} setQos={setQos} />
       </div>
 
-      <button
+      <Button
         type="button"
+        variant={isSaved ? "outline" : "default"}
         onClick={handleSaveAndReconnect}
-        className={`w-full py-3.5 px-4 rounded-xl flex items-center justify-center gap-2 transition-all duration-300 text-sm font-bold ${
+        className={`w-full h-auto min-h-12 rounded-xl px-4 py-3.5 text-sm font-bold transition-colors focus-visible:ring-[var(--accent3)] ${
           isSaved
-            ? "bg-[var(--accent4-transparent)] text-[var(--accent4)] border border-[var(--accent4)]"
-            : "bg-[var(--accent3)] hover:bg-[var(--accent3-dark)] text-white shadow-lg shadow-[var(--accent3-transparent)]"
+            ? "border-[var(--accent4)] bg-[var(--accent4-transparent)] text-[var(--accent4)] hover:border-[var(--accent4)] hover:bg-[var(--accent4-transparent)] hover:text-[var(--accent4)]"
+            : "border-transparent bg-[var(--accent3)] text-white shadow-sm hover:bg-[var(--accent3-dark)] hover:text-white"
         }`}
       >
         {isSaved ? (
@@ -113,7 +115,7 @@ export default function MqttSection() {
             ذخیره و اتصال مجدد
           </>
         )}
-      </button>
+      </Button>
     </div>
   );
 }

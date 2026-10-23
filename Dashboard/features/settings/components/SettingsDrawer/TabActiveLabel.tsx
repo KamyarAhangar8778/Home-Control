@@ -12,7 +12,7 @@ export function TabActiveLabel({ activeTab, isDark }: TabActiveLabelProps) {
   const tab = SETTINGS_TABS[currIndex];
 
   return (
-    <div className="col-span-6 flex flex-col items-center justify-center overflow-hidden">
+    <div className="col-span-6 flex flex-col items-end justify-center text-right overflow-hidden">
       <AnimatePresence mode="wait">
         <motion.div
           key={activeTab}
@@ -20,9 +20,9 @@ export function TabActiveLabel({ activeTab, isDark }: TabActiveLabelProps) {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: -5 }}
           transition={{ duration: 0.15 }}
-          className="flex flex-col items-center gap-0.5 w-full"
+          className="flex w-full flex-col items-end gap-0.5 text-right"
         >
-          <div className="flex items-center gap-1.5 justify-center w-full max-w-full">
+          <div className="flex w-full max-w-full flex-row-reverse items-center justify-start gap-1.5 text-right">
             {React.createElement(tab.Icon, {
               className: `w-4 h-4 shrink-0 ${isDark ? "text-accent4" : "text-accent3"}`,
             })}

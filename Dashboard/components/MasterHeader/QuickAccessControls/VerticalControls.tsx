@@ -17,7 +17,7 @@ export default function VerticalControls({
   const activeWorkspaceView = useIoTStore(s => s.activeWorkspaceView);
   const setActiveWorkspaceView = useIoTStore(s => s.setActiveWorkspaceView);
 
-  const itemClass = "flex w-full items-center gap-3 rounded-md border border-transparent px-3 py-2.5 text-right text-sm font-medium text-[var(--text-secondary)] transition-colors hover:bg-[var(--accent3-transparent)] hover:text-[var(--accent3)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent4)]";
+  const itemClass = "flex w-full items-center justify-start gap-3 rounded-md border border-transparent px-3 py-2.5 text-right text-sm font-medium text-[var(--text-secondary)] transition-colors hover:bg-[var(--accent3-transparent)] hover:text-[var(--accent3)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent4)]";
   const navClass = (view: WorkspaceView) =>
     `${itemClass} ${activeWorkspaceView === view ? "border-[var(--accent3-medium)] bg-[var(--accent3-transparent)] text-[var(--accent3)]" : ""}`;
 
