@@ -24,27 +24,7 @@ export default function DashboardDrawers() {
   const setAnimationsFps = useIoTStore(s => s.setAnimationsFps);
   const headerTitle = useIoTStore(s => s.headerTitle);
   const setHeaderTitle = useIoTStore(s => s.setHeaderTitle);
-  const matrixDensity = useIoTStore(s => s.matrixDensity);
-  const setMatrixDensity = useIoTStore(s => s.setMatrixDensity);
-  const matrixSize = useIoTStore(s => s.matrixSize);
-  const setMatrixSize = useIoTStore(s => s.setMatrixSize);
-  const matrixHoverSize = useIoTStore(s => s.matrixHoverSize);
-  const setMatrixHoverSize = useIoTStore(s => s.setMatrixHoverSize);
-  const matrixOpacity = useIoTStore(s => s.matrixOpacity);
-  const setMatrixOpacity = useIoTStore(s => s.setMatrixOpacity);
-  const matrixColor = useIoTStore(s => s.matrixColor);
-  const setMatrixColor = useIoTStore(s => s.setMatrixColor);
-  const matrixMoving = useIoTStore(s => s.matrixMoving);
-  const setMatrixMoving = useIoTStore(s => s.setMatrixMoving);
-  const matrixMouseEffect = useIoTStore(s => s.matrixMouseEffect);
-  const setMatrixMouseEffect = useIoTStore(s => s.setMatrixMouseEffect);
-  const matrixTwinkleEffect = useIoTStore(s => s.matrixTwinkleEffect);
-  const setMatrixTwinkleEffect = useIoTStore(s => s.setMatrixTwinkleEffect);
-  const matrixTwinkleSpeed = useIoTStore(s => s.matrixTwinkleSpeed);
-  const setMatrixTwinkleSpeed = useIoTStore(s => s.setMatrixTwinkleSpeed);
   const isDark = useIoTStore(s => s.isDark);
-  const dashboardWidth = useIoTStore(s => s.dashboardWidth);
-  const setDashboardWidth = useIoTStore(s => s.setDashboardWidth);
   const isGroupsCompactLayout = useIoTStore(s => s.isGroupsCompactLayout);
   const setIsGroupsCompactLayout = useIoTStore(s => s.setIsGroupsCompactLayout);
   const isSegmentsCompactLayout = useIoTStore(s => s.isSegmentsCompactLayout);
@@ -69,27 +49,7 @@ export default function DashboardDrawers() {
           setAnimationsFps={setAnimationsFps}
           headerTitle={headerTitle}
           setHeaderTitle={setHeaderTitle}
-          matrixDensity={matrixDensity}
-          setMatrixDensity={setMatrixDensity}
-          matrixSize={matrixSize}
-          setMatrixSize={setMatrixSize}
-          matrixHoverSize={matrixHoverSize}
-          setMatrixHoverSize={setMatrixHoverSize}
-          matrixOpacity={matrixOpacity}
-          setMatrixOpacity={setMatrixOpacity}
-          matrixColor={matrixColor}
-          setMatrixColor={setMatrixColor}
-          matrixMoving={matrixMoving}
-          setMatrixMoving={setMatrixMoving}
-          matrixMouseEffect={matrixMouseEffect}
-          setMatrixMouseEffect={setMatrixMouseEffect}
-          matrixTwinkleEffect={matrixTwinkleEffect}
-          setMatrixTwinkleEffect={setMatrixTwinkleEffect}
-          matrixTwinkleSpeed={matrixTwinkleSpeed}
-          setMatrixTwinkleSpeed={setMatrixTwinkleSpeed}
           isDark={isDark}
-          dashboardWidth={dashboardWidth}
-          setDashboardWidth={setDashboardWidth}
           isGroupsCompactLayout={isGroupsCompactLayout}
           setIsGroupsCompactLayout={setIsGroupsCompactLayout}
           isSegmentsCompactLayout={isSegmentsCompactLayout}
