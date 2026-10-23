@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import { getBaseStyles, getThemeStyles, getUtilityStyles, getAnimationStyles } from "./styles";
 
 interface DashboardStylesProps {
@@ -10,22 +9,7 @@ interface DashboardStylesProps {
   animationsEnabled: boolean;
 }
 
-export default function DashboardStyles({
-  accent3,
-  accent4,
-  isDark,
-  animationsEnabled,
-}: DashboardStylesProps) {
-  const baseCss = getBaseStyles(isDark);
-  const themeCss = getThemeStyles({ accent3, accent4, isDark });
-  const utilityCss = getUtilityStyles({ isDark, animationsEnabled });
-  const animationCss = getAnimationStyles({ isDark });
-
-  return (
-    <style
-      dangerouslySetInnerHTML={{
-        __html: `${baseCss}${themeCss}${utilityCss}${animationCss}`,
-      }}
-    />
-  );
+export default function DashboardStyles({ accent3, accent4, isDark, animationsEnabled }: DashboardStylesProps) {
+  const css = `${getBaseStyles(isDark)}${getThemeStyles({ accent3, accent4, isDark })}${getUtilityStyles({ isDark, animationsEnabled })}${getAnimationStyles({ isDark })}`;
+  return <style>{css}</style>;
 }
