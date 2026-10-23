@@ -1,3 +1,5 @@
+import { Download, Music, SkipBack, SkipForward } from "lucide-react";
+
 interface AudioTrack {
   title: string;
   creator: string;
