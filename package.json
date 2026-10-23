@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "NODE_ENV=production next build",
     "start": "next start",
-    "lint": "biome lint app components features lib",
+    "lint": "biome lint --max-diagnostics=1000 app components features lib",
     "format": "biome format --write app components features lib",
     "clean": "node -e \"['.next', 'out', 'tsconfig.tsbuildinfo'].forEach(p => require('fs').rmSync(p, { recursive: true, force: true }))\""
   },
