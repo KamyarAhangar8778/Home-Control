@@ -1,6 +1,7 @@
 import React from "react";
 import { Edit2, Trash2, Clock, Thermometer, Info, Layers } from "lucide-react";
 import { useIoTStore } from "@/features/iot/hooks/useIoTStore";
+import { Card } from "@/components/ui/card";
 
 const DAYS_MAP = [
   { value: 6, label: "شنبه" },
@@ -31,16 +32,16 @@ export default function AutomationList({ handleEdit, handleDelete, handleToggle 
       </div>
       
       {automations.length === 0 ? (
-        <div className="text-center py-10 bg-[var(--card-bg-solid)] rounded-2xl border border-dashed border-[var(--border-color)] text-[var(--text-muted)] text-sm flex flex-col items-center justify-center gap-2">
-          <Clock className="w-8 h-8 opacity-20" />
+        <Card className="!gap-2 !items-center !justify-center !rounded-2xl !border-dashed !bg-[var(--card-bg-solid)] !p-10 text-center text-sm text-[var(--text-muted)] shadow-none">
+          <Clock className="w-8 h-8 opacity-30" />
           هیچ اتوماسیونی ثبت نشده است.
-        </div>
+        </Card>
       ) : (
         <div className="grid grid-cols-1 gap-3">
           {automations.map((auto) => {
             const hasMacros = auto.actions?.some(a => a.targetMacro);
             return (
-              <div key={auto.id} className={`flex flex-col p-4 rounded-2xl border transition-all shadow-sm ${auto.enabled ? "bg-[var(--card-bg-solid)] border-[var(--border-color)]" : "bg-[var(--card-bg)] border-[var(--border-color)] opacity-70"}`}>
+              <Card key={auto.id} className={`!gap-0 !rounded-2xl !border-[var(--border-color)] !p-4 !shadow-sm transition-all ${auto.enabled ? "!bg-[var(--card-bg-solid)]" : "!bg-[var(--card-bg)] opacity-70"}`}>
                 
                 {/* Card Header */}
                 <div className="flex items-center justify-between mb-3">
@@ -50,9 +51,13 @@ export default function AutomationList({ handleEdit, handleDelete, handleToggle 
                   </div>
                   
                   {/* Toggle Switch */}
-                  <button type="button" 
+                  <button
+                    type="button"
+                    role="switch"
+                    aria-checked={auto.enabled}
+                    aria-label={`وضعیت اتوماسیون ${auto.title}`}
                     onClick={() => handleToggle(auto.id, !auto.enabled)}
-                    className={`relative inline-flex h-5 w-9 items-center rounded-full transition-colors ${auto.enabled ? "bg-[var(--accent3)]" : "bg-[var(--border-color)]"}`}
+                    className={`relative inline-flex h-5 w-9 items-center rounded-full transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent3)] ${auto.enabled ? "bg-[var(--accent3)]" : "bg-[var(--border-color)]"}`}
                   >
                     <span className={`inline-block h-3.5 w-3.5 transform rounded-full bg-white transition-transform ${auto.enabled ? "translate-x-1" : "translate-x-4"}`} />
                   </button>
@@ -117,16 +122,16 @@ export default function AutomationList({ handleEdit, handleDelete, handleToggle 
                   </div>
                   
                   <div className="flex items-center gap-1">
-                    <button type="button" onClick={() => handleEdit(auto)} className="p-2 text-[var(--text-muted)] md:hover:text-blue-500 md:hover:bg-blue-500/10 rounded-lg transition-colors" title="ویرایش">
+                    <button type="button" onClick={() => handleEdit(auto)} aria-label={`ویرایش اتوماسیون ${auto.title}`} className="p-2 text-[var(--text-muted)] md:hover:text-blue-500 md:hover:bg-blue-500/10 rounded-lg transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent3)]" title="ویرایش">
                       <Edit2 className="w-4 h-4" />
                     </button>
-                    <button type="button" onClick={() => handleDelete(auto.id)} className="p-2 text-[var(--text-muted)] md:hover:text-rose-500 md:hover:bg-rose-500/10 rounded-lg transition-colors" title="حذف">
+                    <button type="button" onClick={() => handleDelete(auto.id)} aria-label={`حذف اتوماسیون ${auto.title}`} className="p-2 text-[var(--text-muted)] md:hover:text-rose-500 md:hover:bg-rose-500/10 rounded-lg transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent3)]" title="حذف">
                       <Trash2 className="w-4 h-4" />
                     </button>
                   </div>
                 </div>
                 
-              </div>
+              </Card>
             );
           })}
         </div>

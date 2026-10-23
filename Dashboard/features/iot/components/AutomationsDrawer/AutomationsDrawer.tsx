@@ -3,6 +3,7 @@
 import React from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Clock, X, Info } from "lucide-react";
+import { Alert } from "@/components/reui/alert";
 import { useAutomationForm } from "./hooks/useAutomationForm";
 import AutomationForm from "./components/AutomationForm";
 import AutomationList from "./components/AutomationList";
@@ -59,12 +60,12 @@ export default function AutomationsDrawer({ isOpen, onClose, isDark, animationsE
           <div className="flex-1 overflow-y-auto [&::-webkit-scrollbar]:hidden [scrollbar-width:none] p-6 space-y-8">
             
             {/* Info Box */}
-            <div className="bg-[var(--muted)] border border-[var(--border)] text-[var(--muted-foreground)] p-4 rounded-lg text-xs flex gap-3 items-start leading-relaxed shadow-sm">
+            <Alert variant="info" className="!flex !items-start !gap-3 !rounded-xl !border-[var(--border)] !bg-[var(--muted)] !p-4 text-xs leading-relaxed text-[var(--muted-foreground)] shadow-sm">
               <Info className="w-5 h-5 shrink-0 mt-0.5" />
               <p>
                 در این بخش می‌توانید عملیات‌های زمانی تعریف کنید. سرور ابری پادشاهی در زمان مشخص شده، چندین دستور را همزمان به دستگاه ارسال خواهد کرد.
               </p>
-            </div>
+            </Alert>
 
             {/* Form Section */}
             <AutomationForm formHook={formHook} />
