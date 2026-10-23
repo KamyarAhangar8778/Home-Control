@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "motion/react";
 import { X, Plus, GripVertical } from "lucide-react";
+import { Card } from "@/components/ui/card";
 import { SegmentData } from "../core/types";
 
 interface PlaceholderCardProps {
@@ -57,9 +58,10 @@ export default function PlaceholderCard({
       </div>
       {/* Translate lives here — GPU composited, never causes paint */}
       <div className="w-full h-full md:hover:-translate-y-1.5 transition-transform duration-350 rounded-xl group/ph-card">
+        <Card className="w-full h-full !gap-0 !overflow-hidden !rounded-xl !border-dashed !border-[var(--border)] !bg-[var(--card)] !p-0 !shadow-none">
         <button type="button"
           onClick={() => onSetupPlaceholder && onSetupPlaceholder(segment.id)}
-          className={`relative w-full h-full border border-dashed border-[var(--border)] bg-[var(--card)] flex flex-col items-center justify-center gap-2 cursor-pointer text-center rounded-xl overflow-hidden ${
+          className={`relative w-full h-full border-0 bg-transparent flex flex-col items-center justify-center gap-2 cursor-pointer text-center rounded-xl overflow-hidden ${
             isUltraCompact
               ? "p-3 min-h-[90px]"
               : isCompact
@@ -81,6 +83,7 @@ export default function PlaceholderCard({
             </div>
           )}
         </button>
+        </Card>
       </div>
     </motion.div>
   );

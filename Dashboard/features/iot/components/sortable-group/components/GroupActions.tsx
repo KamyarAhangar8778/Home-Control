@@ -1,5 +1,6 @@
 import React from "react";
 import { Trash2, GripVertical } from "lucide-react";
+import { Card } from "@/components/ui/card";
 
 interface GroupActionsProps {
   id: string;
@@ -17,7 +18,7 @@ export default function GroupActions({
   listeners,
 }: GroupActionsProps) {
   return (
-    <div className="flex items-stretch shrink-0 pointer-events-auto relative bg-[var(--card-bg)] backdrop-blur-md border border-[var(--border-color)] shadow-sm rounded-2xl overflow-hidden">
+    <Card className="flex items-stretch shrink-0 pointer-events-auto relative !gap-0 !overflow-hidden !rounded-2xl !border-[var(--border-color)] !bg-[var(--card-bg)] !p-0 !shadow-sm backdrop-blur-md">
       {/* Hover glow overlay — opacity-only transition avoids GPU paint thrashing */}
       <div className="absolute inset-0 rounded-2xl border border-[var(--accent3)] shadow-xl opacity-0 transition-opacity duration-350 md:group-hover/group-card:opacity-100 pointer-events-none" />
       {/* Delete Group Handle */}
@@ -42,6 +43,6 @@ export default function GroupActions({
           className={`transition-transform duration-300 group-md:hover:scale-110 ${parentGroupsCols === 3 ? "w-4 h-4" : "w-5 h-5"}`}
         />
       </div>
-    </div>
+    </Card>
   );
 }
