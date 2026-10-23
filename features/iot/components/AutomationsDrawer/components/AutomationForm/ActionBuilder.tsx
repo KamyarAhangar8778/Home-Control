@@ -19,7 +19,8 @@ export default function ActionBuilder({ actions, setActions }: ActionBuilderProp
         <Card key={act.targetPin ?? act.targetMacro} className="!relative !gap-2 !rounded-xl !border-[var(--border-color)] !bg-[var(--card-bg)] !p-3 group">
           <button type="button" 
             onClick={() => removeAction(index)}
-            className="absolute -top-2 -left-2 p-1.5 bg-rose-500 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity shadow-md"
+            aria-label={`حذف عملیات ${index + 1}`}
+            className="absolute -top-2 -left-2 p-1.5 bg-rose-500 text-white rounded-full opacity-0 group-hover:opacity-100 focus-visible:opacity-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rose-500 transition-opacity shadow-md"
           >
             <X className="w-3 h-3" />
           </button>
