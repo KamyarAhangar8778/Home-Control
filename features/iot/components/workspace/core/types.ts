@@ -10,8 +10,6 @@ export interface IoTWorkspaceProps {
   activeGroupId: string | null;
   animationsEnabled?: boolean;
   selectedGroupFilter?: string | null;
-  isGroupsCompactLayout?: boolean;
-  isSegmentsCompactLayout?: boolean;
 
   handleDragStart: (event: DragStartEvent) => void;
   handleDragOver: (event: DragOverEvent) => void;
