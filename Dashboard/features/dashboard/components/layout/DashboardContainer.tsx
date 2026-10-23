@@ -3,7 +3,6 @@
 import React from "react";
 import { MotionConfig } from "motion/react";
 import DashboardStyles from "@/features/iot/components/DashboardStyles";
-import CuneiformBackground from "@/features/iot/components/cuneiform-background";
 import { useIoTStore } from "@/features/iot/hooks/useIoTStore";
 import DashboardHeader from "./DashboardHeader";
 import DashboardMain from "./DashboardMain";
@@ -19,7 +18,6 @@ export default function DashboardContainer() {
   const accent4 = useIoTStore(s => s.accent4);
   const isDark = useIoTStore(s => s.isDark);
   const animationsEnabled = useIoTStore(s => s.animationsEnabled);
-  const animationsFps = useIoTStore(s => s.animationsFps);
 
   return (
     <MotionConfig reducedMotion={animationsEnabled ? "user" : "always"}>
@@ -32,21 +30,6 @@ export default function DashboardContainer() {
             animationsEnabled={animationsEnabled}
           />
 
-          <CuneiformBackground
-            isDark={isDark}
-            matrixDensity={40}
-            matrixSize={4}
-            matrixHoverSize={3}
-            matrixOpacity={15}
-            matrixColor="#D4AF37"
-            matrixMoving={true}
-            matrixMouseEffect={true}
-            matrixTwinkleEffect={false}
-            matrixTwinkleSpeed={50}
-            accent3={accent3}
-            animationsEnabled={animationsEnabled}
-            animationsFps={animationsFps}
-          />
 
           <div className="relative z-10 flex flex-row items-stretch w-full min-h-screen transition-all duration-500">
             <DashboardHeader />
