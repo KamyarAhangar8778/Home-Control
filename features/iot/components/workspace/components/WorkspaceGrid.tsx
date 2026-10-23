@@ -1,11 +1,11 @@
-import React, { useMemo } from "react";
+import React from "react";
 import {
   SortableContext,
   rectSortingStrategy,
 } from "@dnd-kit/sortable";
 import SortableGroup from "../../SortableGroup";
 import SortableSegmentCard from "../../SortableSegmentCard";
-import { IoTWorkspaceProps } from "../core/types";
+import type { IoTWorkspaceProps } from "../core/types";
 import { useWorkspaceGrid } from "../hooks/useWorkspaceGrid";
 import { getEffectiveGroupsCols } from "../core/gridUtils";
 import { useShallow } from "zustand/react/shallow";
@@ -166,7 +166,7 @@ export default function WorkspaceGrid({
             <div className="flex gap-8 w-full items-start">
               {columns.map((colGroups, colIndex) => (
                 colGroups.length > 0 ? (
-                  <div key={`col-${colIndex}`} className="flex-1 flex flex-col gap-8 min-w-0">
+                  <div key={`col-${colGroups.join("-")}`} className="flex-1 flex flex-col gap-8 min-w-0">
                     {colGroups.map((groupName, rowIdx) => {
                       const groupIndex = rowIdx * groupsCols + colIndex;
                       return renderGroup(groupName, groupIndex);
