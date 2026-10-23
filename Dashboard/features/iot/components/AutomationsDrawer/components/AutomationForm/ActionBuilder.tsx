@@ -45,13 +45,13 @@ export default function ActionBuilder({ actions, setActions }: ActionBuilderProp
               <div className="grid grid-cols-2 gap-1 p-1 bg-[var(--card-bg-solid)] rounded-lg border border-[var(--border-color)]">
                 <button type="button" 
                   onClick={() => updateAction(index, { actionOn: true })}
-                  className={`flex-1 min-h-9 py-1.5 rounded-md text-[10px] font-bold flex items-center justify-center gap-1.5 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-500 ${act.actionOn ? "bg-emerald-600 text-white shadow-sm" : "bg-transparent text-[var(--text-secondary)] md:hover:bg-emerald-500/10 md:hover:text-emerald-600 dark:md:hover:text-emerald-400"}`}
+                  className={`flex-1 min-h-9 py-1.5 rounded-md text-[10px] font-bold flex items-center justify-center gap-1.5 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-500 ${act.actionOn ? "bg-emerald-600 text-white shadow-sm" : "bg-transparent text-[var(--text-secondary)] md:hover:bg-[var(--accent)] md:hover:text-[var(--foreground)]"}`}
                 >
                   <Play className="w-3 h-3" /> روشن
                 </button>
                 <button type="button" 
                   onClick={() => updateAction(index, { actionOn: false })}
-                  className={`flex-1 min-h-9 py-1.5 rounded-md text-[10px] font-bold flex items-center justify-center gap-1.5 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rose-500 ${!act.actionOn ? "bg-rose-600 text-white shadow-sm" : "bg-transparent text-[var(--text-secondary)] md:hover:bg-rose-500/10 md:hover:text-rose-600 dark:md:hover:text-rose-400"}`}
+                  className={`flex-1 min-h-9 py-1.5 rounded-md text-[10px] font-bold flex items-center justify-center gap-1.5 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rose-500 ${!act.actionOn ? "bg-rose-600 text-white shadow-sm" : "bg-transparent text-[var(--text-secondary)] md:hover:bg-[var(--destructive)]/10 md:hover:text-[var(--destructive)]"}`}
                 >
                   <Square className="w-3 h-3" /> خاموش
                 </button>
@@ -81,13 +81,13 @@ export default function ActionBuilder({ actions, setActions }: ActionBuilderProp
       <div className="grid grid-cols-2 gap-2">
         <button type="button" 
           onClick={() => addAction("pin")}
-          className="flex-1 py-2 border border-dashed border-[var(--border-color)] rounded-xl text-xs text-[var(--text-muted)] md:hover:text-[var(--accent3)] md:hover:border-[var(--accent3)] transition-colors flex items-center justify-center gap-1"
+          className="flex-1 py-2 border border-dashed border-[var(--border-color)] rounded-xl text-xs text-[var(--text-muted)] md:hover:text-[var(--foreground)] md:hover:bg-[var(--accent)] md:hover:border-[var(--accent3)] transition-colors flex items-center justify-center gap-1"
         >
           <Plus className="w-3.5 h-3.5" /> پایه
         </button>
         <button type="button" 
           onClick={() => addAction("macro")}
-          className="flex-1 py-2 border border-dashed border-[var(--border-color)] rounded-xl text-xs text-[var(--text-muted)] md:hover:text-indigo-400 md:hover:border-indigo-400 transition-colors flex items-center justify-center gap-1"
+          className="flex-1 py-2 border border-dashed border-[var(--border-color)] rounded-xl text-xs text-[var(--text-muted)] md:hover:text-[var(--foreground)] md:hover:bg-[var(--accent)] md:hover:border-[var(--accent3)] transition-colors flex items-center justify-center gap-1"
         >
           <Plus className="w-3.5 h-3.5" /> ماکرو
         </button>

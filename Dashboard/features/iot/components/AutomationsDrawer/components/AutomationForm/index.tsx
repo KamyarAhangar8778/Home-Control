@@ -42,26 +42,26 @@ export default function AutomationForm({ formHook }: AutomationFormProps) {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             placeholder="مثال: روشن کردن پمپ آبیاری"
-            className="w-full bg-[var(--card-bg)] border border-[var(--border-color)] p-2.5 rounded-xl focus:outline-none focus:border-[var(--accent3)] text-sm transition-colors text-[var(--text-primary)]"
+            className="w-full bg-[var(--card-bg)] border border-[var(--border-color)] p-2.5 rounded-xl focus:outline-none focus:border-[var(--accent3)] focus-visible:ring-2 focus-visible:ring-[var(--accent3)]/50 text-sm transition-colors text-[var(--text-primary)]"
           />
         </div>
 
         <div className="col-span-2 grid grid-cols-1 sm:grid-cols-3 gap-1 bg-[var(--card-bg)] p-1 rounded-xl border border-[var(--border-color)]">
           <button type="button"
             onClick={() => setAutoType("schedule")}
-            className={`w-full min-w-0 px-2 py-2 text-xs font-bold rounded-lg transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent3)] ${autoType === "schedule" ? "bg-[var(--accent3)] text-white shadow-sm" : "bg-transparent text-[var(--text-secondary)] md:hover:bg-[var(--card-hover-bg)] md:hover:text-[var(--text-primary)]"}`}
+            className={`w-full min-w-0 px-2 py-2 text-xs font-bold rounded-lg transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent3)] ${autoType === "schedule" ? "bg-[var(--accent3)] text-black shadow-sm" : "bg-transparent text-[var(--text-secondary)] md:hover:bg-[var(--card-hover-bg)] md:hover:text-[var(--text-primary)]"}`}
           >
             زمان‌بندی دوره‌ای
           </button>
           <button type="button"
             onClick={() => setAutoType("timer")}
-            className={`w-full min-w-0 px-2 py-2 text-xs font-bold rounded-lg transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent3)] ${autoType === "timer" ? "bg-[var(--accent3)] text-white shadow-sm" : "bg-transparent text-[var(--text-secondary)] md:hover:bg-[var(--card-hover-bg)] md:hover:text-[var(--text-primary)]"}`}
+            className={`w-full min-w-0 px-2 py-2 text-xs font-bold rounded-lg transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent3)] ${autoType === "timer" ? "bg-[var(--accent3)] text-black shadow-sm" : "bg-transparent text-[var(--text-secondary)] md:hover:bg-[var(--card-hover-bg)] md:hover:text-[var(--text-primary)]"}`}
           >
             تایمر یک‌بار مصرف
           </button>
           <button type="button"
             onClick={() => setAutoType("weather")}
-            className={`w-full min-w-0 px-2 py-2 text-xs font-bold rounded-lg transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent3)] ${autoType === "weather" ? "bg-[var(--accent3)] text-white shadow-sm" : "bg-transparent text-[var(--text-secondary)] md:hover:bg-[var(--card-hover-bg)] md:hover:text-[var(--text-primary)]"}`}
+            className={`w-full min-w-0 px-2 py-2 text-xs font-bold rounded-lg transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent3)] ${autoType === "weather" ? "bg-[var(--accent3)] text-black shadow-sm" : "bg-transparent text-[var(--text-secondary)] md:hover:bg-[var(--card-hover-bg)] md:hover:text-[var(--text-primary)]"}`}
           >
             مبتنی بر دما
           </button>
@@ -100,7 +100,7 @@ export default function AutomationForm({ formHook }: AutomationFormProps) {
                       if (days.includes(d.value)) setDays(days.filter((x: number) => x !== d.value));
                       else setDays([...days, d.value].sort());
                     }}
-                    className={`px-3 py-2 rounded-xl text-xs font-bold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent3)] ${days.includes(d.value) ? "bg-[var(--accent3)] text-white shadow-sm" : "bg-[var(--card-bg)] border border-[var(--border-color)] text-[var(--text-secondary)] md:hover:bg-[var(--card-hover-bg)] md:hover:text-[var(--text-primary)] md:hover:border-[var(--accent3)]"}`}
+                    className={`px-3 py-2 rounded-xl text-xs font-bold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent3)] ${days.includes(d.value) ? "bg-[var(--accent3)] text-black shadow-sm" : "bg-[var(--card-bg)] border border-[var(--border-color)] text-[var(--text-secondary)] md:hover:bg-[var(--card-hover-bg)] md:hover:text-[var(--text-primary)] md:hover:border-[var(--accent3)]"}`}
                   >
                     {d.label}
                   </button>

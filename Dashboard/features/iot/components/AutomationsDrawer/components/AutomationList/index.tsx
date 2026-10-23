@@ -122,10 +122,10 @@ export default function AutomationList({ handleEdit, handleDelete, handleToggle 
                   </div>
                   
                   <div className="flex items-center gap-1">
-                    <button type="button" onClick={() => handleEdit(auto)} aria-label={`ویرایش اتوماسیون ${auto.title}`} className="p-2 text-[var(--text-secondary)] hover:text-blue-600 hover:bg-blue-500/10 rounded-lg transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent3)]" title="ویرایش">
+                    <button type="button" onClick={() => handleEdit(auto)} aria-label={`ویرایش اتوماسیون ${auto.title}`} className="p-2 text-[var(--text-secondary)] hover:text-[var(--foreground)] hover:bg-[var(--accent)] rounded-lg transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent3)]" title="ویرایش">
                       <Edit2 className="w-4 h-4" />
                     </button>
-                    <button type="button" onClick={() => handleDelete(auto.id)} aria-label={`حذف اتوماسیون ${auto.title}`} className="p-2 text-[var(--text-secondary)] hover:text-rose-600 hover:bg-rose-500/10 rounded-lg transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent3)]" title="حذف">
+                    <button type="button" onClick={() => handleDelete(auto.id)} aria-label={`حذف اتوماسیون ${auto.title}`} className="p-2 text-[var(--text-secondary)] hover:text-[var(--destructive)] hover:bg-[var(--destructive)]/10 rounded-lg transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent3)]" title="حذف">
                       <Trash2 className="w-4 h-4" />
                     </button>
                   </div>

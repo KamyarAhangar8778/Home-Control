@@ -1,8 +1,6 @@
 "use client";
 
 import React from "react";
-import { Columns2, LayoutGrid } from "lucide-react";
-import { useMediaQuery } from "../../../hooks/useMediaQuery";
 
 interface LayoutSelectorProps {
   maxCols: number;
@@ -17,8 +15,6 @@ export default function LayoutSelector({
   parentGroupsCols,
   fullWidth = false,
 }: LayoutSelectorProps) {
-  const isMobile = useMediaQuery("(max-width: 768px)");
-
   return (
     <div className={`flex ${parentGroupsCols === 3 ? "flex-row" : "flex-col sm:flex-row"} ${fullWidth ? "w-full *:flex-1" : ""} items-center bg-[var(--bg-main)] border border-[var(--border-color)] p-0.5 sm:p-1 rounded-xl text-xs gap-0.5 shrink-0 shadow-sm`}>
       <button type="button"
@@ -27,7 +23,7 @@ export default function LayoutSelector({
         className={`${parentGroupsCols === 3 ? "p-0.5 sm:p-1" : "p-1.5"} flex items-center justify-center rounded-lg transition-all cursor-pointer select-none ${
           maxCols === 1
             ? "bg-[var(--accent3-transparent)] text-[var(--accent3)] shadow-inner"
-            : "text-[var(--text-muted)] md:hover:text-[var(--text-primary)] md:hover:bg-[var(--card-bg-solid)]"
+            : "text-[var(--text-secondary)] md:hover:text-[var(--foreground)] md:hover:bg-[var(--accent)]"
         }`}
         title="نمایش تک ستونه"
       >
@@ -52,7 +48,7 @@ export default function LayoutSelector({
         className={`${parentGroupsCols === 3 ? "p-0.5 sm:p-1" : "p-1.5"} flex items-center justify-center rounded-lg transition-all cursor-pointer select-none ${
           maxCols === 2
             ? "bg-[var(--accent3-transparent)] text-[var(--accent3)] shadow-inner"
-            : "text-[var(--text-muted)] md:hover:text-[var(--text-primary)] md:hover:bg-[var(--card-bg-solid)]"
+            : "text-[var(--text-secondary)] md:hover:text-[var(--foreground)] md:hover:bg-[var(--accent)]"
         }`}
         title="نمایش دو ستونه"
       >
