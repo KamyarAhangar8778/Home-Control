@@ -1,8 +1,7 @@
 "use client";
 
-import React from "react";
 import { motion } from "motion/react";
-import { WifiOff } from "lucide-react";
+import { CloudUpload, WifiOff } from "lucide-react";
 import { Alert, AlertAction, AlertDescription, AlertTitle } from "@/components/reui/alert";
 
 interface LowDataModeBannerProps {
@@ -24,81 +23,69 @@ export default function LowDataModeBanner({
 }: LowDataModeBannerProps) {
   if (!lowDataMode && !(manualSaveMode && unsavedChangesCount > 0)) return null;
 
+  const alertLayout =
+    "!grid !grid-cols-[1.25rem_minmax(0,1fr)_auto] !items-start !gap-x-3 !gap-y-1 !px-4 !py-3.5 text-right";
+
+  const actionButtonClass =
+    "inline-flex min-h-9 items-center justify-center rounded-md bg-primary px-3 py-2 text-xs font-medium text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 max-sm:w-full";
+
   return (
-    <div
-      className="flex flex-col gap-2 max-w-5xl md:mt-0 max-md:mt-6 mx-auto w-full"
-    >
+    <div className="mx-auto flex w-full max-w-5xl flex-col gap-2 max-md:mt-6 md:mt-0">
       {lowDataMode && (
         <motion.div
-          initial={animationsEnabled ? { opacity: 0, y: -10 } : {}}
+          initial={animationsEnabled ? { opacity: 0, y: -8 } : {}}
           animate={animationsEnabled ? { opacity: 1, y: 0 } : {}}
           className="w-full"
         >
-          <Alert
-            variant="warning"
-            className="!flex flex-col sm:flex-row-reverse items-center justify-between gap-4 !border-[var(--accent3-medium)]/85 !bg-[var(--card-bg-solid)] px-6 py-4 text-right shadow-md transition-all duration-300 md:hover:border-[var(--accent3)] md:hover:shadow-[0_0_15px_var(--accent3-transparent)]"
-          >
-          <div className="flex items-center gap-3">
-            <WifiOff className="w-5 h-5 text-[var(--accent3)] animate-pulse shrink-0" />
-            <div className="min-w-0">
-              <AlertTitle className="!col-start-auto !min-h-0 !line-clamp-none text-[12.5px] font-sans font-extrabold text-[var(--text-primary)] drop-shadow-sm">
-                حالت صرفه‌جویی در مصرف اینترنت فعال است
-              </AlertTitle>
-              <AlertDescription className="!col-start-auto text-[12px] text-[var(--text-secondary)]">
-                دریافت خودکار داده‌ها متوقف شده است.
-              </AlertDescription>
-            </div>
-          </div>
-          <AlertAction className="max-sm:w-full">
-            <motion.button
-              type="button"
-              onClick={refetchIot}
-              whileHover={animationsEnabled ? { scale: 1.05 } : undefined}
-              whileTap={animationsEnabled ? { scale: 0.95 } : undefined}
-              className="px-5 py-2.5 bg-[var(--accent3)] text-black md:hover:bg-[var(--accent3)]/90 font-sans font-extrabold transition-all text-xs cursor-pointer select-none rounded-xl shadow-md max-sm:w-full"
-            >
-              به‌روزرسانی کنونی
-            </motion.button>
-          </AlertAction>
+          <Alert dir="rtl" variant="warning" className={alertLayout}>
+            <WifiOff aria-hidden="true" className="!col-start-1 !row-start-1 !mt-0.5 !size-5" />
+            <AlertTitle className="!col-start-2 !row-start-1 !min-h-0 !line-clamp-none min-w-0 break-words text-sm font-semibold leading-5">
+              حالت صرفه‌جویی در مصرف اینترنت فعال است
+            </AlertTitle>
+            <AlertDescription className="!col-start-2 !row-start-2 min-w-0 break-words whitespace-normal text-xs leading-6">
+              دریافت خودکار داده‌ها متوقف شده است.
+            </AlertDescription>
+            <AlertAction className="max-sm:w-full">
+              <motion.button
+                type="button"
+                onClick={refetchIot}
+                whileHover={animationsEnabled ? { scale: 1.02 } : undefined}
+                whileTap={animationsEnabled ? { scale: 0.98 } : undefined}
+                className={actionButtonClass}
+              >
+                به‌روزرسانی کنونی
+              </motion.button>
+            </AlertAction>
           </Alert>
         </motion.div>
       )}
 
       {manualSaveMode && unsavedChangesCount > 0 && (
         <motion.div
-          initial={animationsEnabled ? { opacity: 0, y: -10 } : {}}
+          initial={animationsEnabled ? { opacity: 0, y: -8 } : {}}
           animate={animationsEnabled ? { opacity: 1, y: 0 } : {}}
           className="w-full"
         >
-          <Alert
-            variant="success"
-            className="!flex flex-col sm:flex-row-reverse items-center justify-between gap-4 !border-emerald-500/40 !bg-emerald-950/20 px-6 py-4 text-right shadow-md transition-all duration-300 md:hover:border-emerald-500 md:hover:shadow-[0_0_15px_rgba(16,185,129,0.3)]"
-          >
-          <div className="flex items-center gap-3">
-            <div className="flex items-center justify-center w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold shrink-0">
-              {unsavedChangesCount}
-            </div>
-            <div className="min-w-0">
-              <AlertTitle className="!col-start-auto !min-h-0 !line-clamp-none text-[12.5px] font-sans font-extrabold text-emerald-400 drop-shadow-sm">
-                تغییرات ذخیره‌نشده
-              </AlertTitle>
-              <AlertDescription className="!col-start-auto text-[12px] text-emerald-300/90">
-                تغییرات داشبورد هنوز در حافظه ابری کلودفلر ذخیره نشده است.
-              </AlertDescription>
-            </div>
-          </div>
-          <AlertAction className="max-sm:w-full">
-            <motion.button
-              type="button"
-              onClick={triggerCloudflarePush}
-              disabled={!triggerCloudflarePush}
-              whileHover={animationsEnabled ? { scale: 1.05 } : undefined}
-              whileTap={animationsEnabled ? { scale: 0.95 } : undefined}
-              className="px-5 py-2.5 bg-emerald-500 text-black md:hover:bg-emerald-400 font-sans font-extrabold transition-all text-xs cursor-pointer select-none rounded-xl shadow-md max-sm:w-full disabled:cursor-not-allowed disabled:opacity-50"
-            >
-              ذخیره‌سازی تغییرات
-            </motion.button>
-          </AlertAction>
+          <Alert dir="rtl" variant="warning" className={alertLayout}>
+            <CloudUpload aria-hidden="true" className="!col-start-1 !row-start-1 !mt-0.5 !size-5" />
+            <AlertTitle className="!col-start-2 !row-start-1 !min-h-0 !line-clamp-none min-w-0 break-words text-sm font-semibold leading-5">
+              تغییرات ذخیره‌نشده
+            </AlertTitle>
+            <AlertDescription className="!col-start-2 !row-start-2 min-w-0 break-words whitespace-normal text-xs leading-6">
+              {unsavedChangesCount} تغییر هنوز در حافظه ابری کلودفلر ذخیره نشده است.
+            </AlertDescription>
+            <AlertAction className="max-sm:w-full">
+              <motion.button
+                type="button"
+                onClick={triggerCloudflarePush}
+                disabled={!triggerCloudflarePush}
+                whileHover={animationsEnabled ? { scale: 1.02 } : undefined}
+                whileTap={animationsEnabled ? { scale: 0.98 } : undefined}
+                className={actionButtonClass}
+              >
+                ذخیره‌سازی تغییرات
+              </motion.button>
+            </AlertAction>
           </Alert>
         </motion.div>
       )}
