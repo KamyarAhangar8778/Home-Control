@@ -52,7 +52,7 @@ export function SettingsTabsSlider({
           <ChevronRight className="w-4 h-4" />
         </motion.button>
 
-        <div className="flex-1 grid grid-cols-12 gap-1 items-center justify-center text-center px-1 select-none overflow-hidden min-h-[58px]">
+        <div className="flex-1 grid grid-cols-12 gap-1 items-center justify-start text-right px-1 select-none overflow-hidden min-h-[58px]">
           <TabPreviewButton
             onClick={handlePrev}
             animationsEnabled={animationsEnabled}
