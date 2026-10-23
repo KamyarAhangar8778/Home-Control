@@ -27,10 +27,12 @@ export default function DrawerHeader({ onClose, animationsEnabled }: DrawerHeade
         </div>
       </div>
       <motion.button
+        type="button"
+        aria-label="بستن منوی ماژول‌ها"
         onClick={onClose}
         whileHover={animationsEnabled ? { scale: 1.15, rotate: 90 } : undefined}
         whileTap={animationsEnabled ? { scale: 0.9 } : undefined}
-        className="p-1.5 rounded-full theme-card-bg-solid border theme-border theme-text-tertiary md:hover:text-accent3 md:hover:border-accent3 transition-colors cursor-pointer focus:outline-none"
+        className="p-1.5 rounded-full theme-card-bg-solid border theme-border theme-text-tertiary md:hover:text-accent3 md:hover:border-accent3 transition-colors cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent3)]"
       >
         <X className="w-5 h-5" />
       </motion.button>
