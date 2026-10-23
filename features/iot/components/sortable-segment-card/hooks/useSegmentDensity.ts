@@ -3,7 +3,6 @@ interface UseSegmentDensityProps {
   groupItemsCount: number;
   index: number;
   parentGroupsCols: number;
-  dashboardWidth?: number;
   isMobilePortrait: boolean;
 }
 
@@ -12,7 +11,6 @@ export function useSegmentDensity({
   groupItemsCount,
   index,
   parentGroupsCols,
-  dashboardWidth = 1,
   isMobilePortrait,
 }: UseSegmentDensityProps) {
   const effectiveGroupCols = Math.min(groupMaxCols, groupItemsCount);
@@ -32,8 +30,7 @@ export function useSegmentDensity({
   const effectiveParentCols = isMobilePortrait ? 1 : parentGroupsCols;
   const rawDensityFactor = rowOccupiedCols * effectiveParentCols;
   
-  const widthReductionFactor = isMobilePortrait ? 0 : (dashboardWidth - 1) * 1.5;
-  const densityFactor = Math.max(1, rawDensityFactor - widthReductionFactor);
+  const densityFactor = Math.max(1, rawDensityFactor);
   
   const isMobileTwoCol = isMobilePortrait && rowOccupiedCols >= 2;
   const isUltraCompact = densityFactor >= 6;
