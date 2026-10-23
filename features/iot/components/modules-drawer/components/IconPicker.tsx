@@ -17,10 +17,12 @@ export default function IconPicker({ label, isOptional = true, selectedIcon, onS
     <div className="space-y-1.5">
       <div className="flex items-center justify-between">
         {isOptional && <span className="text-[9px] theme-text-muted">(اختیاری)</span>}
-        <label className="text-[10px] theme-text-tertiary font-bold block">{label}</label>
+        <span className="text-[10px] theme-text-tertiary font-bold block">{label}</span>
       </div>
       <button
         type="button"
+        aria-expanded={showIcons}
+        aria-label={label}
         onClick={() => setShowIcons(!showIcons)}
         className="w-full h-10 px-4 text-xs bg-[var(--bg-main)] text-[var(--text-primary)] border border-[var(--border-color)] rounded-xl flex items-center justify-between hover:border-[var(--accent3)] transition-all font-sans shadow-sm"
       >
