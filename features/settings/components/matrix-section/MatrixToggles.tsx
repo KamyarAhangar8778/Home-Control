@@ -1,4 +1,4 @@
-import React from "react";
+import { Move, MousePointer2, Sparkles } from "lucide-react";
 
 interface Props {
   matrixMoving: boolean;
