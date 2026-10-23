@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Settings2, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import LayoutColumnsSwitcher from "../LayoutColumnsSwitcher";
 import QuickAccessControls from "../QuickAccessControls";
 import ClockWidget from "../ClockWidget";
+import type { MasterHeaderProps } from "../types";
 
-export default function ControlsIsland({ props }: { props: any }) {
+export default function ControlsIsland({ props }: { props: MasterHeaderProps }) {
   const [showAdvanced, setShowAdvanced] = useState(false);
   const { isSidebarCollapsed } = props;
 
@@ -27,6 +28,7 @@ export default function ControlsIsland({ props }: { props: any }) {
             </span>
           )}
           <button
+            type="button"
             onClick={() => setShowAdvanced(!showAdvanced)}
             className={`flex w-full items-center justify-between rounded-md px-3 py-2.5 text-sm font-medium text-[var(--sidebar-muted)] transition-colors hover:bg-[var(--sidebar-hover)] hover:text-[var(--sidebar-text)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent4)] ${isSidebarCollapsed ? "justify-center" : ""}`}
             title="قابلیت‌های بیشتر"
