@@ -21,7 +21,7 @@ export default function LayoutSelector({
 
   return (
     <div className={`flex ${parentGroupsCols === 3 ? "flex-row" : "flex-col sm:flex-row"} ${fullWidth ? "w-full *:flex-1" : ""} items-center bg-[var(--bg-main)] border border-[var(--border-color)] p-0.5 sm:p-1 rounded-xl text-xs gap-0.5 shrink-0 shadow-sm`}>
-      <button
+      <button type="button"
         onClick={() => onColsChange(1)}
         aria-label="تک ستون"
         className={`${parentGroupsCols === 3 ? "p-0.5 sm:p-1" : "p-1.5"} flex items-center justify-center rounded-lg transition-all cursor-pointer select-none ${
@@ -31,7 +31,7 @@ export default function LayoutSelector({
         }`}
         title="نمایش تک ستونه"
       >
-        <svg
+        <svg aria-hidden="true"
           width="24"
           height="24"
           viewBox="0 0 24 24"
@@ -46,7 +46,7 @@ export default function LayoutSelector({
           <rect width="18" height="6" x="3" y="13" rx="2" />
         </svg>
       </button>
-      <button
+      <button type="button"
         onClick={() => onColsChange(2)}
         aria-label="دو ستون"
         className={`${parentGroupsCols === 3 ? "p-0.5 sm:p-1" : "p-1.5"} flex items-center justify-center rounded-lg transition-all cursor-pointer select-none ${
@@ -56,7 +56,7 @@ export default function LayoutSelector({
         }`}
         title="نمایش دو ستونه"
       >
-        <svg
+        <svg aria-hidden="true"
           width="24"
           height="24"
           viewBox="0 0 24 24"
@@ -73,7 +73,7 @@ export default function LayoutSelector({
           <circle cx="17" cy="17" r="3" />
         </svg>
       </button>
-      <button
+      <button type="button"
         onClick={() => onColsChange(3)}
         aria-label="سه ستون"
         className={`${parentGroupsCols === 3 ? "p-0.5 sm:p-1" : "p-1.5"} flex items-center justify-center rounded-lg transition-all cursor-pointer select-none ${
@@ -83,7 +83,7 @@ export default function LayoutSelector({
         }`}
         title="نمایش سه ستونه"
       >
-        <svg
+        <svg aria-hidden="true"
           width="24"
           height="24"
           viewBox="0 0 24 24"
