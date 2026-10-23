@@ -1,6 +1,5 @@
-import React from "react";
 import { HousePlug, PanelRightClose, PanelLeftClose } from "lucide-react";
-import { MasterHeaderProps } from "../types";
+import type { MasterHeaderProps } from "../types";
 import BrandBox from "../BrandBox";
 import ControlsIsland from "./ControlsIsland";
 
@@ -15,7 +14,7 @@ export default function VerticalHeader(props: MasterHeaderProps) {
     >
       <div className={`flex min-h-10 gap-2 border-b border-[var(--sidebar-border)] pb-4 ${isSidebarCollapsed ? "flex-col items-center" : "items-center justify-between"}`}>
         {isSidebarCollapsed ? (
-          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md text-[var(--sidebar-text)]" aria-label="Home Control">
+          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md text-[var(--sidebar-text)]" aria-hidden="true">
             <HousePlug className="h-5 w-5" strokeWidth={1.8} />
           </div>
         ) : (
@@ -25,6 +24,7 @@ export default function VerticalHeader(props: MasterHeaderProps) {
         )}
         {setIsSidebarCollapsed && (
           <button
+            type="button"
             onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
             className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md text-[var(--sidebar-muted)] transition-colors hover:bg-[var(--sidebar-hover)] hover:text-[var(--sidebar-text)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent4)]"
             title={isSidebarCollapsed ? "باز کردن منوی کناری" : "بستن منوی کناری"}
