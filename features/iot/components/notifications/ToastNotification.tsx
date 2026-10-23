@@ -4,6 +4,7 @@ import { CheckCircle, XCircle, X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect } from "react";
 import { useIoTStore } from "@/features/iot/hooks/useIoTStore";
+import { Button } from "@/components/ui/button";
 import { soundManager } from "@/lib/audio";
 import {
   Alert,
@@ -63,14 +64,16 @@ export default function ToastNotification() {
               <XCircle aria-hidden="true" className="!col-start-1 !row-start-1 !mt-0.5 !size-5" />
             )}
             <AlertAction className="!col-start-3 !row-start-1 !mt-0 !self-start">
-              <button
+              <Button
                 type="button"
+                variant="ghost"
+                size="icon-sm"
                 onClick={clearToast}
                 aria-label="بستن اعلان"
-                className="inline-flex size-7 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                className="text-muted-foreground"
               >
                 <X aria-hidden="true" className="size-4" />
-              </button>
+              </Button>
             </AlertAction>
           </Alert>
         </motion.div>
