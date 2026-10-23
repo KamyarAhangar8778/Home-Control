@@ -36,7 +36,7 @@ export function MacroActionsEditor({ tempActions, setTempActions }: Props) {
       </div>
       {tempActions.length === 0 && <p className="text-xs text-[var(--text-tertiary)] opacity-80 text-center py-2">عملیاتی اضافه نشده است</p>}
       {tempActions.map((action, index) => (
-        <div key={`${action.targetPin}-${action.actionOn}-${index}`} className="flex items-center gap-2 bg-[var(--card-bg-solid)] border border-[var(--border-color)] p-2 rounded-xl">
+        <div key={`${action.targetPin}-${action.actionOn}-${tempActions.slice(0, index).filter((previous) => previous.targetPin === action.targetPin && previous.actionOn === action.actionOn).length}`} className="flex items-center gap-2 bg-[var(--card-bg-solid)] border border-[var(--border-color)] p-2 rounded-xl">
           <select aria-label="پایه هدف" value={action.targetPin} onChange={(e) => handleUpdateAction(index, { targetPin: e.target.value })} className="flex-1 bg-[var(--bg-primary)] border border-[var(--border-color)] rounded-lg px-2 py-1.5 text-xs text-[var(--text-primary)] outline-none focus:border-[var(--accent3)] focus:ring-1 focus:ring-[var(--accent3)]">
             {segments.map((seg) => <option key={seg.id} value={seg.pin}>{seg.title} ({seg.pin})</option>)}
           </select>
