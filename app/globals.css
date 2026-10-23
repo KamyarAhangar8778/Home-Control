@@ -57,8 +57,8 @@
   --accent-foreground: var(--color-zinc-50);
   --destructive: var(--color-red-900);
   --destructive-foreground: var(--color-red-50);
-  --border: var(--color-white)/10;
-  --input: var(--color-white)/15;
+  --border: var(--color-zinc-800);
+  --input: var(--color-zinc-700);
   --ring: var(--color-zinc-600);
   --success: var(--color-emerald-500);
   --success-foreground: var(--color-zinc-950);
@@ -74,7 +74,7 @@
   --sidebar-primary-foreground: var(--color-zinc-950);
   --sidebar-accent: var(--color-zinc-800);
   --sidebar-accent-foreground: var(--color-zinc-50);
-  --sidebar-border: var(--color-white)/10;
+  --sidebar-border: var(--color-zinc-800);
   --sidebar-ring: var(--color-zinc-600);
 }
 
