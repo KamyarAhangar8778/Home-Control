@@ -18,12 +18,6 @@ export function useApplyEspConfig() {
     if (config.preferences.manual_save_mode !== undefined) {
       store.setManualSaveMode(config.preferences.manual_save_mode);
     }
-    if (config.preferences.groups_compact_layout !== undefined) {
-      store.setIsGroupsCompactLayout(config.preferences.groups_compact_layout);
-    }
-    if (config.preferences.segments_compact_layout !== undefined) {
-      store.setIsSegmentsCompactLayout(config.preferences.segments_compact_layout);
-    }
 
     store.applyEspConfig(config);
   }, []);
