@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { AnimatePresence } from "motion/react";
 import { useDashboard } from "@/features/dashboard/context/DashboardContext";
 import type { GroupFilterSelectorProps } from "./types";
@@ -46,9 +47,9 @@ export default function GroupFilterSelector({
     <div className={`flex items-center justify-center pointer-events-auto max-w-full overflow-hidden ${!isCompact ? 'mb-2' : ''}`} dir="rtl">
       <div className={`flex flex-row items-center justify-center ${isCompact ? 'gap-1' : 'gap-2'} max-w-full`}>
         
-        <button type="button" onClick={goPrev} className={`hidden md:block rounded-full text-[var(--text-secondary)] md:hover:bg-[var(--accent3)] md:hover:text-white transition-colors shrink-0 ${isCompact ? 'p-0.5' : 'p-1'}`} title="قبلی">
+        <Button type="button" variant="ghost" size={isCompact ? "icon-xs" : "icon-sm"} onClick={goPrev} className={`hidden md:inline-flex rounded-full text-[var(--text-secondary)] md:hover:bg-[var(--accent3)] md:hover:text-white shrink-0 ${isCompact ? 'p-0.5' : 'p-1'}`} title="قبلی" aria-label="گروه قبلی">
           <ChevronRight className={isCompact ? "w-3.5 h-3.5" : "w-5 h-5"} />
-        </button>
+        </Button>
         
         <div className={`flex flex-row items-center justify-center relative overflow-hidden ${isCompact ? 'gap-1 p-0.5 max-w-[300px]' : 'gap-2 p-1 max-w-[460px]'}`}>
           <AnimatePresence mode="popLayout" custom={direction}>
@@ -75,9 +76,9 @@ export default function GroupFilterSelector({
           </AnimatePresence>
         </div>
 
-        <button type="button" onClick={goNext} className={`hidden md:block rounded-full text-[var(--text-secondary)] md:hover:bg-[var(--accent3)] md:hover:text-white transition-colors shrink-0 ${isCompact ? 'p-0.5' : 'p-1'}`} title="بعدی">
+        <Button type="button" variant="ghost" size={isCompact ? "icon-xs" : "icon-sm"} onClick={goNext} className={`hidden md:inline-flex rounded-full text-[var(--text-secondary)] md:hover:bg-[var(--accent3)] md:hover:text-white shrink-0 ${isCompact ? 'p-0.5' : 'p-1'}`} title="بعدی" aria-label="گروه بعدی">
           <ChevronLeft className={isCompact ? "w-3.5 h-3.5" : "w-5 h-5"} />
-        </button>
+        </Button>
       </div>
     </div>
   );
