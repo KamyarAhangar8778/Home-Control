@@ -55,6 +55,7 @@ export default function MacrosSection() {
           مدیریت ماکروها
         </h3>
         <button
+          type="button"
           onClick={handleAddMacro}
           className="bg-[var(--accent3)] text-white p-2 rounded-xl hover:bg-[var(--accent3-dark)] transition-colors shadow-md"
           title="افزودن ماکرو جدید"
@@ -64,7 +65,7 @@ export default function MacrosSection() {
       </div>
 
       <p className="text-sm text-[var(--text-secondary)] opacity-80 leading-relaxed">
-        با استفاده از ماکروها می‌توانید چندین دستور (روشن/خاموش کردن پایه‌ها) را به صورت همزمان با یک کلیک اجرا کنید. این دکمه‌ها در هدر داشبورد نمایش داده می‌شوند.
+        با استفاده از ماکروها می‌توانید چندین دستور (روشن/خاموش کردن پایه‌ها) را به صورت همزمان با یک کلیک اجرا کنید.
       </p>
 
       <div className="space-y-3 mt-4">

@@ -19,15 +19,15 @@ export function MatrixSliders({
 }: Props) {
   return (
     <>
-      {/* Density */}
       <div className="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-2xl p-5 shadow-lg relative overflow-hidden">
         <div className="flex justify-between items-center mb-4 relative z-10">
-          <label className="text-sm font-bold text-[var(--text-primary)]">تراکم ماتریکس</label>
+          <label htmlFor="matrix-density" className="text-sm font-bold text-[var(--text-primary)]">تراکم ماتریکس</label>
           <span className="text-xs font-mono text-[var(--accent3)] bg-[var(--accent3)]/10 px-2 py-1 rounded-md">
             {matrixDensity}px
           </span>
         </div>
         <input
+          id="matrix-density"
           type="range" min="10" max="100" step="5"
           value={matrixDensity}
           onChange={(e) => setMatrixDensity(Number(e.target.value))}
@@ -39,15 +39,15 @@ export function MatrixSliders({
         </p>
       </div>
 
-      {/* Size */}
       <div className="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-2xl p-5 shadow-lg relative overflow-hidden">
         <div className="flex justify-between items-center mb-4 relative z-10">
-          <label className="text-sm font-bold text-[var(--text-primary)]">اندازه پایه (+)</label>
+          <label htmlFor="matrix-size" className="text-sm font-bold text-[var(--text-primary)]">اندازه پایه (+)</label>
           <span className="text-xs font-mono text-[var(--accent3)] bg-[var(--accent3)]/10 px-2 py-1 rounded-md">
             {matrixSize}
           </span>
         </div>
         <input
+          id="matrix-size"
           type="range" min="1" max="20" step="1"
           value={matrixSize}
           onChange={(e) => setMatrixSize(Number(e.target.value))}
@@ -56,15 +56,15 @@ export function MatrixSliders({
         />
       </div>
 
-      {/* Hover Size */}
       <div className="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-2xl p-5 shadow-lg relative overflow-hidden">
         <div className="flex justify-between items-center mb-4 relative z-10">
-          <label className="text-sm font-bold text-[var(--text-primary)]">میزان بزرگ‌نمایی در صورت جابجایی موس</label>
+          <label htmlFor="matrix-hover-size" className="text-sm font-bold text-[var(--text-primary)]">میزان بزرگ‌نمایی در صورت جابجایی موس</label>
           <span className="text-xs font-mono text-[var(--accent3)] bg-[var(--accent3)]/10 px-2 py-1 rounded-md">
             {matrixHoverSize}
           </span>
         </div>
         <input
+          id="matrix-hover-size"
           type="range" min="0" max="20" step="1"
           value={matrixHoverSize}
           onChange={(e) => setMatrixHoverSize(Number(e.target.value))}
@@ -73,15 +73,15 @@ export function MatrixSliders({
         />
       </div>
 
-      {/* Opacity */}
       <div className="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-2xl p-5 shadow-lg relative overflow-hidden">
         <div className="flex justify-between items-center mb-4 relative z-10">
-          <label className="text-sm font-bold text-[var(--text-primary)]">شفافیت ماتریکس (%)</label>
+          <label htmlFor="matrix-opacity" className="text-sm font-bold text-[var(--text-primary)]">شفافیت ماتریکس (%)</label>
           <span className="text-xs font-mono text-[var(--accent3)] bg-[var(--accent3)]/10 px-2 py-1 rounded-md">
             {matrixOpacity}%
           </span>
         </div>
         <input
+          id="matrix-opacity"
           type="range" min="5" max="100" step="5"
           value={matrixOpacity}
           onChange={(e) => setMatrixOpacity(Number(e.target.value))}

@@ -1,5 +1,4 @@
 import React from "react";
-import { Move, MousePointer2, Sparkles } from "lucide-react";
 
 interface Props {
   matrixMoving: boolean;
@@ -73,12 +72,13 @@ export function MatrixToggles({
       {matrixTwinkleEffect && (
         <div className="bg-[var(--bg-card)] border border-[var(--border-color)] rounded-2xl p-5 shadow-lg relative overflow-hidden animate-fade-in">
           <div className="flex justify-between items-center mb-4 relative z-10">
-            <label className="text-sm font-bold text-[var(--text-primary)]">سرعت چشمک‌زدن</label>
+            <label htmlFor="matrix-twinkle-speed" className="text-sm font-bold text-[var(--text-primary)]">سرعت چشمک‌زدن</label>
             <span className="text-xs font-mono text-[var(--accent3)] bg-[var(--accent3)]/10 px-2 py-1 rounded-md">
               {matrixTwinkleSpeed}
             </span>
           </div>
           <input
+            id="matrix-twinkle-speed"
             type="range" min="10" max="200" step="10"
             value={matrixTwinkleSpeed}
             onChange={(e) => setMatrixTwinkleSpeed(Number(e.target.value))}

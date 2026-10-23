@@ -18,7 +18,6 @@ export default function MqttSection() {
   const showToast = useIoTStore((state) => state.showToast);
 
   useEffect(() => {
-    // Load initially from local
     const settings = getMqttSettings();
     setBrokerWsUrl(settings.brokerUrl);
     setBrokerHost("broker.emqx.io");
@@ -26,7 +25,6 @@ export default function MqttSection() {
     setBaseTopic(settings.baseTopic);
     setQos(settings.qos);
 
-    // Fetch from Cloudflare to sync
     fetchConfigFromCloudflare().then(config => {
       if (config && config.mqtt) {
         setBrokerWsUrl(config.mqtt.broker_ws_url);
@@ -40,8 +38,7 @@ export default function MqttSection() {
 
   const handleSaveAndReconnect = async () => {
     soundManager.playClick();
-    
-    // Save locally for dashboard fast reconnect
+
     localStorage.setItem("mqtt_broker_url", brokerWsUrl);
     localStorage.setItem("mqtt_base_topic", baseTopic);
     localStorage.setItem("mqtt_qos", qos.toString());
@@ -54,8 +51,7 @@ export default function MqttSection() {
       qos: qos
     };
     setMqttConfig(newMqttConfig);
-    
-    // Save to Cloudflare for Worker & ESP32
+
     try {
       const config = await fetchConfigFromCloudflare();
       if (!config) {
@@ -88,7 +84,7 @@ export default function MqttSection() {
       </div>
 
       <div className="space-y-4">
-        <MqttFormFields 
+        <MqttFormFields
           brokerWsUrl={brokerWsUrl} setBrokerWsUrl={setBrokerWsUrl}
           brokerHost={brokerHost} setBrokerHost={setBrokerHost}
           brokerPort={brokerPort} setBrokerPort={setBrokerPort}
@@ -98,6 +94,7 @@ export default function MqttSection() {
       </div>
 
       <button
+        type="button"
         onClick={handleSaveAndReconnect}
         className={`w-full py-3.5 px-4 rounded-xl flex items-center justify-center gap-2 transition-all duration-300 text-sm font-bold ${
           isSaved

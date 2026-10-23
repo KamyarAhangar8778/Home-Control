@@ -16,6 +16,8 @@ export function MqttQosSelector({ qos, setQos }: Props) {
         {[0, 1, 2].map((q) => (
           <button
             key={q}
+            type="button"
+            aria-pressed={qos === q}
             onClick={() => {
               soundManager.playClick();
               setQos(q as 0 | 1 | 2);

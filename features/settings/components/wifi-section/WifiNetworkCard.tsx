@@ -37,9 +37,11 @@ export function WifiNetworkCard({
         />
       ) : (
         <div className="flex items-center justify-between">
-          <div 
-            className="flex-1 cursor-pointer"
+          <button
+            type="button"
+            className="flex-1 cursor-pointer text-right"
             onClick={onEditStart}
+            aria-label={`ویرایش شبکه ${net.ssid}`}
           >
             <div className="flex items-center gap-2 mb-1">
               <span className="font-bold text-sm text-[var(--text-primary)]">{net.ssid}</span>
@@ -47,12 +49,13 @@ export function WifiNetworkCard({
             <div className="text-xs text-[var(--text-secondary)] opacity-70">
               {net.password ? "رمز عبور تنظیم شده" : "بدون رمز عبور"}
             </div>
-          </div>
+          </button>
           <button
+            type="button"
             onClick={onDelete}
             className="p-2 text-[var(--accent4)] hover:bg-[var(--accent4-transparent)] border border-transparent hover:border-[var(--accent4)] rounded-xl transition-colors ml-2"
-            type="button"
             title="حذف شبکه"
+            aria-label={`حذف شبکه ${net.ssid}`}
           >
             <Trash2 className="w-4 h-4" />
           </button>
