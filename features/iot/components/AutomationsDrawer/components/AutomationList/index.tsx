@@ -44,7 +44,7 @@ export default function AutomationList({ handleEdit, handleDelete, handleToggle 
               <Card key={auto.id} className={`!gap-0 !rounded-2xl !border-[var(--border-color)] !p-4 !shadow-sm transition-all ${auto.enabled ? "!bg-[var(--card-bg-solid)]" : "!bg-[var(--card-bg)]"}`}>
                 
                 {/* Card Header */}
-                <div className="flex items-center justify-between gap-3 mb-3">
+                <div className="flex items-start justify-between gap-3 mb-3">
                   <div className="flex items-center gap-2">
                     <div className={`w-2.5 h-2.5 rounded-full shadow-sm ${auto.enabled ? (hasMacros ? "bg-indigo-500 shadow-indigo-500/40" : (auto.actions?.[0]?.actionOn ? "bg-emerald-500 shadow-emerald-500/40" : "bg-rose-500 shadow-rose-500/40")) : "bg-slate-500 shadow-slate-500/40"}`} />
                     <h4 className="min-w-0 break-words font-bold text-[var(--text-primary)] text-sm">{auto.title}</h4>
@@ -115,17 +115,17 @@ export default function AutomationList({ handleEdit, handleDelete, handleToggle 
                 </div>
                 
                 {/* Card Footer - Actions summary & controls */}
-                <div className="flex items-center justify-between mt-auto pt-3 border-t border-[var(--border-color)]">
+                <div className="flex flex-wrap items-center justify-between gap-3 mt-auto pt-3 border-t border-[var(--border-color)]">
                   <div className="text-xs text-[var(--text-secondary)] font-medium flex items-center gap-1.5">
                     <Layers className="w-3.5 h-3.5 opacity-70" />
                     <span>{auto.actions?.length || 0} عملیات تنظیم شده</span>
                   </div>
                   
                   <div className="flex items-center gap-1">
-                    <button type="button" onClick={() => handleEdit(auto)} aria-label={`ویرایش اتوماسیون ${auto.title}`} className="p-2 text-[var(--text-secondary)] hover:text-[var(--foreground)] hover:bg-[var(--accent)] rounded-lg transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent3)]" title="ویرایش">
+                    <button type="button" onClick={() => handleEdit(auto)} aria-label={`ویرایش اتوماسیون ${auto.title}`} className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-[var(--text-primary)] transition-colors hover:bg-[var(--accent)] hover:text-[var(--accent-foreground)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent3)]" title="ویرایش">
                       <Edit2 className="w-4 h-4" />
                     </button>
-                    <button type="button" onClick={() => handleDelete(auto.id)} aria-label={`حذف اتوماسیون ${auto.title}`} className="p-2 text-[var(--text-secondary)] hover:text-[var(--destructive)] hover:bg-[var(--destructive)]/10 rounded-lg transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent3)]" title="حذف">
+                    <button type="button" onClick={() => handleDelete(auto.id)} aria-label={`حذف اتوماسیون ${auto.title}`} className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-[var(--destructive)] transition-colors hover:bg-[var(--destructive)]/10 hover:text-[var(--destructive)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent3)]" title="حذف">
                       <Trash2 className="w-4 h-4" />
                     </button>
                   </div>
