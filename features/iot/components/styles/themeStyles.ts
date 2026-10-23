@@ -85,17 +85,17 @@ export function getThemeStyles({
       --accent: ${isDark ? "#27272a" : "#f4f4f5"};
       --accent-foreground: ${isDark ? "#fafafa" : "#18181b"};
       --destructive: #dc2626;
-      --destructive-foreground: ${isDark ? "#fef2f2" : "#ffffff"};
+      --destructive-foreground: ${isDark ? "var(--color-red-600)" : "var(--color-red-800)"};
       --border: ${isDark ? "#27272a" : "#e4e4e7"};
       --input: ${isDark ? "#27272a" : "#e4e4e7"};
       --ring: ${isDark ? "#a1a1aa" : "#71717a"};
       --radius: 0.5rem;
       --success: #10b981;
-      --success-foreground: ${isDark ? "#059669" : "#065f46"};
-      --warning: #eab308;
-      --warning-foreground: ${isDark ? "#ca8a04" : "#854d0e"};
+      --success-foreground: ${isDark ? "var(--color-emerald-600)" : "var(--color-emerald-900)"};
+      --warning: ${isDark ? "var(--color-yellow-400)" : "var(--color-yellow-500)"};
+      --warning-foreground: ${isDark ? "var(--color-yellow-600)" : "var(--color-yellow-900)"};
       --info: #8b5cf6;
-      --info-foreground: ${isDark ? "#7c3aed" : "#5b21b6"};
+      --info-foreground: ${isDark ? "var(--color-violet-600)" : "var(--color-violet-900)"};
       --invert: ${isDark ? "#f4f4f5" : "#18181b"};
       --invert-foreground: ${isDark ? "#18181b" : "#fafafa"};
     }
