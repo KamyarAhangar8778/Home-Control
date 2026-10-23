@@ -109,7 +109,6 @@ export default function WorkspaceGrid({
   handleSetupPlaceholder,
   isGroupsCompactLayout,
   isSegmentsCompactLayout,
-  dashboardWidth = 1,
 }: WorkspaceGridProps) {
   const {
     isMobilePortrait,
@@ -149,7 +148,6 @@ export default function WorkspaceGrid({
           onUpdateSegmentRule: handleUpdateSegmentRule,
           isLoadingIoT,
           onSetupPlaceholder: handleSetupPlaceholder,
-          dashboardWidth,
         }}
       />
     );
