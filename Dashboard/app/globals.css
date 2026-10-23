@@ -1,6 +1,83 @@
 @import "tailwindcss";
 @import "./reui-nova.css";
 
+:root {
+  --radius: 0.625rem;
+  --background: var(--color-white);
+  --foreground: var(--color-zinc-950);
+  --card: var(--color-white);
+  --card-foreground: var(--color-zinc-950);
+  --popover: var(--color-white);
+  --popover-foreground: var(--color-zinc-950);
+  --primary: var(--color-zinc-900);
+  --primary-foreground: var(--color-zinc-50);
+  --secondary: var(--color-zinc-100);
+  --secondary-foreground: var(--color-zinc-900);
+  --muted: var(--color-zinc-100);
+  --muted-foreground: var(--color-zinc-500);
+  --accent: var(--color-zinc-100);
+  --accent-foreground: var(--color-zinc-900);
+  --destructive: var(--color-red-600);
+  --destructive-foreground: var(--color-white);
+  --border: var(--color-zinc-200);
+  --input: var(--color-zinc-200);
+  --ring: var(--color-zinc-400);
+  --success: var(--color-emerald-600);
+  --success-foreground: var(--color-white);
+  --warning: var(--color-amber-500);
+  --warning-foreground: var(--color-zinc-950);
+  --info: var(--color-sky-600);
+  --info-foreground: var(--color-white);
+  --invert: var(--color-zinc-900);
+  --invert-foreground: var(--color-zinc-50);
+  --sidebar: var(--color-zinc-50);
+  --sidebar-foreground: var(--color-zinc-950);
+  --sidebar-primary: var(--color-zinc-900);
+  --sidebar-primary-foreground: var(--color-zinc-50);
+  --sidebar-accent: var(--color-zinc-100);
+  --sidebar-accent-foreground: var(--color-zinc-900);
+  --sidebar-border: var(--color-zinc-200);
+  --sidebar-ring: var(--color-zinc-400);
+}
+
+.dark {
+  --background: var(--color-zinc-950);
+  --foreground: var(--color-zinc-50);
+  --card: var(--color-zinc-950);
+  --card-foreground: var(--color-zinc-50);
+  --popover: var(--color-zinc-950);
+  --popover-foreground: var(--color-zinc-50);
+  --primary: var(--color-zinc-50);
+  --primary-foreground: var(--color-zinc-900);
+  --secondary: var(--color-zinc-800);
+  --secondary-foreground: var(--color-zinc-50);
+  --muted: var(--color-zinc-800);
+  --muted-foreground: var(--color-zinc-400);
+  --accent: var(--color-zinc-800);
+  --accent-foreground: var(--color-zinc-50);
+  --destructive: var(--color-red-900);
+  --destructive-foreground: var(--color-red-50);
+  --border: var(--color-zinc-800);
+  --input: var(--color-zinc-700);
+  --ring: var(--color-zinc-600);
+  --success: var(--color-emerald-500);
+  --success-foreground: var(--color-zinc-950);
+  --warning: var(--color-amber-400);
+  --warning-foreground: var(--color-zinc-950);
+  --info: var(--color-sky-500);
+  --info-foreground: var(--color-zinc-950);
+  --invert: var(--color-zinc-100);
+  --invert-foreground: var(--color-zinc-900);
+  --sidebar: var(--color-zinc-900);
+  --sidebar-foreground: var(--color-zinc-50);
+  --sidebar-primary: var(--color-sky-500);
+  --sidebar-primary-foreground: var(--color-zinc-950);
+  --sidebar-accent: var(--color-zinc-800);
+  --sidebar-accent-foreground: var(--color-zinc-50);
+  --sidebar-border: var(--color-zinc-800);
+  --sidebar-ring: var(--color-zinc-600);
+}
+
 @theme inline {
   --font-sans: var(--font-vazirmatn), system-ui, -apple-system, sans-serif;
   --color-background: var(--background);
@@ -18,6 +95,7 @@
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
   --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
@@ -27,6 +105,8 @@
   --color-warning-foreground: var(--warning-foreground);
   --color-info: var(--info);
   --color-info-foreground: var(--info-foreground);
+  --color-invert: var(--invert);
+  --color-invert-foreground: var(--invert-foreground);
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
