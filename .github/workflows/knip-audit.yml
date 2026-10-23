@@ -1,6 +1,8 @@
 name: Knip audit
 
 on:
+  push:
+    branches: ["main"]
   workflow_run:
     workflows: ["Deploy to GitHub Pages"]
     types: [completed]
