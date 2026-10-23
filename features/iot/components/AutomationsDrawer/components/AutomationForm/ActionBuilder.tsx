@@ -1,6 +1,7 @@
 import React from "react";
 import { X, Play, Square, Layers, Plus } from "lucide-react";
 import { useAutomationActions } from "../../hooks/useAutomationActions";
+import { Card } from "@/components/ui/card";
 
 interface ActionBuilderProps {
   actions: any[];
@@ -15,7 +16,7 @@ export default function ActionBuilder({ actions, setActions }: ActionBuilderProp
       <div className="block text-xs font-medium text-[var(--text-secondary)]">عملیات‌ها ({actions.length}):</div>
       
       {actions.map((act, index) => (
-        <div key={act.targetPin ?? act.targetMacro} className="flex flex-col gap-2 p-3 bg-[var(--card-bg)] rounded-xl border border-[var(--border-color)] relative group">
+        <Card key={act.targetPin ?? act.targetMacro} className="!relative !gap-2 !rounded-xl !border-[var(--border-color)] !bg-[var(--card-bg)] !p-3 group">
           <button type="button" 
             onClick={() => removeAction(index)}
             className="absolute -top-2 -left-2 p-1.5 bg-rose-500 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity shadow-md"
@@ -73,7 +74,7 @@ export default function ActionBuilder({ actions, setActions }: ActionBuilderProp
               </select>
             </div>
           )}
-        </div>
+        </Card>
       ))}
 
       <div className="flex gap-2">

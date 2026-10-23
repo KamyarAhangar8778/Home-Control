@@ -1,6 +1,7 @@
 import React from "react";
 import { Edit2, Plus, MapPin } from "lucide-react";
 import ActionBuilder from "./ActionBuilder";
+import { Card } from "@/components/ui/card";
 
 interface AutomationFormProps {
   formHook: any; 
@@ -26,7 +27,7 @@ export default function AutomationForm({ formHook }: AutomationFormProps) {
   } = formHook;
 
   return (
-    <div className="bg-[var(--card-bg-solid)] p-5 rounded-2xl border border-[var(--border-color)] shadow-sm space-y-4 relative overflow-hidden">
+    <Card className="!relative !gap-4 !overflow-hidden !rounded-2xl !border-[var(--border-color)] !bg-[var(--card-bg-solid)] !p-5 shadow-sm">
       <div className="absolute top-0 right-0 w-1 h-full bg-[var(--accent3)]" />
       <h3 className="font-semibold text-sm text-[var(--text-primary)] flex items-center gap-2">
         {editingId ? <Edit2 className="w-4 h-4 text-[var(--accent3)]" /> : <Plus className="w-4 h-4 text-[var(--accent3)]" />}
@@ -235,6 +236,6 @@ export default function AutomationForm({ formHook }: AutomationFormProps) {
           </button>
         )}
       </div>
-    </div>
+    </Card>
   );
 }
