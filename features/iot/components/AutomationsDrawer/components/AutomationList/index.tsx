@@ -1,4 +1,5 @@
 import React from "react";
+import { Button } from "@/components/ui/button";
 import { Edit2, Trash2, Clock, Thermometer, Info, Layers } from "lucide-react";
 import { useIoTStore } from "@/features/iot/hooks/useIoTStore";
 import { Card } from "@/components/ui/card";
@@ -53,7 +54,7 @@ export default function AutomationList({ handleEdit, handleDelete, handleToggle 
                     <span className={`text-xs font-semibold ${auto.enabled ? "text-emerald-700 dark:text-emerald-400" : "text-[var(--text-secondary)]"}`}>
                       {auto.enabled ? "فعال" : "غیرفعال"}
                     </span>
-                    <button
+                    <Button variant="ghost"
                       type="button"
                       role="switch"
                       aria-checked={auto.enabled}
@@ -62,7 +63,7 @@ export default function AutomationList({ handleEdit, handleDelete, handleToggle 
                       className={`relative inline-flex h-6 w-11 shrink-0 items-center rounded-full border p-0.5 transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent3)] motion-reduce:transition-none ${auto.enabled ? "justify-end border-emerald-700 bg-emerald-600" : "justify-start border-[var(--border-color)] bg-[var(--card-hover-bg)]"}`}
                     >
                       <span className="pointer-events-none block h-4 w-4 rounded-full bg-white shadow-sm ring-1 ring-black/10" />
-                    </button>
+                    </Button>
                   </div>
                 </div>
 
@@ -125,12 +126,12 @@ export default function AutomationList({ handleEdit, handleDelete, handleToggle 
                   </div>
                   
                   <div className="flex items-center gap-1">
-                    <button type="button" onClick={() => handleEdit(auto)} aria-label={`ویرایش اتوماسیون ${auto.title}`} className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-[var(--text-primary)] transition-colors hover:bg-[var(--accent)] hover:text-[var(--accent-foreground)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent3)]" title="ویرایش">
+                    <Button variant="ghost" type="button" onClick={() => handleEdit(auto)} aria-label={`ویرایش اتوماسیون ${auto.title}`} className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-[var(--text-primary)] transition-colors hover:bg-[var(--accent)] hover:text-[var(--accent-foreground)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent3)]" title="ویرایش">
                       <Edit2 className="w-4 h-4" />
-                    </button>
-                    <button type="button" onClick={() => handleDelete(auto.id)} aria-label={`حذف اتوماسیون ${auto.title}`} className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-[var(--destructive)] transition-colors hover:bg-[var(--destructive)]/10 hover:text-[var(--destructive)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent3)]" title="حذف">
+                    </Button>
+                    <Button variant="ghost" type="button" onClick={() => handleDelete(auto.id)} aria-label={`حذف اتوماسیون ${auto.title}`} className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-[var(--destructive)] transition-colors hover:bg-[var(--destructive)]/10 hover:text-[var(--destructive)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent3)]" title="حذف">
                       <Trash2 className="w-4 h-4" />
-                    </button>
+                    </Button>
                   </div>
                 </div>
                 
