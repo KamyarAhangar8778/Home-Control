@@ -6,6 +6,7 @@ import LowDataModeBanner from "@/features/iot/components/notifications/LowDataMo
 import { useDashboard } from "@/features/dashboard/context/DashboardContext";
 import { useIoTStore } from "@/features/iot/hooks/useIoTStore";
 import DashboardWorkspace from "./DashboardWorkspace";
+import DashboardBreadcrumb from "./DashboardBreadcrumb";
 import MobileVoiceCommandButton from "../widgets/MobileVoiceCommandButton";
 
 export default function DashboardMain() {
@@ -35,6 +36,7 @@ export default function DashboardMain() {
         />
       )}
 
+      <DashboardBreadcrumb />
       <DashboardWorkspace />
 
       {activeWorkspaceView === "home" && !isDragging && (
