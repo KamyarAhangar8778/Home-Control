@@ -44,23 +44,26 @@ export default function AutomationList({ handleEdit, handleDelete, handleToggle 
               <Card key={auto.id} className={`!gap-0 !rounded-2xl !border-[var(--border-color)] !p-4 !shadow-sm transition-all ${auto.enabled ? "!bg-[var(--card-bg-solid)]" : "!bg-[var(--card-bg)]"}`}>
                 
                 {/* Card Header */}
-                <div className="flex items-center justify-between gap-3 mb-3">
-                  <div className="flex items-center gap-2">
-                    <div className={`w-2.5 h-2.5 rounded-full shadow-sm ${auto.enabled ? (hasMacros ? "bg-indigo-500 shadow-indigo-500/40" : (auto.actions?.[0]?.actionOn ? "bg-emerald-500 shadow-emerald-500/40" : "bg-rose-500 shadow-rose-500/40")) : "bg-slate-500 shadow-slate-500/40"}`} />
-                    <h4 className="min-w-0 break-words font-bold text-[var(--text-primary)] text-sm">{auto.title}</h4>
+                <div className="mb-4 flex min-w-0 items-center justify-between gap-4">
+                  <h4 className="min-w-0 flex-1 break-words text-sm font-bold leading-6 text-[var(--text-primary)]">
+                    {auto.title}
+                  </h4>
+
+                  <div className="flex shrink-0 items-center gap-2.5">
+                    <span className={`text-xs font-semibold ${auto.enabled ? "text-emerald-700 dark:text-emerald-400" : "text-[var(--text-secondary)]"}`}>
+                      {auto.enabled ? "فعال" : "غیرفعال"}
+                    </span>
+                    <button
+                      type="button"
+                      role="switch"
+                      aria-checked={auto.enabled}
+                      aria-label={`وضعیت اتوماسیون ${auto.title}`}
+                      onClick={() => handleToggle(auto.id, !auto.enabled)}
+                      className={`relative inline-flex h-6 w-11 shrink-0 items-center rounded-full border p-0.5 transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent3)] motion-reduce:transition-none ${auto.enabled ? "justify-end border-emerald-700 bg-emerald-600" : "justify-start border-[var(--border-color)] bg-[var(--card-hover-bg)]"}`}
+                    >
+                      <span className="pointer-events-none block h-4 w-4 rounded-full bg-white shadow-sm ring-1 ring-black/10" />
+                    </button>
                   </div>
-                  
-                  {/* Toggle Switch */}
-                  <button
-                    type="button"
-                    role="switch"
-                    aria-checked={auto.enabled}
-                    aria-label={`وضعیت اتوماسیون ${auto.title}`}
-                    onClick={() => handleToggle(auto.id, !auto.enabled)}
-                    className={`relative inline-flex h-5 w-9 items-center rounded-full transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent3)] ${auto.enabled ? "bg-[var(--accent3)]" : "bg-[var(--border-color)]"}`}
-                  >
-                    <span className={`inline-block h-3.5 w-3.5 transform rounded-full bg-white transition-transform ${auto.enabled ? "translate-x-1" : "translate-x-4"}`} />
-                  </button>
                 </div>
 
                 {/* Card Body - Time & Details */}
@@ -115,17 +118,17 @@ export default function AutomationList({ handleEdit, handleDelete, handleToggle 
                 </div>
                 
                 {/* Card Footer - Actions summary & controls */}
-                <div className="flex items-center justify-between mt-auto pt-3 border-t border-[var(--border-color)]">
+                <div className="flex flex-wrap items-center justify-between gap-3 mt-auto pt-3 border-t border-[var(--border-color)]">
                   <div className="text-xs text-[var(--text-secondary)] font-medium flex items-center gap-1.5">
                     <Layers className="w-3.5 h-3.5 opacity-70" />
                     <span>{auto.actions?.length || 0} عملیات تنظیم شده</span>
                   </div>
                   
                   <div className="flex items-center gap-1">
-                    <button type="button" onClick={() => handleEdit(auto)} aria-label={`ویرایش اتوماسیون ${auto.title}`} className="p-2 text-[var(--text-secondary)] hover:text-[var(--foreground)] hover:bg-[var(--accent)] rounded-lg transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent3)]" title="ویرایش">
+                    <button type="button" onClick={() => handleEdit(auto)} aria-label={`ویرایش اتوماسیون ${auto.title}`} className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-[var(--text-primary)] transition-colors hover:bg-[var(--accent)] hover:text-[var(--accent-foreground)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent3)]" title="ویرایش">
                       <Edit2 className="w-4 h-4" />
                     </button>
-                    <button type="button" onClick={() => handleDelete(auto.id)} aria-label={`حذف اتوماسیون ${auto.title}`} className="p-2 text-[var(--text-secondary)] hover:text-[var(--destructive)] hover:bg-[var(--destructive)]/10 rounded-lg transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent3)]" title="حذف">
+                    <button type="button" onClick={() => handleDelete(auto.id)} aria-label={`حذف اتوماسیون ${auto.title}`} className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-[var(--destructive)] transition-colors hover:bg-[var(--destructive)]/10 hover:text-[var(--destructive)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent3)]" title="حذف">
                       <Trash2 className="w-4 h-4" />
                     </button>
                   </div>

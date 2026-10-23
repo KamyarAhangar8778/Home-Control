@@ -155,16 +155,16 @@ export default function AutomationForm({ formHook }: AutomationFormProps) {
         )}
 
         {(autoType === "timer" || autoType === "schedule") && (
-          <div className="col-span-2 pt-2 border-t border-[var(--border-color)] mt-2">
-            <div className="flex items-center gap-2 cursor-pointer">
-              <input 
-                type="checkbox" 
+          <div className="col-span-2 mt-2 border-t border-[var(--border-color)] pt-3">
+            <label className="flex min-h-11 cursor-pointer items-center gap-3 rounded-xl border border-[var(--border-color)] bg-[var(--card-bg)] px-3 py-2 transition-colors hover:bg-[var(--card-hover-bg)]">
+              <input
+                type="checkbox"
                 checked={hasWeatherCondition}
                 onChange={(e) => setHasWeatherCondition(e.target.checked)}
-                className="w-4 h-4 text-[var(--accent3)] rounded focus:ring-[var(--accent3)]"
+                className="h-4 w-4 shrink-0 accent-[var(--accent3)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent3)]"
               />
               <span className="text-sm font-medium text-[var(--text-primary)]">اضافه کردن شرط آب‌وهوایی (اختیاری)</span>
-            </div>
+            </label>
           </div>
         )}
 
@@ -172,13 +172,13 @@ export default function AutomationForm({ formHook }: AutomationFormProps) {
           <>
             <div className="col-span-2">
               <div className="block text-xs font-medium text-[var(--text-secondary)] mb-1">نام شهر یا مختصات (انگلیسی):</div>
-              <div className="flex gap-2">
+              <div className="flex min-w-0 gap-2">
                 <input 
                   type="text" 
                   value={city}
                   onChange={(e) => setCity(e.target.value)}
                   placeholder="مثال: Tehran یا 36.26,59.61"
-                  className="flex-1 bg-[var(--card-bg)] border border-[var(--border-color)] p-2.5 rounded-xl focus:outline-none focus:border-[var(--accent3)] text-sm transition-colors text-[var(--text-primary)]"
+                  className="min-w-0 flex-1 bg-[var(--card-bg)] border border-[var(--border-color)] p-2.5 rounded-xl focus:outline-none focus:border-[var(--accent3)] focus-visible:ring-2 focus-visible:ring-[var(--accent3)]/40 text-sm transition-colors text-[var(--text-primary)]"
                   dir="ltr"
                 />
                 <button
@@ -196,7 +196,7 @@ export default function AutomationForm({ formHook }: AutomationFormProps) {
                 </button>
               </div>
             </div>
-            <div className="col-span-2 flex gap-3">
+            <div className="col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div className="flex-1">
                 <div className="block text-xs font-medium text-[var(--text-secondary)] mb-1">شرط دما:</div>
                 <select
@@ -226,12 +226,12 @@ export default function AutomationForm({ formHook }: AutomationFormProps) {
         <ActionBuilder actions={actions} setActions={setActions} />
       </div>
 
-      <div className="flex flex-col-reverse sm:flex-row gap-2 pt-2">
-        <button type="button" onClick={handleSave} className="flex-1 min-h-11 py-2.5 bg-[var(--accent3)] text-white font-bold rounded-xl text-sm transition-colors shadow-sm hover:bg-[var(--accent2)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent3)] active:scale-[0.98]">
+      <div className="flex flex-col-reverse gap-2 border-t border-[var(--border-color)] pt-4 sm:flex-row">
+        <button type="button" onClick={handleSave} className="flex-1 min-h-11 py-2.5 px-4 bg-[var(--accent3)] text-black font-bold rounded-xl text-sm transition-colors shadow-sm hover:brightness-95 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent3)] active:scale-[0.98]">
           {editingId ? "ذخیره تغییرات" : "افزودن به لیست"}
         </button>
         {editingId && (
-          <button type="button" onClick={resetForm} className="min-h-11 px-4 py-2.5 bg-[var(--card-hover-bg)] text-[var(--text-secondary)] border border-[var(--border-color)] hover:bg-[var(--muted)] hover:text-[var(--text-primary)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent3)] font-bold rounded-xl text-sm transition-colors active:scale-[0.98]">
+          <button type="button" onClick={resetForm} className="min-h-11 px-4 py-2.5 bg-[var(--card-hover-bg)] text-[var(--text-primary)] border border-[var(--border-color)] hover:bg-[var(--accent)] hover:text-[var(--accent-foreground)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent3)] font-bold rounded-xl text-sm transition-colors active:scale-[0.98]">
             انصراف
           </button>
         )}
