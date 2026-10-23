@@ -60,7 +60,7 @@ export default function ToastNotification() {
             {toast.type === "success" ? (
               <CheckCircle aria-hidden="true" className="!col-start-1 !row-start-1 !mt-0.5 !size-5" />
             ) : (
-              <XCircle aria-hidden="true" className="!col-start-2 !row-start-1 !mt-0.5 !size-5" />
+              <XCircle aria-hidden="true" className="!col-start-1 !row-start-1 !mt-0.5 !size-5" />
             )}
             <AlertAction className="!col-start-3 !row-start-1 !mt-0 !self-start">
               <button
