@@ -92,8 +92,6 @@ export function deserializeFromCloudflare(cfData: any): EspConfig {
       dashboard_width: cfData.preferences?.dashboard_width || 1,
       dashboard_bg_color: cfData.preferences?.dashboard_bg_color,
       dashboard_bg_opacity: cfData.preferences?.dashboard_bg_opacity,
-      groups_compact_layout: cfData.preferences?.groups_compact_layout ?? false,
-      segments_compact_layout: cfData.preferences?.segments_compact_layout ?? false,
       manual_save_mode: cfData.preferences?.manual_save_mode ?? false,
       cuneiform_opacity: cfData.preferences?.cuneiform_opacity ?? 0.08,
       cuneiform_color: cfData.preferences?.cuneiform_color || "accent3",
