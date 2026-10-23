@@ -92,9 +92,9 @@ export default function SortableGroup({
 
     return (
       <div
-        className="grid w-full min-w-0 grid-cols-1 gap-3 p-3 text-right relative z-10 sm:gap-4 sm:p-4"
+        className="grid w-full min-w-0 grid-cols-1 gap-3 p-3 text-right relative z-10 sm:grid-cols-[repeat(var(--group-cols),minmax(0,1fr))] sm:gap-4 sm:p-4"
         style={{
-          gridTemplateColumns: `repeat(${effectiveCols}, minmax(0, 1fr))`
+          "--group-cols": effectiveCols
         } as React.CSSProperties}
       >
         <AnimatePresence mode="popLayout">{children}</AnimatePresence>
