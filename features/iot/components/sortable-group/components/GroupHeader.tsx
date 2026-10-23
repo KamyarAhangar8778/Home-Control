@@ -125,9 +125,9 @@ export default function GroupHeader({
               onColsChange={onColsChange}
               parentGroupsCols={parentGroupsCols}
             />
-          </Card>
+          </div>
         )}
-      </div>
+      </Card>
 
       <GroupActions
         id={id}
