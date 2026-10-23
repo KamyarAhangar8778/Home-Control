@@ -13,12 +13,6 @@ import { SortableGroupProps } from "../core/types";
 import GroupHeader from "./GroupHeader";
 import { useMasonryGrid } from "../hooks/useMasonryGrid";
 
-const GROUP_ITEM_BASIS_LUT: Record<number, string> = {
-  1: "100%",
-  2: "calc(50% - 0.5rem - 0.1px)",
-  3: "calc(33.3333% - 0.6667rem - 0.1px)"
-};
-
 export default function SortableGroup({
   id,
   items,
