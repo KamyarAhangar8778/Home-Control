@@ -43,21 +43,22 @@ export default function ToastNotification() {
           className="pointer-events-auto fixed bottom-6 left-6 z-[200] w-[calc(100vw-3rem)] max-w-sm"
         >
           <Alert
+            dir="rtl"
             variant={toast.type === "success" ? "success" : "destructive"}
-            className="w-full text-right shadow-lg"
+            className="!grid !grid-cols-[1.25rem_minmax(0,1fr)_auto] !items-start !gap-x-3 !gap-y-1 !px-4 !py-3.5 text-right shadow-lg"
           >
             {toast.type === "success" ? (
-              <CheckCircle aria-hidden="true" />
+              <CheckCircle aria-hidden="true" className="!col-start-1 !row-start-1 !mt-0.5 !size-5" />
             ) : (
-              <XCircle aria-hidden="true" />
+              <XCircle aria-hidden="true" className="!col-start-1 !row-start-1 !mt-0.5 !size-5" />
             )}
-            <AlertTitle>
+            <AlertTitle className="!col-start-2 !row-start-1 !min-h-0 !line-clamp-none min-w-0 break-words text-sm font-semibold leading-5">
               {toast.type === "success" ? "عملیات موفق" : "خطا در انجام عملیات"}
             </AlertTitle>
-            <AlertDescription className="break-words">
+            <AlertDescription className="!col-start-2 !row-start-2 min-w-0 break-words whitespace-normal text-xs leading-6">
               {toast.message}
             </AlertDescription>
-            <AlertAction>
+            <AlertAction className="!col-start-3 !row-start-1 !mt-0 !self-start">
               <button
                 type="button"
                 onClick={clearToast}
