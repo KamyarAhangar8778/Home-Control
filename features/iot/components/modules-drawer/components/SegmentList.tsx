@@ -4,8 +4,6 @@ import { Sliders, Trash2 } from "lucide-react";
 import { Segment } from "../core/types";
 import { Card } from "@/components/ui/card";
 
-const MotionCard = motion(Card);
-
 interface SegmentListProps {
   segments: Segment[];
   onRemoveSegment: (id: string) => void;
@@ -29,7 +27,7 @@ export default function SegmentList({ segments, onRemoveSegment }: SegmentListPr
         <div className="space-y-2 max-h-[300px] overflow-y-auto pr-1">
           <AnimatePresence>
             {segments.map((seg) => (
-              <MotionCard
+              <motion(Card)
                 initial={{ opacity: 0, y: 5 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95 }}
@@ -52,7 +50,7 @@ export default function SegmentList({ segments, onRemoveSegment }: SegmentListPr
                     GPIO {seg.pin} • {seg.mode === "push" ? "MOMENTARY PUSH" : "ON/OFF SWITCH"}
                   </span>
                 </div>
-              </MotionCard>
+              </motion(Card>
             ))}
           </AnimatePresence>
         </div>

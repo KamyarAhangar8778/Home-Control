@@ -74,7 +74,7 @@ export default function CardHeader({
     <ReUICardHeader
       {...(isSmall ? attributes : {})}
       {...(isSmall ? listeners : {})}
-      className={`!gap-0 !rounded-none !px-0 !py-0 flex items-center border-b border-[var(--border)] bg-[var(--muted)]/40 ${
+      className={`!flex !items-center !gap-0 !rounded-none !px-0 !py-0 border-b border-[var(--border)] bg-[var(--muted)]/40 ${
         !showIconInHeader
           ? "justify-center p-2 cursor-grab active:cursor-grabbing"
           : isSmall
