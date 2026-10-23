@@ -9,7 +9,6 @@ import GroupFilterSelector from "@/components/MasterHeader/GroupFilterSelector";
 import { useDashboard } from "@/features/dashboard/context/DashboardContext";
 import { useIoTStore } from "@/features/iot/hooks/useIoTStore";
 import { useWorkspaceSwipe } from "../../hooks/useWorkspaceSwipe";
-import { useDashboardLayout } from "../../hooks/useDashboardLayout";
 
 export default function DashboardWorkspace() {
   const {
@@ -37,7 +36,6 @@ export default function DashboardWorkspace() {
   const setIsMenuOpen = useIoTStore(s => s.setIsMenuOpen);
   const setIsModulesMenuOpen = useIoTStore(s => s.setIsModulesMenuOpen);
   const animationsEnabled = useIoTStore(s => s.animationsEnabled);
-  const dashboardWidth = useIoTStore(s => s.dashboardWidth);
   const isGroupsCompactLayout = useIoTStore(s => s.isGroupsCompactLayout);
   const isSegmentsCompactLayout = useIoTStore(s => s.isSegmentsCompactLayout);
   const activeSegmentId = useIoTStore(s => s.activeSegmentId);
@@ -51,12 +49,11 @@ export default function DashboardWorkspace() {
   const groupConfigs = useIoTStore(s => s.groupConfigs);
 
   const { onTouchStart, onTouchMove, onTouchEnd } = useWorkspaceSwipe(selectedGroupFilter, setSelectedGroupFilter, groupsOrder);
-  const { innerWidthClass, outerWidthClass } = useDashboardLayout(dashboardWidth);
 
 
   return (
     <div 
-      className={`w-full flex flex-col items-center ${outerWidthClass} mx-auto transition-all duration-500`}
+      className="w-full flex flex-col items-center mx-auto transition-all duration-500"
       onTouchStart={onTouchStart}
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}
@@ -64,7 +61,7 @@ export default function DashboardWorkspace() {
       <div className="hidden lg:block pt-[115px]">
         <React.Suspense fallback={<div className="w-20 lg:w-24 shrink-0 bg-transparent h-full" />}><MacroSidebar /></React.Suspense>
       </div>
-      <main className={`flex-1 flex flex-col justify-center items-center text-center ${innerWidthClass} mx-auto space-y-8 py-4 w-full relative transition-all duration-500`}>
+      <main className="flex-1 flex flex-col justify-center items-center text-center mx-auto space-y-8 py-4 w-full relative transition-all duration-500">
         {!isFullyReady ? (
           <div className="w-full flex flex-col gap-4">
             <div className="-mt-6 sm:-mt-10 mb-2 w-full flex justify-center">
@@ -109,7 +106,6 @@ export default function DashboardWorkspace() {
               selectedGroupFilter={selectedGroupFilter}
               isGroupsCompactLayout={isGroupsCompactLayout}
               isSegmentsCompactLayout={isSegmentsCompactLayout}
-              dashboardWidth={dashboardWidth}
               handleDragStart={handleDragStart}
               handleDragOver={handleDragOver}
               handleDragEnd={handleDragEnd}
