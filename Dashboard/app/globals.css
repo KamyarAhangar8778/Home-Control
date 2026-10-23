@@ -22,11 +22,11 @@
   --border: var(--color-zinc-200);
   --input: var(--color-zinc-200);
   --ring: var(--color-zinc-400);
-  --success: var(--color-emerald-600);
+  --success: var(--color-emerald-500);
   --success-foreground: var(--color-white);
-  --warning: var(--color-amber-500);
+  --warning: var(--color-yellow-500);
   --warning-foreground: var(--color-zinc-950);
-  --info: var(--color-sky-600);
+  --info: var(--color-violet-500);
   --info-foreground: var(--color-white);
   --invert: var(--color-zinc-900);
   --invert-foreground: var(--color-zinc-50);
@@ -62,9 +62,9 @@
   --ring: var(--color-zinc-600);
   --success: var(--color-emerald-500);
   --success-foreground: var(--color-zinc-950);
-  --warning: var(--color-amber-400);
+  --warning: var(--color-yellow-400);
   --warning-foreground: var(--color-zinc-950);
-  --info: var(--color-sky-500);
+  --info: var(--color-violet-500);
   --info-foreground: var(--color-zinc-950);
   --invert: var(--color-zinc-100);
   --invert-foreground: var(--color-zinc-900);
