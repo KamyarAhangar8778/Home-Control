@@ -1,8 +1,6 @@
 name: Deploy to GitHub Pages
 
-on:
-  # Temporarily disabled: Pages deployment is paused.
-  # workflow_dispatch intentionally disabled while Pages deployment is paused.
+on: []
 
 permissions:
   contents: read
