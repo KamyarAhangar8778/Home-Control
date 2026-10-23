@@ -52,7 +52,7 @@ export default function LayoutSelector({
         className={`${parentGroupsCols === 3 ? "p-0.5 sm:p-1" : "p-1.5"} flex items-center justify-center rounded-lg transition-all cursor-pointer select-none ${
           maxCols === 2
             ? "bg-[var(--accent3-transparent)] text-[var(--accent3)] shadow-inner"
-            : "text-[var(--text-muted)] md:hover:text-[var(--text-primary)] md:hover:bg-[var(--card-bg-solid)]"
+            : "text-[var(--text-secondary)] md:hover:text-[var(--foreground)] md:hover:bg-[var(--accent)]"
         }`}
         title="نمایش دو ستونه"
       >
