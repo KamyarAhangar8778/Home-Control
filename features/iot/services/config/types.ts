@@ -16,12 +16,12 @@ export interface EspConfig {
     animations_fps?: number;
     header_animation: "fade" | "chase";
     header_title: string;
-    matrix_density: number;
-    matrix_size: number;
-    matrix_hover_size: number;
-    matrix_color: string;
-    matrix_moving: boolean;
-    matrix_mouse_effect: boolean;
+    matrix_density?: number;
+    matrix_size?: number;
+    matrix_hover_size?: number;
+    matrix_color?: string;
+    matrix_moving?: boolean;
+    matrix_mouse_effect?: boolean;
     matrix_twinkle_effect?: boolean;
     matrix_twinkle_speed?: number;
     cuneiform_opacity?: number;
