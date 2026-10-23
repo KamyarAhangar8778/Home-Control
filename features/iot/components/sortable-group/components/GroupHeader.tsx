@@ -57,6 +57,10 @@ export default function GroupHeader({
             <div
               ref={buttonRef}
               onClick={() => setIsSettingsOpen(!isSettingsOpen)}
+              onKeyDown={(event) => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); setIsSettingsOpen(!isSettingsOpen); } }}
+              role="button"
+              tabIndex={0}
+              aria-expanded={isSettingsOpen}
               className={`flex items-center justify-center transition-all cursor-pointer md:hover:opacity-80 ${isSettingsOpen ? "bg-[var(--accent3)] text-black shadow-[0_0_8px_rgba(255,165,0,0.3)]" : "bg-[var(--accent3-transparent)] text-[var(--accent3)]"} shrink-0 ${
                 parentGroupsCols === 3 ? "p-1 w-6 h-6" : "p-1.5 w-7 h-7 sm:p-2 sm:w-auto sm:h-auto"
               }`}
