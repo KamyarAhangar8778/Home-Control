@@ -65,7 +65,7 @@ export default function SortableGroup({
       return (
         <div className="flex flex-col gap-4 w-full min-w-0 text-right p-3 sm:p-4 relative z-10">
           {masonryChildren.length > 0 && (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 w-full min-w-0">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full min-w-0">
               {columns.map((colChildren) => (
                 colChildren.length > 0 ? (
                   <div key={`col-${colChildren.map((child) => React.isValidElement(child) ? child.key : null).join("-")}`} className="min-w-0 w-full flex flex-col gap-3 sm:gap-4">
