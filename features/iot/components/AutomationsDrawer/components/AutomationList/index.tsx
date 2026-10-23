@@ -50,7 +50,7 @@ export default function AutomationList({ handleEdit, handleDelete, handleToggle 
                   </div>
                   
                   {/* Toggle Switch */}
-                  <button 
+                  <button type="button" 
                     onClick={() => handleToggle(auto.id, !auto.enabled)}
                     className={`relative inline-flex h-5 w-9 items-center rounded-full transition-colors ${auto.enabled ? "bg-[var(--accent3)]" : "bg-[var(--border-color)]"}`}
                   >
@@ -117,10 +117,10 @@ export default function AutomationList({ handleEdit, handleDelete, handleToggle 
                   </div>
                   
                   <div className="flex items-center gap-1">
-                    <button onClick={() => handleEdit(auto)} className="p-2 text-[var(--text-muted)] md:hover:text-blue-500 md:hover:bg-blue-500/10 rounded-lg transition-colors" title="ویرایش">
+                    <button type="button" onClick={() => handleEdit(auto)} className="p-2 text-[var(--text-muted)] md:hover:text-blue-500 md:hover:bg-blue-500/10 rounded-lg transition-colors" title="ویرایش">
                       <Edit2 className="w-4 h-4" />
                     </button>
-                    <button onClick={() => handleDelete(auto.id)} className="p-2 text-[var(--text-muted)] md:hover:text-rose-500 md:hover:bg-rose-500/10 rounded-lg transition-colors" title="حذف">
+                    <button type="button" onClick={() => handleDelete(auto.id)} className="p-2 text-[var(--text-muted)] md:hover:text-rose-500 md:hover:bg-rose-500/10 rounded-lg transition-colors" title="حذف">
                       <Trash2 className="w-4 h-4" />
                     </button>
                   </div>
