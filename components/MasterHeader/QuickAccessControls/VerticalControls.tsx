@@ -1,4 +1,5 @@
 import { Settings as SettingsIcon, Layers, Clock3, House } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { useIoTStore } from "@/features/iot/hooks/useIoTStore";
 import VoiceCommandButton from "../VoiceCommandButton";
 import type { QuickAccessControlsProps } from "./types";
@@ -35,7 +36,7 @@ export default function VerticalControls({
         </span>
       )}
 
-      <button
+      <Button variant="ghost"
         type="button"
         onClick={() => navigateTo("home")}
         className={navClass("home")}
@@ -45,9 +46,9 @@ export default function VerticalControls({
       >
         <House className="h-4 w-4 shrink-0" />
         {!isSidebarCollapsed && <span className="text-sm">داشبورد خانه</span>}
-      </button>
+      </Button>
 
-      <button
+      <Button variant="ghost"
         type="button"
         onClick={() => navigateTo("modules")}
         className={navClass("modules")}
@@ -57,9 +58,9 @@ export default function VerticalControls({
       >
         <Layers className="h-4 w-4 shrink-0" />
         {!isSidebarCollapsed && <span className="text-sm">پالایه و ماژول‌ها</span>}
-      </button>
+      </Button>
 
-      <button
+      <Button variant="ghost"
         type="button"
         onClick={() => navigateTo("automations")}
         className={navClass("automations")}
@@ -69,7 +70,7 @@ export default function VerticalControls({
       >
         <Clock3 className="h-4 w-4 shrink-0" />
         {!isSidebarCollapsed && <span className="text-sm">اتوماسیون‌ها</span>}
-      </button>
+      </Button>
 
       <VoiceCommandButton
         animationsEnabled={animationsEnabled}
@@ -79,7 +80,7 @@ export default function VerticalControls({
 
       <div className="my-3 border-t border-[var(--sidebar-border)]" />
 
-      <button
+      <Button variant="ghost"
         type="button"
         onClick={() => navigateTo("settings")}
         className={navClass("settings")}
@@ -89,7 +90,7 @@ export default function VerticalControls({
       >
         <SettingsIcon className="h-4 w-4 shrink-0" />
         {!isSidebarCollapsed && <span className="text-sm">تنظیمات اصلی</span>}
-      </button>
+      </Button>
     </nav>
   );
 }
