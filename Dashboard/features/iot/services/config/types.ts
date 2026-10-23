@@ -31,8 +31,6 @@ export interface EspConfig {
     dashboard_width?: 1 | 2 | 3 | 4 | 5;
     dashboard_bg_color?: string;
     dashboard_bg_opacity?: number;
-    groups_compact_layout?: boolean;
-    segments_compact_layout?: boolean;
   };
   layout: {
     groups_order: string[];

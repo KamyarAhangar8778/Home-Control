@@ -18,7 +18,7 @@ const ConnectedSegmentCard = React.memo((props: any) => {
 });
 
 const ConnectedGroup = React.memo((props: any) => {
-  const { groupName, groupIndex, groupConfigs, handleGroupColsChange, handleAddPlaceholder, handleRemoveGroup, animationsEnabled, isSegmentsCompactLayout, filteredGroupsOrderLength, groupsCols, isMobilePortrait, isGroupsCompactLayout, segmentProps } = props;
+  const { groupName, groupIndex, groupConfigs, handleGroupColsChange, handleAddPlaceholder, handleRemoveGroup, animationsEnabled, filteredGroupsOrderLength, groupsCols, isMobilePortrait, segmentProps } = props;
 
   const segmentIds = useIoTStore(
     useShallow((state) =>
@@ -36,8 +36,8 @@ const ConnectedGroup = React.memo((props: any) => {
     ? FLEX_BASIS_LUT[1] 
     : FLEX_BASIS_LUT[groupsCols] || FLEX_BASIS_LUT[3];
 
-  const baseClasses = isGroupsCompactLayout ? "space-y-3" : "flex-grow flex-shrink-0 min-w-0 max-w-full";
-  const style = !isGroupsCompactLayout ? { flexBasis } : undefined;
+  const baseClasses = "flex-grow flex-shrink-0 min-w-0 max-w-full";
+  const style = { flexBasis };
 
   return (
     <div className={baseClasses} style={style}>
@@ -52,7 +52,6 @@ const ConnectedGroup = React.memo((props: any) => {
         onDeleteGroup={handleRemoveGroup}
         parentGroupsCols={effectiveGroupsCols}
         animationsEnabled={animationsEnabled}
-        isSegmentsCompactLayout={isSegmentsCompactLayout}
       >
         {segmentIds.map((id: string, index: number) => (
           <ConnectedSegmentCard
@@ -107,16 +106,11 @@ export default function WorkspaceGrid({
   handleUpdateSegmentAutoOff,
   handleUpdateSegmentRule,
   handleSetupPlaceholder,
-  isGroupsCompactLayout,
-  isSegmentsCompactLayout,
 }: WorkspaceGridProps) {
   const {
     isMobilePortrait,
     filteredGroupsOrder,
     groupsCols,
-    masonryGroups,
-    lastRowGroup,
-    columns,
   } = useWorkspaceGrid({
     groupsOrder,
     initialGroupsCols,
@@ -134,11 +128,9 @@ export default function WorkspaceGrid({
         handleAddPlaceholder={handleAddPlaceholder}
         handleRemoveGroup={handleRemoveGroup}
         animationsEnabled={animationsEnabled}
-        isSegmentsCompactLayout={isSegmentsCompactLayout}
         filteredGroupsOrderLength={filteredGroupsOrder.length}
         groupsCols={groupsCols}
         isMobilePortrait={isMobilePortrait}
-        isGroupsCompactLayout={isGroupsCompactLayout}
         segmentProps={{
           onRemove: handleRemoveSegment,
           onTogglePin: handleTogglePin,
@@ -158,33 +150,9 @@ export default function WorkspaceGrid({
       items={filteredGroupsOrder.map((g) => `group-${g}`)}
       strategy={isMobilePortrait ? () => null : rectSortingStrategy}
     >
-      {isGroupsCompactLayout ? (
-        <div className="flex flex-col gap-8 w-full items-start">
-          {masonryGroups.length > 0 && (
-            <div className="flex gap-8 w-full items-start">
-              {columns.map((colGroups, colIndex) => (
-                colGroups.length > 0 ? (
-                  <div key={`col-${colGroups.join("-")}`} className="flex-1 flex flex-col gap-8 min-w-0">
-                    {colGroups.map((groupName, rowIdx) => {
-                      const groupIndex = rowIdx * groupsCols + colIndex;
-                      return renderGroup(groupName, groupIndex);
-                    })}
-                  </div>
-                ) : null
-              ))}
-            </div>
-          )}
-          {lastRowGroup && (
-            <div className="w-full">
-              {renderGroup(lastRowGroup, filteredGroupsOrder.length - 1)}
-            </div>
-          )}
-        </div>
-      ) : (
-        <div className="flex flex-wrap gap-8 w-full items-start">
-          {filteredGroupsOrder.map((groupName, groupIndex) => renderGroup(groupName, groupIndex))}
-        </div>
-      )}
+      <div className="flex flex-wrap gap-8 w-full items-start">
+        {filteredGroupsOrder.map((groupName, groupIndex) => renderGroup(groupName, groupIndex))}
+      </div>
     </SortableContext>
   );
 }

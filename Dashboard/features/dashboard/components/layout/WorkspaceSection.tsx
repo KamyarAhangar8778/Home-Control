@@ -114,10 +114,6 @@ function SettingsWorkspace() {
   const headerTitle = useIoTStore(state => state.headerTitle);
   const setHeaderTitle = useIoTStore(state => state.setHeaderTitle);
   const isDark = useIoTStore(state => state.isDark);
-  const isGroupsCompactLayout = useIoTStore(state => state.isGroupsCompactLayout);
-  const setIsGroupsCompactLayout = useIoTStore(state => state.setIsGroupsCompactLayout);
-  const isSegmentsCompactLayout = useIoTStore(state => state.isSegmentsCompactLayout);
-  const setIsSegmentsCompactLayout = useIoTStore(state => state.setIsSegmentsCompactLayout);
 
   const settingsProps: SettingsDrawerProps = {
     isOpen: true,
@@ -133,10 +129,6 @@ function SettingsWorkspace() {
     headerTitle,
     setHeaderTitle,
     isDark,
-    isGroupsCompactLayout,
-    setIsGroupsCompactLayout,
-    isSegmentsCompactLayout,
-    setIsSegmentsCompactLayout,
   };
 
   const activeSettings = SETTINGS_TABS.find(tab => tab.id === activeTab) ?? SETTINGS_TABS[0];

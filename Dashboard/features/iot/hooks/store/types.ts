@@ -173,10 +173,6 @@ export interface AestheticSlice {
   setHeaderTitle: (t: string) => void;
   isSidebarCollapsed: boolean;
   setIsSidebarCollapsed: (c: boolean) => void;
-  isGroupsCompactLayout: boolean;
-  setIsGroupsCompactLayout: (c: boolean) => void;
-  isSegmentsCompactLayout: boolean;
-  setIsSegmentsCompactLayout: (c: boolean) => void;
 }
 
 export interface ConfigSlice {

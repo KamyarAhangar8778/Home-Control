@@ -25,10 +25,6 @@ export default function DashboardDrawers() {
   const headerTitle = useIoTStore(s => s.headerTitle);
   const setHeaderTitle = useIoTStore(s => s.setHeaderTitle);
   const isDark = useIoTStore(s => s.isDark);
-  const isGroupsCompactLayout = useIoTStore(s => s.isGroupsCompactLayout);
-  const setIsGroupsCompactLayout = useIoTStore(s => s.setIsGroupsCompactLayout);
-  const isSegmentsCompactLayout = useIoTStore(s => s.isSegmentsCompactLayout);
-  const setIsSegmentsCompactLayout = useIoTStore(s => s.setIsSegmentsCompactLayout);
   const { handleAddSegment, handleRemoveSegment } = useDashboard();
   
   const segments = useIoTStore(s => s.segments);
@@ -50,10 +46,6 @@ export default function DashboardDrawers() {
           headerTitle={headerTitle}
           setHeaderTitle={setHeaderTitle}
           isDark={isDark}
-          isGroupsCompactLayout={isGroupsCompactLayout}
-          setIsGroupsCompactLayout={setIsGroupsCompactLayout}
-          isSegmentsCompactLayout={isSegmentsCompactLayout}
-          setIsSegmentsCompactLayout={setIsSegmentsCompactLayout}
         />
       )}
 

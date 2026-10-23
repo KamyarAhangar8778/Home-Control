@@ -38,8 +38,6 @@ export default function DashboardWorkspace() {
   const setIsMenuOpen = useIoTStore(s => s.setIsMenuOpen);
   const setIsModulesMenuOpen = useIoTStore(s => s.setIsModulesMenuOpen);
   const animationsEnabled = useIoTStore(s => s.animationsEnabled);
-  const isGroupsCompactLayout = useIoTStore(s => s.isGroupsCompactLayout);
-  const isSegmentsCompactLayout = useIoTStore(s => s.isSegmentsCompactLayout);
   const activeSegmentId = useIoTStore(s => s.activeSegmentId);
   const activeGroupId = useIoTStore(s => s.activeGroupId);
 
@@ -109,8 +107,6 @@ export default function DashboardWorkspace() {
               activeGroupId={activeGroupId}
               animationsEnabled={animationsEnabled}
               selectedGroupFilter={selectedGroupFilter}
-              isGroupsCompactLayout={isGroupsCompactLayout}
-              isSegmentsCompactLayout={isSegmentsCompactLayout}
               handleDragStart={handleDragStart}
               handleDragOver={handleDragOver}
               handleDragEnd={handleDragEnd}

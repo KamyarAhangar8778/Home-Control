@@ -21,10 +21,6 @@ export function SettingsTabContent({
   setAnimationsFps,
   headerTitle,
   setHeaderTitle,
-  isGroupsCompactLayout,
-  setIsGroupsCompactLayout,
-  isSegmentsCompactLayout,
-  setIsSegmentsCompactLayout,
 }: SettingsTabContentProps) {
   switch (activeTab) {
     case "animations":
@@ -44,10 +40,6 @@ export function SettingsTabContent({
         <LayoutSection
           headerTitle={headerTitle}
           setHeaderTitle={setHeaderTitle}
-          isGroupsCompactLayout={isGroupsCompactLayout}
-          setIsGroupsCompactLayout={setIsGroupsCompactLayout}
-          isSegmentsCompactLayout={isSegmentsCompactLayout}
-          setIsSegmentsCompactLayout={setIsSegmentsCompactLayout}
         />
       );
     case "audio":

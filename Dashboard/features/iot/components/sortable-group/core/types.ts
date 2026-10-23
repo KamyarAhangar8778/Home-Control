@@ -13,5 +13,4 @@ export interface SortableGroupProps {
   icon?: string;
   children: React.ReactNode;
   isOverlayItem?: boolean;
-  isSegmentsCompactLayout?: boolean;
 }

@@ -14,10 +14,6 @@ export interface SettingsDrawerProps {
   headerTitle: string;
   setHeaderTitle: (val: string) => void;
   isDark: boolean;
-  isGroupsCompactLayout: boolean;
-  setIsGroupsCompactLayout: (val: boolean) => void;
-  isSegmentsCompactLayout: boolean;
-  setIsSegmentsCompactLayout: (val: boolean) => void;
 }
 
 export const SETTINGS_TABS = [
