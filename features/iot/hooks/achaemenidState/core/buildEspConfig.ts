@@ -24,8 +24,6 @@ export function buildEspConfig(params: any): EspConfig {
       dashboard_bg_color: params.dashboardBgColor,
       dashboard_bg_opacity: params.dashboardBgOpacity,
       manual_save_mode: params.manualSaveMode,
-      groups_compact_layout: params.isGroupsCompactLayout,
-      segments_compact_layout: params.isSegmentsCompactLayout,
     },
     layout: {
       groups_order: params.groupsOrder,
