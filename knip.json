@@ -10,5 +10,10 @@
   "ignoreExportsUsedInFile": {
     "interface": true,
     "type": true
+  },
+  "ignoreIssues": {
+    "features/iot/services/localWs/client.ts": [
+      "exports"
+    ]
   }
 }
