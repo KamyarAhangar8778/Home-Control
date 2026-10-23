@@ -2,6 +2,8 @@ import { StateCreator } from "zustand";
 import { IoTStoreState, MenuSlice } from "../types";
 
 export const createMenuSlice: StateCreator<IoTStoreState, [], [], MenuSlice> = (set) => ({
+  activeWorkspaceView: "home",
+  setActiveWorkspaceView: (view) => set({ activeWorkspaceView: view }),
   isMenuOpen: false,
   isModulesMenuOpen: false,
   isEspDrawerOpen: false,

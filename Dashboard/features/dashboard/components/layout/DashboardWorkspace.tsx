@@ -9,6 +9,7 @@ import GroupFilterSelector from "@/components/MasterHeader/GroupFilterSelector";
 import { useDashboard } from "@/features/dashboard/context/DashboardContext";
 import { useIoTStore } from "@/features/iot/hooks/useIoTStore";
 import { useWorkspaceSwipe } from "../../hooks/useWorkspaceSwipe";
+import WorkspaceSection from "./WorkspaceSection";
 
 export default function DashboardWorkspace() {
   const {
@@ -30,6 +31,7 @@ export default function DashboardWorkspace() {
     isFullyReady,
   } = useDashboard();
 
+  const activeWorkspaceView = useIoTStore(s => s.activeWorkspaceView);
   const isDark = useIoTStore(s => s.isDark);
   const accent3 = useIoTStore(s => s.accent3);
   const accent4 = useIoTStore(s => s.accent4);
@@ -50,6 +52,9 @@ export default function DashboardWorkspace() {
 
   const { onTouchStart, onTouchMove, onTouchEnd } = useWorkspaceSwipe(selectedGroupFilter, setSelectedGroupFilter, groupsOrder);
 
+  if (activeWorkspaceView !== "home") {
+    return <WorkspaceSection view={activeWorkspaceView} />;
+  }
 
   return (
     <div 

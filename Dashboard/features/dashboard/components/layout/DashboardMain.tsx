@@ -11,6 +11,7 @@ import MobileVoiceCommandButton from "../widgets/MobileVoiceCommandButton";
 export default function DashboardMain() {
   const { refetchIot, triggerCloudflarePush } = useDashboard();
   const animationsEnabled = useIoTStore(s => s.animationsEnabled);
+  const activeWorkspaceView = useIoTStore(s => s.activeWorkspaceView);
   const activeGroupId = useIoTStore(s => s.activeGroupId);
   const activeSegmentId = useIoTStore(s => s.activeSegmentId);
 
@@ -23,7 +24,7 @@ export default function DashboardMain() {
 
   return (
     <>
-      {segments.length > 0 && (lowDataMode || (manualSaveMode && unsavedChangesCount > 0)) && (
+      {activeWorkspaceView === "home" && segments.length > 0 && (lowDataMode || (manualSaveMode && unsavedChangesCount > 0)) && (
         <LowDataModeBanner
           lowDataMode={lowDataMode}
           animationsEnabled={animationsEnabled}
@@ -36,7 +37,7 @@ export default function DashboardMain() {
 
       <DashboardWorkspace />
 
-      {!isDragging && (
+      {activeWorkspaceView === "home" && !isDragging && (
         <footer className={`flex flex-col items-center gap-3 text-center text-[10px] theme-text-secondary font-sans border border-[var(--border-color)] bg-[var(--card-bg)]/80 backdrop-blur-md py-4 px-6 mt-12 mb-4 mx-auto w-full shadow-sm md:hover:shadow-lg rounded-xl transition-all duration-300 footer-animated-border`}>
           {/* Device Version Indicator */}
           <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--card-hover-bg)] border border-[var(--border-color)] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all duration-500 cursor-default group hover:shadow-[0_0_15px_rgba(16,185,129,0.15)] overflow-hidden relative">
@@ -66,7 +67,7 @@ export default function DashboardMain() {
           </span>
         </footer>
       )}
-      <MobileVoiceCommandButton />
+      {activeWorkspaceView === "home" && <MobileVoiceCommandButton />}
     </>
   );
 }
